@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Hash;
 use App\Rules\MatchOldPassword;
-use Intervention\Image\ImageManagerStatic as Image;
+use Illuminate\Support\Facades\Storage;
 
 class ProfileController extends Controller
 {
@@ -75,6 +75,12 @@ class ProfileController extends Controller
 
         // Update avatar path pada model user (misalnya)
         $user = User::where('id', auth()->user()->id)->first();
+
+        // Hapus avatar lama jika ada
+        if ($user->avatar) {
+            Storage::disk('public')->delete($user->avatar);
+        }
+
         $user->avatar = $avatarPath;
         $user->save();
 
