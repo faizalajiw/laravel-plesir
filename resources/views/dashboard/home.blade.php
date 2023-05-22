@@ -25,7 +25,7 @@
                     <div class="card-body">
                         <div class="db-widgets d-flex justify-content-between align-items-center">
                             <div class="db-info">
-                                <h6>Students</h6>
+                                <h6>User</h6>
                                 <h3>50055</h3>
                             </div>
                             <div class="db-icon">
@@ -40,7 +40,7 @@
                     <div class="card-body">
                         <div class="db-widgets d-flex justify-content-between align-items-center">
                             <div class="db-info">
-                                <h6>Awards</h6>
+                                <h6>Admin Wisata</h6>
                                 <h3>50+</h3>
                             </div>
                             <div class="db-icon">
@@ -55,8 +55,8 @@
                     <div class="card-body">
                         <div class="db-widgets d-flex justify-content-between align-items-center">
                             <div class="db-info">
-                                <h6>Department</h6>
-                                <h3>30+</h3>
+                                <h6>Kategori Wisata</h6>
+                                <h3>4</h3>
                             </div>
                             <div class="db-icon">
                                 <img src="assets/img/icons/dash-icon-03.svg" alt="Dashboard Icon">
@@ -70,8 +70,8 @@
                     <div class="card-body">
                         <div class="db-widgets d-flex justify-content-between align-items-center">
                             <div class="db-info">
-                                <h6>Revenue</h6>
-                                <h3>$505</h3>
+                                <h6>Tempat Wisata</h6>
+                                <h3>50</h3>
                             </div>
                             <div class="db-icon">
                                 <img src="assets/img/icons/dash-icon-04.svg" alt="Dashboard Icon">
@@ -83,7 +83,7 @@
         </div>
 
         <div class="row">
-            <div class="col-md-12 col-lg-6">
+            <div class="col-md-12 col-lg-12">
 
                 <div class="card card-chart">
                     <div class="card-header">
@@ -93,8 +93,8 @@
                             </div>
                             <div class="col-6">
                                 <ul class="chart-list-out">
-                                    <li><span class="circle-blue"></span>Teacher</li>
-                                    <li><span class="circle-green"></span>Student</li>
+                                    <li><span class="circle-blue"></span>Admin Wisata</li>
+                                    <li><span class="circle-green"></span>User</li>
                                     <li class="star-menus"><a href="javascript:;"><i
                                                 class="fas fa-ellipsis-v"></i></a></li>
                                 </ul>
@@ -107,7 +107,7 @@
                 </div>
 
             </div>
-            <div class="col-md-12 col-lg-6">
+            <!-- <div class="col-md-12 col-lg-12">
 
                 <div class="card card-chart">
                     <div class="card-header">
@@ -130,14 +130,14 @@
                     </div>
                 </div>
 
-            </div>
+            </div> -->
         </div>
         <div class="row">
             <div class="col-xl-6 d-flex">
 
                 <div class="card flex-fill student-space comman-shadow">
                     <div class="card-header d-flex align-items-center">
-                        <h5 class="card-title">Star Students</h5>
+                        <h5 class="card-title">Aktivitas User</h5>
                         <ul class="chart-list-out student-ellips">
                             <li class="star-menus"><a href="javascript:;"><i class="fas fa-ellipsis-v"></i></a>
                             </li>
@@ -243,7 +243,7 @@
 
                 <div class="card flex-fill comman-shadow">
                     <div class="card-header d-flex align-items-center">
-                        <h5 class="card-title ">Student Activity </h5>
+                        <h5 class="card-title ">Aktivitas Komentar</h5>
                         <ul class="chart-list-out student-ellips">
                             <li class="star-menus"><a href="javascript:;"><i class="fas fa-ellipsis-v"></i></a>
                             </li>

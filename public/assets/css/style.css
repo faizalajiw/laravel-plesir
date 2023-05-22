@@ -1784,6 +1784,24 @@ div.dataTables_wrapper div.dataTables_length select {
     -o-object-fit: cover;
     object-fit: cover;
 }
+
+.avatar-profile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px; /* Ubah ukuran sesuai kebutuhan Anda */
+    width: 100px; /* Ubah ukuran sesuai kebutuhan Anda */
+    border-radius: 50%; /* Membuat avatar menjadi lingkaran */
+    overflow: hidden; /* Memastikan foto tidak keluar dari lingkaran */
+    margin: auto; /* Tengahkan avatar di dalam container */
+}
+
+.avatar-profile img {
+    width: 100%;
+    height: 100%;
+    -o-object-fit: cover;
+    object-fit: cover; /* Memastikan foto diisi seluruh area avatar */
+}
 .avatar-title {
     width: 100%;
     height: 100%;
@@ -2074,7 +2092,7 @@ div.dataTables_wrapper div.dataTables_length select {
     align-items: center;
 }
 .user-img .user-text {
-    margin: 0 8px;
+    margin: 0 3px;
 }
 .user-img .user-text .text-muted {
     line-height: 1.2;
@@ -3544,16 +3562,9 @@ table.table-inbox tbody tr.checked {
 .error-box {
     margin: 0 auto;
     max-width: 480px;
-    padding: 1.875rem 0;
+    /* padding: 1.875rem 0; */
     text-align: center;
     width: 100%;
-}
-.error-box h1 {
-    color: #3d5ee1;
-    font-size: 10em;
-}
-.error-box p {
-    margin-bottom: 1.875rem;
 }
 .error-box .btn {
     border-radius: 50px;
@@ -3563,7 +3574,7 @@ table.table-inbox tbody tr.checked {
     padding: 10px 20px;
 }
 .profile-header {
-    background: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+    background: #fff;
     border: 1px solid #efefef;
     padding: 1.5rem;
 }
@@ -8794,9 +8805,6 @@ body[data-layout-mode="dark"]
     }
     .login-wrapper .loginbox .login-right h1 {
         font-size: 22px;
-    }
-    .error-box h1 {
-        font-size: 6em;
     }
     .error-box .btn {
         font-size: 15px;

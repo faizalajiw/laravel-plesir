@@ -26,7 +26,7 @@
         <div class="header">
             <div class="header-left">
                 <a href="{{ route('home') }}" class="logo">
-                    <img src="{{ URL::to('assets/img/logo.png') }}" alt="Logo">
+                    <img src="{{ URL::to('assets/img/plesir.png') }}" alt="Logo">
                 </a>
                 <a href="{{ route('home') }}" class="logo logo-small">
                     <img src="{{ URL::to('assets/img/logo-small.png') }}" alt="Logo" width="30" height="30">
@@ -145,10 +145,13 @@
                     </a>
                 </li>
 
+                <!-- HEADER PROFILE -->
                 <li class="nav-item dropdown has-arrow new-user-menus">
                     <a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
                         <span class="user-img">
-                            <img class="rounded-circle" src="/images/{{ Session::get('avatar') }}" width="31"alt="{{ Session::get('name') }}">
+                            <div class="avatar avatar-lg text-center">
+                                <img class="rounded-circle" src="{{ url('storage/' . Session::get('avatar')) }}" alt="{{ Session::get('name') }}">
+                            </div>
                             <div class="user-text">
                                 <h6>{{ Session::get('name') }}</h6>
                                 <p class="text-muted mb-0">{{ Session::get('role_name') }}</p>
@@ -158,7 +161,7 @@
                     <div class="dropdown-menu">
                         <div class="user-header">
                             <div class="avatar avatar-sm">
-                                <img src="/images/{{ Session::get('avatar') }}" alt="{{ Session::get('name') }}" class="avatar-img rounded-circle">
+                                <img src="{{ url('storage/' . Session::get('avatar')) }}" alt="{{ Session::get('name') }}" class="avatar-img rounded-circle">
                             </div>
                             <div class="user-text">
                                 <h6>{{ Session::get('name') }}</h6>
@@ -170,6 +173,7 @@
                         <a class="dropdown-item" href="{{ route('logout') }}">Logout</a>
                     </div>
                 </li>
+                <!-- HEADER PROFILE -->
             </ul>
         </div>
 		{{-- side bar --}}
@@ -177,7 +181,7 @@
 		{{-- content page --}}
         @yield('content')
         <footer>
-            <p>Copyright © 2022 Soeng Souy.</p>
+            <p>© 2023 Plesir Tegal.</p>
         </footer>
     
     </div>

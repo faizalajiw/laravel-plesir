@@ -79,8 +79,8 @@ class LoginController extends Controller
                 /** get session */
                 $user = Auth::User();
                 Session::put('name', $user->name);
-                Session::put('email', $user->email);
                 Session::put('user_id', $user->user_id);
+                Session::put('email', $user->email);
                 Session::put('role_name', $user->role_name);
                 Session::put('avatar', $user->avatar);
                 Toastr::success('Login successfully :)','Success');
@@ -108,8 +108,8 @@ class LoginController extends Controller
         Auth::logout();
         // forget login session
         $request->session()->forget('name');
-        $request->session()->forget('email');
         $request->session()->forget('user_id');
+        $request->session()->forget('email');
         $request->session()->forget('role_name');
         $request->session()->forget('avatar');
         // $request->session()->forget('join_date');

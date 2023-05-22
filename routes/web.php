@@ -1,12 +1,14 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\ResetPasswordController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserManagementController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TypeFormController;
 use App\Http\Controllers\Setting;
 use App\Http\Controllers\StudentController;
@@ -42,10 +44,6 @@ Route::group(['middleware'=>'auth'],function()
     {
         return view('home');
     });
-    Route::get('home',function()
-    {
-        return view('home');
-    });
 });
 
 Auth::routes();
@@ -72,6 +70,13 @@ Route::controller(HomeController::class)->group(function () {
     Route::get('student/dashboard', 'studentDashboardIndex')->middleware('auth')->name('student/dashboard');
 });
 
+// ----------------------------- profile controller -------------------------//
+Route::controller(ProfileController::class)->group(function () {
+    Route::post('change/email', 'changeEmail')->name('change/email');
+    Route::post('change/password', 'changePassword')->name('change/password');
+    Route::post('change/avatar', 'changeAvatar')->name('change/avatar');
+
+});
 // ----------------------------- user controller -------------------------//
 Route::controller(UserManagementController::class)->group(function () {
     Route::get('list/users', 'index')->middleware('auth')->name('list/users');
