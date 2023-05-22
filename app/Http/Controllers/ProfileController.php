@@ -40,10 +40,14 @@ class ProfileController extends Controller
         $user->email = $request->email;
         $user->save();
 
+        // Update data name dan email dalam variabel Session
+        Session::put('name', $request->name);
+        Session::put('email', $request->email);
+
         Toastr::success('User updated successfully', 'Success');
-        Auth::logout(); // Logout the user
-        return redirect()->route('logout'); // Redirect to the logout route
+        return redirect()->intended('home');
     }
+
     /** change password */
     public function changePassword(Request $request)
     {
@@ -83,6 +87,9 @@ class ProfileController extends Controller
 
         $user->avatar = $avatarPath;
         $user->save();
+
+        // Update data avatar dalam variabel Session
+        Session::put('avatar', $avatarPath);
 
         // Berhasil mengubah avatar, lakukan sesuatu (misalnya, kembalikan response atau redirect)
 

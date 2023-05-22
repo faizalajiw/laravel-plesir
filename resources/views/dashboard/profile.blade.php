@@ -43,7 +43,7 @@
                                 </div>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="cancelButton">Cancel</button>
+                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal" id="cancelButton">Cancel</button>
                                 <button type="submit" class="btn btn-primary">Update</button>
                             </div>
                         </form>
@@ -86,7 +86,7 @@
                                             <div class="form-group">
                                                 <label>Role</label>
                                                 <input type="text" class="form-control text-muted @error('email') is-invalid @enderror" name="role_name" readonly value="{{ Session::get('role_name') }}"">
-                                                </div>
+                                            </div>
                                                 <button type=" submit" class="btn btn-primary">Save Changes</button>
                                         </form>
                                     </div>
@@ -149,7 +149,7 @@
                                     <button class="btn btn-success" type="button"><i class="fe fe-check-verified"></i> Active</button>
                                 </div>
                             </div>
-                        </div> -->
+                    </div> -->
                 </div>
                 <!-- PROFILE DETAIL -->
             </div>
