@@ -39,7 +39,7 @@
                 </li>
 
                 <li class="submenu {{set_active(['student/list','student/grid','student/add/page'])}} {{ (request()->is('student/edit/*')) ? 'active' : '' }} {{ (request()->is('student/profile/*')) ? 'active' : '' }}">
-                    <a href="#"><i class="fas fa-graduation-cap"></i>
+                    <a href="#"><i class="fas fa-user"></i>
                         <span>User</span>
                         <span class="menu-arrow"></span>
                     </a>
@@ -52,7 +52,7 @@
                 </li>
                 
                 <li class="submenu {{set_active(['department/add/page'])}}">
-                    <a href="#"><i class="fas fa-building"></i>
+                    <a href="#"><i class="fas fa-th-list"></i>
                         <span>Kategori</span>
                         <span class="menu-arrow"></span>
                     </a>
@@ -63,7 +63,7 @@
                     </ul>
                 </li>
                 <li class="submenu">
-                    <a href="#"><i class="fas fa-book-reader"></i>
+                    <a href="#"><i class="fas fa-map-marked-alt"></i>
                         <span>Tempat</span>
                         <span class="menu-arrow"></span>
                     </a>
@@ -116,7 +116,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="library.html"><i class="fas fa-book"></i> <span>Logout</span></a>
+                    <a href="{{ route('logout') }}"><i class="fas fa-sign-out-alt"></i><span>Logout</span></a>
                 </li>
             </ul>
         </div>
