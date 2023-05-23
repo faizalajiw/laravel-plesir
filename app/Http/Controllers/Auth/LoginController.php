@@ -64,44 +64,30 @@ class LoginController extends Controller
     /** login with databases */
     public function authenticate(Request $request)
     {
-        $request->validate([
-            'email'    => 'required|string',
+        $credentials = $request->validate([
+            'email' => 'required|string',
             'password' => 'required|string',
         ]);
-        
-        DB::beginTransaction();
-        try {
-            
-            $email     = $request->email;
-            $password  = $request->password;
 
-            if (Auth::attempt(['email'=>$email,'password'=>$password])) {
-                /** get session */
-                $user = Auth::User();
-                Session::put('name', $user->name);
-                Session::put('user_id', $user->user_id);
-                Session::put('email', $user->email);
-                Session::put('role_name', $user->role_name);
-                Session::put('avatar', $user->avatar);
-                Toastr::success('Login successfully :)','Success');
-                return redirect()->intended('home');
-                // Session::put('phone_number', $user->phone_number);
-                // Session::put('join_date', $user->join_date);
-                // Session::put('status', $user->status);
-                // Session::put('position', $user->position);
-                // Session::put('department', $user->department);
-            } else {
-                Toastr::error('fail, WRONG USERNAME OR PASSWORD :)','Error');
-                return redirect('login');
-            }
-           
-        } catch(\Exception $e) {
-            DB::rollback();
-            Toastr::error('fail, LOGIN :)','Error');
-            return redirect()->back();
+        if (Auth::attempt($credentials)) {
+            $user = Auth::user();
+
+            Session::put([
+                'name' => $user->name,
+                'user_id' => $user->user_id,
+                'email' => $user->email,
+                'role_name' => $user->role_name,
+                'avatar' => $user->avatar,
+            ]);
+
+            Toastr::success('Login berhasil :)', 'Success');
+            return redirect()->intended('home');
+        } else {
+            Toastr::error('Gagal login, USERNAME ATAU PASSWORD SALAH :)', 'Error');
+            return redirect('login');
         }
     }
-
+    
     /** logout */
     public function logout( Request $request)
     {
@@ -112,11 +98,6 @@ class LoginController extends Controller
         $request->session()->forget('email');
         $request->session()->forget('role_name');
         $request->session()->forget('avatar');
-        // $request->session()->forget('join_date');
-        // $request->session()->forget('phone_number');
-        // $request->session()->forget('status');
-        // $request->session()->forget('position');
-        // $request->session()->forget('department');
         $request->session()->flush();
 
         Toastr::success('Logout successfully :)','Success');

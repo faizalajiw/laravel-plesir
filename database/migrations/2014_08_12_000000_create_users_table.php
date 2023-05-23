@@ -24,14 +24,8 @@ class CreateUsersTable extends Migration
             $table->string('avatar')->nullable();
             $table->rememberToken();
             $table->timestamps();
-            // $table->string('phone_number')->nullable();
-            // $table->string('join_date')->nullable();
-            // $table->string('status')->nullable();
-            // $table->string('position')->nullable();
-            // $table->string('department')->nullable();
         });
     }
-    
 
     /**
      * Reverse the migrations.

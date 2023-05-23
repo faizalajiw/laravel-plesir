@@ -38,82 +38,81 @@ class UserManagementController extends Controller
     /** User Update */
     public function userUpdate(Request $request)
     {
-        DB::beginTransaction();
         try {
-            if (Session::get('role_name') === 'Admin' || Session::get('role_name') === 'Super Admin') {
-                $user_id      = $request->user_id;
-                $name         = $request->name;
-                $email        = $request->email;
-                $role_name    = $request->role_name;
-                $new_password = $request->new_password;
+            $user = Auth::user();
+            $request->validate([
+                'user_id' => 'required',
+                'name' => 'required|string',
+                'email' => 'required|string|email',
+                'role_name' => 'required|string',
+                'new_password' => 'nullable|string|min:8',
+                'avatar' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            ]);
 
-                // Mengambil file avatar yang diunggah (jika ada)
-                $avatarFile = $request->file('avatar');
-
-                // Hapus avatar lama jika ada dan ada file avatar yang diunggah
-                $user = User::find($user_id);
-                if ($user->avatar && $avatarFile) {
-                    Storage::disk('public')->delete($user->avatar);
-                }
-
-                // Menyimpan file avatar ke dalam storage link (jika ada file avatar yang diunggah)
-                $avatarPath = $user->avatar;
-                if ($avatarFile) {
-                    $avatarPath = $avatarFile->store('avatars', 'public'); // Menyimpan dalam direktori 'avatars' di storage link 'public'
-                }
-
-                $update = [
-                    'name'      => $name,
-                    'role_name' => $role_name,
-                    'email'     => $email,
-                    'avatar'    => $avatarPath,
-                ];
-                
-                // Update password jika ada perubahan
-                if (!empty($new_password)) {
-                    $update['password'] = Hash::make($new_password);
-                }
-
-                User::where('user_id', $user_id)->update($update);
-
-                DB::commit();
-                Toastr::success('User updated successfully :)', 'Success');
-                return redirect()->back();
-            } else {
+            if ($user->role_name !== 'Super Admin') {
                 Toastr::error('User update failed :)', 'Error');
+                return redirect()->back();
             }
+
+            $userToUpdate = User::find($request->user_id);
+            if (!$userToUpdate) {
+                Toastr::error('User not found :)', 'Error');
+                return redirect()->back();
+            }
+
+            $userToUpdate->name = $request->name;
+            $userToUpdate->email = $request->email;
+            $userToUpdate->role_name = $request->role_name;
+
+            // Update password jika ada perubahan
+            if ($request->new_password) {
+                $userToUpdate->password = Hash::make($request->new_password);
+            }
+
+            // Menghapus avatar lama dan menyimpan avatar baru jika ada file avatar yang diunggah
+            if ($request->hasFile('avatar')) {
+                if ($userToUpdate->avatar) {
+                    Storage::disk('public')->delete($userToUpdate->avatar);
+                }
+
+                $avatarPath = $request->file('avatar')->store('avatar', 'public');
+                $userToUpdate->avatar = $avatarPath;
+            }
+
+            $userToUpdate->save();
+
+            Toastr::success('User updated successfully :)', 'Success');
+            return redirect()->to('/list/users');
         } catch (\Exception $e) {
-            DB::rollback();
-            Toastr::error('User update failed :)', 'Error');
+            // Tangani pengecualian di sini
+            Toastr::error('An error occurred during user update.', 'Error');
             return redirect()->back();
         }
     }
 
-    /** user delete */
+
+    /** User Delete */
     public function userDelete(Request $request)
     {
-        DB::beginTransaction();
         try {
-            if (Session::get('role_name') === 'Super Admin') {
-                if ($request->avatar == 'photo_defaults.jpg') {
-                    User::destroy($request->user_id);
-                } else {
-                    User::destroy($request->user_id);
-                    unlink('images/' . $request->avatar);
-                }
-            } else {
-                Toastr::error('User deleted fail :)', 'Error');
+            $userId = $request->user_id;
+            $user = User::find($userId);
+
+            if (!$user) {
+                Toastr::error('User not found :)', 'Error');
+                return redirect()->back();
             }
 
-            DB::commit();
+            $user->forceDelete();
+
             Toastr::success('User deleted successfully :)', 'Success');
             return redirect()->back();
         } catch (\Exception $e) {
-            DB::rollback();
-            Toastr::error('User deleted fail :)', 'Error');
+            Toastr::error('User delete failed :)', 'Error');
             return redirect()->back();
         }
     }
+
 
     /** change password */
     public function changePassword(Request $request)

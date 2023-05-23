@@ -51,8 +51,8 @@
                                             <select class="form-control select" name="role_name">
                                                 <option disabled>Select Role Name</option>
                                                 <option value="Super Admin" {{ $users->role_name == 'Super Admin' ? 'selected' : '' }}>Super Admin</option>
-                                                <option value="Admin" {{ $users->role_name == 'Admin' ? 'selected' : '' }}>Admin</option>
-                                                <option value="Normal User" {{ $users->role_name == 'Normal User' ? 'selected' : '' }}>Normal User</option>
+                                                <option value="Admin Wisata" {{ $users->role_name == 'Admin Wisata' ? 'selected' : '' }}>Admin Wisata</option>
+                                                <option value="User" {{ $users->role_name == 'User' ? 'selected' : '' }}>User</option>
                                             </select>
                                         </div>
                                     </div>

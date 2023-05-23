@@ -24,11 +24,6 @@ class User extends Authenticatable
         'password',
         'role_name',
         'avatar',
-        // 'phone_number',
-        // 'join_date',
-        // 'status',
-        // 'position',
-        // 'department',
     ];
 
     /**

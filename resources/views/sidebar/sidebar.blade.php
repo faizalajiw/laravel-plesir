@@ -13,7 +13,7 @@
                 </li> -->
                 <li class="submenu {{set_active(['home','teacher/dashboard','student/dashboard'])}}">
                     <a href="#"><i class="fas feather-grid"></i>
-                        <span>Dashboard</span> 
+                        <span>Dashboard</span>
                         <span class="menu-arrow"></span>
                     </a>
                     <ul>
@@ -25,6 +25,21 @@
                     </ul>
                 </li>
 
+                <!-- USER MANAGEMENT -->
+                @if (Session::get('role_name') === 'Super Admin')
+                <li class="submenu {{set_active(['list/users'])}} {{ (request()->is('view/user/edit/*')) ? 'active' : '' }}">
+                    <a href="#"><i class="fas fa-shield-alt"></i>
+                        <span>Users Management</span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <ul>
+                        <li><a href="{{ route('list/users') }}" class="{{set_active(['list/users'])}} {{ (request()->is('view/user/edit/*')) ? 'active' : '' }}">List Users</a></li>
+                    </ul>
+                </li>
+                @endif
+                <!-- USER MANAGEMENT -->
+
+                <!-- ADMIN WISATA -->
                 <!-- <li class="submenu  {{set_active(['teacher/add/page','teacher/list/page','teacher/edit'])}} {{ (request()->is('teacher/edit/*')) ? 'active' : '' }}">
                     <a href="#"><i class="fas fa-chalkboard-teacher"></i>
                         <span>Admin Wisata</span>
@@ -37,20 +52,24 @@
                         <li><a class="{{ (request()->is('teacher/edit/*')) ? 'active' : '' }}">Edit Data</a></li>
                     </ul>
                 </li> -->
+                <!-- ADMIN WISATA -->
 
+                <!-- USER -->
                 <!-- <li class="submenu {{set_active(['student/list','student/grid','student/add/page'])}} {{ (request()->is('student/edit/*')) ? 'active' : '' }} {{ (request()->is('student/profile/*')) ? 'active' : '' }}">
                     <a href="#"><i class="fas fa-user"></i>
                         <span>User</span>
                         <span class="menu-arrow"></span>
                     </a>
                     <ul>
-                        <li><a href="{{ route('student/list') }}"  class="{{set_active(['student/list','student/grid'])}}">List Data</a></li>
-                        <li><a href=""  class="{{ (request()->is('student/profile/*')) ? 'active' : '' }}">View Data</a></li>
+                        <li><a href="{{ route('student/list') }}" class="{{set_active(['student/list','student/grid'])}}">List Data</a></li>
+                        <li><a href="" class="{{ (request()->is('student/profile/*')) ? 'active' : '' }}">View Data</a></li>
                         <li><a href="{{ route('student/add/page') }}" class="{{set_active(['student/add/page'])}}">Add Data</a></li>
                         <li><a class="{{ (request()->is('student/edit/*')) ? 'active' : '' }}">Edit Data</a></li>
                     </ul>
                 </li> -->
-                
+                <!-- USER -->
+
+                <!-- KATEGORI -->
                 <li class="submenu {{set_active(['department/add/page'])}}">
                     <a href="#"><i class="fas fa-th-list"></i>
                         <span>Kategori</span>
@@ -62,6 +81,9 @@
                         <li><a href="edit-department.html">Kategori Edit</a></li>
                     </ul>
                 </li>
+                <!-- KATEGORI -->
+
+                <!-- TEMPAT -->
                 <li class="submenu">
                     <a href="#"><i class="fas fa-map-marked-alt"></i>
                         <span>Tempat</span>
@@ -73,6 +95,8 @@
                         <li><a href="edit-subject.html">Tempat Edit</a></li>
                     </ul>
                 </li>
+                <!-- TEMPAT -->
+
                 <li class="submenu">
                     <a href="#"><i class="fas fa-clipboard"></i>
                         <span>Others Menu</span>
@@ -87,25 +111,18 @@
                         <li><a href="invoices-settings.html">Menu Settings</a></li>
                     </ul>
                 </li>
+
                 <li class="menu-title">
                     <span>Management</span>
                 </li>
-                @if (Session::get('role_name') === 'Super Admin' || Session::get('role_name') === 'Admin')
-                <li class="submenu {{set_active(['list/users'])}} {{ (request()->is('view/user/edit/*')) ? 'active' : '' }}">
-                    <a href="#"><i class="fas fa-shield-alt"></i>
-                        <span>Users Management</span> 
-                        <span class="menu-arrow"></span>
-                    </a>
-                    <ul>
-                        <li><a href="{{ route('list/users') }}" class="{{set_active(['list/users'])}} {{ (request()->is('view/user/edit/*')) ? 'active' : '' }}">List Users</a></li>
-                    </ul>
-                </li>
-                @endif
+                <!-- MY ACCOUNT -->
                 <li class="submenu">
                     <a href="#"><i class="fas fa-user"></i>
                         <span>My Account</span>
                     </a>
                 </li>
+                <!-- MY ACCOUNT -->
+
                 <li>
                     <a href="{{ route('logout') }}"><i class="fas fa-sign-out-alt"></i><span>Logout</span></a>
                 </li>
