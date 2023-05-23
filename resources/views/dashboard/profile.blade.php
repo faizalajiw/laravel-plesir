@@ -5,7 +5,7 @@
         <div class="page-header">
             <div class="row">
                 <div class="col">
-                    <h3 class="page-title">Profile</h3>
+                    <h3 class="page-title">My Account</h3>
                     <ul class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{ route('home') }}">Dashboard</a></li>
                         <li class="breadcrumb-item active">Profile</li>

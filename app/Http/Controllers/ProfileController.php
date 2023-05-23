@@ -44,7 +44,7 @@ class ProfileController extends Controller
         Session::put('name', $request->name);
         Session::put('email', $request->email);
 
-        Toastr::success('User updated successfully', 'Success');
+        Toastr::success('Email berhasil diupdate', 'Success');
         return redirect()->intended('home');
     }
 
@@ -59,7 +59,7 @@ class ProfileController extends Controller
 
         User::find(auth()->user()->id)->update(['password' => Hash::make($request->new_password)]);
         DB::commit();
-        Toastr::success('User change successfully :)', 'Success');
+        Toastr::success('Password berhasil diupdate', 'Success');
         return redirect()->intended('home');
     }
 
@@ -92,7 +92,7 @@ class ProfileController extends Controller
         Session::put('avatar', $avatarPath);
 
         // Berhasil mengubah avatar, lakukan sesuatu (misalnya, kembalikan response atau redirect)
-
-        return redirect()->back()->with('success', 'Avatar updated successfully.');
+        Toastr::success('Avatar berhasil diupdate', 'Success');
+        return redirect()->intended('home');
     }
 }

@@ -38,47 +38,29 @@
                                 class="table border-0 star-student table-hover table-center mb-0 datatable table-striped">
                                 <thead class="student-thread">
                                     <tr>
-                                        <th>User ID</th>
-                                        <th>Profile</th>
-                                        <th>Name</th>
+                                        <th>Id</th>
+                                        <th>Avatar</th>
+                                        <th>Nama</th>
                                         <th>Email</th>
-                                        <th>Phone Number</th>
-                                        <th>Date Join</th>
                                         <th>Role Name</th>
-                                        <th>Status</th>
-                                        <th class="text-end">Action</th>
+                                        <th class="text-center">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($users as $key=>$list )
+                                    @foreach ($users as $key => $list)
                                     <tr>
                                         <td class="user_id">{{ $list->user_id }}</td>
-                                        <td hidden class="avatar">{{ $list->avatar }}</td>
                                         <td>
                                             <h2 class="table-avatar">
                                                 <a class="avatar avatar-sm me-2">
-                                                    <img class="avatar-img rounded-circle"src="/images/{{ $list->avatar }}"alt="{{ $list->name }}">
+                                                    <img class="avatar-img rounded-circle" alt="{{ $list->name }}" src="{{ url('storage/' . $list->avatar) }}">
                                                 </a>
                                             </h2>
                                         </td>
                                         <td>{{ $list->name }}</td>
                                         <td>{{ $list->email }}</td>
-                                        <td>{{ $list->phone_number }}</td>
-                                        <td>{{ $list->join_date }}</td>
                                         <td>{{ $list->role_name }}</td>
-                                        <td>
-                                            <div class="edit-delete-btn">
-                                                @if ($list->status === 'Active')
-                                                <a class="text-success">{{ $list->status }}</a>
-                                                @elseif ($list->status === 'Inactive')
-                                                <a class="text-warning">{{ $list->status }}</a>
-                                                @elseif ($list->status === 'Disable')
-                                                <a class="text-danger" >{{ $list->status }}</a>
-                                                @else 
-                                                @endif
-                                            </div>
-                                        </td>
-                                        <td class="text-end">
+                                        <td class="text-center">
                                             <div class="actions">
                                                 <a href="{{ url('view/user/edit/'.$list->user_id) }}"class="btn btn-sm bg-danger-light">
                                                     <i class="feather-edit"></i>

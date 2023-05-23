@@ -657,9 +657,9 @@ table.table td h2 span {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    justify-content: end;
-    -webkit-justify-content: end;
-    -ms-flex-pack: end;
+    justify-content: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
 }
 .actions a {
     width: 32px;

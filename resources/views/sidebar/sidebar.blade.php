@@ -25,7 +25,7 @@
                     </ul>
                 </li>
 
-                <li class="submenu  {{set_active(['teacher/add/page','teacher/list/page','teacher/edit'])}} {{ (request()->is('teacher/edit/*')) ? 'active' : '' }}">
+                <!-- <li class="submenu  {{set_active(['teacher/add/page','teacher/list/page','teacher/edit'])}} {{ (request()->is('teacher/edit/*')) ? 'active' : '' }}">
                     <a href="#"><i class="fas fa-chalkboard-teacher"></i>
                         <span>Admin Wisata</span>
                         <span class="menu-arrow"></span>
@@ -36,9 +36,9 @@
                         <li><a href="{{ route('teacher/add/page') }}" class="{{set_active(['teacher/add/page'])}}">Add Data</a></li>
                         <li><a class="{{ (request()->is('teacher/edit/*')) ? 'active' : '' }}">Edit Data</a></li>
                     </ul>
-                </li>
+                </li> -->
 
-                <li class="submenu {{set_active(['student/list','student/grid','student/add/page'])}} {{ (request()->is('student/edit/*')) ? 'active' : '' }} {{ (request()->is('student/profile/*')) ? 'active' : '' }}">
+                <!-- <li class="submenu {{set_active(['student/list','student/grid','student/add/page'])}} {{ (request()->is('student/edit/*')) ? 'active' : '' }} {{ (request()->is('student/profile/*')) ? 'active' : '' }}">
                     <a href="#"><i class="fas fa-user"></i>
                         <span>User</span>
                         <span class="menu-arrow"></span>
@@ -49,7 +49,7 @@
                         <li><a href="{{ route('student/add/page') }}" class="{{set_active(['student/add/page'])}}">Add Data</a></li>
                         <li><a class="{{ (request()->is('student/edit/*')) ? 'active' : '' }}">Edit Data</a></li>
                     </ul>
-                </li>
+                </li> -->
                 
                 <li class="submenu {{set_active(['department/add/page'])}}">
                     <a href="#"><i class="fas fa-th-list"></i>
@@ -90,7 +90,7 @@
                 <li class="menu-title">
                     <span>Management</span>
                 </li>
-                @if (Session::get('role_name') === 'Admin' || Session::get('role_name') === 'Super Admin')
+                @if (Session::get('role_name') === 'Super Admin' || Session::get('role_name') === 'Admin')
                 <li class="submenu {{set_active(['list/users'])}} {{ (request()->is('view/user/edit/*')) ? 'active' : '' }}">
                     <a href="#"><i class="fas fa-shield-alt"></i>
                         <span>Users Management</span> 
@@ -102,18 +102,9 @@
                 </li>
                 @endif
                 <li class="submenu">
-                    <a href="#"><i class="fas fa-file-invoice-dollar"></i>
-                        <span>Accounts</span>
-                        <span class="menu-arrow"></span>
+                    <a href="#"><i class="fas fa-user"></i>
+                        <span>My Account</span>
                     </a>
-                    <ul>
-                        <li><a href="fees-collections.html">Fees Collection</a></li>
-                        <li><a href="expenses.html">Expenses</a></li>
-                        <li><a href="salary.html">Salary</a></li>
-                        <li><a href="add-fees-collection.html">Add Fees</a></li>
-                        <li><a href="add-expenses.html">Add Expenses</a></li>
-                        <li><a href="add-salary.html">Add Salary</a></li>
-                    </ul>
                 </li>
                 <li>
                     <a href="{{ route('logout') }}"><i class="fas fa-sign-out-alt"></i><span>Logout</span></a>

@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Hash;
 use App\Rules\MatchOldPassword;
+use Illuminate\Support\Facades\Storage;
 
 
 class UserManagementController extends Controller
@@ -24,72 +25,66 @@ class UserManagementController extends Controller
     public function index()
     {
         $users = User::all();
-        return view('usermanagement.list_users',compact('users'));
+        return view('usermanagement.list_users', compact('users'));
     }
 
     /** user view */
     public function userView($id)
     {
-        $users = User::where('user_id',$id)->first();
-        return view('usermanagement.user_update',compact('users'));
+        $users = User::where('user_id', $id)->first();
+        return view('usermanagement.user_update', compact('users'));
     }
 
-    /** user Update */
+    /** User Update */
     public function userUpdate(Request $request)
     {
         DB::beginTransaction();
         try {
-            if (Session::get('role_name') === 'Admin' || Session::get('role_name') === 'Super Admin')
-            {
-                $user_id       = $request->user_id;
+            if (Session::get('role_name') === 'Admin' || Session::get('role_name') === 'Super Admin') {
+                $user_id      = $request->user_id;
                 $name         = $request->name;
                 $email        = $request->email;
                 $role_name    = $request->role_name;
-                $position     = $request->position;
-                $phone        = $request->phone_number;
-                $department   = $request->department;
-                $status       = $request->status;
+                $new_password = $request->new_password;
 
-                $image_name = $request->hidden_avatar;
-                $image = $request->file('avatar');
+                // Mengambil file avatar yang diunggah (jika ada)
+                $avatarFile = $request->file('avatar');
 
-                if($image_name =='photo_defaults.jpg') {
-                    if ($image != '') {
-                        $image_name = rand() . '.' . $image->getClientOriginalExtension();
-                        $image->move(public_path('/images/'), $image_name);
-                    }
-                } else {
-                    
-                    if($image != '') {
-                        unlink('images/'.$image_name);
-                        $image_name = rand() . '.' . $image->getClientOriginalExtension();
-                        $image->move(public_path('/images/'), $image_name);
-                    }
+                // Hapus avatar lama jika ada dan ada file avatar yang diunggah
+                $user = User::find($user_id);
+                if ($user->avatar && $avatarFile) {
+                    Storage::disk('public')->delete($user->avatar);
                 }
-            
+
+                // Menyimpan file avatar ke dalam storage link (jika ada file avatar yang diunggah)
+                $avatarPath = $user->avatar;
+                if ($avatarFile) {
+                    $avatarPath = $avatarFile->store('avatars', 'public'); // Menyimpan dalam direktori 'avatars' di storage link 'public'
+                }
+
                 $update = [
-                    'user_id'      => $user_id,
-                    'name'         => $name,
-                    'role_name'    => $role_name,
-                    'email'        => $email,
-                    'position'     => $position,
-                    'phone_number' => $phone,
-                    'department'   => $department,
-                    'status'       => $status,
-                    'avatar'       => $image_name,
+                    'name'      => $name,
+                    'role_name' => $role_name,
+                    'email'     => $email,
+                    'avatar'    => $avatarPath,
                 ];
+                
+                // Update password jika ada perubahan
+                if (!empty($new_password)) {
+                    $update['password'] = Hash::make($new_password);
+                }
 
-                User::where('user_id',$request->user_id)->update($update);
+                User::where('user_id', $user_id)->update($update);
+
+                DB::commit();
+                Toastr::success('User updated successfully :)', 'Success');
+                return redirect()->back();
             } else {
-                Toastr::error('User update fail :)','Error');
+                Toastr::error('User update failed :)', 'Error');
             }
-            DB::commit();
-            Toastr::success('User updated successfully :)','Success');
-            return redirect()->back();
-
-        } catch(\Exception $e){
+        } catch (\Exception $e) {
             DB::rollback();
-            Toastr::error('User update fail :)','Error');
+            Toastr::error('User update failed :)', 'Error');
             return redirect()->back();
         }
     }
@@ -99,26 +94,23 @@ class UserManagementController extends Controller
     {
         DB::beginTransaction();
         try {
-            if (Session::get('role_name') === 'Super Admin')
-            {
-                if ($request->avatar =='photo_defaults.jpg')
-                {
+            if (Session::get('role_name') === 'Super Admin') {
+                if ($request->avatar == 'photo_defaults.jpg') {
                     User::destroy($request->user_id);
                 } else {
                     User::destroy($request->user_id);
-                    unlink('images/'.$request->avatar);
+                    unlink('images/' . $request->avatar);
                 }
             } else {
-                Toastr::error('User deleted fail :)','Error');
+                Toastr::error('User deleted fail :)', 'Error');
             }
 
             DB::commit();
-            Toastr::success('User deleted successfully :)','Success');
+            Toastr::success('User deleted successfully :)', 'Success');
             return redirect()->back();
-    
-        } catch(\Exception $e) {
+        } catch (\Exception $e) {
             DB::rollback();
-            Toastr::error('User deleted fail :)','Error');
+            Toastr::error('User deleted fail :)', 'Error');
             return redirect()->back();
         }
     }
@@ -132,9 +124,9 @@ class UserManagementController extends Controller
             'new_confirm_password' => ['same:new_password'],
         ]);
 
-        User::find(auth()->user()->id)->update(['password'=> Hash::make($request->new_password)]);
+        User::find(auth()->user()->id)->update(['password' => Hash::make($request->new_password)]);
         DB::commit();
-        Toastr::success('User change successfully :)','Success');
+        Toastr::success('User change successfully :)', 'Success');
         return redirect()->intended('home');
     }
 }
