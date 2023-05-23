@@ -6,10 +6,10 @@
         <div class="page-header">
             <div class="row align-items-center">
                 <div class="col">
-                    <h3 class="page-title">List Users</h3>
+                    <h3 class="page-title">All List</h3>
                     <ul class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{ route('home') }}">Dashboard</a></li>
-                        <li class="breadcrumb-item active">List Users</li>
+                        <li class="breadcrumb-item active">All List</li>
                     </ul>
                 </div>
             </div>
@@ -23,7 +23,7 @@
                         <div class="page-header">
                             <div class="row align-items-center">
                                 <div class="col">
-                                    <h3 class="page-title">Users List</h3>
+                                    <h3 class="page-title">All List</h3>
                                 </div>
                                 <div class="col-auto text-end float-end ms-auto download-grp">
                                     <a href="add-time-table.html" class="btn btn-primary">

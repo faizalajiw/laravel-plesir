@@ -33,7 +33,21 @@
                         <span class="menu-arrow"></span>
                     </a>
                     <ul>
-                        <li><a href="{{ route('list/users') }}" class="{{set_active(['list/users'])}} {{ (request()->is('view/user/edit/*')) ? 'active' : '' }}">List Users</a></li>
+                        <li>
+                            <a href="{{ route('list/users') }}" class="{{set_active(['list/users'])}} {{ (request()->is('view/user/edit/*')) ? 'active' : '' }}">
+                                All List
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                Admin Wisata List
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                User List
+                            </a>
+                        </li>
                     </ul>
                 </li>
                 @endif
