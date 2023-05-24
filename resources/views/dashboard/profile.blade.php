@@ -104,7 +104,7 @@
                                         <form action="{{ route('change/password') }}" method="POST">
                                             @csrf
                                             <div class="form-group">
-                                                <label>Old Password</label>
+                                                <label>Password Lama</label>
                                                 <input type="password" class="form-control @error('current_password') is-invalid @enderror" name="current_password" value="{{ old('current_password') }}">
                                                 @error('current_password')
                                                 <span class="invalid-feedback" role="alert">
@@ -114,7 +114,7 @@
                                             </div>
 
                                             <div class="form-group">
-                                                <label>New Password</label>
+                                                <label>Password Baru</label>
                                                 <input type="password" class="form-control @error('new_password') is-invalid @enderror" name="new_password" value="{{ old('new_password') }}">
                                                 @error('new_password')
                                                 <span class="invalid-feedback" role="alert">
@@ -123,7 +123,7 @@
                                                 @enderror
                                             </div>
                                             <div class="form-group">
-                                                <label>Confirm Password</label>
+                                                <label>Konfirmasi Password Baru</label>
                                                 <input type="password" class="form-control @error('new_confirm_password') is-invalid @enderror" name="new_confirm_password" value="{{ old('new_confirm_password') }}">
                                                 @error('new_confirm_password')
                                                 <span class="invalid-feedback" role="alert">

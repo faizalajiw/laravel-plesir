@@ -28,9 +28,6 @@
                 <a href="{{ route('home') }}" class="logo">
                     <img src="{{ URL::to('assets/img/plesir.png') }}" alt="Logo">
                 </a>
-                <a href="{{ route('home') }}" class="logo logo-small">
-                    <img src="{{ URL::to('assets/img/logo-small.png') }}" alt="Logo" width="30" height="30">
-                </a>
             </div>
             <div class="menu-toggle">
                 <a href="javascript:void(0);" id="toggle_btn">

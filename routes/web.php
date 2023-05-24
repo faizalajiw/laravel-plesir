@@ -12,6 +12,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TypeFormController;
 use App\Http\Controllers\Setting;
 use App\Http\Controllers\DepartmentController;
+use Illuminate\Support\Facades\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -69,31 +70,24 @@ Route::controller(HomeController::class)->group(function () {
 });
 
 // ----------------------------- profile controller -------------------------//
-Route::controller(ProfileController::class)->group(function () {
-    Route::post('change/email', 'changeEmail')->name('change/email');
-    Route::post('change/password', 'changePassword')->name('change/password');
-    Route::post('change/avatar', 'changeAvatar')->name('change/avatar');
-
+Route::prefix('profile')->group(function () {
+    Route::post('change/email', [ProfileController::class, 'changeProfileEmail'])->name('change/email');
+    Route::post('change/password', [ProfileController::class, 'changeProfilePassword'])->name('change/password');
+    Route::post('change/avatar', [ProfileController::class, 'changeProfileAvatar'])->name('change/avatar');
 });
+
 // ----------------------------- user controller -------------------------//
-Route::controller(UserManagementController::class)->group(function () {
-    Route::get('list/users', 'index')->middleware('auth')->name('list/users');
-    Route::post('change/password', 'changePassword')->name('change/password');
-    Route::get('view/user/edit/{id}', 'userView')->middleware('auth');
-    Route::post('user/update', 'userUpdate')->name('user/update');
-    Route::post('user/delete', 'userDelete')->name('user/delete');
+Route::middleware(['auth', 'role:Super Admin'])->group(function () {
+    Route::get('list/users', [UserManagementController::class, 'index'])->name('list/users');
+    Route::get('view/user/edit/{id}', [UserManagementController::class, 'userView'])->name('view/user/edit');
+    Route::post('user/update', [UserManagementController::class, 'userUpdate'])->name('user/update');
+    Route::post('user/delete', [UserManagementController::class, 'userDelete'])->name('user/delete');
 });
 
 // ------------------------ setting -------------------------------//
 Route::controller(Setting::class)->group(function () {
     Route::get('setting/page', 'index')->middleware('auth')->name('setting/page');
 });
-
-// ------------------------ student -------------------------------//
-
-
-// ------------------------ teacher -------------------------------//
-
 
 // ----------------------- department -----------------------------//
 Route::controller(DepartmentController::class)->group(function () {

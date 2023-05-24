@@ -28,7 +28,7 @@ class ProfileController extends Controller
     }
 
     /** change email */
-    public function changeEmail(Request $request)
+    public function changeProfileEmail(Request $request)
     {
         $request->validate([
             'name'  => ['required'],
@@ -49,11 +49,11 @@ class ProfileController extends Controller
     }
 
     /** change password */
-    public function changePassword(Request $request)
+    public function changeProfilePassword(Request $request)
     {
         $request->validate([
             'current_password'     => ['required', new MatchOldPassword],
-            'new_password'         => ['required'],
+            'new_password'         => ['required', 'min:8'],
             'new_confirm_password' => ['same:new_password'],
         ]);
 
@@ -64,7 +64,7 @@ class ProfileController extends Controller
     }
 
     /** change avatar */
-    public function changeAvatar(Request $request)
+    public function changeProfileAvatar(Request $request)
     {
         // Validasi request
         $request->validate([
