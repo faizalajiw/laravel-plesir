@@ -1,4 +1,3 @@
-
 @extends('layouts.master')
 @section('content')
 {{-- message --}}
@@ -20,13 +19,14 @@
         </div>
 
         <div class="row">
+            <!-- CARD 1 -->
             <div class="col-xl-3 col-sm-6 col-12 d-flex">
                 <div class="card bg-comman w-100">
                     <div class="card-body">
                         <div class="db-widgets d-flex justify-content-between align-items-center">
                             <div class="db-info">
                                 <h6>User</h6>
-                                <h3>50055</h3>
+                                <h3>50</h3>
                             </div>
                             <div class="db-icon">
                                 <img src="assets/img/icons/dash-icon-01.svg" alt="Dashboard Icon">
@@ -35,13 +35,15 @@
                     </div>
                 </div>
             </div>
+
+            <!-- CARD 2 -->
             <div class="col-xl-3 col-sm-6 col-12 d-flex">
                 <div class="card bg-comman w-100">
                     <div class="card-body">
                         <div class="db-widgets d-flex justify-content-between align-items-center">
                             <div class="db-info">
                                 <h6>Admin Wisata</h6>
-                                <h3>50+</h3>
+                                <h3>5</h3>
                             </div>
                             <div class="db-icon">
                                 <img src="assets/img/icons/dash-icon-02.svg" alt="Dashboard Icon">
@@ -50,6 +52,8 @@
                     </div>
                 </div>
             </div>
+
+            <!-- CARD 3 -->
             <div class="col-xl-3 col-sm-6 col-12 d-flex">
                 <div class="card bg-comman w-100">
                     <div class="card-body">
@@ -65,6 +69,8 @@
                     </div>
                 </div>
             </div>
+
+            <!-- CARD 4 -->
             <div class="col-xl-3 col-sm-6 col-12 d-flex">
                 <div class="card bg-comman w-100">
                     <div class="card-body">
@@ -83,8 +89,8 @@
         </div>
 
         <div class="row">
+            <!-- Chart 1 -->
             <div class="col-md-12 col-lg-12">
-
                 <div class="card card-chart">
                     <div class="card-header">
                         <div class="row align-items-center">
@@ -95,8 +101,7 @@
                                 <ul class="chart-list-out">
                                     <li><span class="circle-blue"></span>Admin Wisata</li>
                                     <li><span class="circle-green"></span>User</li>
-                                    <li class="star-menus"><a href="javascript:;"><i
-                                                class="fas fa-ellipsis-v"></i></a></li>
+                                    <li class="star-menus"><a href="javascript:;"><i class="fas fa-ellipsis-v"></i></a></li>
                                 </ul>
                             </div>
                         </div>
@@ -107,8 +112,10 @@
                 </div>
 
             </div>
-            <!-- <div class="col-md-12 col-lg-12">
+            <!-- Chart 1 -->
 
+            <!-- Chart 2 -->
+            <!-- <div class="col-md-12 col-lg-12">
                 <div class="card card-chart">
                     <div class="card-header">
                         <div class="row align-items-center">
@@ -129,11 +136,13 @@
                         <div id="bar"></div>
                     </div>
                 </div>
-
             </div> -->
+            <!-- Chart 2 -->
         </div>
+
         <div class="row">
-            <div class="col-xl-6 d-flex">
+            <!-- Aktivitas User -->
+            <!-- <div class="col-xl-6 d-flex">
 
                 <div class="card flex-fill student-space comman-shadow">
                     <div class="card-header d-flex align-items-center">
@@ -145,8 +154,7 @@
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table
-                                class="table star-student table-hover table-center table-borderless table-striped">
+                            <table class="table star-student table-hover table-center table-borderless table-striped">
                                 <thead class="thead-light">
                                     <tr>
                                         <th>ID</th>
@@ -163,7 +171,7 @@
                                         </td>
                                         <td class="text-nowrap">
                                             <a href="profile.html">
-                                                <img class="rounded-circle"src="{{ URL::to('assets/img/profiles/avatar-01.jpg') }}" width="25" alt="Star Students"> Soeng Souy
+                                                <img class="rounded-circle" src="{{ URL::to('assets/img/profiles/avatar-01.jpg') }}" width="25" alt="Star Students"> Soeng Souy
                                             </a>
                                         </td>
                                         <td class="text-center">1185</td>
@@ -178,7 +186,7 @@
                                         </td>
                                         <td class="text-nowrap">
                                             <a href="profile.html">
-                                                <img class="rounded-circle"src="{{ URL::to('assets/img/profiles/avatar-01.jpg') }}" width="25" alt="Star Students"> Soeng Souy
+                                                <img class="rounded-circle" src="{{ URL::to('assets/img/profiles/avatar-01.jpg') }}" width="25" alt="Star Students"> Soeng Souy
                                             </a>
                                         </td>
                                         <td class="text-center">1195</td>
@@ -193,7 +201,7 @@
                                         </td>
                                         <td class="text-nowrap">
                                             <a href="profile.html">
-                                                <img class="rounded-circle"src="{{ URL::to('assets/img/profiles/avatar-01.jpg') }}" width="25" alt="Star Students"> Soeng Souy
+                                                <img class="rounded-circle" src="{{ URL::to('assets/img/profiles/avatar-01.jpg') }}" width="25" alt="Star Students"> Soeng Souy
                                             </a>
                                         </td>
                                         <td class="text-center">1196</td>
@@ -208,7 +216,7 @@
                                         </td>
                                         <td class="text-nowrap">
                                             <a href="profile.html">
-                                                <img class="rounded-circle"src="{{ URL::to('assets/img/profiles/avatar-01.jpg') }}" width="25" alt="Star Students"> Soeng Souy
+                                                <img class="rounded-circle" src="{{ URL::to('assets/img/profiles/avatar-01.jpg') }}" width="25" alt="Star Students"> Soeng Souy
                                             </a>
                                         </td>
                                         <td class="text-center">1187</td>
@@ -223,7 +231,7 @@
                                         </td>
                                         <td class="text-nowrap">
                                             <a href="profile.html">
-                                                <img class="rounded-circle"src="{{ URL::to('assets/img/profiles/avatar-01.jpg') }}" width="25" alt="Star Students"> Soeng Souy
+                                                <img class="rounded-circle" src="{{ URL::to('assets/img/profiles/avatar-01.jpg') }}" width="25" alt="Star Students"> Soeng Souy
                                             </a>
                                         </td>
                                         <td class="text-center">1185</td>
@@ -237,10 +245,11 @@
                         </div>
                     </div>
                 </div>
+            </div> -->
+            <!-- Aktivitas User -->
 
-            </div>
-            <div class="col-xl-6 d-flex">
-
+            <!-- Aktivitas Komentar -->
+            <!-- <div class="col-xl-6 d-flex">
                 <div class="card flex-fill comman-shadow">
                     <div class="card-header d-flex align-items-center">
                         <h5 class="card-title ">Aktivitas Komentar</h5>
@@ -303,7 +312,8 @@
                     </div>
                 </div>
 
-            </div>
+            </div> -->
+            <!-- Aktivitas Komentar -->
         </div>
     </div>
 </div>

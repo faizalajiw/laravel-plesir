@@ -35,17 +35,17 @@
                 </a>
             </div>
 
-            <div class="top-nav-search">
+            <!-- <div class="top-nav-search">
                 <form>
                     <input type="text" class="form-control" placeholder="Search here">
                     <button class="btn" type="submit"><i class="fas fa-search"></i></button>
                 </form>
-            </div>
+            </div> -->
             <a class="mobile_btn" id="mobile_btn">
                 <i class="fas fa-bars"></i>
             </a>
             <ul class="nav user-menu">
-                <li class="nav-item dropdown noti-dropdown language-drop me-2">
+                <!-- <li class="nav-item dropdown noti-dropdown language-drop me-2">
                     <a href="#" class="dropdown-toggle nav-link header-nav-list" data-bs-toggle="dropdown">
                         <img src="assets/img/icons/header-icon-01.svg" alt="">
                     </a>
@@ -57,9 +57,9 @@
                             </div>
                         </div>
                     </div>
-                </li>
+                </li> -->
 
-                <li class="nav-item dropdown noti-dropdown me-2">
+                <!-- <li class="nav-item dropdown noti-dropdown me-2">
                     <a href="#" class="dropdown-toggle nav-link header-nav-list" data-bs-toggle="dropdown">
                         <img src="assets/img/icons/header-icon-05.svg" alt="">
                     </a>
@@ -134,13 +134,13 @@
                             <a href="#">View all Notifications</a>
                         </div>
                     </div>
-                </li>
+                </li> -->
 
-                <li class="nav-item zoom-screen me-2">
+                <!-- <li class="nav-item zoom-screen me-2">
                     <a href="#" class="nav-link header-nav-list win-maximize">
                         <img src="assets/img/icons/header-icon-04.svg" alt="">
                     </a>
-                </li>
+                </li> -->
 
                 <!-- HEADER PROFILE -->
                 <li class="nav-item dropdown has-arrow new-user-menus">
