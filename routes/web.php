@@ -11,8 +11,6 @@ use App\Http\Controllers\UserManagementController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TypeFormController;
 use App\Http\Controllers\Setting;
-use App\Http\Controllers\StudentController;
-use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\DepartmentController;
 
 /*
@@ -92,26 +90,10 @@ Route::controller(Setting::class)->group(function () {
 });
 
 // ------------------------ student -------------------------------//
-Route::controller(StudentController::class)->group(function () {
-    Route::get('student/list', 'student')->middleware('auth')->name('student/list'); // list student
-    Route::get('student/grid', 'studentGrid')->middleware('auth')->name('student/grid'); // grid student
-    Route::get('student/add/page', 'studentAdd')->middleware('auth')->name('student/add/page'); // page student
-    Route::post('student/add/save', 'studentSave')->name('student/add/save'); // save record student
-    Route::get('student/edit/{id}', 'studentEdit'); // view for edit
-    Route::post('student/update', 'studentUpdate')->name('student/update'); // update record student
-    Route::post('student/delete', 'studentDelete')->name('student/delete'); // delete record student
-    Route::get('student/profile/{id}', 'studentProfile')->middleware('auth'); // profile student
-});
+
 
 // ------------------------ teacher -------------------------------//
-Route::controller(TeacherController::class)->group(function () {
-    Route::get('teacher/add/page', 'teacherAdd')->middleware('auth')->name('teacher/add/page'); // page teacher
-    Route::get('teacher/list/page', 'teacherList')->middleware('auth')->name('teacher/list/page'); // page teacher
-    Route::post('teacher/save', 'saveRecord')->middleware('auth')->name('teacher/save'); // save record
-    Route::get('teacher/edit/{id}', 'editRecord'); // view teacher record
-    Route::post('teacher/update', 'updateRecordTeacher')->middleware('auth')->name('teacher/update'); // update record
-    Route::post('teacher/delete', 'teacherDelete')->name('teacher/delete'); // delete record teacher
-});
+
 
 // ----------------------- department -----------------------------//
 Route::controller(DepartmentController::class)->group(function () {

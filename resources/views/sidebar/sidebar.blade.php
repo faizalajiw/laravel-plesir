@@ -54,33 +54,11 @@
                 <!-- USER MANAGEMENT -->
 
                 <!-- ADMIN WISATA -->
-                <!-- <li class="submenu  {{set_active(['teacher/add/page','teacher/list/page','teacher/edit'])}} {{ (request()->is('teacher/edit/*')) ? 'active' : '' }}">
-                    <a href="#"><i class="fas fa-chalkboard-teacher"></i>
-                        <span>Admin Wisata</span>
-                        <span class="menu-arrow"></span>
-                    </a>
-                    <ul>
-                        <li><a href="{{ route('teacher/list/page') }}" class="{{set_active(['teacher/list/page'])}}">List Data</a></li>
-                        <li><a href="teacher-details.html">View Data</a></li>
-                        <li><a href="{{ route('teacher/add/page') }}" class="{{set_active(['teacher/add/page'])}}">Add Data</a></li>
-                        <li><a class="{{ (request()->is('teacher/edit/*')) ? 'active' : '' }}">Edit Data</a></li>
-                    </ul>
-                </li> -->
+
                 <!-- ADMIN WISATA -->
 
                 <!-- USER -->
-                <!-- <li class="submenu {{set_active(['student/list','student/grid','student/add/page'])}} {{ (request()->is('student/edit/*')) ? 'active' : '' }} {{ (request()->is('student/profile/*')) ? 'active' : '' }}">
-                    <a href="#"><i class="fas fa-user"></i>
-                        <span>User</span>
-                        <span class="menu-arrow"></span>
-                    </a>
-                    <ul>
-                        <li><a href="{{ route('student/list') }}" class="{{set_active(['student/list','student/grid'])}}">List Data</a></li>
-                        <li><a href="" class="{{ (request()->is('student/profile/*')) ? 'active' : '' }}">View Data</a></li>
-                        <li><a href="{{ route('student/add/page') }}" class="{{set_active(['student/add/page'])}}">Add Data</a></li>
-                        <li><a class="{{ (request()->is('student/edit/*')) ? 'active' : '' }}">Edit Data</a></li>
-                    </ul>
-                </li> -->
+                
                 <!-- USER -->
 
                 <!-- KATEGORI -->

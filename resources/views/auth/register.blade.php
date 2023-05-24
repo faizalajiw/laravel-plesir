@@ -4,7 +4,6 @@
     <div class="login-right">
         <div class="login-right-wrap">
             <h1 class="mb-4">Register</h1>
-            <!-- <p class="account-subtitle">Enter details to create your account</p> -->
             <form action="{{ route('register') }}" method="POST">
                 @csrf
                 <div class="form-group">
@@ -17,6 +16,10 @@
                     <input type="email" class="form-control @error('email') is-invalid @enderror" name="email">
                     <span class="profile-views"><i class="fas fa-envelope"></i></span>
                 </div>
+
+                <!-- INSERT DEFAULT AVATAR -->
+                <!-- <input type="hidden" class="avatar" name="avatar" value="photo_defaults.jpg"> -->
+                <!-- INSERT DEFAULT AVATAR -->
                 
                 <div class="form-group">
                     <label>Password <span class="login-danger">*</span></label>
@@ -33,16 +36,6 @@
                     <button class="btn btn-primary btn-block" type="submit">Register</button>
                 </div>
             </form>
-            <!-- <div class="login-or">
-                <span class="or-line"></span>
-                <span class="span-or">or</span>
-            </div>
-            <div class="social-login">
-                <a href="#"><i class="fab fa-google-plus-g"></i></a>
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-linkedin-in"></i></a>
-            </div> -->
         </div>
     </div>
 @endsection

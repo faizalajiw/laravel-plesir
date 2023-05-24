@@ -53,7 +53,7 @@
                                         <td>
                                             <h2 class="table-avatar">
                                                 <a class="avatar avatar-sm me-2">
-                                                    <img class="avatar-img rounded-circle" alt="{{ $list->name }}" src="{{ url('storage/' . $list->avatar) }}">
+                                                    <img class="avatar-img rounded-circle" alt="Avatar" src="{{ url('storage/' . $list->avatar) }}">
                                                 </a>
                                             </h2>
                                         </td>
@@ -100,12 +100,12 @@
                         <div class="del-icon">
                             <i class="feather-x-circle"></i>
                         </div>
-                        <input type="hidden" name="user_id" class="e_user_id" value="">
-                        <input type="hidden" name="avatar" class="e_avatar" value="">
-                        <h2>Sure you want to delete</h2>
+                        <!-- <input type="hidden" name="user_id" class="e_user_id" value="">
+                        <input type="hidden" name="avatar" class="e_avatar" value=""> -->
+                        <h2>Hapus Data?</h2>
                         <div class="submit-section">
-                            <button type="submit" class="btn btn-success me-2">Yes</button>
-                            <a class="btn btn-danger" data-bs-dismiss="modal">No</a>
+                            <button type="submit" class="btn btn-success me-2">Ya</button>
+                            <a class="btn btn-danger" data-bs-dismiss="modal">Batal</a>
                         </div>
                     </div>
                 </form>
