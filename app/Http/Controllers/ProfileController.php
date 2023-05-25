@@ -44,7 +44,7 @@ class ProfileController extends Controller
         Session::put('name', $request->name);
         Session::put('email', $request->email);
 
-        Toastr::success('Email berhasil diupdate', 'Success');
+        Toastr::success('Data berhasil diupdate', 'Success');
         return redirect()->intended('home');
     }
 
