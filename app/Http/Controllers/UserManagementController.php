@@ -13,21 +13,20 @@ use Illuminate\Support\Facades\Storage;
 
 class UserManagementController extends Controller
 {
-    // index page
+    // Index Page
     public function index()
     {
         $users = User::all();
         return view('usermanagement.list_users', compact('users'));
     }
 
-    /** user view */
+    /** User View */
     public function userView($id)
     {
         $users = User::where('user_id', $id)->first();
         return view('usermanagement.user_update', compact('users'));
     }
-    /** user view */
-
+    /** User View */
 
     /** User Update */
     public function userUpdate(Request $request)
@@ -57,19 +56,19 @@ class UserManagementController extends Controller
             $userToUpdate->name = $request->name;
             $userToUpdate->email = $request->email;
             $userToUpdate->role_name = $request->role_name;
-            
+
             // Menghapus avatar lama dan menyimpan avatar baru jika ada file avatar yang diunggah
             if ($request->hasFile('avatar')) {
                 if ($userToUpdate->avatar) {
                     Storage::disk('public')->delete($userToUpdate->avatar);
                 }
-                
+
                 $avatarPath = $request->file('avatar')->store('avatar', 'public');
                 $userToUpdate->avatar = $avatarPath;
             }
-            
+
             $userToUpdate->save();
-            
+
             // Update password jika ada perubahan
             if ($request->new_password) {
                 $userToUpdate->password = Hash::make($request->new_password);
@@ -94,7 +93,6 @@ class UserManagementController extends Controller
             return redirect()->back();
         }
     }
-
     /** User Update */
 
     /** User Delete */
