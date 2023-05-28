@@ -1,4 +1,3 @@
-
 @extends('layouts.app')
 @section('content')
 {{-- message --}}
@@ -27,7 +26,7 @@
                         <span class="checkmark"></span>
                     </label>
                 </div>
-                <a href="forgot-password.html">Forgot Password?</a>
+                <a href="{{ route('password.request') }}">Lupa password?</a>
             </div>
             <div class="form-group">
                 <button class="btn btn-primary btn-block" type="submit">Login</button>

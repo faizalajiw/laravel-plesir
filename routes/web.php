@@ -5,7 +5,6 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
-use App\Http\Controllers\ResetPasswordController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserManagementController;
 use App\Http\Controllers\ProfileController;
@@ -13,6 +12,7 @@ use App\Http\Controllers\TypeFormController;
 use App\Http\Controllers\Setting;
 use App\Http\Controllers\DepartmentController;
 use Illuminate\Support\Facades\Request;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -26,8 +26,9 @@ use Illuminate\Support\Facades\Request;
 */
 
 /** for side bar menu active */
-function set_active( $route ) {
-    if( is_array( $route ) ){
+function set_active($route)
+{
+    if (is_array($route)) {
         return in_array(Request::path(), $route) ? 'active' : '';
     }
     return Request::path() == $route ? 'active' : '';
@@ -37,10 +38,8 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-Route::group(['middleware'=>'auth'],function()
-{
-    Route::get('home',function()
-    {
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('home', function () {
         return view('home');
     });
 });
@@ -52,13 +51,18 @@ Route::controller(LoginController::class)->group(function () {
     Route::get('/login', 'login')->name('login');
     Route::post('/login', 'authenticate');
     Route::get('/logout', 'logout')->name('logout');
-    Route::post('change/password', 'changePassword')->name('change/password');
+});
+
+// ----------------------------- register -------------------------//
+Route::controller(ForgotPasswordController::class)->group(function () {
+    Route::get('password/reset', 'showLinkRequestForm')->name('password.request');
+    Route::post('password/email', 'sendResetLinkEmail')->name('password.email');
 });
 
 // ----------------------------- register -------------------------//
 Route::controller(RegisterController::class)->group(function () {
     Route::get('/register', 'register')->name('register');
-    Route::post('/register','storeUser')->name('register');    
+    Route::post('/register', 'storeUser')->name('register');
 });
 
 // -------------------------- main dashboard ----------------------//
@@ -70,10 +74,10 @@ Route::controller(HomeController::class)->group(function () {
 });
 
 // ----------------------------- profile controller -------------------------//
-Route::prefix('profile')->group(function () {
-    Route::post('change/email', [ProfileController::class, 'changeProfileEmail'])->name('change/email');
-    Route::post('change/password', [ProfileController::class, 'changeProfilePassword'])->name('change/password');
-    Route::post('change/avatar', [ProfileController::class, 'changeProfileAvatar'])->name('change/avatar');
+Route::controller(ProfileController::class)->group(function () {
+    Route::post('change/email', 'changeProfileEmail')->name('change/email');
+    Route::post('change/password', 'changeProfilePassword')->name('change/password');
+    Route::post('change/avatar', 'changeProfileAvatar')->name('change/avatar');
 });
 
 // ----------------------------- user controller -------------------------//

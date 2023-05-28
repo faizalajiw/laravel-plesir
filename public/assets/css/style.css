@@ -2679,6 +2679,13 @@ footer p {
 .account-subtitle a {
     color: #18aefa;
 }
+.forgot-password-subtitle{
+    color: #939393;
+    font-weight: 500;
+    font-size: 16px;
+    margin-bottom: 1.875rem;
+    text-align: left;
+}
 .login-wrapper .loginbox .login-right h2 {
     font-size: 23px;
     font-weight: 500;
