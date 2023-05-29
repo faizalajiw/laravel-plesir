@@ -35,7 +35,7 @@
                                 <div class="col-12 col-sm-4">
                                     <div class="form-group local-forms">
                                         <label>Email <span class="login-danger">*</span></label>
-                                        <input type="text" class="form-control" name="email" value="{{ $users->email }}">
+                                        <input type="email" class="form-control" name="email" value="{{ $users->email }}">
                                     </div>
                                 </div>
                                 <div class="col-12 col-sm-4">

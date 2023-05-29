@@ -25,6 +25,11 @@
                 <button class="btn btn-primary btn-block" type="submit">Kirim</button>
             </div>
         </form>
+        <div class="form-group">
+            <a href="{{ route('login') }}">
+                <button class="btn btn-success btn-block">Kembali ke Login</button>
+            </a>
+        </div>
     </div>
 </div>
 @endsection

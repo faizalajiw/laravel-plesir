@@ -5,7 +5,7 @@ body {
     background-color: #f7f7fa;
     color: #333;
     font-family: roboto, sans-serif;
-    font-size: 15px;
+    font-size: 16px;
     height: 100%;
     line-height: 1.5;
     overflow-x: hidden;
@@ -36,23 +36,23 @@ input:-webkit-autofill:focus {
     border: 1px solid #ddd;
     box-shadow: none;
     color: #333;
-    font-size: 15px;
-    height: 45px;
+    font-size: 18px;
+    height: 50px;
 }
 .form-control:focus {
     border-color: #3d5ee1;
     box-shadow: none;
     outline: 0;
 }
-.form-control.form-control-sm {
+/* .form-control.form-control-sm {
     height: calc(1.5em + 0.5rem + 2px);
-}
+} */
 .form-control-sm {
     background-color: #fff;
 }
-.form-control.form-control-lg {
+/* .form-control.form-control-lg {
     height: calc(1.5em + 1rem + 2px);
-}
+} */
 a {
     color: #3d5ee1;
     text-decoration: none;
@@ -1561,7 +1561,7 @@ div.dataTables_wrapper div.dataTables_length select {
     .select2-selection--single
     .select2-selection__rendered {
     color: #333;
-    font-size: 14px;
+    font-size: 18px;
     font-weight: 400;
     line-height: 43px;
 }
@@ -2602,7 +2602,7 @@ footer p {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     display: flex;
     margin: 1.875rem auto;
-    max-width: 800px;
+    max-width: 900px;
     min-height: 500px;
     width: 100%;
 }
@@ -2640,7 +2640,7 @@ footer p {
     display: flex;
     justify-content: center;
     padding: 40px;
-    width: 400px;
+    width: 500px;
 }
 .login-wrapper .loginbox .login-right .login-right-wrap {
     max-width: 100%;
@@ -2650,11 +2650,11 @@ footer p {
     position: relative;
 }
 .login-wrapper .loginbox .login-right .login-right-wrap .form-group label {
-    font-size: 13px;
-    color: #ababab;
+    font-size: 18px;
+    color: #666666;
     font-weight: 500;
     position: absolute;
-    top: -10px;
+    top: -15px;
     left: 10px;
     background: #fff;
     margin-bottom: 0;
@@ -2667,27 +2667,33 @@ footer p {
 .login-wrapper .loginbox .login-right h1 {
     font-size: 25px;
     font-weight: 600;
-    margin-bottom: 5px;
+    margin-bottom: 2.5rem;
     text-align: left;
 }
-.account-subtitle {
+.subtitle-left {
     color: #aaa;
     font-size: 16px;
-    margin-bottom: 1.875rem;
+    margin-bottom: 1px;
     text-align: left;
 }
-.account-subtitle a {
+.subtitle-right {
+    color: #aaa;
+    font-size: 16px;
+    margin-bottom: 1px;
+    text-align: right;
+}
+.subtitle a {
     color: #18aefa;
 }
-.forgot-password-subtitle{
+.forgot-password-subtitle {
     color: #939393;
     font-weight: 500;
-    font-size: 16px;
+    font-size: 15px;
     margin-bottom: 1.875rem;
     text-align: left;
 }
 .login-wrapper .loginbox .login-right h2 {
-    font-size: 23px;
+    font-size: 18px;
     font-weight: 500;
     color: #000;
     margin-bottom: 28px;
@@ -2698,7 +2704,7 @@ footer p {
     display: flex;
     margin-bottom: 20px;
 }
-.remember-me .custom_check {
+/* .remember-me .custom_check {
     color: #878787;
     font-size: 14px;
     font-weight: 400;
@@ -2708,7 +2714,7 @@ footer p {
     height: 20px;
     top: 0;
     border: 1px solid #c1ccdb;
-}
+} */
 .login-wrapper .loginbox .login-right .forgotpass a {
     color: #18aefa;
     font-size: 15px;
@@ -2716,7 +2722,7 @@ footer p {
 }
 .login-wrapper .loginbox .login-right .forgotpass a:hover {
     color: #333;
-    text-decoration: underline;
+    text-decoration: none;
 }
 .login-wrapper .loginbox .login-right .dont-have {
     color: #a0a0a0;
@@ -2727,7 +2733,7 @@ footer p {
     font-weight: 500;
 }
 .login-wrapper .loginbox .login-right .dont-have a:hover {
-    text-decoration: underline;
+    text-decoration: none;
 }
 .social-login {
     text-align: center;
@@ -8431,9 +8437,6 @@ body[data-layout-mode="dark"]
     }
     .login-wrapper .loginbox .login-right h1 {
         font-size: 22px;
-    }
-    .account-subtitle {
-        font-size: 14px;
     }
     .login-wrapper .loginbox .login-right h2 {
         font-size: 20px;
