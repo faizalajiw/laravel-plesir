@@ -2,8 +2,11 @@
 @section('content')
 <div class="login-right">
     <div class="login-right-wrap">
-        <h1 class="mb-4">Register</h1>
-        <form action="{{ route('register') }}" method="POST">
+        <h1 class="form-title">
+            <img src="{{ asset('assets/img/plesir.png') }}" alt="Logo Plesir">
+        </h1>
+        
+        <form action="{{ route('register.store') }}" method="POST">
             @csrf
             <div class="form-group">
                 <label>Full Name <span class="login-danger">*</span></label>

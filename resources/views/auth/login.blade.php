@@ -4,7 +4,10 @@
 {!! Toastr::message() !!}
 <div class="login-right">
     <div class="login-right-wrap">
-        <h1>Login Dashbord</h1>
+        <h1 class="form-title">
+            <img src="{{ asset('assets/img/plesir.png') }}" alt="Logo Plesir">
+        </h1>
+
         <form action="{{ route('login') }}" method="POST">
             @csrf
             <div class="form-group">
