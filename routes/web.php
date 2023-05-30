@@ -55,10 +55,11 @@ Route::controller(LoginController::class)->group(function () {
     Route::get('/logout', 'logout')->name('logout');
 });
 
-// ----------------------------- register -------------------------//
+// ----------------------------- forgot password -------------------------//
 Route::controller(ForgotPasswordController::class)->group(function () {
     Route::get('password/reset', 'showLinkRequestForm')->name('password.request');
     Route::post('password/email', 'sendResetLinkEmail')->name('password.email');
+    Route::post('password/new-password', 'newPassword')->name('password.update');
 });
 
 // ----------------------------- register -------------------------//

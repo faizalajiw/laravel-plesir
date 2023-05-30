@@ -23,7 +23,7 @@ class UserManagementController extends Controller
     /** User View */
     public function userView($id)
     {
-        $users = User::where('user_id', $id)->first();
+        $users = User::where('id', $id)->first();
         return view('usermanagement.user_update', compact('users'));
     }
     /** User View */
@@ -34,7 +34,7 @@ class UserManagementController extends Controller
         try {
             $user = Auth::user();
             $request->validate([
-                'user_id' => 'required',
+                'id' => 'required',
                 'name' => 'required|string',
                 'email' => 'required|string|email',
                 'role_name' => 'required|string',
@@ -47,7 +47,7 @@ class UserManagementController extends Controller
                 return redirect()->back();
             }
 
-            $userToUpdate = User::find($request->user_id);
+            $userToUpdate = User::find($request->id);
             if (!$userToUpdate) {
                 Toastr::error('User Tidak Ditemukan :)', 'Error');
                 return redirect()->back();
@@ -99,7 +99,7 @@ class UserManagementController extends Controller
     public function userDelete(Request $request)
     {
         try {
-            $userId = $request->user_id;
+            $userId = $request->id;
             $user = User::find($userId);
 
             if (!$user) {

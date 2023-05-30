@@ -147,7 +147,7 @@
                     <a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
                         <span class="user-img">
                             <div class="avatar avatar-lg text-center">
-                                <img class="rounded-circle" src="{{ url('storage/' . Session::get('avatar')) }}" alt="{{ Session::get('name') }}">
+                                <img class="rounded-circle" src="{{ url('storage/' . Session::get('avatar')) }}" alt="Foto">
                             </div>
                             <div class="user-text">
                                 <h6>{{ Session::get('name') }}</h6>
@@ -158,7 +158,7 @@
                     <div class="dropdown-menu">
                         <div class="user-header">
                             <div class="avatar avatar-sm">
-                                <img src="{{ url('storage/' . Session::get('avatar')) }}" alt="{{ Session::get('name') }}" class="avatar-img rounded-circle">
+                                <img src="{{ url('storage/' . Session::get('avatar')) }}" alt="Foto" class="avatar-img rounded-circle">
                             </div>
                             <div class="user-text">
                                 <h6>{{ Session::get('name') }}</h6>

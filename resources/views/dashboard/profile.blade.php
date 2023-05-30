@@ -22,7 +22,7 @@
                         <div class="col-auto profile-image">
                             <div class="avatar-profile">
                                 <a href="{{ url('storage/' . Session::get('avatar')) }}">
-                                    <img alt="{{ Session::get('name') }}" src="{{ url('storage/' . Session::get('avatar')) }}">
+                                    <img alt="Foto" src="{{ url('storage/' . Session::get('avatar')) }}">
                                 </a>
                             </div>
                         </div>

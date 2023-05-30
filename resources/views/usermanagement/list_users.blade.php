@@ -49,7 +49,7 @@
                                 <tbody>
                                     @foreach ($users as $key => $list)
                                     <tr>
-                                        <td class="user_id">{{ $list->user_id }}</td>
+                                        <td class="id">{{ $list->id }}</td>
                                         <td>
                                             <h2 class="table-avatar">
                                                 <a class="avatar avatar-sm me-2">
@@ -63,7 +63,7 @@
                                         @if (Session::get('role_name') === 'Super Admin')
                                         <td class="text-center">
                                             <div class="actions">
-                                                <a href="{{ route('view/user/edit', ['id' => $list->user_id]) }}"class="btn btn-sm bg-danger-light">
+                                                <a href="{{ route('view/user/edit', ['id' => $list->id]) }}"class="btn btn-sm bg-danger-light">
                                                     <i class="feather-edit"></i>
                                                 </a>
                                                 <a class="btn btn-sm bg-danger-light user_delete" data-bs-toggle="modal" data-bs-target="#deleteUser">
@@ -100,7 +100,7 @@
                         <div class="del-icon">
                             <i class="feather-x-circle"></i>
                         </div>
-                        <!-- <input type="hidden" name="user_id" class="e_user_id" value="">
+                        <!-- <input type="hidden" name="id" class="e_id" value="">
                         <input type="hidden" name="avatar" class="e_avatar" value=""> -->
                         <h2>Hapus Data?</h2>
                         <div class="submit-section">
@@ -121,7 +121,7 @@
     $(document).on('click','.user_delete',function()
     {
         var _this = $(this).parents('tr');
-        $('.e_user_id').val(_this.find('.user_id').text());
+        $('.e_id').val(_this.find('.id').text());
         $('.e_avatar').val(_this.find('.avatar').text());
     });
 </script>

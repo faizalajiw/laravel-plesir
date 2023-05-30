@@ -7,7 +7,7 @@
         <form method="POST" action="{{ route('password.update') }}">
             @csrf
             <input type="hidden" name="token" value="{{ $token }}">
-            <div class="form-group">
+            <div class="form-group" hidden>
                 <label>Email<span class="login-danger">*</span></label>
                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $email ?? old('email') }}" required autocomplete="email" autofocus>
                 <span class="profile-views"><i class="fas fa-envelope"></i></span>

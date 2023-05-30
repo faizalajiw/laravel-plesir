@@ -29,7 +29,7 @@
                                     <div class="form-group local-forms">
                                         <label>Nama <span class="login-danger">*</span></label>
                                         <input type="text" class="form-control" name="name" value="{{ $users->name }}">
-                                        <input type="hidden" class="form-control" name="user_id" value="{{ $users->user_id }}">
+                                        <input type="hidden" class="form-control" name="id" value="{{ $users->id }}">
                                     </div>
                                 </div>
                                 <div class="col-12 col-sm-4">

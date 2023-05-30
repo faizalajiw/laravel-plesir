@@ -65,7 +65,7 @@ class LoginController extends Controller
 
             session([
                 'name' => $user->name,
-                'user_id' => $user->user_id,
+                'id' => $user->id,
                 'email' => $user->email,
                 'role_name' => $user->role_name,
                 'avatar' => $user->avatar,
@@ -92,3 +92,4 @@ class LoginController extends Controller
         return redirect('login');
     }
 }
+
