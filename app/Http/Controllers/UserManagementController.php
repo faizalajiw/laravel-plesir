@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Support\Facades\Hash;
 use App\Rules\MatchOldPassword;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
 class UserManagementController extends Controller
@@ -21,15 +21,61 @@ class UserManagementController extends Controller
     }
 
     /** User View */
-    public function userView($id)
+    public function usersView($id)
     {
         $users = User::where('id', $id)->first();
-        return view('usermanagement.user_update', compact('users'));
+        $role = DB::table('role_type_users')->get();
+        return view('usermanagement.user_update', compact('users', 'role'));
     }
     /** User View */
+    
+    /** User Form Create */
+    public function usersFormCreate(){
+        $role = DB::table('role_type_users')->get();
+        return view('usermanagement.user_create', compact('role'));
+    }
+    /** User Form Create */
+
+    /** User Create */
+    public function usersCreate(Request $request)
+    {
+        try {
+            $request->validate([
+                'name' => 'required|string',
+                'username' => 'required|string',
+                'email' => 'nullable|string|email',
+                'role_name' => 'required|string',
+                'new_password' => 'required|string|min:8',
+                'avatar' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            ]);
+
+            $user = new User();
+            $user->name = $request->name;
+            $user->username = $request->username;
+            $user->email = $request->email;
+            $user->role_name = $request->role_name;
+            $user->password = Hash::make($request->new_password);
+
+            // Mengupload avatar jika ada file yang diunggah
+            if ($request->hasFile('avatar')) {
+                $avatarPath = $request->file('avatar')->store('avatar', 'public');
+                $user->avatar = $avatarPath;
+            }
+
+            $user->save();
+
+            Toastr::success('User berhasil ditambahkan :)', 'Success');
+            return redirect()->to('/list/users');
+        } catch (\Exception $e) {
+            // Tangani pengecualian di sini
+            Toastr::error('Ada Kesalahan Ketika Menambahkan User', 'Error');
+            return redirect()->back();
+        }
+    }
+    /** User Create */
 
     /** User Update */
-    public function userUpdate(Request $request)
+    public function usersUpdate(Request $request)
     {
         try {
             $user = Auth::user();
@@ -99,7 +145,7 @@ class UserManagementController extends Controller
     /** User Update */
 
     /** User Delete */
-    public function userDelete(Request $request)
+    public function usersDelete(Request $request)
     {
         try {
             $userId = $request->id;

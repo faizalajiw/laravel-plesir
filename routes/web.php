@@ -86,9 +86,11 @@ Route::controller(ProfileController::class)->group(function () {
 // ----------------------------- user controller -------------------------//
 Route::middleware(['auth', 'role:Super Admin'])->group(function () {
     Route::get('list/users', [UserManagementController::class, 'index'])->name('list/users');
-    Route::get('view/user/edit/{id}', [UserManagementController::class, 'userView'])->name('view/user/edit');
-    Route::post('user/update', [UserManagementController::class, 'userUpdate'])->name('user/update');
-    Route::post('user/delete', [UserManagementController::class, 'userDelete'])->name('user/delete');
+    Route::get('view/users/edit/{id}', [UserManagementController::class, 'usersView'])->name('view/users/edit');
+    Route::get('users/create/request', [UserManagementController::class, 'usersFormCreate'])->name('users/create/request');
+    Route::post('users/create', [UserManagementController::class, 'usersCreate'])->name('users/create');
+    Route::post('users/update', [UserManagementController::class, 'usersUpdate'])->name('users/update');
+    Route::post('users/delete', [UserManagementController::class, 'usersDelete'])->name('users/delete');
 });
 
 // ------------------------ setting -------------------------------//
