@@ -84,7 +84,7 @@
                                             </div>
                                             <div class="form-group">
                                                 <label>Email</label>
-                                                <input type="email" class="form-control text-muted @error('email') is-invalid @enderror" name="email" value="{{ Session::get('email') }}" readonly>
+                                                <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ Session::get('email') }}">
                                             </div>
                                                 <button type=" submit" class="btn btn-primary">Save Changes</button>
                                         </form>

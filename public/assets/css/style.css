@@ -2540,7 +2540,7 @@ footer p {
     font-weight: 500;
     margin-bottom: 0;
     padding: 0;
-    margin-left: auto;
+    margin-right: auto;
 }
 .page-header .breadcrumb a {
     color: #333;

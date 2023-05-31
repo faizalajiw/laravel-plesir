@@ -1,4 +1,3 @@
-
 @extends('layouts.master')
 @section('content')
 <div class="page-wrapper">
@@ -6,7 +5,6 @@
         <div class="page-header">
             <div class="row align-items-center">
                 <div class="col">
-                    <h3 class="page-title">All List</h3>
                     <ul class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{ route('home') }}">Dashboard</a></li>
                         <li class="breadcrumb-item active">All List</li>
@@ -26,8 +24,8 @@
                                     <h3 class="page-title">All List</h3>
                                 </div>
                                 <div class="col-auto text-end float-end ms-auto download-grp">
-                                    <a href="add-time-table.html" class="btn btn-primary">
-                                        <i class="fas fa-plus"></i>
+                                    <a href="{{ route('users/create/request') }}" class="btn btn-primary">
+                                        <i class="fas fa-plus me-2"></i>Add
                                     </a>
                                 </div>
                             </div>
@@ -65,7 +63,7 @@
                                         @if (Session::get('role_name') === 'Super Admin')
                                         <td class="text-center">
                                             <div class="actions">
-                                                <a href="{{ route('view/user/edit', ['id' => $list->id]) }}"class="btn btn-sm bg-danger-light">
+                                                <a href="{{ route('view/users/edit', ['id' => $list->id]) }}"class="btn btn-sm bg-danger-light">
                                                     <i class="feather-edit"></i>
                                                 </a>
                                                 <a class="btn btn-sm bg-danger-light user_delete" data-bs-toggle="modal" data-bs-target="#deleteUser">
@@ -96,7 +94,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="{{ route('user/delete') }}" method="POST">
+                <form action="{{ route('users/delete') }}" method="POST">
                     @csrf
                     <div class="delete-wrap text-center">
                         <div class="del-icon">

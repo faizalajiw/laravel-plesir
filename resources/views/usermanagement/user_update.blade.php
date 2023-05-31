@@ -5,9 +5,8 @@
         <div class="page-header">
             <div class="row align-items-center">
                 <div class="col">
-                    <h3 class="page-title">Edit User</h3>
                     <ul class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="time-table.html">Users</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('list/users') }}">Users</a></li>
                         <li class="breadcrumb-item active">Edit User</li>
                     </ul>
                 </div>
@@ -19,7 +18,7 @@
             <div class="col-sm-12">
                 <div class="card">
                     <div class="card-body">
-                        <form action="{{ route('user/update') }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('users/update') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
                                 <div class="col-12">
@@ -35,7 +34,7 @@
                                 <div class="col-12 col-sm-4">
                                     <div class="form-group local-forms">
                                         <label>Email <span class="login-danger">*</span></label>
-                                        <input type="email" class="form-control text-muted" name="email" value="{{ $users->email }}" readonly>
+                                        <input type="email" class="form-control" name="email" value="{{ $users->email }}">
                                     </div>
                                 </div>
                                 <div class="col-12 col-sm-4">
@@ -53,11 +52,11 @@
                                 <div class="col-12 col-sm-4">
                                     <div class="form-group local-forms">
                                         <label>Role <span class="login-danger">*</span></label>
-                                        <select class="form-control select" name="role_name">
-                                            <option disabled>Select Role Name</option>
-                                            <option value="Super Admin" {{ $users->role_name == 'Super Admin' ? 'selected' : '' }}>Super Admin</option>
-                                            <option value="Admin Wisata" {{ $users->role_name == 'Admin Wisata' ? 'selected' : '' }}>Admin Wisata</option>
-                                            <option value="User" {{ $users->role_name == 'User' ? 'selected' : '' }}>User</option>
+                                        <select class="form-control select @error('role_name') is-invalid @enderror" name="role_name" id="role_name">
+                                            <option selected disabled>Role</option>
+                                            @foreach ($role as $name)
+                                            <option value="{{ $name->role_type }}">{{ $name->role_type }}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>
