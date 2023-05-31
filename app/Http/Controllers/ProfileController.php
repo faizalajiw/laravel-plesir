@@ -30,19 +30,19 @@ class ProfileController extends Controller
         $request->validate([
             'name'      => 'required|string|max:100',
             'username'  => 'required|string|max:50',
-            // 'email'     => 'required|string|email|max:150|unique:users',
+            'email'     => 'required|string|email|max:150|unique:users',
         ]);
 
         $user = User::find(auth()->user()->id);
         $user->name = $request->name;
         $user->username = $request->username;
-        // $user->email = $request->email;
+        $user->email = $request->email;
         $user->save();
 
         // Update data name dan email dalam variabel Session
         Session::put('name', $request->name);
         Session::put('username', $request->username);
-        // Session::put('email', $request->email);
+        Session::put('email', $request->email);
 
         Toastr::success('Data berhasil diupdate', 'Success');
         return redirect()->intended('home');
