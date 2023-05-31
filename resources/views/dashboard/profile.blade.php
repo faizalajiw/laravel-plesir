@@ -5,7 +5,6 @@
         <div class="page-header">
             <div class="row">
                 <div class="col">
-                    <h3 class="page-title">My Account</h3>
                     <ul class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{ route('home') }}">Dashboard</a></li>
                         <li class="breadcrumb-item active">Profile</li>
@@ -69,24 +68,32 @@
                     <div class="col-lg-6">
                         <div class="card">
                             <div class="card-body">
-                                <h5 class="card-title">Detail Akun</h5>
+                                <h5 class="card-title mb-4">Detail Akun</h5>
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <form action="{{ route('change/detail') }}" method="POST">
                                             @csrf
-                                            <div class="form-group">
-                                                <label>Nama</label>
+                                            <div class="form-group local-forms">
+                                                <label>Nama <span class="login-danger">*</span></label>
                                                 <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ Session::get('name') }}">
+                                                <span class="profile-views"><i class="fas fa-user-circle"></i></span>
                                             </div>
-                                            <div class="form-group">
-                                                <label>Username</label>
+                                            <div class="form-group local-forms">
+                                                <label>Username <span class="login-danger">*</span></label>
                                                 <input type="text" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ Session::get('username') }}">
+                                                <span class="profile-views"><i class="fas fa-user-circle"></i></span>
                                             </div>
-                                            <div class="form-group">
-                                                <label>Email</label>
+                                            <div class="form-group local-forms">
+                                                <label>Email <span class="login-danger">*</span></label>
                                                 <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ Session::get('email') }}">
+                                                <span class="profile-views"><i class="fas fa-envelope"></i></span>
+                                                @error('email')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                                @enderror
                                             </div>
-                                                <button type=" submit" class="btn btn-primary">Save Changes</button>
+                                            <button type=" submit" class="btn btn-primary">Save Changes</button>
                                         </form>
                                     </div>
                                 </div>
@@ -97,14 +104,15 @@
                     <div class="col-lg-6">
                         <div class="card">
                             <div class="card-body">
-                                <h5 class="card-title">Ganti Password</h5>
+                                <h5 class="card-title mb-4">Ganti Password</h5>
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <form action="{{ route('change/password') }}" method="POST">
                                             @csrf
-                                            <div class="form-group">
-                                                <label>Password Lama</label>
-                                                <input type="password" class="form-control @error('current_password') is-invalid @enderror" name="current_password" value="{{ old('current_password') }}">
+                                            <div class="form-group local-forms">
+                                                <label>Password Lama <span class="login-danger">*</span></label>
+                                                <input type="password" class="form-control pass-old @error('current_password') is-invalid @enderror" name="current_password" value="{{ old('current_password') }}">
+                                                <span class="profile-views feather-eye old-toggle-password"></span>
                                                 @error('current_password')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -112,18 +120,20 @@
                                                 @enderror
                                             </div>
 
-                                            <div class="form-group">
-                                                <label>Password Baru</label>
-                                                <input type="password" class="form-control @error('new_password') is-invalid @enderror" name="new_password" value="{{ old('new_password') }}">
+                                            <div class="form-group local-forms">
+                                                <label>Password Baru <span class="login-danger">*</span></label>
+                                                <input type="password" class="form-control pass-input @error('new_password') is-invalid @enderror" name="new_password" value="{{ old('new_password') }}">
+                                                <span class="profile-views feather-eye toggle-password"></span>
                                                 @error('new_password')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
                                                 </span>
                                                 @enderror
                                             </div>
-                                            <div class="form-group">
-                                                <label>Konfirmasi Password Baru</label>
-                                                <input type="password" class="form-control @error('new_confirm_password') is-invalid @enderror" name="new_confirm_password" value="{{ old('new_confirm_password') }}">
+                                            <div class="form-group local-forms">
+                                                <label>Konfirmasi Password Baru <span class="login-danger">*</span></label>
+                                                <input type="password" class="form-control pass-confirm @error('new_confirm_password') is-invalid @enderror" name="new_confirm_password" value="{{ old('new_confirm_password') }}">
+                                                <span class="profile-views feather-eye reg-toggle-password"></span>
                                                 @error('new_confirm_password')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>

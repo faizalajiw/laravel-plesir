@@ -1510,10 +1510,10 @@ div.dataTables_wrapper div.dataTables_info {
 div.dataTables_wrapper div.dataTables_length select {
     appearance: auto;
 }
-.page-title {
+/* .page-title {
     color: #333;
     margin-bottom: 5px;
-}
+} */
 .navtab-bg .nav-link {
     background-color: #edeff1;
     color: #455560;
@@ -2531,7 +2531,7 @@ footer p {
     padding: 1.875rem 1.875rem 0;
 }
 .page-header {
-    margin-bottom: 1.875rem;
+    margin-bottom: 1.5rem;
 }
 .page-header .breadcrumb {
     background-color: transparent;
@@ -2550,6 +2550,7 @@ footer p {
     font-weight: 500;
     color: #2c323f;
     margin-bottom: 5px;
+    margin-left: auto;
 }
 .breadcrumb {
     display: -ms-flexbox;
@@ -3629,7 +3630,7 @@ table.table-inbox tbody tr.checked {
     width: 100%;
     max-width: 100%;
     padding: 0;
-    font-size: 1.25rem;
+    font-size: 1.5rem;
     font-weight: 500;
     line-height: inherit;
     color: #333;
@@ -3881,8 +3882,8 @@ table.table-inbox tbody tr.checked {
     position: relative;
 }
 .local-forms label {
-    font-size: 13px;
-    color: #ababab;
+    font-size: 15px;
+    color: #666666;
     font-weight: 500;
     position: absolute;
     top: -10px;
@@ -8824,9 +8825,9 @@ body[data-layout-mode="dark"]
     .user-menu {
         padding-right: 0;
     }
-    .page-title {
+    /* .page-title {
         font-size: 22px;
-    }
+    } */
     .db-info h3 {
         font-size: 22px;
     }

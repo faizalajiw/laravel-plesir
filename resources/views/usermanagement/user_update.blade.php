@@ -40,7 +40,8 @@
                                 <div class="col-12 col-sm-4">
                                     <div class="form-group local-forms">
                                         <label>Password <span class="login-danger">*</span></label>
-                                        <input type="password" class="form-control" name="new_password" value="{{ old('new_password') }}">
+                                        <input type="password" class="form-control pass-input @error('new_password') is-invalid @enderror" name="new_password" value="{{ old('new_password') }}">
+                                        <span class="profile-views feather-eye toggle-password"></span>
                                     </div>
                                 </div>
                                 <div class="col-12 col-sm-4">
