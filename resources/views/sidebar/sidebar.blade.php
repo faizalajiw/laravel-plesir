@@ -21,7 +21,7 @@
                         <!-- <li><a href="{{ route('teacher/dashboard') }}" class="{{set_active(['teacher/dashboard'])}}">Admin Wisata</a></li>
                         <li><a href="{{ route('student/dashboard') }}" class="{{set_active(['student/dashboard'])}}">User</a></li> -->
                         <li><a href="admin-wisata.html">Admin Wisata</a></li>
-                        <li><a href="user.html">User</a></li>
+                        <li><a href="user.html">Pengguna</a></li>
                     </ul>
                 </li>
 
@@ -35,17 +35,17 @@
                     <ul>
                         <li>
                             <a href="{{ route('list/users') }}" class="{{set_active(['list/users'])}} {{ (request()->is('view/user/edit/*')) ? 'active' : '' }}">
-                                All List
+                                Semua
                             </a>
                         </li>
                         <li>
                             <a href="#">
-                                Admin Wisata List
+                                Admin Wisata
                             </a>
                         </li>
                         <li>
                             <a href="#">
-                                User List
+                                Pengguna
                             </a>
                         </li>
                     </ul>
