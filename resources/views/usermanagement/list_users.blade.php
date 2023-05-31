@@ -41,6 +41,7 @@
                                         <th>Id</th>
                                         <th>Avatar</th>
                                         <th>Nama</th>
+                                        <th>Username</th>
                                         <th>Email</th>
                                         <th>Role Name</th>
                                         <th class="text-center">Action</th>
@@ -58,6 +59,7 @@
                                             </h2>
                                         </td>
                                         <td>{{ $list->name }}</td>
+                                        <td>{{ $list->username }}</td>
                                         <td>{{ $list->email }}</td>
                                         <td>{{ $list->role_name }}</td>
                                         @if (Session::get('role_name') === 'Super Admin')

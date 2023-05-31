@@ -6,11 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
-use Carbon\Carbon;
 use App\Models\User;
 use Brian2694\Toastr\Facades\Toastr;
-use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Hash;
 use App\Rules\MatchOldPassword;
 use Illuminate\Support\Facades\Storage;
@@ -27,22 +24,25 @@ class ProfileController extends Controller
         return view('profile.index', compact('user'));
     }
 
-    /** change email */
-    public function changeProfileEmail(Request $request)
+    /** change detail akun */
+    public function changeProfileDetail(Request $request)
     {
         $request->validate([
-            'name'  => ['required'],
-            'email' => ['required', 'email'],
+            'name'      => 'required|string|max:100',
+            'username'  => 'required|string|max:50',
+            // 'email'     => 'required|string|email|max:150|unique:users',
         ]);
 
         $user = User::find(auth()->user()->id);
         $user->name = $request->name;
-        $user->email = $request->email;
+        $user->username = $request->username;
+        // $user->email = $request->email;
         $user->save();
 
         // Update data name dan email dalam variabel Session
         Session::put('name', $request->name);
-        Session::put('email', $request->email);
+        Session::put('username', $request->username);
+        // Session::put('email', $request->email);
 
         Toastr::success('Data berhasil diupdate', 'Success');
         return redirect()->intended('home');

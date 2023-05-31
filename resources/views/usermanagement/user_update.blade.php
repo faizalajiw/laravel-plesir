@@ -35,13 +35,19 @@
                                 <div class="col-12 col-sm-4">
                                     <div class="form-group local-forms">
                                         <label>Email <span class="login-danger">*</span></label>
-                                        <input type="email" class="form-control" name="email" value="{{ $users->email }}">
+                                        <input type="email" class="form-control text-muted" name="email" value="{{ $users->email }}" readonly>
                                     </div>
                                 </div>
                                 <div class="col-12 col-sm-4">
                                     <div class="form-group local-forms">
                                         <label>Password <span class="login-danger">*</span></label>
                                         <input type="password" class="form-control" name="new_password" value="{{ old('new_password') }}">
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-4">
+                                    <div class="form-group local-forms">
+                                        <label>Username <span class="login-danger">*</span></label>
+                                        <input type="text" class="form-control" name="username" value="{{ $users->username }}">
                                     </div>
                                 </div>
                                 <div class="col-12 col-sm-4">

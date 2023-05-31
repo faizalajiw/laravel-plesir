@@ -56,7 +56,7 @@ class LoginController extends Controller
     public function authenticate(Request $request)
     {
         $credentials = $request->validate([
-            'email' => 'required|string',
+            'username' => 'required|string',
             'password' => 'required|string',
         ]);
 
@@ -64,8 +64,9 @@ class LoginController extends Controller
             $user = Auth::user();
 
             session([
-                'name' => $user->name,
                 'id' => $user->id,
+                'name' => $user->name,
+                'username' => $user->username,
                 'email' => $user->email,
                 'role_name' => $user->role_name,
                 'avatar' => $user->avatar,

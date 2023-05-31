@@ -72,20 +72,19 @@
                                 <h5 class="card-title">Detail Akun</h5>
                                 <div class="row">
                                     <div class="col-lg-12">
-                                        <form action="{{ route('change/email') }}" method="POST">
+                                        <form action="{{ route('change/detail') }}" method="POST">
                                             @csrf
                                             <div class="form-group">
                                                 <label>Nama</label>
                                                 <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ Session::get('name') }}">
                                             </div>
-
                                             <div class="form-group">
-                                                <label>Email</label>
-                                                <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ Session::get('email') }}">
+                                                <label>Username</label>
+                                                <input type="text" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ Session::get('username') }}">
                                             </div>
                                             <div class="form-group">
-                                                <label>Role</label>
-                                                <input type="text" class="form-control text-muted @error('email') is-invalid @enderror" name="role_name" readonly value="{{ Session::get('role_name') }}"">
+                                                <label>Email</label>
+                                                <input type="email" class="form-control text-muted @error('email') is-invalid @enderror" name="email" value="{{ Session::get('email') }}" readonly>
                                             </div>
                                                 <button type=" submit" class="btn btn-primary">Save Changes</button>
                                         </form>

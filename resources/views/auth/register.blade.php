@@ -9,8 +9,13 @@
         <form action="{{ route('register.store') }}" method="POST">
             @csrf
             <div class="form-group">
-                <label>Full Name <span class="login-danger">*</span></label>
+                <label>Nama <span class="login-danger">*</span></label>
                 <input type="text" class="form-control @error('name') is-invalid @enderror" name="name">
+                <span class="profile-views"><i class="fas fa-user-circle"></i></span>
+            </div>
+            <div class="form-group">
+                <label>Username <span class="login-danger">*</span></label>
+                <input type="text" class="form-control @error('username') is-invalid @enderror" name="username">
                 <span class="profile-views"><i class="fas fa-user-circle"></i></span>
             </div>
             <div class="form-group">
@@ -18,11 +23,6 @@
                 <input type="email" class="form-control @error('email') is-invalid @enderror" name="email">
                 <span class="profile-views"><i class="fas fa-envelope"></i></span>
             </div>
-
-            <!-- INSERT DEFAULT AVATAR -->
-            <!-- <input type="hidden" class="avatar" name="avatar" value="photo_defaults.jpg"> -->
-            <!-- INSERT DEFAULT AVATAR -->
-
             <div class="form-group">
                 <label>Password <span class="login-danger">*</span></label>
                 <input type="password" class="form-control pass-input  @error('password') is-invalid @enderror" name="password">

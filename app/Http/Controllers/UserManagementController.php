@@ -36,6 +36,8 @@ class UserManagementController extends Controller
             $request->validate([
                 'id' => 'required',
                 'name' => 'required|string',
+                // 'user_id' => 'required|string',
+                'username' => 'required|string',
                 'email' => 'required|string|email',
                 'role_name' => 'required|string',
                 'new_password' => 'required|string|min:8',
@@ -54,6 +56,7 @@ class UserManagementController extends Controller
             }
 
             $userToUpdate->name = $request->name;
+            $userToUpdate->username = $request->username;
             $userToUpdate->email = $request->email;
             $userToUpdate->role_name = $request->role_name;
 

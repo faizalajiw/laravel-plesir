@@ -78,7 +78,7 @@ Route::controller(HomeController::class)->group(function () {
 
 // ----------------------------- profile controller -------------------------//
 Route::controller(ProfileController::class)->group(function () {
-    Route::post('change/email', 'changeProfileEmail')->name('change/email');
+    Route::post('change/detail', 'changeProfileDetail')->name('change/detail');
     Route::post('change/password', 'changeProfilePassword')->name('change/password');
     Route::post('change/avatar', 'changeProfileAvatar')->name('change/avatar');
 });
