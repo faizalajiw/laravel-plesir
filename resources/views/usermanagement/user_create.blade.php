@@ -28,14 +28,17 @@
                                     <div class="form-group local-forms">
                                         <label>Nama <span class="login-danger">*</span></label>
                                         <input type="text" class="form-control @error('name') is-invalid @enderror" name="name">
-                                        <span class="profile-views"><i class="fas fa-user-circle"></i></span>
                                     </div>
                                 </div>
                                 <div class="col-12 col-sm-4">
                                     <div class="form-group local-forms">
                                         <label>Email <span class="login-danger">*</span></label>
                                         <input type="email" class="form-control @error('email') is-invalid @enderror" name="email">
-                                        <span class="profile-views"><i class="fas fa-envelope"></i></span>
+                                        @error('email')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-12 col-sm-4">
@@ -49,14 +52,18 @@
                                     <div class="form-group local-forms">
                                         <label>Username <span class="login-danger">*</span></label>
                                         <input type="text" class="form-control @error('username') is-invalid @enderror" name="username">
-                                        <span class="profile-views"><i class="fas fa-user-circle"></i></span>
+                                        @error('username')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-12 col-sm-4">
                                     <div class="form-group local-forms">
                                         <label>Role <span class="login-danger">*</span></label>
                                         <select class="form-control select @error('role_name') is-invalid @enderror" name="role_name" id="role_name">
-                                            <option selected disabled>Role</option>
+                                            <option selected disabled>Pilih Role</option>
                                             @foreach ($role as $name)
                                             <option value="{{ $name->role_type }}">{{ $name->role_type }}</option>
                                             @endforeach

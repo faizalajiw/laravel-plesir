@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Rules\MatchOldPassword;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Validation\Rule;
 
 class UserManagementController extends Controller
 {
@@ -39,38 +40,33 @@ class UserManagementController extends Controller
     /** User Create */
     public function usersCreate(Request $request)
     {
-        try {
-            $request->validate([
-                'name' => 'required|string',
-                'username' => 'required|string',
-                'email' => 'nullable|string|email',
-                'role_name' => 'required|string',
-                'new_password' => 'required|string|min:8',
-                'avatar' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            ]);
+        $request->validate([
+            'name' => 'required|string',
+            // 'username' => 'required|string|unique:users',
+            'username' => ['required','string',Rule::unique('users')->ignore($request->user()->id)],
+            'email' => ['nullable','string','email',Rule::unique('users')->ignore($request->user()->id)],
+            'role_name' => 'required|string',
+            'new_password' => 'required|string|min:8',
+            'avatar' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
 
-            $user = new User();
-            $user->name = $request->name;
-            $user->username = $request->username;
-            $user->email = $request->email;
-            $user->role_name = $request->role_name;
-            $user->password = Hash::make($request->new_password);
+        $user = new User();
+        $user->name = $request->name;
+        $user->username = $request->username;
+        $user->email = $request->email;
+        $user->role_name = $request->role_name;
+        $user->password = Hash::make($request->new_password);
 
-            // Mengupload avatar jika ada file yang diunggah
-            if ($request->hasFile('avatar')) {
-                $avatarPath = $request->file('avatar')->store('avatar', 'public');
-                $user->avatar = $avatarPath;
-            }
-
-            $user->save();
-
-            Toastr::success('User berhasil ditambahkan :)', 'Success');
-            return redirect()->to('/list/users');
-        } catch (\Exception $e) {
-            // Tangani pengecualian di sini
-            Toastr::error('Ada Kesalahan Ketika Menambahkan User', 'Error');
-            return redirect()->back();
+        // Mengupload avatar jika ada file yang diunggah
+        if ($request->hasFile('avatar')) {
+            $avatarPath = $request->file('avatar')->store('avatar', 'public');
+            $user->avatar = $avatarPath;
         }
+
+        $user->save();
+
+        Toastr::success('User berhasil ditambahkan :)', 'Success');
+        return redirect()->to('/list/users');
     }
     /** User Create */
 
