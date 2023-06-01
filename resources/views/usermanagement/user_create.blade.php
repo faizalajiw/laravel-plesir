@@ -28,6 +28,11 @@
                                     <div class="form-group local-forms">
                                         <label>Nama <span class="login-danger">*</span></label>
                                         <input type="text" class="form-control @error('name') is-invalid @enderror" name="name">
+                                        @error('name')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-12 col-sm-4">
@@ -46,6 +51,11 @@
                                         <label>Password <span class="login-danger">*</span></label>
                                         <input type="password" class="form-control pass-input  @error('password') is-invalid @enderror" name="new_password">
                                         <span class="profile-views feather-eye toggle-password"></span>
+                                        @error('password')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-12 col-sm-4">
@@ -68,17 +78,32 @@
                                             <option value="{{ $name->role_type }}">{{ $name->role_type }}</option>
                                             @endforeach
                                         </select>
+                                        @error('role_name')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-12 col-sm-4">
                                     <div class="form-group local-forms">
                                         <label>Avatar <span class="login-danger">*</span></label>
                                         <input type="file" class="form-control" name="avatar">
+                                        @error('avatar')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-12">
-                                    <div class="student-submit">
-                                        <button type="submit" class="btn btn-primary">Buat</button>
+                                    <div class="d-flex gap-4">
+                                        <div class="button-cancel">
+                                            <a href="{{ route('list/users') }}" class="btn btn-danger">Batal</a>
+                                        </div>
+                                        <div class="button-submit">
+                                            <button type="submit" class="btn btn-primary">Update</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
