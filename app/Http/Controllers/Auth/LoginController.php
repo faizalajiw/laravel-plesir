@@ -8,6 +8,8 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Brian2694\Toastr\Facades\Toastr;
+use App\Http\Requests\AuthenticationRequest;
+use App\Models\User;
 
 class LoginController extends Controller
 {
@@ -53,16 +55,19 @@ class LoginController extends Controller
     /**
      * Authenticate the user.
      */
-    public function authenticate(Request $request)
+    public function authenticate(AuthenticationRequest $request)
     {
-        $credentials = $request->validate([
-            'username' => 'required|string',
-            'password' => 'required|string',
-        ]);
+        $credentials = $request->validated();
+
+        $user = User::where('username', $request->username)->first();
+
+        if (!$user) {
+            return redirect('login')->withErrors([
+                'username' => 'Username belum terdaftar.',
+            ]);
+        }
 
         if (Auth::attempt($credentials)) {
-            $user = Auth::user();
-
             session([
                 'id' => $user->id,
                 'name' => $user->name,
@@ -76,9 +81,10 @@ class LoginController extends Controller
             return redirect()->intended('home');
         }
 
-        Toastr::error('Gagal login, USERNAME ATAU PASSWORD SALAH :)', 'Error');
+        Toastr::error('Username atau Password salah :(', 'Gagal');
         return redirect('login');
     }
+
 
     /**
      * Log the user out of the application.
@@ -93,4 +99,3 @@ class LoginController extends Controller
         return redirect('login');
     }
 }
-

@@ -14,11 +14,21 @@
                 <label>Username <span class="login-danger">*</span></label>
                 <input type="text" class="form-control @error('username') is-invalid @enderror" name="username">
                 <span class="profile-views"><i class="fas fa-user-circle"></i></span>
+                @error('username')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+                @enderror
             </div>
             <div class="form-group">
                 <label>Password <span class="login-danger">*</span></label>
                 <input type="password" class="form-control pass-input @error('password') is-invalid @enderror" name="password">
                 <span class="profile-views feather-eye toggle-password"></span>
+                @error('password')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+                @enderror
             </div>
             <div class="forgotpass">
                 <div class="subtitle-left">Belum punya akun?
