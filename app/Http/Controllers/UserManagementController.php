@@ -43,7 +43,7 @@ class UserManagementController extends Controller
     {
         $request->validate([
             'name'          => ['required','regex:/^[A-Za-z\s]+$/'],
-            'username'      => ['required','regex:/^\S*$/', Rule::unique('users')->ignore($request->user()->id)],
+            'username'      => ['required','max:50','regex:/^\S*$/', Rule::unique('users')->ignore($request->user()->id)],
             'email'         => ['nullable','email','regex:/^\S*$/', Rule::unique('users')->ignore($request->user()->id)],
             'new_password'  => ['required','min:8','regex:/^\S*$/'],
             'role_name'     => ['required','string'],
@@ -76,7 +76,7 @@ class UserManagementController extends Controller
         $request->validate([
             'id'            => 'required',
             'name'          => ['required','regex:/^[A-Za-z\s]+$/'],
-            'username'      => ['required','regex:/^\S*$/',Rule::unique('users')->ignore($request->id)],
+            'username'      => ['required','max:50','regex:/^\S*$/',Rule::unique('users')->ignore($request->id)],
             'email'         => ['nullable','email','regex:/^\S*$/',Rule::unique('users')->ignore($request->id)],
             'new_password'  => ['required','min:8','regex:/^\S*$/'],
             'role_name'     => ['required','string'],

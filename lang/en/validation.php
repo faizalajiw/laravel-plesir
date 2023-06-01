@@ -153,12 +153,13 @@ return [
     'custom' => [
         'name' => [
             'required' => 'Nama tidak boleh kosong.',
-            'regex' => 'Nama hanya diisi oleh abjad (A-Z).',
+            'regex' => 'Nama hanya diisi oleh huruf.',
         ],
         'username' => [
             'required' => 'Username tidak boleh kosong.',
             'regex' => 'Username tidak boleh mengandung spasi.',
-            'unique' => 'Sudah ada pengguna yang menggunakan Username ini.',
+            'unique' => 'Username telah digunakan oleh pengguna lain.',
+            'max' => 'Username terlalu panjang (max.50 karakter)',
         ],
         'email' => [
             'required' => 'Email tidak boleh kosong.',
@@ -166,22 +167,21 @@ return [
             'regex' => 'Tolong periksa kembali Email anda',
             'unique' => 'Sudah ada pengguna yang menggunakan Email ini.',
         ],
-        'password' => [
-            'required' => 'Password tidak boleh kosong.',
-            'min' => 'Password min.8 karakter',
-            'regex' => 'Password tidak boleh mengandung spasi.',
-        ],
         'new_password' => [
             'required' => 'Password tidak boleh kosong.',
             'min' => 'Password min.8 karakter',
             'regex' => 'Password tidak boleh mengandung spasi.',
         ],
+        'new_confirm_password' => [
+            'required' => 'Isi Konfirmasi Password Baru terlebih dahulu.',
+            'same' => 'Password Baru dan Konfirmasi Password Baru harus cocok.',
+        ],
         'role_name' => [
             'required' => 'Role tidak boleh kosong.',
         ],
         'avatar' => [
-            'image' => 'Gambar harus bertipe (jpeg/png/jpg/gif)',
-            'max' => 'Gambar tidak boleh melebihi ukuran (max.2mb).',
+            'image' => 'Gambar harus berformat (.jpeg/.png/.jpg/.gif)',
+            'max' => 'Gambar tidak boleh melebihi ukuran (max.2MB).',
         ],
     ],
 

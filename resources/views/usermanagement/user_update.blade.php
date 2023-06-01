@@ -38,7 +38,7 @@
                                 </div>
                                 <div class="col-12 col-sm-4">
                                     <div class="form-group local-forms">
-                                        <label>Email <span class="login-danger">*</span></label>
+                                        <label>Email <span>(optional)</span></label>
                                         <input type="text" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $users->email }}">
                                         @error('email')
                                         <span class="invalid-feedback" role="alert">
@@ -88,7 +88,7 @@
                                 </div>
                                 <div class="col-12 col-sm-4">
                                     <div class="form-group local-forms">
-                                        <label>Avatar <span class="login-danger">*</span></label>
+                                        <label>Avatar <span>(optional)</span></label>
                                         <input type="file" class="form-control @error('avatar') is-invalid @enderror" name="avatar" value="{{ $users->avatar }}">
                                         @error('avatar')
                                         <span class="invalid-feedback" role="alert">

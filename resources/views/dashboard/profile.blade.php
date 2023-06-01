@@ -37,8 +37,13 @@
                             @csrf
                             <div class="modal-body">
                                 <div class="mb-3">
-                                    <label for="avatar" class="form-label">Pilih Foto:</label>
-                                    <input type="file" class="form-control" id="avatar" name="avatar">
+                                    <label for="avatar" class="form-label">Upload Gambar: <span class="login-danger">(.jpeg/.png/.jpg/.gif) max.2MB*</span></label>
+                                    <input type="file" class="form-control @error('avatar') is-invalid @enderror" id="avatar" name="avatar">
+                                    @error('avatar')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="modal-footer">
@@ -76,6 +81,11 @@
                                             <div class="form-group local-forms">
                                                 <label>Nama <span class="login-danger">*</span></label>
                                                 <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ Session::get('name') }}">
+                                                @error('name')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                                @enderror
                                             </div>
                                             <div class="form-group local-forms">
                                                 <label>Username <span class="login-danger">*</span></label>
@@ -95,7 +105,7 @@
                                                 </span>
                                                 @enderror
                                             </div>
-                                            <button type=" submit" class="btn btn-primary">Save Changes</button>
+                                            <button type=" submit" class="btn btn-primary">Simpan</button>
                                         </form>
                                     </div>
                                 </div>
@@ -142,7 +152,7 @@
                                                 </span>
                                                 @enderror
                                             </div>
-                                            <button type="submit" class="btn btn-primary">Save Changes</button>
+                                            <button type="submit" class="btn btn-primary">Simpan</button>
                                         </form>
                                     </div>
                                 </div>

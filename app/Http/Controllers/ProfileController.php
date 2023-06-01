@@ -29,9 +29,9 @@ class ProfileController extends Controller
     public function changeProfileDetail(Request $request)
     {
         $request->validate([
-            'name'      => 'required|string|max:100',
-            'username'  => ['required','string','max:50',Rule::unique('users')->ignore(auth()->user()->id),],
-            'email'     => ['required','string','email','max:150',Rule::unique('users')->ignore(auth()->user()->id),],
+            'name'      => ['required','regex:/^[A-Za-z\s]+$/'],
+            'username'  => ['required','max:50','regex:/^\S*$/', Rule::unique('users')->ignore(auth()->user()->id),],
+            'email'     => ['required','email','regex:/^\S*$/', Rule::unique('users')->ignore(auth()->user()->id),],
         ]);
         
         // Simpan request
@@ -55,8 +55,8 @@ class ProfileController extends Controller
     {
         $request->validate([
             'current_password'     => ['required', new MatchOldPassword],
-            'new_password'         => ['required', 'min:8'],
-            'new_confirm_password' => ['same:new_password'],
+            'new_password'         => ['required','min:8','regex:/^\S*$/'],
+            'new_confirm_password' => ['required','same:new_password'],
         ]);
 
         User::find(auth()->user()->id)->update(['password' => Hash::make($request->new_password)]);
@@ -70,7 +70,7 @@ class ProfileController extends Controller
     {
         // Validasi request
         $request->validate([
-            'avatar' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Sesuaikan dengan kebutuhan Anda
+            'avatar' => ['nullable','image','mimes:jpeg,png,jpg,gif','max:2048'], // Sesuaikan dengan kebutuhan Anda
         ]);
 
         // Mengambil file avatar yang diunggah

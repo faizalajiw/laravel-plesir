@@ -37,7 +37,7 @@
                                 </div>
                                 <div class="col-12 col-sm-4">
                                     <div class="form-group local-forms">
-                                        <label>Email <span class="login-danger">*</span></label>
+                                        <label>Email <span>(optional)</span></label>
                                         <input type="email" class="form-control @error('email') is-invalid @enderror" name="email">
                                         @error('email')
                                         <span class="invalid-feedback" role="alert">
@@ -49,9 +49,9 @@
                                 <div class="col-12 col-sm-4">
                                     <div class="form-group local-forms">
                                         <label>Password <span class="login-danger">*</span></label>
-                                        <input type="password" class="form-control pass-input  @error('password') is-invalid @enderror" name="new_password">
+                                        <input type="password" class="form-control pass-input  @error('new_password') is-invalid @enderror" name="new_password">
                                         <span class="profile-views feather-eye toggle-password"></span>
-                                        @error('password')
+                                        @error('new_password')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
@@ -87,8 +87,8 @@
                                 </div>
                                 <div class="col-12 col-sm-4">
                                     <div class="form-group local-forms">
-                                        <label>Avatar <span class="login-danger">*</span></label>
-                                        <input type="file" class="form-control" name="avatar">
+                                        <label>Avatar <span>(optional)</span></label>
+                                        <input type="file" class="form-control @error('avatar') is-invalid @enderror" name="avatar">
                                         @error('avatar')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
