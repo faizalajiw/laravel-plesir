@@ -76,17 +76,19 @@
                                             <div class="form-group local-forms">
                                                 <label>Nama <span class="login-danger">*</span></label>
                                                 <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ Session::get('name') }}">
-                                                <span class="profile-views"><i class="fas fa-user-circle"></i></span>
                                             </div>
                                             <div class="form-group local-forms">
                                                 <label>Username <span class="login-danger">*</span></label>
                                                 <input type="text" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ Session::get('username') }}">
-                                                <span class="profile-views"><i class="fas fa-user-circle"></i></span>
+                                                @error('username')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                                @enderror
                                             </div>
                                             <div class="form-group local-forms">
                                                 <label>Email <span class="login-danger">*</span></label>
                                                 <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ Session::get('email') }}">
-                                                <span class="profile-views"><i class="fas fa-envelope"></i></span>
                                                 @error('email')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>

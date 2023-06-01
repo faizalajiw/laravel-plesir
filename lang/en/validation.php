@@ -150,8 +150,11 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+        'email' => [
+            'unique' => 'Sudah ada pengguna yang menggunakan Email ini.',
+        ],
+        'username' => [
+            'unique' => 'Sudah ada pengguna yang menggunakan Username ini.',
         ],
     ],
 

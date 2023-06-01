@@ -11,6 +11,7 @@ use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Support\Facades\Hash;
 use App\Rules\MatchOldPassword;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Validation\Rule;
 
 class ProfileController extends Controller
 {
@@ -27,15 +28,14 @@ class ProfileController extends Controller
     /** change detail akun */
     public function changeProfileDetail(Request $request)
     {
-        $user = User::find(auth()->user()->id);
-
         $request->validate([
             'name'      => 'required|string|max:100',
-            'username'  => 'required|string|max:50',
-            'email'     => 'required|string|email|max:150|unique:users,email,'.$user->id,
+            'username'  => ['required','string','max:50',Rule::unique('users')->ignore(auth()->user()->id),],
+            'email'     => ['required','string','email','max:150',Rule::unique('users')->ignore(auth()->user()->id),],
         ]);
-
+        
         // Simpan request
+        $user = User::find(auth()->user()->id);
         $user->name = $request->name;
         $user->username = $request->username;
         $user->email = $request->email;
