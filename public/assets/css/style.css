@@ -3907,16 +3907,40 @@ table.table-inbox tbody tr.checked {
     font-size: 16px;
     font-weight: 500;
 }
-.student-submit .btn-primary {
-    min-width: 160px;
-    border-radius: 10px;
-    background: #3d5ee1;
-    border: 1px solid #3d5ee1;
+/* Button Submit */
+.button-submit .btn-primary {
+    min-width: 150px;
+    border-radius: 5px;
 }
-.student-submit .btn-primary:hover {
+.button-submit .btn-primary:hover {
     background: #18aefa;
     border: 1px solid #18aefa;
 }
+/* Button Submit */
+
+/* Button Cancel */
+.button-cancel .btn-danger {
+    min-width: 150px;
+    border-radius: 5px;
+}
+.button-cancel .btn-danger:hover {
+    background: #ff1313;
+    border: 1px solid #ff1313;
+}
+.button-cancel .btn-danger a {
+    min-width: 150px;
+    border-radius: 5px;
+    color: #fff;
+    text-decoration: none;
+}
+.button-cancel .btn-danger a:hover {
+    min-width: 150px;
+    border-radius: 5px;
+    color: #fff;
+    text-decoration: none;
+}
+/* Button Cancel */
+
 .form-title.student-info,
 .about-info h4 {
     display: -webkit-box;
