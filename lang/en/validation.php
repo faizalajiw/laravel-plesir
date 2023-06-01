@@ -167,6 +167,15 @@ return [
             'regex' => 'Tolong periksa kembali Email anda',
             'unique' => 'Sudah ada pengguna yang menggunakan Email ini.',
         ],
+        'password' => [
+            'required' => 'Password tidak boleh kosong.',
+            'min' => 'Password min.8 karakter',
+            'regex' => 'Password tidak boleh mengandung spasi.',
+        ],
+        'confirm_password' => [
+            'required' => 'Isi Konfirmasi Password terlebih dahulu.',
+            'same' => 'Password tidak cocok.',
+        ],
         'new_password' => [
             'required' => 'Password tidak boleh kosong.',
             'min' => 'Password min.8 karakter',
