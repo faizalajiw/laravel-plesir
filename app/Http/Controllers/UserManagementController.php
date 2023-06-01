@@ -29,9 +29,10 @@ class UserManagementController extends Controller
         return view('usermanagement.user_update', compact('users', 'role'));
     }
     /** User View */
-    
+
     /** User Form Create */
-    public function usersFormCreate(){
+    public function usersFormCreate()
+    {
         $role = DB::table('role_type_users')->get();
         return view('usermanagement.user_create', compact('role'));
     }
@@ -42,9 +43,8 @@ class UserManagementController extends Controller
     {
         $request->validate([
             'name' => 'required|string',
-            // 'username' => 'required|string|unique:users',
-            'username' => ['required','string',Rule::unique('users')->ignore($request->user()->id)],
-            'email' => ['nullable','string','email',Rule::unique('users')->ignore($request->user()->id)],
+            'username' => ['required', 'string', Rule::unique('users')->ignore($request->user()->id)],
+            'email' => ['nullable', 'string', 'email', Rule::unique('users')->ignore($request->user()->id)],
             'role_name' => 'required|string',
             'new_password' => 'required|string|min:8',
             'avatar' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
@@ -73,70 +73,63 @@ class UserManagementController extends Controller
     /** User Update */
     public function usersUpdate(Request $request)
     {
-        try {
-            $user = Auth::user();
-            $request->validate([
-                'id' => 'required',
-                'name' => 'required|string',
-                // 'user_id' => 'required|string',
-                'username' => 'required|string',
-                'email' => 'required|string|email',
-                'role_name' => 'required|string',
-                'new_password' => 'required|string|min:8',
-                'avatar' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            ]);
+        $request->validate([
+            'id'            => 'required',
+            'name'          => ['required','regex:/^[A-Za-z\s]+$/'],
+            'username'      => ['required','regex:/^\S*$/',Rule::unique('users')->ignore($request->id)],
+            'email'         => ['required','email','regex:/^\S*$/',Rule::unique('users')->ignore($request->id)],
+            'new_password'  => ['required','min:8','regex:/^\S*$/'],
+            'role_name'     => ['required','string'],
+            'avatar'        => ['nullable','image','mimes:jpeg,png,jpg,gif','max:2048'],
+        ]);
 
-            if ($user->role_name !== 'Super Admin') {
-                Toastr::error('User Gagal Diupdate :)', 'Error');
-                return redirect()->back();
-            }
-
-            $userToUpdate = User::find($request->id);
-            if (!$userToUpdate) {
-                Toastr::error('User Tidak Ditemukan :)', 'Error');
-                return redirect()->back();
-            }
-
-            $userToUpdate->name = $request->name;
-            $userToUpdate->username = $request->username;
-            $userToUpdate->email = $request->email;
-            $userToUpdate->role_name = $request->role_name;
-
-            // Menghapus avatar lama dan menyimpan avatar baru jika ada file avatar yang diunggah
-            if ($request->hasFile('avatar')) {
-                if ($userToUpdate->avatar) {
-                    Storage::disk('public')->delete($userToUpdate->avatar);
-                }
-
-                $avatarPath = $request->file('avatar')->store('avatar', 'public');
-                $userToUpdate->avatar = $avatarPath;
-            }
-
-            $userToUpdate->save();
-
-            // Update password jika ada perubahan
-            if ($request->new_password) {
-                $userToUpdate->password = Hash::make($request->new_password);
-            }
-            // Change password
-            if ($request->current_password && $request->new_password && $request->new_confirm_password) {
-                $request->validate([
-                    'current_password'     => ['required', new MatchOldPassword],
-                    'new_password'         => ['required'],
-                    'new_confirm_password' => ['same:new_password'],
-                ]);
-
-                $userToUpdate->password = Hash::make($request->new_password);
-                $userToUpdate->save();
-            }
-
-            Toastr::success('User Berhasil Diupdate :)', 'Success');
-            return redirect()->to('/list/users');
-        } catch (\Exception $e) {
-            // Tangani pengecualian di sini
-            Toastr::error('Ada Kesalahan Ketika Mengubah Data', 'Error');
+        $user = Auth::user();
+        if ($user->role_name !== 'Super Admin') {
+            Toastr::error('User Gagal Diupdate :)', 'Error');
             return redirect()->back();
         }
+
+        $userToUpdate = User::find($request->id);
+        if (!$userToUpdate) {
+            Toastr::error('User Tidak Ditemukan :)', 'Error');
+            return redirect()->back();
+        }
+
+        $userToUpdate->name = $request->name;
+        $userToUpdate->username = $request->username;
+        $userToUpdate->email = $request->email;
+        $userToUpdate->role_name = $request->role_name;
+
+        // Menghapus avatar lama dan menyimpan avatar baru jika ada file avatar yang diunggah
+        if ($request->hasFile('avatar')) {
+            if ($userToUpdate->avatar) {
+                Storage::disk('public')->delete($userToUpdate->avatar);
+            }
+
+            $avatarPath = $request->file('avatar')->store('avatar', 'public');
+            $userToUpdate->avatar = $avatarPath;
+        }
+
+        $userToUpdate->save();
+
+        // Update password jika ada perubahan
+        if ($request->new_password) {
+            $userToUpdate->password = Hash::make($request->new_password);
+        }
+        // Change password
+        if ($request->current_password && $request->new_password && $request->new_confirm_password) {
+            $request->validate([
+                'current_password'     => ['required', new MatchOldPassword],
+                'new_password'         => ['required'],
+                'new_confirm_password' => ['same:new_password'],
+            ]);
+
+            $userToUpdate->password = Hash::make($request->new_password);
+            $userToUpdate->save();
+        }
+
+        Toastr::success('User Berhasil Diupdate :)', 'Success');
+        return redirect()->to('/list/users');
     }
     /** User Update */
 

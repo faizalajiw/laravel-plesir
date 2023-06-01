@@ -149,12 +149,34 @@ return [
     |
     */
 
+    // CUSTOM VALIDATION 
     'custom' => [
-        'email' => [
-            'unique' => 'Sudah ada pengguna yang menggunakan Email ini.',
+        'name' => [
+            'required' => 'Nama tidak boleh kosong.',
+            'regex' => 'Nama hanya diisi oleh abjad (A-Z).',
         ],
         'username' => [
+            'required' => 'Username tidak boleh kosong.',
+            'regex' => 'Username tidak boleh mengandung spasi.',
             'unique' => 'Sudah ada pengguna yang menggunakan Username ini.',
+        ],
+        'email' => [
+            'required' => 'Email tidak boleh kosong.',
+            'email' => 'Tolong periksa kembali Email anda',
+            'regex' => 'Tolong periksa kembali Email anda',
+            'unique' => 'Sudah ada pengguna yang menggunakan Email ini.',
+        ],
+        'new_password' => [
+            'required' => 'Password tidak boleh kosong.',
+            'min' => 'Password min.8 karakter',
+            'regex' => 'Password tidak boleh mengandung spasi.',
+        ],
+        'role_name' => [
+            'required' => 'Role tidak boleh kosong.',
+        ],
+        'avatar' => [
+            'image' => 'Gambar harus bertipe (jpeg/png/jpg/gif)',
+            'max' => 'Gambar tidak boleh melebihi ukuran (max.2mb).',
         ],
     ],
 
