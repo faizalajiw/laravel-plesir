@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
-{{-- message --}}
 {!! Toastr::message() !!}
+<title>Login</title>
 <div class="login-right">
     <div class="login-right-wrap">
         <h1 class="form-title">

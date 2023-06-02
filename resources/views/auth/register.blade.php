@@ -1,5 +1,7 @@
 @extends('layouts.app')
 @section('content')
+{!! Toastr::message() !!}
+<title>Register</title>
 <div class="login-right">
     <div class="login-right-wrap">
         <h1 class="form-title">
