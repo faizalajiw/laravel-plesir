@@ -63,7 +63,7 @@ class LoginController extends Controller
 
         if (!$user) {
             return redirect('login')->withErrors([
-                'username' => 'Username belum terdaftar.',
+                'username' => 'Username yang Anda masukkan salah.',
             ]);
         }
 
