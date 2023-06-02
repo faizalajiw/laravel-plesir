@@ -11,6 +11,7 @@ use App\Rules\MatchOldPassword;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Str;
 
 class UserManagementController extends Controller
 {
@@ -42,12 +43,12 @@ class UserManagementController extends Controller
     public function usersCreate(Request $request)
     {
         $request->validate([
-            'name'          => ['required','regex:/^[A-Za-z\s]+$/'],
-            'username'      => ['required','max:50','regex:/^\S*$/', Rule::unique('users')->ignore($request->user()->id)],
-            'email'         => ['nullable','email','regex:/^\S*$/', Rule::unique('users')->ignore($request->user()->id)],
-            'new_password'  => ['required','min:8','regex:/^\S*$/'],
-            'role_name'     => ['required','string'],
-            'avatar'        => ['nullable','image','mimes:jpeg,png,jpg,gif','max:2048'],
+            'name'          => ['required', 'regex:/^[A-Za-z\s]+$/'],
+            'username'      => ['required', 'max:50', 'regex:/^\S*$/', Rule::unique('users')->ignore($request->user()->id)],
+            'email'         => ['nullable', 'email', 'regex:/^\S*$/', Rule::unique('users')->ignore($request->user()->id)],
+            'new_password'  => ['required', 'min:8', 'regex:/^\S*$/'],
+            'role_name'     => ['required', 'string'],
+            'avatar'        => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif', 'max:2048'],
         ]);
 
         $user = new User();
@@ -56,6 +57,21 @@ class UserManagementController extends Controller
         $user->email = $request->email;
         $user->role_name = $request->role_name;
         $user->password = Hash::make($request->new_password);
+
+        // Menghasilkan users_id sesuai dengan pola yang diinginkan
+        switch ($request->role_name) {
+            case 'super admin':
+                $user->users_id = 'SUPER' . Str::upper(Str::random(5)); // contoh pola untuk super admin
+                break;
+            case 'admin wisata':
+                $user->users_id = 'ADMIN' . Str::upper(Str::random(5)); // contoh pola untuk admin wisata
+                break;
+            case 'pengguna':
+                $user->users_id = 'USER' . Str::upper(Str::random(6)); // contoh pola untuk pengguna
+                break;
+            default:
+                $user->users_id = ''; // jika tidak ada pola khusus, biarkan kosong
+        }
 
         // Mengupload avatar jika ada file yang diunggah
         if ($request->hasFile('avatar')) {
@@ -75,12 +91,12 @@ class UserManagementController extends Controller
     {
         $request->validate([
             'id'            => 'required',
-            'name'          => ['required','regex:/^[A-Za-z\s]+$/'],
-            'username'      => ['required','max:50','regex:/^\S*$/',Rule::unique('users')->ignore($request->id)],
-            'email'         => ['nullable','email','regex:/^\S*$/',Rule::unique('users')->ignore($request->id)],
-            'new_password'  => ['required','min:8','regex:/^\S*$/'],
-            'role_name'     => ['required','string'],
-            'avatar'        => ['nullable','image','mimes:jpeg,png,jpg,gif','max:2048'],
+            'name'          => ['required', 'regex:/^[A-Za-z\s]+$/'],
+            'username'      => ['required', 'max:50', 'regex:/^\S*$/', Rule::unique('users')->ignore($request->id)],
+            'email'         => ['nullable', 'email', 'regex:/^\S*$/', Rule::unique('users')->ignore($request->id)],
+            'new_password'  => ['required', 'min:8', 'regex:/^\S*$/'],
+            'role_name'     => ['required', 'string'],
+            'avatar'        => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif', 'max:2048'],
         ]);
 
         $user = Auth::user();

@@ -37,7 +37,8 @@
                                 class="table border-0 star-student table-hover table-center mb-0 datatable table-striped">
                                 <thead class="student-thread">
                                     <tr>
-                                        <th>Id</th>
+                                        <th>No</th>
+                                        <th>ID</th>
                                         <th>Avatar</th>
                                         <th>Nama</th>
                                         <th>Username</th>
@@ -50,6 +51,7 @@
                                     @foreach ($users as $key => $list)
                                     <tr>
                                         <td class="id">{{ $list->id }}</td>
+                                        <td class="id">{{ $list->users_id }}</td>
                                         <td>
                                             <h2 class="table-avatar">
                                                 <a class="avatar avatar-sm me-2">

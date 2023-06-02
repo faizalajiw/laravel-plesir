@@ -75,6 +75,7 @@ class LoginController extends Controller
                 'email' => $user->email,
                 'role_name' => $user->role_name,
                 'avatar' => $user->avatar,
+                'users_id' => $user->users_id,
             ]);
 
             Toastr::success('Login berhasil :)', 'Success');
