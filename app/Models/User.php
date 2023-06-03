@@ -46,4 +46,16 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+    // RELASI
+    public function category()
+    {
+        return $this->hasMany(Category::class);
+    }
+
+    public function place()
+    {
+        return $this->hasMany(Place::class);
+    }
 }

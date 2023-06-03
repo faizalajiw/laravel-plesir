@@ -34,45 +34,37 @@
                     </a>
                     <ul>
                         <li>
-                            <a href="{{ route('list/users') }}" class="{{set_active(['list/users'])}} {{ (request()->is('view/user/edit/*')) ? 'active' : '' }}">
-                                Semua
-                            </a>
+                            <a href="{{ route('list/users') }}" class="{{set_active(['list/users'])}} {{ (request()->is('view/user/edit/*')) ? 'active' : '' }}">Semua</a>
                         </li>
                         <li>
-                            <a href="#">
-                                Admin Wisata
-                            </a>
+                            <a href="#">Admin Wisata</a>
                         </li>
                         <li>
-                            <a href="#">
-                                Pengguna
-                            </a>
+                            <a href="#">Pengguna</a>
                         </li>
                     </ul>
                 </li>
                 @endif
                 <!-- USER MANAGEMENT -->
 
-                <!-- ADMIN WISATA -->
-
-                <!-- ADMIN WISATA -->
-
-                <!-- USER -->
-                
-                <!-- USER -->
-
                 <!-- KATEGORI -->
-                <li class="submenu {{set_active(['department/add/page'])}}">
+                @if (Session::get('role_name') === 'Super Admin')
+                <li class="submenu {{set_active(['list/categories','categories/create','categories/edit'])}}">
                     <a href="#"><i class="fas fa-th-list"></i>
                         <span>Kategori</span>
                         <span class="menu-arrow"></span>
                     </a>
                     <ul>
-                        <li><a href="departments.html">Kategori List</a></li>
-                        <li><a href="{{ route('department/add/page') }}" class="{{set_active(['department/add/page'])}}">Kategori Add</a></li>
+                        <li>
+                            <a href="{{ route('list/categories') }}" class="{{set_active(['list/categories'])}}">Kategori List</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('categories/create') }}" class="{{set_active(['categories/create'])}}">Kategori Add</a>
+                        </li>
                         <li><a href="edit-department.html">Kategori Edit</a></li>
                     </ul>
                 </li>
+                @endif
                 <!-- KATEGORI -->
 
                 <!-- TEMPAT -->

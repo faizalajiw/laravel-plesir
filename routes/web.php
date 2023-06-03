@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserManagementController;
 use App\Http\Controllers\ProfileController;
@@ -91,6 +92,13 @@ Route::middleware(['auth', 'role:Super Admin'])->group(function () {
     Route::post('users/create', [UserManagementController::class, 'usersCreate'])->name('users/create');
     Route::post('users/update', [UserManagementController::class, 'usersUpdate'])->name('users/update');
     Route::post('users/delete', [UserManagementController::class, 'usersDelete'])->name('users/delete');
+});
+
+// ----------------------------- category controller -------------------------//
+Route::middleware(['auth', 'role:Super Admin'])->group(function () {
+    Route::get('list/categories', [CategoryController::class, 'index'])->name('list/categories');
+    Route::get('categories/create', [CategoryController::class, 'create'])->name('categories/create');
+    Route::post('categories/store', [CategoryController::class, 'store'])->name('categories/store');
 });
 
 // ------------------------ setting -------------------------------//
