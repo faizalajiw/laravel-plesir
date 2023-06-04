@@ -30,7 +30,7 @@ class HomeController extends Controller
     /** profile user */
     public function userProfile()
     {
-        return view('dashboard.profile');
+        return view('profile.index');
     }
 
     /** teacher dashboard */

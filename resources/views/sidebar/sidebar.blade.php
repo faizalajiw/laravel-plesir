@@ -99,8 +99,8 @@
                     <span>Account</span>
                 </li>
                 <!-- Profile -->
-                <li class="submenu">
-                    <a href="{{ route('user/profile/page') }}" class="{{set_active(['user/profile/page'])}}"><i class="fas fa-user"></i>
+                <li class="{{set_active(['profile/user'])}}">
+                    <a href="{{ route('profile/user') }}" class="{{set_active(['profile/user'])}}"><i class="fas fa-user"></i>
                         <span>Profile</span>
                     </a>
                 </li>

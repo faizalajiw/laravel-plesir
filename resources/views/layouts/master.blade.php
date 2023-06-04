@@ -62,8 +62,8 @@
                                 <p class="text-muted mb-0">{{ Session::get('role_name') }}</p>
                             </div>
                         </div>
-                        <a class="dropdown-item" href="{{ route('user/profile/page') }}">Profile</a>
-                        <a class="dropdown-item" href="inbox.html">Inbox</a>
+                        <a class="dropdown-item" href="{{ route('profile/user') }}">Profile</a>
+                        <a class="dropdown-item" href="inbox.html">History</a>
                         <a class="dropdown-item" href="{{ route('logout') }}">Logout</a>
                     </div>
                 </li>
