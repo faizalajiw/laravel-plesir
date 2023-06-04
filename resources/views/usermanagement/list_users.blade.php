@@ -103,8 +103,8 @@
                         <div class="del-icon">
                             <i class="feather-x-circle"></i>
                         </div>
-                        <!-- <input type="hidden" name="id" class="e_id" value="">
-                        <input type="hidden" name="avatar" class="e_avatar" value=""> -->
+                        <input type="hidden" name="id" class="e_id" value="">
+                        <input type="hidden" name="avatar" class="e_avatar" value="">
                         <h2>Hapus Data?</h2>
                         <div class="submit-section">
                             <button type="submit" class="btn btn-success me-2">Ya</button>
