@@ -1,5 +1,7 @@
 @extends('layouts.master')
 @section('content')
+{{-- message --}}
+{!! Toastr::message() !!}
 <title>Add - Users Management</title>
 <div class="page-wrapper">
     <div class="content container-fluid">
@@ -7,14 +9,12 @@
             <div class="row align-items-center">
                 <div class="col">
                     <ul class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{ route('list/users') }}">Users</a></li>
-                        <li class="breadcrumb-item active">Tambah User</li>
+                        <li class="breadcrumb-item fw-bold"><a href="{{ route('list/users') }}">Users</a></li>
+                        <li class="breadcrumb-item fw-bold active">Tambah User</li>
                     </ul>
                 </div>
             </div>
         </div>
-        {{-- message --}}
-        {!! Toastr::message() !!}
         <div class="row">
             <div class="col-sm-12">
                 <div class="card">

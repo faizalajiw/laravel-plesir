@@ -5466,7 +5466,6 @@ table.table-inbox tbody tr.checked {
     padding: 12px;
 }
 .invoices-page-header .invoices-breadcrumb-item a {
-    font-weight: 600;
     color: #3d5ee1;
     display: -webkit-box;
     display: -ms-flexbox;

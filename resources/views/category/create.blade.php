@@ -1,5 +1,7 @@
 @extends('layouts.master')
 @section('content')
+{{-- message --}}
+{!! Toastr::message() !!}
 <title>Create Kategori</title>
 <div class="page-wrapper">
     <div class="content container-fluid">
@@ -7,15 +9,13 @@
             <div class="row align-items-center">
                 <div class="col">
                     <ul class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{ route('list/categories') }}">Kategori</a></li>
-                        <li class="breadcrumb-item active">Tambah Kategori</li>
+                        <li class="breadcrumb-item fw-bold"><a href="{{ route('list/categories') }}">Kategori</a></li>
+                        <li class="breadcrumb-item fw-bold active">Tambah Kategori</li>
                     </ul>
                 </div>
             </div>
         </div>
-        {{-- message --}}
-        {!! Toastr::message() !!}
-        <div class="row">
+        <div class="row mt-5">
             <div class="col-sm-12">
                 <div class="card">
                     <div class="card-body">
