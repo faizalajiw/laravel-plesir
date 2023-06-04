@@ -19,7 +19,7 @@ class UserManagementController extends Controller
     public function index()
     {
         $users = User::all();
-        return view('usermanagement.list_users', compact('users'));
+        return view('usermanagement.index', compact('users'));
     }
 
     /** User View */
@@ -27,7 +27,7 @@ class UserManagementController extends Controller
     {
         $users = User::where('id', $id)->first();
         $role = DB::table('role_type_users')->get();
-        return view('usermanagement.user_update', compact('users', 'role'));
+        return view('usermanagement.update', compact('users', 'role'));
     }
     /** User View */
 
@@ -35,7 +35,7 @@ class UserManagementController extends Controller
     public function usersFormCreate()
     {
         $role = DB::table('role_type_users')->get();
-        return view('usermanagement.user_create', compact('role'));
+        return view('usermanagement.create', compact('role'));
     }
     /** User Form Create */
 
@@ -69,7 +69,6 @@ class UserManagementController extends Controller
             $user->users_id = ''; // jika tidak ada pola khusus, biarkan kosong
         }
 
-
         // Mengupload avatar jika ada file yang diunggah
         if ($request->hasFile('avatar')) {
             $avatarPath = $request->file('avatar')->store('avatar', 'public');
@@ -98,13 +97,13 @@ class UserManagementController extends Controller
 
         $user = Auth::user();
         if ($user->role_name !== 'Super Admin') {
-            Toastr::error('User Gagal Diupdate :)', 'Error');
+            Toastr::error('Gagal Diupdate');
             return redirect()->back();
         }
 
         $userToUpdate = User::find($request->id);
         if (!$userToUpdate) {
-            Toastr::error('User Tidak Ditemukan :)', 'Error');
+            Toastr::error('User Tidak Ditemukan');
             return redirect()->back();
         }
 
@@ -141,7 +140,7 @@ class UserManagementController extends Controller
             $userToUpdate->save();
         }
 
-        Toastr::success('User Berhasil Diupdate :)', 'Success');
+        Toastr::success('Berhasil Diupdate');
         return redirect()->to('/list/users');
     }
     /** User Update */
@@ -149,26 +148,18 @@ class UserManagementController extends Controller
     /** User Delete */
     public function usersDelete(Request $request)
     {
-        try {
-            $userId = $request->id;
-            $user = User::find($userId);
+        // Hapus avatar jika ada
+        $userId = $request->id;
+        $user = User::find($userId);
 
-            if (!$user) {
-                Toastr::error('User not found :)', 'Error');
-                return redirect()->back();
-            }
-
-            // Hapus avatar jika ada
-            if ($user->avatar) {
-                Storage::disk('public')->delete($user->avatar);
-            }
-
+        if ($user->avatar) {
+            Storage::disk('public')->delete($user->avatar);
             $user->delete();
 
-            Toastr::success('User deleted successfully :)', 'Success');
+            Toastr::success('Berhasil dihapus');
             return redirect()->back();
-        } catch (\Exception $e) {
-            Toastr::error('User delete failed :)', 'Error');
+        } else {
+            Toastr::error('Gagal dihapus');
             return redirect()->back();
         }
     }
