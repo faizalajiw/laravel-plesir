@@ -59,19 +59,16 @@ class UserManagementController extends Controller
         $user->password = Hash::make($request->new_password);
 
         // Menghasilkan users_id sesuai dengan pola yang diinginkan
-        switch ($request->role_name) {
-            case 'super admin':
-                $user->users_id = 'SUPER' . Str::upper(Str::random(5)); // contoh pola untuk super admin
-                break;
-            case 'admin wisata':
-                $user->users_id = 'ADMIN' . Str::upper(Str::random(5)); // contoh pola untuk admin wisata
-                break;
-            case 'pengguna':
-                $user->users_id = 'USER' . Str::upper(Str::random(6)); // contoh pola untuk pengguna
-                break;
-            default:
-                $user->users_id = ''; // jika tidak ada pola khusus, biarkan kosong
+        if ($request->role_name === 'Super Admin') {
+            $user->users_id = 'SUPER' . Str::upper(Str::random(5)); // contoh pola untuk super admin
+        } elseif ($request->role_name === 'Admin Wisata') {
+            $user->users_id = 'ADMIN' . Str::upper(Str::random(5)); // contoh pola untuk admin wisata
+        } elseif ($request->role_name === 'Pengguna') {
+            $user->users_id = 'USER' . Str::upper(Str::random(6)); // contoh pola untuk pengguna
+        } else {
+            $user->users_id = ''; // jika tidak ada pola khusus, biarkan kosong
         }
+
 
         // Mengupload avatar jika ada file yang diunggah
         if ($request->hasFile('avatar')) {
@@ -161,7 +158,12 @@ class UserManagementController extends Controller
                 return redirect()->back();
             }
 
-            $user->forceDelete();
+            // Hapus avatar jika ada
+            if ($user->avatar) {
+                Storage::disk('public')->delete($user->avatar);
+            }
+
+            $user->delete();
 
             Toastr::success('User deleted successfully :)', 'Success');
             return redirect()->back();

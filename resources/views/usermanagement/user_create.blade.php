@@ -103,7 +103,7 @@
                                             <a href="{{ route('list/users') }}" class="btn btn-danger">Batal</a>
                                         </div>
                                         <div class="button-submit">
-                                            <button type="submit" class="btn btn-primary">Update</button>
+                                            <button type="submit" class="btn btn-primary">Buat</button>
                                         </div>
                                     </div>
                                 </div>
