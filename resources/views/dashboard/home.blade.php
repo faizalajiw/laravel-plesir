@@ -19,18 +19,18 @@
             </div>
         </div>
 
-        <div class="row">
+        <div class="row mt-5">
             <!-- CARD 1 -->
             <div class="col-xl-3 col-sm-6 col-12 d-flex">
                 <div class="card bg-comman w-100">
                     <div class="card-body">
                         <div class="db-widgets d-flex justify-content-between align-items-center">
                             <div class="db-info">
-                                <h6>User</h6>
-                                <h3>50</h3>
+                                <h6>Pengguna</h6>
+                                <h3>{{ $penggunaCount }}</h3>
                             </div>
                             <div class="db-icon">
-                                <img src="assets/img/icons/dash-icon-01.svg" alt="Dashboard Icon">
+                                <i class="fas fa-user"></i>
                             </div>
                         </div>
                     </div>
@@ -44,10 +44,10 @@
                         <div class="db-widgets d-flex justify-content-between align-items-center">
                             <div class="db-info">
                                 <h6>Admin Wisata</h6>
-                                <h3>5</h3>
+                                <h3>{{ $adminCount }}</h3>
                             </div>
                             <div class="db-icon">
-                                <img src="assets/img/icons/dash-icon-02.svg" alt="Dashboard Icon">
+                                <i class="fas fa-users-cog"></i>
                             </div>
                         </div>
                     </div>
@@ -61,10 +61,10 @@
                         <div class="db-widgets d-flex justify-content-between align-items-center">
                             <div class="db-info">
                                 <h6>Kategori Wisata</h6>
-                                <h3>4</h3>
+                                <h3>{{ $categoryCount }}</h3>
                             </div>
                             <div class="db-icon">
-                                <img src="assets/img/icons/dash-icon-03.svg" alt="Dashboard Icon">
+                                <i class="fas fa-th-list"></i>
                             </div>
                         </div>
                     </div>
@@ -78,10 +78,10 @@
                         <div class="db-widgets d-flex justify-content-between align-items-center">
                             <div class="db-info">
                                 <h6>Tempat Wisata</h6>
-                                <h3>50</h3>
+                                <h3>#</h3>
                             </div>
                             <div class="db-icon">
-                                <img src="assets/img/icons/dash-icon-04.svg" alt="Dashboard Icon">
+                                <i class="fas fa-map-marked-alt"></i>
                             </div>
                         </div>
                     </div>
