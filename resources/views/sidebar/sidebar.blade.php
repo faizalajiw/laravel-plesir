@@ -59,10 +59,10 @@
                     </a>
                     <ul>
                         <li>
-                            <a href="{{ route('list/categories') }}" class="{{set_active(['list/categories'])}}">Kategori List</a>
+                            <a href="{{ route('list/categories') }}" class="{{set_active(['list/categories'])}}">Kategori</a>
                         </li>
                         <li>
-                            <a href="{{ route('categories/create') }}" class="{{set_active(['categories/create'])}}">Kategori Add</a>
+                            <a href="{{ route('categories/create') }}" class="{{set_active(['categories/create'])}}">Add Kategori</a>
                         </li>
                     </ul>
                 </li>

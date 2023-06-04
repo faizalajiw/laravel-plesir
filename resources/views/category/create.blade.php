@@ -10,7 +10,7 @@
                 <div class="col">
                     <ul class="breadcrumb">
                         <li class="breadcrumb-item fw-bold"><a href="{{ route('list/categories') }}">Kategori</a></li>
-                        <li class="breadcrumb-item fw-bold active">Tambah Kategori</li>
+                        <li class="breadcrumb-item fw-bold active">Add Kategori</li>
                     </ul>
                 </div>
             </div>
@@ -23,7 +23,7 @@
                             @csrf
                             <div class="row">
                                 <div class="col-12">
-                                    <h5 class="form-title"><span>Tambah Kategori</span></h5>
+                                    <h5 class="form-title"><span>Add Kategori</span></h5>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-group local-forms">
