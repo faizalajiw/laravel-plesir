@@ -27,19 +27,19 @@ class CategoryController extends Controller
             'name' => 'required',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
-    
-        try {
-        //upload image
-        $image = $request->file('image');
-        $image->storeAs('public/categories', $image->hashName());
 
-        //create category
-        Category::create([
-            'image' => $image->hashName(), //mengambil request gambar
-            'name' => $request->name, //mengambil request name 
-            'slug' => Str::slug($request->name, '-'),
-        ]);
-    
+        try {
+            //upload image
+            $image = $request->file('image');
+            $image->storeAs('public/categories', $image->hashName());
+
+            //create category
+            Category::create([
+                'image' => $image->hashName(), //mengambil request gambar
+                'name' => $request->name, //mengambil request name 
+                'slug' => Str::slug($request->name, '-'),
+            ]);
+
             Toastr::success('Kategori berhasil ditambahkan :)', 'Success');
             return redirect()->to('/list/categories');
         } catch (\Exception $e) {
@@ -75,10 +75,21 @@ class CategoryController extends Controller
     //     return redirect()->route('category.index')->with('success', 'Category updated successfully.');
     // }
 
-    // public function destroy(Category $category)
-    // {
-    //     $category->delete();
-    //     return redirect()->route('category.index')->with('success', 'Category deleted successfully.');
-    // }
-}
+    public function delete(Request $request)
+    {
+        $CategoryId = $request->id;
+        $category = Category::find($CategoryId);
 
+        // Hapus image 
+        if ($category) {
+            Storage::disk('local')->delete('public/categories/' . basename($category->image));
+            $category->delete();
+
+            Toastr::success('Kategori berhasil dihapus', 'Berhasil');
+            return redirect()->back();
+        } else {
+            Toastr::error('Kategori gagal dihapus', 'Gagal');
+            return redirect()->back();
+        }
+    }
+}

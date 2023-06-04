@@ -33,8 +33,7 @@
                         </div>
 
                         <div class="table-responsive">
-                            <table
-                                class="table border-0 star-student table-hover table-center mb-0 datatable table-striped">
+                            <table class="table border-0 star-student table-hover table-center mb-0 datatable table-striped">
                                 <thead class="student-thread">
                                     <tr>
                                         <th>No</th>
@@ -54,14 +53,14 @@
                                                 </a>
                                             </h2>
                                         </td>
-                                        <td class="id">{{ $list->name }}</td>
+                                        <td>{{ $list->name }}</td>
                                         @if (Session::get('role_name') === 'Super Admin')
                                         <td class="text-center">
                                             <div class="actions">
-                                                <a href="{{ route('list/categories', ['id' => $list->id]) }}"class="btn btn-sm bg-danger-light">
+                                                <a href="{{ route('list/categories', ['id' => $list->id]) }}" class="btn btn-sm bg-danger-light">
                                                     <i class="feather-edit"></i>
                                                 </a>
-                                                <a class="btn btn-sm bg-danger-light user_delete" data-bs-toggle="modal" data-bs-target="#deleteUser">
+                                                <a class="btn btn-sm bg-danger-light categories_delete" data-bs-toggle="modal" data-bs-target="#deleteCategory">
                                                     <i class="feather-trash-2 me-1"></i>
                                                 </a>
                                             </div>
@@ -80,21 +79,20 @@
 </div>
 
 {{-- model user delete --}}
-<!-- <div class="modal fade contentmodal" id="deleteUser" tabindex="-1" aria-hidden="true">
+<div class="modal fade contentmodal" id="deleteCategory" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content doctor-profile">
             <div class="modal-header pb-0 border-bottom-0  justify-content-end">
-                <button type="button" class="close-btn" data-bs-dismiss="modal" aria-label="Close"><i
-                    class="feather-x-circle"></i>
-                </button>
             </div>
             <div class="modal-body">
-                <form action="{{ route('users/delete') }}" method="POST">
+                <form action="{{ route('categories/delete') }}" method="POST">
                     @csrf
                     <div class="delete-wrap text-center">
                         <div class="del-icon">
                             <i class="feather-x-circle"></i>
                         </div>
+                        <input type="hidden" name="id" class="e_id" value="">
+                        <input type="hidden" name="image" class="e_image" value="">
                         <h2>Hapus Data?</h2>
                         <div class="submit-section">
                             <button type="submit" class="btn btn-success me-2">Ya</button>
@@ -105,17 +103,15 @@
             </div>
         </div>
     </div>
-</div> -->
+</div>
 
 @section('script')
-
 {{-- delete js --}}
 <script>
-    $(document).on('click','.user_delete',function()
-    {
+    $(document).on('click', '.categories_delete', function() {
         var _this = $(this).parents('tr');
         $('.e_id').val(_this.find('.id').text());
-        $('.e_avatar').val(_this.find('.avatar').text());
+        $('.e_image').val(_this.find('.image').text());
     });
 </script>
 @endsection
