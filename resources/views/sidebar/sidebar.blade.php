@@ -37,10 +37,13 @@
                             <a href="{{ route('list/users') }}" class="{{set_active(['list/users'])}}">Semua</a>
                         </li>
                         <li>
-                            <a href="#">Admin Wisata</a>
+                            <a href="{{ route('list/users/super') }}" class="{{set_active(['list/users/super'])}}">Super Admin</a>
                         </li>
                         <li>
-                            <a href="#">Pengguna</a>
+                            <a href="{{ route('list/users/admin') }}" class="{{set_active(['list/users/admin'])}}">Admin Wisata</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('list/users/pengguna') }}" class="{{set_active(['list/users/pengguna'])}}">Pengguna</a>
                         </li>
                     </ul>
                 </li>

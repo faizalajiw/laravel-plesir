@@ -22,6 +22,25 @@ class UserManagementController extends Controller
         return view('usermanagement.index', compact('users'));
     }
 
+    // Only show 1 role
+    public function showPengguna()
+    {
+        $users = User::where('role_name', 'Pengguna')->get();
+        return view('usermanagement.pengguna.index', compact('users'));
+    }
+    
+    public function showAdmin()
+    {
+        $users = User::where('role_name', 'Admin Wisata')->get();
+        return view('usermanagement.admin_wisata.index', compact('users'));
+    }
+    
+    public function showSuper()
+    {
+        $users = User::where('role_name', 'Super Admin')->get();
+        return view('usermanagement.super_admin.index', compact('users'));
+    }
+
     // Search
     public function search(Request $request)
     {

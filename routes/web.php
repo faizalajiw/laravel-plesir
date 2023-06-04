@@ -86,6 +86,7 @@ Route::controller(ProfileController::class)->group(function () {
 
 // ----------------------------- user management controller -------------------------//
 Route::middleware(['auth', 'role:Super Admin'])->group(function () {
+    // SEMUA PENGGUNA
     Route::get('list/users', [UserManagementController::class, 'index'])->name('list/users');
     Route::get('users/search', [UserManagementController::class, 'search'])->name('users/search');
     Route::get('users/create', [UserManagementController::class, 'create'])->name('users/create');
@@ -93,6 +94,13 @@ Route::middleware(['auth', 'role:Super Admin'])->group(function () {
     Route::get('view/users/edit/{id}', [UserManagementController::class, 'edit'])->name('view/users/edit');
     Route::post('users/update', [UserManagementController::class, 'update'])->name('users/update');
     Route::post('users/delete', [UserManagementController::class, 'delete'])->name('users/delete');
+    // SEMUA PENGGUNA
+
+    // ONLY 1 ROLE
+    Route::get('list/users/super', [UserManagementController::class, 'showSuper'])->name('list/users/super');
+    Route::get('list/users/admin', [UserManagementController::class, 'showAdmin'])->name('list/users/admin');
+    Route::get('list/users/pengguna', [UserManagementController::class, 'showPengguna'])->name('list/users/pengguna');
+    // ONLY 1 ROLE
 });
 
 // ----------------------------- category controller -------------------------//
