@@ -119,16 +119,11 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content doctor-profile">
             <div class="modal-header pb-0 border-bottom-0  justify-content-end">
-                <button type="button" class="close-btn" data-bs-dismiss="modal" aria-label="Close"><i class="feather-x-circle"></i>
-                </button>
             </div>
             <div class="modal-body">
                 <form action="{{ route('users/delete') }}" method="POST">
                     @csrf
                     <div class="delete-wrap text-center">
-                        <div class="del-icon">
-                            <i class="feather-x-circle"></i>
-                        </div>
                         <input type="hidden" name="id" class="e_id" value="">
                         <input type="hidden" name="avatar" class="e_avatar" value="">
                         <h2>Hapus Data?</h2>

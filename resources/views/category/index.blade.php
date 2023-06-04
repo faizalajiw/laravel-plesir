@@ -88,9 +88,6 @@
                 <form action="{{ route('categories/delete') }}" method="POST">
                     @csrf
                     <div class="delete-wrap text-center">
-                        <div class="del-icon">
-                            <i class="feather-x-circle"></i>
-                        </div>
                         <input type="hidden" name="id" class="e_id" value="">
                         <input type="hidden" name="image" class="e_image" value="">
                         <h2>Hapus Data?</h2>
