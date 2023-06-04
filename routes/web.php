@@ -87,6 +87,7 @@ Route::controller(ProfileController::class)->group(function () {
 // ----------------------------- user management controller -------------------------//
 Route::middleware(['auth', 'role:Super Admin'])->group(function () {
     Route::get('list/users', [UserManagementController::class, 'index'])->name('list/users');
+    Route::get('users/search', [UserManagementController::class, 'search'])->name('users/search');
     Route::get('users/create', [UserManagementController::class, 'create'])->name('users/create');
     Route::post('users/store', [UserManagementController::class, 'store'])->name('users/store');
     Route::get('view/users/edit/{id}', [UserManagementController::class, 'edit'])->name('view/users/edit');

@@ -1,5 +1,7 @@
 @extends('layouts.master')
 @section('content')
+{{-- message --}}
+{!! Toastr::message() !!}
 <title>Users Management</title>
 <div class="page-wrapper">
     <div class="content container-fluid">
@@ -13,8 +15,34 @@
                 </div>
             </div>
         </div>
-        {{-- message --}}
-        {!! Toastr::message() !!}
+
+        <div class="search-group-form mt-5">
+            <form action="{{ route('users/search') }}" method="GET">
+                <div class="row">
+                    <div class="col-lg-3 ">
+                        <div class="form-group">
+                            <input type="text" name="users_id" class="form-control" placeholder="Search by ID ..." value="{{ request('users_id') }}">
+                        </div>
+                    </div>
+                    <div class="col-lg-3 ">
+                        <div class="form-group">
+                            <input type="text" name="name" class="form-control" placeholder="Search by Name ..." value="{{ request('name') }}">
+                        </div>
+                    </div>
+                    <div class="col-lg-3 ">
+                        <div class="form-group">
+                            <input type="text" name="username" class="form-control" placeholder="Search by Username ..." value="{{ request('username') }}">
+                        </div>
+                    </div>
+                    <div class="col-lg-3 ">
+                        <div class="form-group">
+                            <button type="submit" class="form-control btn btn-primary text-white">Cari</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+
         <div class="row">
             <div class="col-sm-12">
                 <div class="card card-table">
@@ -33,9 +61,8 @@
                         </div>
 
                         <div class="table-responsive">
-                            <table
-                                class="table border-0 star-student table-hover table-center mb-0 datatable table-striped">
-                                <thead class="student-thread">
+                            <table class="table border-0 star-table table-hover table-center mb-0 datatable table-striped">
+                                <thead class="table-thread">
                                     <tr>
                                         <th>No</th>
                                         <th>ID</th>
@@ -50,8 +77,8 @@
                                 <tbody>
                                     @foreach ($users as $key => $list)
                                     <tr>
-                                        <td class="id">{{ $list->id }}</td>
-                                        <td class="id">{{ $list->users_id }}</td>
+                                        <td class="id">{{ $key+1 }}</td>
+                                        <td>{{ $list->users_id }}</td>
                                         <td>
                                             <h2 class="table-avatar">
                                                 <a class="avatar avatar-sm me-2">
@@ -66,7 +93,7 @@
                                         @if (Session::get('role_name') === 'Super Admin')
                                         <td class="text-center">
                                             <div class="actions">
-                                                <a href="{{ route('view/users/edit', ['id' => $list->id]) }}"class="btn btn-sm bg-danger-light">
+                                                <a href="{{ route('view/users/edit', ['id' => $list->id]) }}" class="btn btn-sm bg-danger-light">
                                                     <i class="feather-edit"></i>
                                                 </a>
                                                 <a class="btn btn-sm bg-danger-light user_delete" data-bs-toggle="modal" data-bs-target="#deleteUser">
@@ -92,8 +119,7 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content doctor-profile">
             <div class="modal-header pb-0 border-bottom-0  justify-content-end">
-                <button type="button" class="close-btn" data-bs-dismiss="modal" aria-label="Close"><i
-                    class="feather-x-circle"></i>
+                <button type="button" class="close-btn" data-bs-dismiss="modal" aria-label="Close"><i class="feather-x-circle"></i>
                 </button>
             </div>
             <div class="modal-body">
@@ -118,11 +144,9 @@
 </div>
 
 @section('script')
-
 {{-- delete js --}}
 <script>
-    $(document).on('click','.user_delete',function()
-    {
+    $(document).on('click', '.user_delete', function() {
         var _this = $(this).parents('tr');
         $('.e_id').val(_this.find('.id').text());
         $('.e_avatar').val(_this.find('.avatar').text());

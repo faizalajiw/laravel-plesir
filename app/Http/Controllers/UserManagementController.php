@@ -22,6 +22,29 @@ class UserManagementController extends Controller
         return view('usermanagement.index', compact('users'));
     }
 
+    // Search
+    public function search(Request $request)
+    {
+        $users = User::query();
+
+        if ($request->filled('users_id')) {
+            $users->where('users_id', $request->input('users_id'));
+        }
+
+        if ($request->filled('name')) {
+            $users->where('name', 'LIKE', '%' . $request->input('name') . '%');
+        }
+
+        if ($request->filled('username')) {
+            $users->where('username', 'LIKE', '%' . $request->input('username') . '%');
+        }
+
+        $users = $users->get();
+
+        return view('usermanagement.index', compact('users'));
+    }
+
+
     /** User Create */
     public function create()
     {

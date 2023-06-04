@@ -243,7 +243,7 @@ table.table td h2 span {
     background-color: #f8f9fa;
     border-color: #eff2f7;
 }
-.table .student-thread th {
+.table .table-thread th {
     color: #000;
     background-color: #f8f9fa;
     border-color: #eff2f7;
@@ -2530,9 +2530,6 @@ footer p {
 .page-wrapper > .content {
     padding: 1.875rem 1.875rem 0;
 }
-.page-header {
-    margin-bottom: 1.5rem;
-}
 .page-header .breadcrumb {
     background-color: transparent;
     color: #6c757d;
@@ -3196,17 +3193,17 @@ footer p {
 .chart-list-out.student-ellips {
     margin-left: auto;
 }
-.star-student.table-striped tbody tr:nth-of-type(even) {
+.star-table.table-striped tbody tr:nth-of-type(even) {
     background-color: #fafafa;
 }
-.star-student.table-striped tbody tr:nth-of-type(odd) {
+.star-table.table-striped tbody tr:nth-of-type(odd) {
     background-color: transparent;
 }
-.star-student.table-striped tbody tr td,
-.star-student.table-striped tbody tr td a {
+.star-table.table-striped tbody tr td,
+.star-table.table-striped tbody tr td a {
     color: #666;
 }
-.star-student.table-striped tbody tr td img {
+.star-table.table-striped tbody tr td img {
     margin-right: 10px;
 }
 .activity-awards {
@@ -3646,13 +3643,12 @@ table.table-inbox tbody tr.checked {
     z-index: 2;
     position: relative;
 }
-.search-student-btn .btn-primary {
-    min-width: 135px;
-    font-size: 14px;
+/* .search-btn .btn-primary {
+    min-width: 282px;
+    font-size: 16px;
     font-weight: 700;
-    text-transform: uppercase;
-    padding: 11px 15px;
-}
+    padding: 12px;
+} */
 .student-profile-head {
     background: #f7f7fa;
     border-radius: 10px;
@@ -8538,9 +8534,6 @@ body[data-layout-mode="dark"]
     .profile-edit-icon i {
         font-size: 12px;
     }
-    .search-student-btn .btn-primary {
-        min-width: 95px;
-    }
 }
 @media (max-width: 991.98px) {
     .header .header-left {
@@ -8730,9 +8723,6 @@ body[data-layout-mode="dark"]
     }
     .profile-edit-icon i {
         font-size: 12px;
-    }
-    .search-student-btn {
-        margin-bottom: 20px;
     }
 }
 @media (max-width: 767.98px) {
@@ -9209,8 +9199,8 @@ body[data-layout-mode="dark"]
     .user-img .user-text {
         display: none;
     }
-    .star-student.table-striped tbody tr td,
-    .star-student.table-striped tbody tr td a {
+    .star-table.table-striped tbody tr td,
+    .star-table.table-striped tbody tr td a {
         font-size: 14px;
     }
     .social-boxs img {
@@ -9234,13 +9224,6 @@ body[data-layout-mode="dark"]
     }
     .chart-list-out li {
         margin-right: 5px;
-    }
-    .search-student-btn .btn-primary {
-        min-width: 120px;
-        padding: 6px 15px;
-    }
-    .search-student-btn {
-        margin-bottom: 20px;
     }
     .btn-outline-gray {
         width: 30px;
