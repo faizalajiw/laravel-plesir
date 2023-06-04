@@ -27,14 +27,14 @@
 
                 <!-- USER MANAGEMENT -->
                 @if (Session::get('role_name') === 'Super Admin')
-                <li class="submenu {{set_active(['list/users'])}} {{ (request()->is('view/user/edit/*')) ? 'active' : '' }}">
+                <li class="submenu {{set_active(['list/users'])}}">
                     <a href="#"><i class="fas fa-shield-alt"></i>
-                        <span>Users Management</span>
+                        <span>Manajemen User</span>
                         <span class="menu-arrow"></span>
                     </a>
                     <ul>
                         <li>
-                            <a href="{{ route('list/users') }}" class="{{set_active(['list/users'])}} {{ (request()->is('view/user/edit/*')) ? 'active' : '' }}">Semua</a>
+                            <a href="{{ route('list/users') }}" class="{{set_active(['list/users'])}}">Semua</a>
                         </li>
                         <li>
                             <a href="#">Admin Wisata</a>
@@ -61,7 +61,6 @@
                         <li>
                             <a href="{{ route('categories/create') }}" class="{{set_active(['categories/create'])}}">Kategori Add</a>
                         </li>
-                        <li><a href="edit-department.html">Kategori Edit</a></li>
                     </ul>
                 </li>
                 @endif
@@ -97,15 +96,15 @@
                 </li>
 
                 <li class="menu-title">
-                    <span>Management</span>
+                    <span>Account</span>
                 </li>
-                <!-- MY ACCOUNT -->
+                <!-- Profile -->
                 <li class="submenu">
-                    <a href="#"><i class="fas fa-user"></i>
-                        <span>My Account</span>
+                    <a href="{{ route('user/profile/page') }}" class="{{set_active(['user/profile/page'])}}"><i class="fas fa-user"></i>
+                        <span>Profile</span>
                     </a>
                 </li>
-                <!-- MY ACCOUNT -->
+                <!-- Profile -->
 
                 <li>
                     <a href="{{ route('logout') }}"><i class="fas fa-sign-out-alt"></i><span>Logout</span></a>

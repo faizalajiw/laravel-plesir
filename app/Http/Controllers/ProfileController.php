@@ -19,11 +19,6 @@ class ProfileController extends Controller
     {
         $this->middleware('auth');
     }
-    public function index()
-    {
-        $user = Auth::user();
-        return view('profile.index', compact('user'));
-    }
 
     /** change detail akun */
     public function changeProfileDetail(Request $request)

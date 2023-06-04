@@ -25,7 +25,7 @@
                                     <h3 class="form-title">All List</h3>
                                 </div>
                                 <div class="col-auto text-end float-end ms-auto download-grp">
-                                    <a href="{{ route('users/create/request') }}" class="btn btn-primary">
+                                    <a href="{{ route('users/create') }}" class="btn btn-primary">
                                         <i class="fas fa-plus me-2"></i>Add
                                     </a>
                                 </div>

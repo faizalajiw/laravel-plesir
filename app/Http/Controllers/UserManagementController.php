@@ -22,25 +22,16 @@ class UserManagementController extends Controller
         return view('usermanagement.index', compact('users'));
     }
 
-    /** User View */
-    public function usersView($id)
-    {
-        $users = User::where('id', $id)->first();
-        $role = DB::table('role_type_users')->get();
-        return view('usermanagement.update', compact('users', 'role'));
-    }
-    /** User View */
-
-    /** User Form Create */
-    public function usersFormCreate()
+    /** User Create */
+    public function create()
     {
         $role = DB::table('role_type_users')->get();
         return view('usermanagement.create', compact('role'));
     }
-    /** User Form Create */
+    /** User Create */
 
     /** User Create */
-    public function usersCreate(Request $request)
+    public function store(Request $request)
     {
         $request->validate([
             'name'          => ['required', 'regex:/^[A-Za-z\s]+$/'],
@@ -82,8 +73,17 @@ class UserManagementController extends Controller
     }
     /** User Create */
 
+    /** User Edit */
+    public function edit($id)
+    {
+        $users = User::where('id', $id)->first();
+        $role = DB::table('role_type_users')->get();
+        return view('usermanagement.update', compact('users', 'role'));
+    }
+    /** User Edit */
+
     /** User Update */
-    public function usersUpdate(Request $request)
+    public function update(Request $request)
     {
         $request->validate([
             'id'            => 'required',
@@ -146,7 +146,7 @@ class UserManagementController extends Controller
     /** User Update */
 
     /** User Delete */
-    public function usersDelete(Request $request)
+    public function delete(Request $request)
     {
         // Hapus avatar jika ada
         $userId = $request->id;

@@ -160,18 +160,6 @@
                             </div>
                         </div>
                     </div>
-
-                    <!-- <div class="col-lg-4">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h5 class="card-title d-flex justify-content-between">
-                                        <span>Account Status</span>
-                                        <a class="edit-link" href="#"><i class="far fa-edit me-1"></i>Edit</a>
-                                    </h5>
-                                    <button class="btn btn-success" type="button"><i class="fe fe-check-verified"></i> Active</button>
-                                </div>
-                            </div>
-                    </div> -->
                 </div>
                 <!-- PROFILE DETAIL -->
             </div>
