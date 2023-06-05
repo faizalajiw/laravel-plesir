@@ -53,7 +53,7 @@
                                     <h3 class="form-title">List Tempat Wisata</h3>
                                 </div>
                                 <div class="col-auto text-end float-end ms-auto download-grp">
-                                    <a href="#" class="btn btn-primary">
+                                    <a href="{{ route('places/create') }}" class="btn btn-primary">
                                         <i class="fas fa-plus me-2"></i>Add
                                     </a>
                                 </div>
@@ -75,9 +75,9 @@
                                     @foreach ($places as $key => $list)
                                     <tr>
                                         <td class="id">{{ $key+1 }}</td>
-                                        <td>{{ $list->category_id }}</td>
                                         <td>{{ $list->title }}</td>
-                                        <td>{{ $list->user_id }}</td>
+                                        <td>{{ $list->category->name }}</td>
+                                        <td>{{ $list->user->name }}</td>
                                         @if (Session::get('role_name') === 'Super Admin')
                                         <td class="text-center">
                                             <div class="actions">

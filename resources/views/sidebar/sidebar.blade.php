@@ -78,7 +78,7 @@
                     </a>
                     <ul>
                         <li><a href="{{ route('list/places') }}" class="{{set_active(['list/places'])}}">List Tempat</a></li>
-                        <li><a href="add-subject.html">Add Tempat</a></li>
+                        <li><a href="{{ route('places/create') }}" class="{{set_active(['places/create'])}}">Add Tempat</a></li>
                     </ul>
                 </li>
                 @endif

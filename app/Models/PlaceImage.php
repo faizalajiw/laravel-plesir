@@ -14,6 +14,7 @@ class PlaceImage extends Model
      * @var array
      */
     protected $fillable = [
+        'id',
         'place_id', 
         'image'
     ];

@@ -14,6 +14,7 @@ class Place extends Model
      * @var array
      */
     protected $fillable = [
+        'id',
         'title', 
         'slug', 
         'category_id', 

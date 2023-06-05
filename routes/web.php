@@ -115,6 +115,8 @@ Route::middleware(['auth', 'role:Super Admin'])->group(function () {
 // ----------------------------- place controller -------------------------//
 Route::controller(PlaceController::class)->group(function () {
     Route::get('list/places', 'index')->middleware('auth')->name('list/places');
+    Route::get('places/create', 'create')->middleware('auth')->name('places/create');
+    Route::post('places/store', 'store')->middleware('auth')->name('places/store');
 });
 
 // ------------------------ setting -------------------------------//

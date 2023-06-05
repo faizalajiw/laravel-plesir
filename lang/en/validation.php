@@ -155,6 +155,10 @@ return [
             'required' => 'Nama tidak boleh kosong.',
             'regex' => 'Nama hanya diisi oleh huruf.',
         ],
+        'title' => [
+            'required' => 'Nama tidak boleh kosong.',
+            'regex' => 'Nama hanya diisi oleh huruf.',
+        ],
         'username' => [
             'required' => 'Username tidak boleh kosong.',
             'regex' => 'Username tidak boleh mengandung spasi.',
@@ -188,7 +192,14 @@ return [
         'role_name' => [
             'required' => 'Role tidak boleh kosong.',
         ],
+        'category' => [
+            'required' => 'Category tidak boleh kosong.',
+        ],
         'avatar' => [
+            'image' => 'Gambar harus berformat (.jpeg/.png/.jpg/.gif)',
+            'max' => 'Gambar tidak boleh melebihi ukuran (max.2MB).',
+        ],
+        'image' => [
             'image' => 'Gambar harus berformat (.jpeg/.png/.jpg/.gif)',
             'max' => 'Gambar tidak boleh melebihi ukuran (max.2MB).',
         ],
