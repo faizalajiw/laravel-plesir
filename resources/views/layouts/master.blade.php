@@ -63,7 +63,7 @@
                             </div>
                         </div>
                         <a class="dropdown-item" href="{{ route('profile/user') }}">Profile</a>
-                        <a class="dropdown-item" href="inbox.html">History</a>
+                        <a class="dropdown-item" href="{{ route('list/my_places') }}">Kelola Tempat</a>
                         <a class="dropdown-item" href="{{ route('logout') }}">Logout</a>
                     </div>
                 </li>

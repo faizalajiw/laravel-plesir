@@ -18,6 +18,14 @@ class PlaceController extends Controller
         return view('place.index', compact('places'));
     }
 
+    public function myPlace()
+    {
+        $userId = auth()->id(); // Mengambil ID pengguna yang sedang masuk
+    
+        $places = Place::with('user')->where('user_id', $userId)->get();
+        return view('place.admin_wisata.index', compact('places'));
+    }
+
     // Search
     public function search(Request $request)
     {

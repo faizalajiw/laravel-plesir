@@ -114,12 +114,14 @@ Route::middleware(['auth', 'role:Super Admin'])->group(function () {
 
 // ----------------------------- place controller -------------------------//
 Route::controller(PlaceController::class)->group(function () {
-    Route::get('list/places', 'index')->middleware('auth')->name('list/places');
-    Route::get('places/search', 'search')->middleware('auth')->name('places/search');
-    Route::get('places/create', 'create')->middleware('auth')->name('places/create');
-    Route::post('places/store', 'store')->middleware('auth')->name('places/store');
-    Route::post('places/delete', 'delete')->middleware('auth')->name('places/delete');
+    Route::get('list/places', 'index')->middleware(['auth', 'role:Super Admin'])->name('list/places');
+    Route::get('list/my_places', 'myPlace')->middleware(['auth', 'role:Super Admin,Admin Wisata'])->name('list/my_places');
+    Route::get('places/search', 'search')->middleware(['auth', 'role:Super Admin,Admin Wisata'])->name('places/search');
+    Route::get('places/create', 'create')->middleware(['auth', 'role:Super Admin,Admin Wisata'])->name('places/create');
+    Route::post('places/store', 'store')->middleware(['auth', 'role:Super Admin,Admin Wisata'])->name('places/store');
+    Route::post('places/delete', 'delete')->middleware(['auth', 'role:Super Admin,Admin Wisata'])->name('places/delete');
 });
+
 
 // ------------------------ setting -------------------------------//
 Route::controller(Setting::class)->group(function () {
