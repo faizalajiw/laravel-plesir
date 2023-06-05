@@ -77,7 +77,8 @@
                                 <div class="col-12">
                                     <div class="form-group local-forms">
                                         <label>Deskripsi <span class="login-danger">*</span></label>
-                                        <input type="text" class="form-control @error('description') is-invalid @enderror" name="description">
+                                        <textarea id="basic-example" name="description" class="@error('description') is-invalid @enderror"></textarea>
+                                        <!-- <input type="text" class="form-control @error('description') is-invalid @enderror" name="description"> -->
                                         @error('description')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -158,4 +159,25 @@
         </div>
     </div>
 </div>
+
+@section('script')
+<script src="https://cdn.tiny.cloud/1/3ituox0mhf6744v1cssbp9py7w78zb1crdziktkpadi43sfu/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+<script>
+    tinymce.init({
+        selector: 'textarea#basic-example',
+        height: 300,
+        plugins: [
+            'advlist', 'autolink', 'lists', 'link', 'image', 'charmap', 'preview',
+            'anchor', 'searchreplace', 'visualblocks', 'code', 'fullscreen',
+            'insertdatetime', 'media', 'table', 'help', 'wordcount'
+        ],
+        toolbar: 'undo redo | blocks | ' +
+            'bold italic backcolor | alignleft aligncenter ' +
+            'alignright alignjustify | bullist numlist outdent indent | ' +
+            'removeformat | help',
+        content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:16px }'
+    });
+</script>
+@endsection
+
 @endsection
