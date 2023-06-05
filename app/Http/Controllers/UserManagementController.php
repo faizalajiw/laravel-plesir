@@ -120,7 +120,7 @@ class UserManagementController extends Controller
     {
         $users = User::where('id', $id)->first();
         $role = DB::table('role_type_users')->get();
-        return view('usermanagement.update', compact('users', 'role'));
+        return view('usermanagement.edit', compact('users', 'role'));
     }
     /** User Edit */
 
