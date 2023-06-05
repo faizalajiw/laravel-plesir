@@ -156,8 +156,8 @@ return [
             'regex' => 'Nama hanya diisi oleh huruf.',
         ],
         'title' => [
-            'required' => 'Nama tidak boleh kosong.',
-            'regex' => 'Nama hanya diisi oleh huruf.',
+            'required' => 'Nama Tempat tidak boleh kosong.',
+            'regex' => 'Nama Tempat hanya diisi oleh huruf.',
         ],
         'username' => [
             'required' => 'Username tidak boleh kosong.',
@@ -193,7 +193,13 @@ return [
             'required' => 'Role tidak boleh kosong.',
         ],
         'category' => [
-            'required' => 'Category tidak boleh kosong.',
+            'required' => 'Kategori tidak boleh kosong.',
+        ],
+        'description' => [
+            'required' => 'Deskripsi tidak boleh kosong.',
+        ],
+        'address' => [
+            'required' => 'Alamat tidak boleh kosong.',
         ],
         'avatar' => [
             'image' => 'Gambar harus berformat (.jpeg/.png/.jpg/.gif)',
