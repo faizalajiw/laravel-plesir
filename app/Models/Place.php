@@ -17,7 +17,7 @@ class Place extends Model
         'title', 
         'slug', 
         'category_id', 
-        'users_id', 
+        'user_id', 
         'description',  
         'address', 
         'operational_hours', 
