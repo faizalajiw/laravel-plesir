@@ -12,6 +12,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TypeFormController;
 use App\Http\Controllers\Setting;
 use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\PlaceController;
 use Illuminate\Support\Facades\Request;
 
 
@@ -79,9 +80,9 @@ Route::controller(HomeController::class)->group(function () {
 
 // ----------------------------- profile controller -------------------------//
 Route::controller(ProfileController::class)->group(function () {
-    Route::post('change/detail', 'changeProfileDetail')->name('change/detail');
-    Route::post('change/password', 'changeProfilePassword')->name('change/password');
-    Route::post('change/avatar', 'changeProfileAvatar')->name('change/avatar');
+    Route::post('change/detail', 'changeProfileDetail')->middleware('auth')->name('change/detail');
+    Route::post('change/password', 'changeProfilePassword')->middleware('auth')->name('change/password');
+    Route::post('change/avatar', 'changeProfileAvatar')->middleware('auth')->name('change/avatar');
 });
 
 // ----------------------------- user management controller -------------------------//
@@ -109,6 +110,11 @@ Route::middleware(['auth', 'role:Super Admin'])->group(function () {
     Route::get('categories/create', [CategoryController::class, 'create'])->name('categories/create');
     Route::post('categories/store', [CategoryController::class, 'store'])->name('categories/store');
     Route::post('categories/delete', [CategoryController::class, 'delete'])->name('categories/delete');
+});
+
+// ----------------------------- place controller -------------------------//
+Route::controller(PlaceController::class)->group(function () {
+    Route::get('list/places', 'index')->middleware('auth')->name('list/places');
 });
 
 // ------------------------ setting -------------------------------//

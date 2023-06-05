@@ -70,17 +70,18 @@
                 <!-- KATEGORI -->
 
                 <!-- TEMPAT -->
-                <li class="submenu">
+                @if (Session::get('role_name') === 'Super Admin')
+                <li class="submenu {{set_active(['list/places','places/create','places/edit'])}}">
                     <a href="#"><i class="fas fa-map-marked-alt"></i>
                         <span>Tempat</span>
                         <span class="menu-arrow"></span>
                     </a>
                     <ul>
-                        <li><a href="subjects.html">Tempat List</a></li>
-                        <li><a href="add-subject.html">Tempat Add</a></li>
-                        <li><a href="edit-subject.html">Tempat Edit</a></li>
+                        <li><a href="{{ route('list/places') }}" class="{{set_active(['list/places'])}}">List Tempat</a></li>
+                        <li><a href="add-subject.html">Add Tempat</a></li>
                     </ul>
                 </li>
+                @endif
                 <!-- TEMPAT -->
 
                 <li class="submenu">
