@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Place;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -30,7 +31,8 @@ class HomeController extends Controller
         $penggunaCount = User::where('role_name', 'Pengguna')->count();
         $adminCount = User::where('role_name', 'Admin Wisata')->count();
         $categoryCount = Category::count();
-        return view('dashboard.home', compact('penggunaCount', 'adminCount' , 'categoryCount'));
+        $placeCount = Place::count();
+        return view('dashboard.home', compact('penggunaCount', 'adminCount' , 'categoryCount', 'placeCount'));
     }
     
     /** count data */

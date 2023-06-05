@@ -78,7 +78,7 @@
                         <div class="db-widgets d-flex justify-content-between align-items-center">
                             <div class="db-info">
                                 <h6>Tempat Wisata</h6>
-                                <h3>#</h3>
+                                <h3>{{ $placeCount }}</h3>
                             </div>
                             <div class="db-icon">
                                 <i class="fas fa-map-marked-alt"></i>
