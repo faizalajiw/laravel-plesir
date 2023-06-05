@@ -7,14 +7,14 @@
             <div class="row">
                 <div class="col">
                     <ul class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{ route('home') }}">Dashboard</a></li>
-                        <li class="breadcrumb-item active">Profile</li>
+                        <li class="breadcrumb-item fw-bold"><a href="{{ route('home') }}">Dashboard</a></li>
+                        <li class="breadcrumb-item fw-bold active">Profile</li>
                     </ul>
                 </div>
             </div>
         </div>
 
-        <div class="row">
+        <div class="row mt-5">
             <div class="col-md-12">
                 <!-- HEADER PROFILE -->
                 <div class="profile-header">
