@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Place;
-use App\Models\PlaceImage;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class PlaceController extends Controller
@@ -18,11 +18,44 @@ class PlaceController extends Controller
         return view('place.index', compact('places'));
     }
 
+    // Search
+    public function search(Request $request)
+    {
+        // Ambil nilai dari input form
+        $category = $request->input('category_id');
+        $title = $request->input('title');
+        $user = $request->input('user_id');
+
+        // Query untuk mencari tempat berdasarkan kriteria pencarian
+        $places = Place::with('category', 'user')
+            ->when($category, function ($query) use ($category) {
+                // Filter berdasarkan kategori jika ada nilai
+                return $query->whereHas('category', function ($query) use ($category) {
+                    $query->where('name', 'like', '%' . $category . '%');
+                });
+            })
+            ->when($title, function ($query) use ($title) {
+                // Filter berdasarkan nama tempat jika ada nilai
+                return $query->where('title', 'like', '%' . $title . '%');
+            })
+            // ->when($user, function ($query) use ($user) {
+            //     // Filter berdasarkan pengelola jika ada nilai
+            //     return $query->whereHas('user', function ($query) use ($user) {
+            //         $query->where('name', 'like', '%' . $user . '%');
+            //     });
+            // })            
+            ->get();
+
+        return view('place.index', compact('places'));
+    }
+
+
     // Form Create
     public function create()
     {
         $places = Place::with('category', 'user')->get();
-        return view('place.create', compact('places'));
+        $categories = Category::all();
+        return view('place.create', compact('places', 'categories'));
     }
 
     // Store Place
@@ -58,12 +91,12 @@ class PlaceController extends Controller
             if ($request->hasFile('image')) {
                 //get request file image 
                 $images = $request->file('image');
-    
+
                 //loop file image
                 foreach ($images as $image) {
                     //disimpan ke storage folder di server
                     $image->storeAs('public/places', $image->hashName());
-    
+
                     //insert ke database
                     $place->images()->create([
                         'image'     => $image->hashName(),
@@ -77,6 +110,24 @@ class PlaceController extends Controller
         } catch (\Exception $e) {
             Toastr::error('Terjadi kesalahan saat menyimpan data.', 'Error');
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+        }
+    }
+
+    public function delete(Request $request)
+    {
+        $PlaceId = $request->id;
+        $place = Place::find($PlaceId);
+
+        // Hapus image 
+        if ($place) {
+            Storage::disk('local')->delete('public/places/' . basename($place->image));
+            $place->delete();
+
+            Toastr::success('Kategori berhasil dihapus', 'Berhasil');
+            return redirect()->back();
+        } else {
+            Toastr::error('Kategori gagal dihapus', 'Gagal');
+            return redirect()->back();
         }
     }
 }

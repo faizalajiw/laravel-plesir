@@ -70,7 +70,7 @@
                 <!-- KATEGORI -->
 
                 <!-- TEMPAT -->
-                @if (Session::get('role_name') === 'Super Admin')
+                @if (Session::get('role_name') === 'Super Admin' || Session::get('role_name') === 'Admin Wisata')
                 <li class="submenu {{set_active(['list/places','places/create','places/edit'])}}">
                     <a href="#"><i class="fas fa-map-marked-alt"></i>
                         <span>Tempat</span>

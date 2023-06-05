@@ -17,24 +17,24 @@
         </div>
 
         <div class="search-group-form mt-5">
-            <form action="#" method="GET">
+            <form action="{{ route('places/search') }}" method="GET">
                 <div class="row">
                     <div class="col-lg-3">
                         <div class="form-group">
-                            <input type="text" name="category_id" class="form-control" placeholder="Cari berdasarkan Kategori ..." value="{{ request('category_id') }}">
+                            <input type="text" name="category_id" class="form-control" style="font-size: 15px;" placeholder="Cari berdasarkan Kategori ..." value="{{ request('category') }}">
                         </div>
                     </div>
                     <div class="col-lg-3">
                         <div class="form-group">
-                            <input type="text" name="title" class="form-control" placeholder="Cari berdasarkan Nama Tempat ..." value="{{ request('title') }}">
+                            <input type="text" name="title" class="form-control" style="font-size: 15px;" placeholder="Cari berdasarkan Nama Tempat ..." value="{{ request('title') }}">
                         </div>
                     </div>
-                    <div class="col-lg-3">
+                    <!-- <div class="col-lg-3">
                         <div class="form-group">
-                            <input type="text" name="user_id" class="form-control" placeholder="Cari berdasarkan Pengelola ..." value="{{ request('user_id') }}">
+                            <input type="text" name="user_id" class="form-control" style="font-size: 15px;" placeholder="Cari berdasarkan Pengelola ..." value="{{ request('user') }}">
                         </div>
-                    </div>
-                    <div class="col-lg-3">
+                    </div> -->
+                    <div class="col-lg-2">
                         <div class="form-group">
                             <button type="submit" class="form-control btn btn-primary text-white">Cari</button>
                         </div>
@@ -75,10 +75,10 @@
                                     @foreach ($places as $key => $list)
                                     <tr>
                                         <td class="id">{{ $key+1 }}</td>
-                                        <td>{{ $list->title }}</td>
                                         <td>{{ $list->category->name }}</td>
+                                        <td>{{ $list->title }}</td>
                                         <td>{{ $list->user->name }}</td>
-                                        @if (Session::get('role_name') === 'Super Admin')
+                                        @if (Session::get('role_name') === 'Super Admin' || Session::get('role_name') === 'Admin Wisata')
                                         <td class="text-center">
                                             <div class="actions">
                                                 <a href="#" class="btn btn-sm bg-danger-light">
@@ -109,7 +109,7 @@
             <div class="modal-header pb-0 border-bottom-0  justify-content-end">
             </div>
             <div class="modal-body">
-                <form action="#" method="POST">
+                <form action="{{ route('places/delete') }}" method="POST">
                     @csrf
                     <div class="delete-wrap text-center">
                         <input type="hidden" name="id" class="e_id" value="">
