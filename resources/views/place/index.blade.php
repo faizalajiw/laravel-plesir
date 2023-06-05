@@ -31,7 +31,7 @@
                     </div>
                     <div class="col-lg-3">
                         <div class="form-group">
-                            <input type="text" name="users_id" class="form-control" placeholder="Cari berdasarkan Pengelola ..." value="{{ request('users_id') }}">
+                            <input type="text" name="user_id" class="form-control" placeholder="Cari berdasarkan Pengelola ..." value="{{ request('user_id') }}">
                         </div>
                     </div>
                     <div class="col-lg-3">
@@ -77,7 +77,7 @@
                                         <td class="id">{{ $key+1 }}</td>
                                         <td>{{ $list->category_id }}</td>
                                         <td>{{ $list->title }}</td>
-                                        <td>{{ $list->users_id }}</td>
+                                        <td>{{ $list->user_id }}</td>
                                         @if (Session::get('role_name') === 'Super Admin')
                                         <td class="text-center">
                                             <div class="actions">
