@@ -122,7 +122,7 @@
                                 <div class="col-12 col-sm-6">
                                     <div class="form-group local-forms">
                                         <label>Latitude <span class="login-danger">*</span></label>
-                                        <input type="text" name="latitude" id="latitude" class="form-control @error('latitude') is-invalid @enderror">
+                                        <input type="text" readonly disabled name="latitude" id="latitude" class="form-control @error('latitude') is-invalid @enderror">
                                         @error('latitude')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -133,7 +133,7 @@
                                 <div class="col-12 col-sm-6">
                                     <div class="form-group local-forms">
                                         <label>Longitude <span class="login-danger">*</span></label>
-                                        <input type="text" name="longitude" id="longitude" class="form-control @error('longitude') is-invalid @enderror">
+                                        <input type="text" readonly disabled name="longitude" id="longitude" class="form-control @error('longitude') is-invalid @enderror">
                                         @error('longitude')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -174,18 +174,49 @@
         zoom: 12 // starting zoom
     });
 
-    // Tambahkan kontrol navigasi
-    map.addControl(new mapboxgl.NavigationControl());
+    // Init geocoder
+    var geocoder = new MapboxGeocoder({
+        accessToken: mapboxgl.accessToken,
+        marker: {
+            color: 'rgb(56, 32, 201, 1)',
+        },
+        mapboxgl: mapboxgl
+    });
 
-    // Tambahkan marker untuk menandai lokasi
+    // Menambahkan geocoder ke peta
+    map.addControl(geocoder);
+
+    // Init marker
     var marker = new mapboxgl.Marker({
-            draggable: true, // Membuat marker dapat digeser
-            color: "rgb(56, 32, 201, 1)"
-        })
-        .setLngLat([109.12410532246922, -6.87670482108234]) // Koordinat default
-        .addTo(map);
+        draggable: true,
+        color: 'rgb(56, 32, 201, 1)' // Warna marker
+    });
 
-    // Update inputan latitude dan longitude saat marker digeser
+    // Event listener saat geocoder mendapatkan hasil
+    geocoder.on('result', function(e) {
+        var lngLat = e.result.geometry.coordinates;
+
+        // Hapus marker sebelumnya (jika ada)
+        if (marker) {
+            marker.remove();
+        }
+
+        // Buat marker baru
+        marker.setLngLat(lngLat).addTo(map);
+
+        // Update inputan latitude dan longitude
+        document.getElementById('latitude').value = lngLat[1];
+        document.getElementById('longitude').value = lngLat[0];
+
+        // Update inputan latitude dan longitude saat marker digeser
+        marker.on('dragend', function() {
+            var lngLat = marker.getLngLat();
+            document.getElementById('latitude').value = lngLat.lat;
+            document.getElementById('longitude').value = lngLat.lng;
+        });
+    });
+
+    // Update inputan latitude dan longitude saat marker digeser (untuk marker awal)
     marker.on('dragend', function() {
         var lngLat = marker.getLngLat();
         document.getElementById('latitude').value = lngLat.lat;
