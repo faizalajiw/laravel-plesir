@@ -75,7 +75,7 @@
                                     @foreach ($places as $list)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td class="id">{{ $list->id }}</td>
+                                        <td class="id" hidden>{{ $list->id }}</td>
                                         <td>{{ $list->category->name }}</td>
                                         <td>{{ $list->title }}</td>
                                         <td>{{ $list->user->name }}</td>

@@ -122,7 +122,7 @@
                                 <div class="col-12 col-sm-6">
                                     <div class="form-group local-forms">
                                         <label>Latitude <span class="login-danger">*</span></label>
-                                        <input type="text" readonly disabled name="latitude" id="latitude" class="form-control @error('latitude') is-invalid @enderror">
+                                        <input type="text" readonly name="latitude" id="latitude" class="form-control @error('latitude') is-invalid @enderror">
                                         @error('latitude')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -133,7 +133,7 @@
                                 <div class="col-12 col-sm-6">
                                     <div class="form-group local-forms">
                                         <label>Longitude <span class="login-danger">*</span></label>
-                                        <input type="text" readonly disabled name="longitude" id="longitude" class="form-control @error('longitude') is-invalid @enderror">
+                                        <input type="text" readonly name="longitude" id="longitude" class="form-control @error('longitude') is-invalid @enderror">
                                         @error('longitude')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
