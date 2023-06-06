@@ -21,7 +21,7 @@ class PlaceController extends Controller
     public function myPlace()
     {
         $userId = auth()->id(); // Mengambil ID pengguna yang sedang masuk
-    
+
         $places = Place::with('user')->where('user_id', $userId)->get();
         return view('place.admin_wisata.index', compact('places'));
     }
@@ -114,7 +114,7 @@ class PlaceController extends Controller
             }
 
             Toastr::success('Tempat berhasil ditambahkan :)', 'Success');
-            return redirect()->to('/list/places');
+            return redirect()->to('list/my_places');
         } catch (\Exception $e) {
             Toastr::error('Terjadi kesalahan saat menyimpan data.', 'Error');
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
@@ -128,13 +128,19 @@ class PlaceController extends Controller
 
         // Hapus image 
         if ($place) {
-            Storage::disk('local')->delete('public/places/' . basename($place->image));
+            $images = $place->images; // Anggaplah ini adalah relasi untuk mendapatkan daftar gambar
+
+            foreach ($images as $image) {
+                Storage::disk('local')->delete('public/places/' . basename($image->image));
+                $image->delete();
+            }
+
             $place->delete();
 
-            Toastr::success('Kategori berhasil dihapus', 'Berhasil');
+            Toastr::success('Berhasil dihapus');
             return redirect()->back();
         } else {
-            Toastr::error('Kategori gagal dihapus', 'Gagal');
+            Toastr::error('Gagal dihapus');
             return redirect()->back();
         }
     }
