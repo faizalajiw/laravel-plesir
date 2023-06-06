@@ -154,6 +154,7 @@ return [
         'name' => [
             'required' => 'Nama tidak boleh kosong.',
             'regex' => 'Nama hanya diisi oleh huruf.',
+            'unique' => 'Nama ini telah digunakan.',
         ],
         'title' => [
             'required' => 'Nama Tempat tidak boleh kosong.',
@@ -206,6 +207,7 @@ return [
             'max' => 'Gambar tidak boleh melebihi ukuran (max.2MB).',
         ],
         'image' => [
+            'required' => 'Gambar tidak boleh kosong.',
             'image' => 'Gambar harus berformat (.jpeg/.png/.jpg/.gif)',
             'max' => 'Gambar tidak boleh melebihi ukuran (max.2MB).',
         ],

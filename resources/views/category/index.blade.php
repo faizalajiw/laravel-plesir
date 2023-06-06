@@ -57,7 +57,7 @@
                                         @if (Session::get('role_name') === 'Super Admin')
                                         <td class="text-center">
                                             <div class="actions">
-                                                <a href="{{ route('list/categories', ['id' => $list->id]) }}" class="btn btn-sm bg-danger-light">
+                                                <a href="{{ route('view/categories/edit', ['id' => $list->id]) }}" class="btn btn-sm bg-danger-light">
                                                     <i class="feather-edit"></i>
                                                 </a>
                                                 <a class="btn btn-sm bg-danger-light categories_delete" data-bs-toggle="modal" data-bs-target="#deleteCategory">

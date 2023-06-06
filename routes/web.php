@@ -109,6 +109,8 @@ Route::middleware(['auth', 'role:Super Admin'])->group(function () {
     Route::get('list/categories', [CategoryController::class, 'index'])->name('list/categories');
     Route::get('categories/create', [CategoryController::class, 'create'])->name('categories/create');
     Route::post('categories/store', [CategoryController::class, 'store'])->name('categories/store');
+    Route::get('view/categories/edit/{id}', [CategoryController::class, 'edit'])->name('view/categories/edit');
+    Route::post('categories/update', [CategoryController::class, 'update'])->name('categories/update');
     Route::post('categories/delete', [CategoryController::class, 'delete'])->name('categories/delete');
 });
 

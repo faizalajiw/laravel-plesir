@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 
 class CategoryController extends Controller
 {
@@ -21,10 +22,10 @@ class CategoryController extends Controller
         return view('category.create');
     }
 
-    public function store(Request $request)
+    public function store(Request $request, Category $categories)
     {
         $request->validate([
-            'name' => 'required',
+            'name' => 'required|unique:categories,name,' . $categories->id,
             'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
@@ -48,32 +49,47 @@ class CategoryController extends Controller
         }
     }
 
-    // public function edit(Category $category)
-    // {
-    //     return view('category.edit', compact('category'));
-    // }
+    public function edit($id)
+    {
+        $categories = Category::where('id', $id)->first();
+        return view('category.edit', compact('categories'));
+    }
 
-    // public function update(Request $request, Category $category)
-    // {
-    //     $request->validate([
-    //         'name' => 'required',
-    //         'slug' => 'required|unique:categories,slug,' . $category->id,
-    //         'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-    //     ]);
+    public function update(Request $request, Category $categories)
+    {
+        $categories = Category::findOrFail($request->id);
 
-    //     if ($request->hasFile('image')) {
-    //         $image = $request->file('image');
-    //         $imageName = time() . '.' . $image->getClientOriginalExtension();
-    //         $image->storeAs('public/categories', $imageName);
-    //         $category->image = $imageName;
-    //     }
+        $request->validate([
+            'name' => 'required',
+            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
 
-    //     $category->name = $request->name;
-    //     $category->slug = $request->slug;
-    //     $category->save();
+        // Update name
+        $categories->name = $request->name;
+        $categories->slug = Str::slug($request->name, '-');
 
-    //     return redirect()->route('category.index')->with('success', 'Category updated successfully.');
-    // }
+        // Update image
+        if ($request->hasFile('image')) {
+            $oldImagePath = $categories->image;
+
+            // Mengunggah gambar baru
+            $image = $request->file('image');
+            $newImagePath = $image->store('public/categories');
+
+            if ($oldImagePath) {
+                // Menghapus gambar lama jika ada
+                Storage::disk('local')->delete('public/categories/' . basename($oldImagePath));
+            }
+
+            $categories->image = basename($newImagePath);
+        }
+
+        $categories->save();
+
+        Toastr::success('Kategori berhasil diubah');
+        return redirect()->to('/list/categories');
+    }
+
 
     public function delete(Request $request)
     {

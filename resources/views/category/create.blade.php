@@ -2,7 +2,7 @@
 @section('content')
 {{-- message --}}
 {!! Toastr::message() !!}
-<title>Create Kategori</title>
+<title>Tambah - Kategori</title>
 <div class="page-wrapper">
     <div class="content container-fluid">
         <div class="page-header">
