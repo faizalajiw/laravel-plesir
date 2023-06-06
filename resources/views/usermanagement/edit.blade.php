@@ -15,7 +15,7 @@
                 </div>
             </div>
         </div>
-        <div class="row">
+        <div class="row mt-5">
             <div class="col-sm-12">
                 <div class="card">
                     <div class="card-body">
@@ -104,7 +104,7 @@
                                             <a href="{{ route('list/users') }}" class="btn btn-danger">Batal</a>
                                         </div>
                                         <div class="button-submit">
-                                            <button type="submit" class="btn btn-primary">Update</button>
+                                            <button type="submit" class="btn btn-primary">Simpan</button>
                                         </div>
                                     </div>
                                 </div>
