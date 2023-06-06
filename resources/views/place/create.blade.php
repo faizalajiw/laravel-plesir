@@ -122,7 +122,7 @@
                                 <div class="col-12 col-sm-6">
                                     <div class="form-group local-forms">
                                         <label>Latitude <span class="login-danger">*</span></label>
-                                        <input type="text" class="form-control @error('latitude') is-invalid @enderror" name="latitude">
+                                        <input type="text" name="latitude" id="latitude" class="form-control @error('latitude') is-invalid @enderror">
                                         @error('latitude')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -133,7 +133,7 @@
                                 <div class="col-12 col-sm-6">
                                     <div class="form-group local-forms">
                                         <label>Longitude <span class="login-danger">*</span></label>
-                                        <input type="text" class="form-control @error('longitude') is-invalid @enderror" name="longitude">
+                                        <input type="text" name="longitude" id="longitude" class="form-control @error('longitude') is-invalid @enderror">
                                         @error('longitude')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -141,7 +141,10 @@
                                         @enderror
                                     </div>
                                 </div>
-                                <div class="col-12">
+                                <div class="col-12 px-2">
+                                    <div id="mapContainer" style="height: 400px;"></div>
+                                </div>
+                                <div class="col-12 mt-4">
                                     <div class="d-flex gap-4">
                                         <div class="button-cancel">
                                             <a href="{{ route('list/categories') }}" class="btn btn-danger">Batal</a>
@@ -161,6 +164,35 @@
 </div>
 
 @section('script')
+<script>
+    // Inisialisasi peta
+    mapboxgl.accessToken = '{{ env("LARAVEL_APP_MAPBOX") }}';
+    var map = new mapboxgl.Map({
+        container: 'mapContainer', // container ID
+        style: 'mapbox://styles/mapbox/streets-v12', // style URL
+        center: [109.12410532246922, -6.87670482108234], // starting position [lng, lat]
+        zoom: 12 // starting zoom
+    });
+
+    // Tambahkan kontrol navigasi
+    map.addControl(new mapboxgl.NavigationControl());
+
+    // Tambahkan marker untuk menandai lokasi
+    var marker = new mapboxgl.Marker({
+            draggable: true, // Membuat marker dapat digeser
+            color: "rgb(56, 32, 201, 1)"
+        })
+        .setLngLat([109.12410532246922, -6.87670482108234]) // Koordinat default
+        .addTo(map);
+
+    // Update inputan latitude dan longitude saat marker digeser
+    marker.on('dragend', function() {
+        var lngLat = marker.getLngLat();
+        document.getElementById('latitude').value = lngLat.lat;
+        document.getElementById('longitude').value = lngLat.lng;
+    });
+</script>
+
 <script src="https://cdn.tiny.cloud/1/3ituox0mhf6744v1cssbp9py7w78zb1crdziktkpadi43sfu/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
 <script>
     tinymce.init({
