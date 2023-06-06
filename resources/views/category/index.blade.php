@@ -43,9 +43,10 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($categories as $key => $list)
+                                    @foreach ($categories as $list)
                                     <tr>
-                                        <td class="id">{{ $list->id }}</td>
+                                        <td>{{ $loop->iteration }}</td>
+                                        <td class="id" hidden>{{ $list->id }}</td>
                                         <td>
                                             <h2 class="table-avatar">
                                                 <a class="avatar avatar-sm me-2">

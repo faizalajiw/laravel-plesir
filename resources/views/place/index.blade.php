@@ -72,9 +72,10 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($places as $key => $list)
+                                    @foreach ($places as $list)
                                     <tr>
-                                        <td class="id">{{ $key+1 }}</td>
+                                        <td>{{ $loop->iteration }}</td>
+                                        <td class="id">{{ $list->id }}</td>
                                         <td>{{ $list->category->name }}</td>
                                         <td>{{ $list->title }}</td>
                                         <td>{{ $list->user->name }}</td>

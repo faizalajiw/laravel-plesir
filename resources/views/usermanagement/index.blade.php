@@ -75,9 +75,10 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($users as $key => $list)
+                                    @foreach ($users as $list)
                                     <tr>
-                                        <td class="id">{{ $key+1 }}</td>
+                                        <td>{{ $loop->iteration }}</td>
+                                        <td class="id" hidden>{{ $list->id }}</td>
                                         <td>{{ $list->users_id }}</td>
                                         <td>
                                             <h2 class="table-avatar">
