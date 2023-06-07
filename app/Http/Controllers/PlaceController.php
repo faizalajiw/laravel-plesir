@@ -23,7 +23,7 @@ class PlaceController extends Controller
         $userId = auth()->id(); // Mengambil ID pengguna yang sedang masuk
 
         $places = Place::with('user')->where('user_id', $userId)->get();
-        return view('place.admin_wisata.index', compact('places'));
+        return view('place.my_place.index', compact('places'));
     }
 
     // Search
@@ -72,6 +72,9 @@ class PlaceController extends Controller
         // Validasi data yang dikirim dari form
         $request->validate([
             'title'             => 'required|unique:places,title,' . $places->id,
+            'image'             => 'required|array',
+            'image.*'           => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image.*.place_id'  => 'required|exists:places,id',
             'category_id'       => 'required',
             'description'       => 'required',
             'operational_hours' => 'required',

@@ -67,17 +67,26 @@
                                         <th>No</th>
                                         <th>Kategori</th>
                                         <th>Nama Tempat</th>
-                                        <th>Pengelola</th>
+                                        <!-- <th>Pengelola</th> -->
+                                        <th>Alamat</th>
+                                        <th>Jam Operasional</th>
+                                        <th>URL Website</th>
+                                        <th>Social Media</th>
                                         <th class="text-center">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($places as $key => $list)
+                                    @foreach ($places as $list)
                                     <tr>
-                                        <td class="id">{{ $key+1 }}</td>
+                                        <td>{{ $loop->iteration }}</td>
+                                        <td class="id" hidden>{{ $list->id }}</td>
                                         <td>{{ $list->category->name }}</td>
                                         <td>{{ $list->title }}</td>
-                                        <td>{{ $list->user->name }}</td>
+                                        <!-- <td>{{ $list->user->name }}</td> -->
+                                        <td>{{ $list->address }}</td>
+                                        <td>{{ $list->operational_hours }}</td>
+                                        <td>{{ $list->website }}</td>
+                                        <td>{{ $list->social_media }}</td>
                                         @if (Session::get('role_name') === 'Super Admin' || Session::get('role_name') === 'Admin Wisata')
                                         <td class="text-center">
                                             <div class="actions">
