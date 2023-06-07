@@ -39,7 +39,12 @@
                                 <div class="col-12">
                                     <div class="form-group local-forms">
                                         <label>Foto (banyak foto)<span class="login-danger">*</span></label>
-                                        <input type="file" class="form-control @error('image') is-invalid @enderror" name="image[]" multiple>
+                                        <input type="file" class="form-control @error('image.*') is-invalid @enderror @error('image') is-invalid @enderror" name="image[]" multiple>
+                                        @error('image.*')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
                                         @error('image')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>

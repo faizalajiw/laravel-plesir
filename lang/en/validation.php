@@ -221,7 +221,7 @@ return [
             'image' => 'Gambar harus berformat (.jpeg/.png/.jpg/.gif)',
             'max' => 'Gambar tidak boleh melebihi ukuran (max.2MB).',
         ],
-        'image[]' => [
+        'image.*' => [
             'required' => 'Gambar tidak boleh kosong.',
             'image' => 'Gambar harus berformat (.jpeg/.png/.jpg/.gif)',
             'max' => 'Gambar tidak boleh melebihi ukuran (max.2MB).',
