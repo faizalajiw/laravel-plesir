@@ -67,7 +67,9 @@
                             </div>
                         </div>
                         <a class="dropdown-item" href="{{ route('profile/user') }}">Profile</a>
+                        @if (Session::get('role_name') === 'Super Admin' || Session::get('role_name') === 'Admin Wisata')
                         <a class="dropdown-item" href="{{ route('list/my_places') }}">Kelola Tempat Saya</a>
+                        @endif
                         <a class="dropdown-item" href="{{ route('logout') }}">Logout</a>
                     </div>
                 </li>

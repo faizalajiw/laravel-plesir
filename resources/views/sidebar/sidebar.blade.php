@@ -76,6 +76,8 @@
                 <!-- KATEGORI -->
 
                 <!-- TEMPAT -->
+                <!-- SUPER ADMIN & ADMIN WISATA -->
+                @if (Session::get('role_name') === 'Super Admin' || Session::get('role_name') === 'Admin Wisata')
                 <li class="submenu {{set_active(['list/places','places/create','places/edit'])}}">
                     <a href="#"><i class="fas fa-map-marked-alt"></i>
                         <span>Tempat</span>
@@ -86,14 +88,11 @@
                         @if (Session::get('role_name') === 'Super Admin')
                         <li><a href="{{ route('list/places') }}" class="{{set_active(['list/places'])}}">Kelola Semua Tempat</a></li>
                         @endif
-
-                        <!-- SUPER ADMIN & ADMIN WISATA -->
-                        @if (Session::get('role_name') === 'Super Admin' || Session::get('role_name') === 'Admin Wisata')
                         <li><a href="{{ route('list/my_places') }}" class="{{set_active(['list/my_places'])}}">Kelola Tempat Saya</a></li>
                         <li><a href="{{ route('places/create') }}" class="{{set_active(['places/create'])}}">Tambah Tempat</a></li>
-                        @endif
                     </ul>
                 </li>
+                @endif
                 <!-- TEMPAT -->
 
                 <li class="submenu">
