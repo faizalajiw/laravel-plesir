@@ -159,6 +159,7 @@ return [
         'title' => [
             'required' => 'Nama Tempat tidak boleh kosong.',
             'regex' => 'Nama Tempat hanya diisi oleh huruf.',
+            'unique' => 'Nama ini telah digunakan.',
         ],
         'username' => [
             'required' => 'Username tidak boleh kosong.',
@@ -193,7 +194,7 @@ return [
         'role_name' => [
             'required' => 'Role tidak boleh kosong.',
         ],
-        'category' => [
+        'category_id' => [
             'required' => 'Kategori tidak boleh kosong.',
         ],
         'description' => [
@@ -202,11 +203,25 @@ return [
         'address' => [
             'required' => 'Alamat tidak boleh kosong.',
         ],
+        'operational_hours' => [
+            'required' => 'Jam operasional tidak boleh kosong.',
+        ],
+        'longitude' => [
+            'required' => 'Koordinat tidak boleh kosong. Isi dengan maps di bawah ini',
+        ],
+        'latitude' => [
+            'required' => 'Koordinat tidak boleh kosong. Isi dengan maps di bawah ini',
+        ],
         'avatar' => [
             'image' => 'Gambar harus berformat (.jpeg/.png/.jpg/.gif)',
             'max' => 'Gambar tidak boleh melebihi ukuran (max.2MB).',
         ],
         'image' => [
+            'required' => 'Gambar tidak boleh kosong.',
+            'image' => 'Gambar harus berformat (.jpeg/.png/.jpg/.gif)',
+            'max' => 'Gambar tidak boleh melebihi ukuran (max.2MB).',
+        ],
+        'image[]' => [
             'required' => 'Gambar tidak boleh kosong.',
             'image' => 'Gambar harus berformat (.jpeg/.png/.jpg/.gif)',
             'max' => 'Gambar tidak boleh melebihi ukuran (max.2MB).',

@@ -67,16 +67,19 @@ class PlaceController extends Controller
     }
 
     // Store Place
-    public function store(Request $request)
+    public function store(Request $request, Place $places)
     {
         // Validasi data yang dikirim dari form
         $request->validate([
-            'title'       => 'required',
-            'category_id' => 'required',
-            'description' => 'required',
-            'address'     => 'required',
-            'latitude'    => 'required',
-            'longitude'   => 'required',
+            'title'             => 'required|unique:places,title,' . $places->id,
+            'category_id'       => 'required',
+            'description'       => 'required',
+            'operational_hours' => 'required',
+            'address'           => 'required',
+            'website'           => 'nullable',
+            'social_media'      => 'nullable',
+            'latitude'          => 'required',
+            'longitude'         => 'required',
         ]);
 
         try {

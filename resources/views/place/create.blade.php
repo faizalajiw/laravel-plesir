@@ -38,7 +38,7 @@
                                 </div>
                                 <div class="col-12">
                                     <div class="form-group local-forms">
-                                        <label>Image <span class="login-info">(banyak file)*</span></label>
+                                        <label>Foto (banyak foto)<span class="login-danger">*</span></label>
                                         <input type="file" class="form-control @error('image') is-invalid @enderror" name="image[]" multiple>
                                         @error('image')
                                         <span class="invalid-feedback" role="alert">
@@ -50,13 +50,13 @@
                                 <div class="col-12 col-sm-6">
                                     <div class="form-group local-forms">
                                         <label>Kategori <span class="login-danger">*</span></label>
-                                        <select class="form-control select @error('category') is-invalid @enderror" name="category_id" id="category_id">
+                                        <select class="form-control select @error('category_id') is-invalid @enderror" name="category_id" id="category_id">
                                             <option selected disabled>Pilih Kategori</option>
                                             @foreach ($categories as $list)
                                             <option value="{{ $list->id }}">{{ $list->name }}</option>
                                             @endforeach
                                         </select>
-                                        @error('category')
+                                        @error('category_id')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
@@ -65,7 +65,7 @@
                                 </div>
                                 <div class="col-12 col-sm-6">
                                     <div class="form-group local-forms">
-                                        <label>Jam Operasional <span class="login-info">(optional)</span></label>
+                                        <label>Jam Operasional <span class="login-danger">*</span></label>
                                         <input type="text" class="form-control @error('operational_hours') is-invalid @enderror" name="operational_hours">
                                         @error('operational_hours')
                                         <span class="invalid-feedback" role="alert">

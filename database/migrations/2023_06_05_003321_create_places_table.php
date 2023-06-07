@@ -22,8 +22,8 @@ return new class extends Migration
             $table->text('description');
             $table->text('address');
             $table->string('operational_hours');
-            $table->string('website');
-            $table->string('social_media');
+            $table->string('website')->nullable();
+            $table->string('social_media')->nullable();
             $table->string('longitude');
             $table->string('latitude');
             $table->timestamps();
