@@ -21,17 +21,17 @@
                 <div class="row">
                     <div class="col-lg-3">
                         <div class="form-group">
-                            <input type="text" name="users_id" class="form-control" style="font-size: 15px;" placeholder="Search by ID ..." value="{{ request('users_id') }}">
+                            <input type="text" name="users_id" class="form-control" style="font-size: 15px;" placeholder="Cari berdasarkan ID ..." value="{{ request('users_id') }}">
                         </div>
                     </div>
                     <div class="col-lg-3">
                         <div class="form-group">
-                            <input type="text" name="name" class="form-control" style="font-size: 15px;" placeholder="Search by Name ..." value="{{ request('name') }}">
+                            <input type="text" name="name" class="form-control" style="font-size: 15px;" placeholder="Cari berdasarkan Nama ..." value="{{ request('name') }}">
                         </div>
                     </div>
                     <div class="col-lg-3">
                         <div class="form-group">
-                            <input type="text" name="username" class="form-control" style="font-size: 15px;" placeholder="Search by Username ..." value="{{ request('username') }}">
+                            <input type="text" name="username" class="form-control" style="font-size: 15px;" placeholder="Cari berdasarkan Username ..." value="{{ request('username') }}">
                         </div>
                     </div>
                     <div class="col-lg-2">
