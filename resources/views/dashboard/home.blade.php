@@ -91,7 +91,7 @@
 
         <div class="row">
             <!-- Chart 1 -->
-            <div class="col-md-12 col-lg-12">
+            <!-- <div class="col-md-12 col-lg-12">
                 <div class="card card-chart">
                     <div class="card-header">
                         <div class="row align-items-center">
@@ -111,8 +111,7 @@
                         <div id="apexcharts-area"></div>
                     </div>
                 </div>
-
-            </div>
+            </div> -->
             <!-- Chart 1 -->
 
             <!-- Chart 2 -->
