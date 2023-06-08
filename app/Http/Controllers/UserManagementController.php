@@ -28,13 +28,13 @@ class UserManagementController extends Controller
         $users = User::where('role_name', 'Pengguna')->get();
         return view('usermanagement.pengguna.index', compact('users'));
     }
-    
+
     public function showAdmin()
     {
         $users = User::where('role_name', 'Admin Wisata')->get();
         return view('usermanagement.admin_wisata.index', compact('users'));
     }
-    
+
     public function showSuper()
     {
         $users = User::where('role_name', 'Super Admin')->get();
@@ -154,6 +154,17 @@ class UserManagementController extends Controller
         $userToUpdate->email = $request->email;
         $userToUpdate->role_name = $request->role_name;
 
+        // Mengubah users_id sesuai dengan pola yang diinginkan berdasarkan role_name yang diperbarui
+        if ($request->role_name === 'Super Admin') {
+            $userToUpdate->users_id = 'SUPER' . Str::upper(Str::random(5)); // contoh pola untuk super admin
+        } elseif ($request->role_name === 'Admin Wisata') {
+            $userToUpdate->users_id = 'ADMIN' . Str::upper(Str::random(5)); // contoh pola untuk admin wisata
+        } elseif ($request->role_name === 'Pengguna') {
+            $userToUpdate->users_id = 'USER' . Str::upper(Str::random(6)); // contoh pola untuk pengguna
+        } else {
+            $userToUpdate->users_id = ''; // jika tidak ada pola khusus, biarkan kosong
+        }
+
         // Menghapus avatar lama dan menyimpan avatar baru jika ada file avatar yang diunggah
         if ($request->hasFile('avatar')) {
             if ($userToUpdate->avatar) {
@@ -200,7 +211,7 @@ class UserManagementController extends Controller
 
             Toastr::success('Berhasil dihapus');
             return redirect()->back();
-        } 
+        }
         if (!$user->avatar) {
             $user->delete();
             Toastr::success('Berhasil dihapus');
