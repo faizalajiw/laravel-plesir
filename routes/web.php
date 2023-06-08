@@ -121,6 +121,8 @@ Route::controller(PlaceController::class)->group(function () {
     Route::get('places/search', 'search')->middleware(['auth', 'role:Super Admin,Admin Wisata'])->name('places/search');
     Route::get('places/create', 'create')->middleware(['auth', 'role:Super Admin,Admin Wisata'])->name('places/create');
     Route::post('places/store', 'store')->middleware(['auth', 'role:Super Admin,Admin Wisata'])->name('places/store');
+    Route::get('view/places/edit/{id}', 'edit')->middleware(['auth', 'role:Super Admin,Admin Wisata'])->name('view/places/edit');
+    Route::post('places/update', 'update')->middleware(['auth', 'role:Super Admin,Admin Wisata'])->name('places/update');
     Route::post('places/delete', 'delete')->middleware(['auth', 'role:Super Admin,Admin Wisata'])->name('places/delete');
 });
 

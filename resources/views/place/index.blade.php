@@ -83,7 +83,7 @@
                                         @if (Session::get('role_name') === 'Super Admin' || Session::get('role_name') === 'Admin Wisata')
                                         <td class="text-center">
                                             <div class="actions gap-3">
-                                                <a href="#" class="btn btn-sm bg-danger-light">
+                                                <a href="{{ route('view/places/edit', ['id' => $list->id]) }}" class="btn btn-sm bg-danger-light">
                                                     <i class="feather-edit"></i>
                                                 </a>
                                                 <a class="btn btn-sm bg-danger-light place_delete" data-bs-toggle="modal" data-bs-target="#deletePlace">

@@ -1451,6 +1451,7 @@ button.bg-danger:hover {
     margin-bottom: 0;
     font-size: 18px;
 }
+
 .modal-footer.text-left {
     text-align: left;
 }
@@ -1797,6 +1798,23 @@ div.dataTables_wrapper div.dataTables_length select {
 }
 
 .avatar-profile img {
+    width: 100%;
+    height: 100%;
+    -o-object-fit: cover;
+    object-fit: cover; /* Memastikan foto diisi seluruh area avatar */
+}
+.image-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px; /* Ubah ukuran sesuai kebutuhan Anda */
+    width: 100px; /* Ubah ukuran sesuai kebutuhan Anda */
+    border-radius: 20%; /* Membuat avatar menjadi lingkaran */
+    overflow: hidden; /* Memastikan foto tidak keluar dari lingkaran */
+    margin: auto; /* Tengahkan avatar di dalam container */
+}
+
+.image-content img {
     width: 100%;
     height: 100%;
     -o-object-fit: cover;

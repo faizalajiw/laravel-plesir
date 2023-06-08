@@ -25,27 +25,11 @@
                                 <div class="col-12">
                                     <h5 class="form-title"><span>Tambah Tempat</span></h5>
                                 </div>
-                                <div class="col-12">
+                                <div class="col-12 col-sm-6">
                                     <div class="form-group local-forms">
                                         <label>Nama Tempat <span class="login-danger">*</span></label>
                                         <input type="text" class="form-control @error('title') is-invalid @enderror" name="title">
                                         @error('title')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="form-group local-forms">
-                                        <label>Foto (banyak foto)<span class="login-danger">*</span></label>
-                                        <input type="file" class="form-control @error('image.*') is-invalid @enderror @error('image') is-invalid @enderror" name="image[]" multiple>
-                                        @error('image.*')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                        @enderror
-                                        @error('image')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
@@ -70,9 +54,58 @@
                                 </div>
                                 <div class="col-12 col-sm-6">
                                     <div class="form-group local-forms">
+                                        <label>Foto (banyak foto)<span class="login-danger">*</span></label>
+                                        <input type="file" class="form-control @error('image.*') is-invalid @enderror @error('image') is-invalid @enderror" name="image[]" multiple>
+                                        @error('image.*')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                        @error('image')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group local-forms">
                                         <label>Jam Operasional <span class="login-danger">*</span></label>
                                         <input type="text" class="form-control @error('operational_hours') is-invalid @enderror" name="operational_hours">
                                         @error('operational_hours')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-4">
+                                    <div class="form-group local-forms">
+                                        <label>Alamat <span class="login-danger">*</span></label>
+                                        <input type="text" class="form-control @error('address') is-invalid @enderror" name="address">
+                                        @error('address')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-4">
+                                    <div class="form-group local-forms">
+                                        <label>URL Website <span class="login-info">(optional)</span></label>
+                                        <input type="text" class="form-control @error('website') is-invalid @enderror" name="website">
+                                        @error('website')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-4">
+                                    <div class="form-group local-forms">
+                                        <label>Social Media <span class="login-info">(optional)</span></label>
+                                        <input type="text" class="form-control @error('social_media') is-invalid @enderror" name="social_media">
+                                        @error('social_media')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
@@ -85,39 +118,6 @@
                                         <textarea id="basic-example" name="description" class="@error('description') is-invalid @enderror"></textarea>
                                         <!-- <input type="text" class="form-control @error('description') is-invalid @enderror" name="description"> -->
                                         @error('description')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="form-group local-forms">
-                                        <label>Alamat <span class="login-danger">*</span></label>
-                                        <input type="text" class="form-control @error('address') is-invalid @enderror" name="address">
-                                        @error('address')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="col-12 col-sm-6">
-                                    <div class="form-group local-forms">
-                                        <label>URL Website <span class="login-info">(optional)</span></label>
-                                        <input type="text" class="form-control @error('website') is-invalid @enderror" name="website">
-                                        @error('website')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="col-12 col-sm-6">
-                                    <div class="form-group local-forms">
-                                        <label>Social Media <span class="login-info">(optional)</span></label>
-                                        <input type="text" class="form-control @error('social_media') is-invalid @enderror" name="social_media">
-                                        @error('social_media')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>

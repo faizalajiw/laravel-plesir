@@ -57,7 +57,6 @@ class PlaceController extends Controller
         return view('place.index', compact('places'));
     }
 
-
     // Form Create
     public function create()
     {
@@ -126,6 +125,15 @@ class PlaceController extends Controller
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
         }
     }
+
+    // Form Edit 
+    public function edit($id)
+    {
+        $places = Place::with('category', 'user', 'images')->find($id);
+        $categories = Category::all();
+        return view('place.edit', compact('places', 'categories'));
+    }
+    
 
     public function delete(Request $request)
     {
