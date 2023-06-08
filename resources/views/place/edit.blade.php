@@ -141,7 +141,32 @@
                                         @enderror
                                     </div>
                                 </div>
-                                <div class="col-12">
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group local-forms">
+                                        <label>Latitude <span class="login-danger">*</span></label>
+                                        <input type="text" readonly name="latitude" value="{{ $places->latitude }}" id="latitude" class="form-control @error('latitude') is-invalid @enderror">
+                                        @error('latitude')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group local-forms">
+                                        <label>Longitude <span class="login-danger">*</span></label>
+                                        <input type="text" readonly name="longitude" value="{{ $places->longitude }}" id="longitude" class="form-control @error('longitude') is-invalid @enderror">
+                                        @error('longitude')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="col-12 px-2">
+                                    <div id="mapContainer" style="height: 400px;"></div>
+                                </div>
+                                <div class="col-12 mt-4">
                                     <div class="d-flex gap-4">
                                         <div class="button-cancel">
                                             <a href="{{ route('list/places') }}" class="btn btn-danger">Batal</a>
@@ -160,7 +185,67 @@
     </div>
 </div>
 
+@section('script')
+<!-- MAPBOX -->
+<script>
+    // Inisialisasi peta
+    mapboxgl.accessToken = '{{ env("LARAVEL_APP_MAPBOX") }}';
+    var map = new mapboxgl.Map({
+        container: 'mapContainer', // container ID
+        style: 'mapbox://styles/mapbox/streets-v12', // style URL
+        center: [parseFloat(document.getElementById('longitude').value), parseFloat(document.getElementById('latitude').value)], // starting position [lng, lat]
+        zoom: 17 // starting zoom
+    });
 
+    // Init marker
+    var marker = new mapboxgl.Marker({
+        draggable: true,
+        color: 'rgb(56, 32, 201, 1)' // Warna marker
+    });
+
+    // Tambahkan marker awal berdasarkan nilai inputan
+    var initialLngLat = [parseFloat(document.getElementById('longitude').value), parseFloat(document.getElementById('latitude').value)];
+    marker.setLngLat(initialLngLat).addTo(map);
+
+    // Event listener saat marker digeser
+    marker.on('dragend', function() {
+        var lngLat = marker.getLngLat();
+        document.getElementById('latitude').value = lngLat.lat;
+        document.getElementById('longitude').value = lngLat.lng;
+    });
+
+    // Init geocoder
+    var geocoder = new MapboxGeocoder({
+        accessToken: mapboxgl.accessToken,
+        marker: {
+            color: 'rgb(56, 32, 201, 1)',
+        },
+        mapboxgl: mapboxgl
+    });
+
+    // Menambahkan geocoder ke peta
+    map.addControl(geocoder);
+
+    // Event listener saat geocoder mendapatkan hasil
+    geocoder.on('result', function(e) {
+        var lngLat = e.result.geometry.coordinates;
+
+        // Hapus marker sebelumnya (jika ada)
+        if (marker) {
+            marker.remove();
+        }
+
+        // Buat marker baru
+        marker.setLngLat(lngLat).addTo(map);
+
+        // Update inputan latitude dan longitude
+        document.getElementById('latitude').value = lngLat[1];
+        document.getElementById('longitude').value = lngLat[0];
+    });
+</script>
+<!-- MAPBOX -->
+
+<!-- TINY JS -->
 <script src="https://cdn.tiny.cloud/1/3ituox0mhf6744v1cssbp9py7w78zb1crdziktkpadi43sfu/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
 <script>
     tinymce.init({
@@ -178,4 +263,7 @@
         content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:16px }'
     });
 </script>
+<!-- TINY JS -->
+@endsection
+
 @endsection
