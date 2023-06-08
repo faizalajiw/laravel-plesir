@@ -71,11 +71,12 @@
                                         <th>Username</th>
                                         <th>Email</th>
                                         <th>Role Name</th>
+                                        <th style="color: transparent; background-color: #F8F9FA;"></th>
                                         <th class="text-center">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($users as $key => $list)
+                                    @foreach ($users as $list)
                                     <tr>
                                         <td class="id">{{ $key+1 }}</td>
                                         <td>{{ $list->users_id }}</td>
@@ -90,9 +91,10 @@
                                         <td>{{ $list->username }}</td>
                                         <td>{{ $list->email }}</td>
                                         <td>{{ $list->role_name }}</td>
+                                        <td class="id" style="color: transparent; background-color: transparent;">{{ $list->id }}</td>
                                         @if (Session::get('role_name') === 'Super Admin')
                                         <td class="text-center">
-                                            <div class="actions">
+                                            <div class="actions gap-3">
                                                 <a href="{{ route('view/users/edit', ['id' => $list->id]) }}" class="btn btn-sm bg-danger-light">
                                                     <i class="feather-edit"></i>
                                                 </a>
@@ -125,7 +127,6 @@
                     @csrf
                     <div class="delete-wrap text-center">
                         <input type="hidden" name="id" class="e_id" value="">
-                        <input type="hidden" name="avatar" class="e_avatar" value="">
                         <h2>Hapus Data?</h2>
                         <div class="submit-section">
                             <button type="submit" class="btn btn-success me-2">Ya</button>
@@ -144,7 +145,6 @@
     $(document).on('click', '.user_delete', function() {
         var _this = $(this).parents('tr');
         $('.e_id').val(_this.find('.id').text());
-        $('.e_avatar').val(_this.find('.avatar').text());
     });
 </script>
 @endsection

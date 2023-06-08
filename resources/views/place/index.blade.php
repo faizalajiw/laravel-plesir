@@ -68,6 +68,7 @@
                                         <th>Kategori</th>
                                         <th>Nama Tempat</th>
                                         <th>Pengelola</th>
+                                        <th style="color: transparent; background-color: #F8F9FA;"></th>
                                         <th class="text-center">Action</th>
                                     </tr>
                                 </thead>
@@ -75,13 +76,13 @@
                                     @foreach ($places as $list)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td class="id" hidden>{{ $list->id }}</td>
                                         <td>{{ $list->category->name }}</td>
                                         <td>{{ $list->title }}</td>
                                         <td>{{ $list->user->name }}</td>
+                                        <td class="id" style="color: transparent; background-color: transparent;">{{ $list->id }}</td>
                                         @if (Session::get('role_name') === 'Super Admin' || Session::get('role_name') === 'Admin Wisata')
                                         <td class="text-center">
-                                            <div class="actions">
+                                            <div class="actions gap-3">
                                                 <a href="#" class="btn btn-sm bg-danger-light">
                                                     <i class="feather-edit"></i>
                                                 </a>

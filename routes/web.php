@@ -129,8 +129,3 @@ Route::controller(PlaceController::class)->group(function () {
 Route::controller(Setting::class)->group(function () {
     Route::get('setting/page', 'index')->middleware('auth')->name('setting/page');
 });
-
-// ----------------------- department -----------------------------//
-Route::controller(DepartmentController::class)->group(function () {
-    Route::get('department/add/page', 'indexDepartment')->middleware('auth')->name('department/add/page'); // page add department
-});

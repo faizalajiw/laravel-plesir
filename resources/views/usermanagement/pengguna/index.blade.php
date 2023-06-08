@@ -65,19 +65,20 @@
                                 <thead class="table-thread">
                                     <tr>
                                         <th>No</th>
-                                        <th>ID</th>
+                                        <th>Users ID</th>
                                         <th>Avatar</th>
                                         <th>Nama</th>
                                         <th>Username</th>
                                         <th>Email</th>
                                         <th>Role Name</th>
+                                        <th style="color: transparent; background-color: #F8F9FA;"></th>
                                         <th class="text-center">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($users as $key => $list)
+                                    @foreach ($users as $list)
                                     <tr>
-                                        <td class="id">{{ $key+1 }}</td>
+                                        <td>{{ $loop->iteration }}</td>
                                         <td>{{ $list->users_id }}</td>
                                         <td>
                                             <h2 class="table-avatar">
@@ -90,9 +91,10 @@
                                         <td>{{ $list->username }}</td>
                                         <td>{{ $list->email }}</td>
                                         <td>{{ $list->role_name }}</td>
+                                        <td class="id" style="color: transparent; background-color: transparent;">{{ $list->id }}</td>
                                         @if (Session::get('role_name') === 'Super Admin')
                                         <td class="text-center">
-                                            <div class="actions">
+                                            <div class="actions gap-3">
                                                 <a href="{{ route('view/users/edit', ['id' => $list->id]) }}" class="btn btn-sm bg-danger-light">
                                                     <i class="feather-edit"></i>
                                                 </a>

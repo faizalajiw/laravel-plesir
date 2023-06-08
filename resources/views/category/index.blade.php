@@ -39,6 +39,7 @@
                                         <th>No</th>
                                         <th>Foto</th>
                                         <th>Nama</th>
+                                        <th style="color: transparent; background-color: #F8F9FA;"></th>
                                         <th class="text-center">Action</th>
                                     </tr>
                                 </thead>
@@ -46,7 +47,6 @@
                                     @foreach ($categories as $list)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td class="id" hidden>{{ $list->id }}</td>
                                         <td>
                                             <h2 class="table-avatar">
                                                 <a class="avatar avatar-sm me-2">
@@ -55,9 +55,10 @@
                                             </h2>
                                         </td>
                                         <td>{{ $list->name }}</td>
+                                        <td class="id" style="color: transparent; background-color: transparent;">{{ $list->id }}</td>
                                         @if (Session::get('role_name') === 'Super Admin')
                                         <td class="text-center">
-                                            <div class="actions">
+                                            <div class="actions gap-3">
                                                 <a href="{{ route('view/categories/edit', ['id' => $list->id]) }}" class="btn btn-sm bg-danger-light">
                                                     <i class="feather-edit"></i>
                                                 </a>

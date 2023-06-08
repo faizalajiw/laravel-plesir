@@ -200,6 +200,11 @@ class UserManagementController extends Controller
 
             Toastr::success('Berhasil dihapus');
             return redirect()->back();
+        } 
+        if (!$user->avatar) {
+            $user->delete();
+            Toastr::success('Berhasil dihapus');
+            return redirect()->back();
         } else {
             Toastr::error('Gagal dihapus');
             return redirect()->back();
