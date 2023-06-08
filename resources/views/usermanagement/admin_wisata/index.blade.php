@@ -65,7 +65,7 @@
                                 <thead class="table-thread">
                                     <tr>
                                         <th>No</th>
-                                        <th>ID</th>
+                                        <th>Users ID</th>
                                         <th>Avatar</th>
                                         <th>Nama</th>
                                         <th>Username</th>
@@ -78,7 +78,7 @@
                                 <tbody>
                                     @foreach ($users as $list)
                                     <tr>
-                                        <td class="id">{{ $key+1 }}</td>
+                                        <td>{{ $loop->iteration }}</td>
                                         <td>{{ $list->users_id }}</td>
                                         <td>
                                             <h2 class="table-avatar">
