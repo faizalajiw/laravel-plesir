@@ -28,8 +28,8 @@
                                 <input type="hidden" class="form-control" name="id" value="{{ $places->id }}">
                                 <div class="col-12 col-sm-6">
                                     <div class="form-group local-forms">
-                                        <label>Nama <span class="login-danger">*</span></label>
-                                        <input type="text" class="form-control @error('title') is-invalid @enderror" name="title" value="{{ $places->title }}">
+                                        <label>Nama Tempat <span class="login-danger">*</span></label>
+                                        <input type="text" name="title" value="{{ $places->title }}" class="form-control @error('title') is-invalid @enderror">
                                         @error('title')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -40,7 +40,7 @@
                                 <div class="col-12 col-sm-6">
                                     <div class="form-group local-forms">
                                         <label>Kategori <span class="login-danger">*</span></label>
-                                        <select class="form-control select @error('category_id') is-invalid @enderror" name="category_id" id="category_id">
+                                        <select name="category_id" id="category_id" class="form-control select @error('category_id') is-invalid @enderror">
                                             <option disabled>Pilih Kategori</option>
                                             @foreach ($categories as $list)
                                             <option value="{{ $list->id }}" {{ $places->category_id == $list->id ? 'selected' : '' }}>
@@ -58,7 +58,7 @@
                                 <div class="col-12 col-sm-6">
                                     <div class="form-group local-forms">
                                         <label>Foto (banyak foto)<span class="login-danger">*</span></label>
-                                        <input type="file" class="form-control @error('image.*') is-invalid @enderror @error('image') is-invalid @enderror" name="image[]" multiple>
+                                        <input type="file" name="image[]" multiple class="form-control @error('image.*') is-invalid @enderror @error('image') is-invalid @enderror">
                                         @error('image.*')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -89,7 +89,7 @@
                                 <div class="col-12 col-sm-6">
                                     <div class="form-group local-forms">
                                         <label>Jam Operasional <span class="login-danger">*</span></label>
-                                        <input type="text" class="form-control @error('operational_hours') is-invalid @enderror" name="operational_hours" value="{{ $places->operational_hours }}">
+                                        <input type="text" name="operational_hours" value="{{ $places->operational_hours }}" class="form-control @error('operational_hours') is-invalid @enderror">
                                         @error('operational_hours')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -112,7 +112,7 @@
                                 <div class="col-12 col-sm-4">
                                     <div class="form-group local-forms">
                                         <label>Alamat <span class="login-danger">*</span></label>
-                                        <input type="text" class="form-control @error('address') is-invalid @enderror" name="address" value="{{ $places->address }}">
+                                        <input type="text" name="address" value="{{ $places->address }}" class="form-control @error('address') is-invalid @enderror">
                                         @error('address')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -123,7 +123,7 @@
                                 <div class="col-12 col-sm-4">
                                     <div class="form-group local-forms">
                                         <label>URL Website <span class="login-info">(optional)</span></label>
-                                        <input type="text" class="form-control @error('website') is-invalid @enderror" name="website" value="{{ $places->website }}">
+                                        <input type="text" name="website" value="{{ $places->website }}" class="form-control @error('website') is-invalid @enderror">
                                         @error('website')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -134,7 +134,7 @@
                                 <div class="col-12 col-sm-4">
                                     <div class="form-group local-forms">
                                         <label>Social Media <span class="login-info">(optional)</span></label>
-                                        <input type="text" class="form-control @error('social_media') is-invalid @enderror" name="social_media" value="{{ $places->social_media }}">
+                                        <input type="text" name="social_media" value="{{ $places->social_media }}" class="form-control @error('social_media') is-invalid @enderror">
                                         @error('social_media')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>

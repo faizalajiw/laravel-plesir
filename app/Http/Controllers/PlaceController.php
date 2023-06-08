@@ -78,8 +78,6 @@ class PlaceController extends Controller
             'description'       => 'required',
             'operational_hours' => 'required',
             'address'           => 'required',
-            'website'           => 'nullable',
-            'social_media'      => 'nullable',
             'latitude'          => 'required',
             'longitude'         => 'required',
         ]);
@@ -140,13 +138,16 @@ class PlaceController extends Controller
         $places = Place::findOrFail($request->id);
 
         $request->validate([
-            'title'              => 'required|unique:places,title,' . $places->id,
-            'category_id'        => 'required',
-            'description'        => 'required',
-            'operational_hours'  => 'required',
-            'address'            => 'required',
-            'latitude'           => 'required',
-            'longitude'          => 'required',
+            'title'             => 'required|unique:places,title,' . $places->id,
+            'image'             => 'required|array',
+            'image.*'           => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image.*.place_id'  => 'required|exists:places,id',
+            'category_id'       => 'required',
+            'description'       => 'required',
+            'operational_hours' => 'required',
+            'address'           => 'required',
+            'latitude'          => 'required',
+            'longitude'         => 'required',
         ]);
 
         // Update place data

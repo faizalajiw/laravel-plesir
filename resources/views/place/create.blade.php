@@ -28,7 +28,7 @@
                                 <div class="col-12 col-sm-6">
                                     <div class="form-group local-forms">
                                         <label>Nama Tempat <span class="login-danger">*</span></label>
-                                        <input type="text" class="form-control @error('title') is-invalid @enderror" name="title">
+                                        <input type="text" name="title" class="form-control @error('title') is-invalid @enderror">
                                         @error('title')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -39,7 +39,7 @@
                                 <div class="col-12 col-sm-6">
                                     <div class="form-group local-forms">
                                         <label>Kategori <span class="login-danger">*</span></label>
-                                        <select class="form-control select @error('category_id') is-invalid @enderror" name="category_id" id="category_id">
+                                        <select name="category_id" id="category_id" class="form-control select @error('category_id') is-invalid @enderror">
                                             <option selected disabled>Pilih Kategori</option>
                                             @foreach ($categories as $list)
                                             <option value="{{ $list->id }}">{{ $list->name }}</option>
@@ -55,7 +55,7 @@
                                 <div class="col-12 col-sm-6">
                                     <div class="form-group local-forms">
                                         <label>Foto (banyak foto)<span class="login-danger">*</span></label>
-                                        <input type="file" class="form-control @error('image.*') is-invalid @enderror @error('image') is-invalid @enderror" name="image[]" multiple>
+                                        <input type="file" name="image[]" multiple class="form-control @error('image.*') is-invalid @enderror @error('image') is-invalid @enderror">
                                         @error('image.*')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -71,7 +71,7 @@
                                 <div class="col-12 col-sm-6">
                                     <div class="form-group local-forms">
                                         <label>Jam Operasional <span class="login-danger">*</span></label>
-                                        <input type="text" class="form-control @error('operational_hours') is-invalid @enderror" name="operational_hours">
+                                        <input type="text" name="operational_hours" class="form-control @error('operational_hours') is-invalid @enderror">
                                         @error('operational_hours')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -82,7 +82,7 @@
                                 <div class="col-12 col-sm-4">
                                     <div class="form-group local-forms">
                                         <label>Alamat <span class="login-danger">*</span></label>
-                                        <input type="text" class="form-control @error('address') is-invalid @enderror" name="address">
+                                        <input type="text" name="address" class="form-control @error('address') is-invalid @enderror">
                                         @error('address')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -93,7 +93,7 @@
                                 <div class="col-12 col-sm-4">
                                     <div class="form-group local-forms">
                                         <label>URL Website <span class="login-info">(optional)</span></label>
-                                        <input type="text" class="form-control @error('website') is-invalid @enderror" name="website">
+                                        <input type="text" name="website" class="form-control @error('website') is-invalid @enderror">
                                         @error('website')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -104,7 +104,7 @@
                                 <div class="col-12 col-sm-4">
                                     <div class="form-group local-forms">
                                         <label>Social Media <span class="login-info">(optional)</span></label>
-                                        <input type="text" class="form-control @error('social_media') is-invalid @enderror" name="social_media">
+                                        <input type="text" name="social_media" class="form-control @error('social_media') is-invalid @enderror">
                                         @error('social_media')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -169,6 +169,7 @@
 </div>
 
 @section('script')
+<!-- MAPBOX -->
 <script>
     // Inisialisasi peta
     mapboxgl.accessToken = '{{ env("LARAVEL_APP_MAPBOX") }}';
@@ -228,7 +229,9 @@
         document.getElementById('longitude').value = lngLat.lng;
     });
 </script>
+<!-- MAPBOX -->
 
+<!-- TINY JS -->
 <script src="https://cdn.tiny.cloud/1/3ituox0mhf6744v1cssbp9py7w78zb1crdziktkpadi43sfu/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
 <script>
     tinymce.init({
@@ -246,6 +249,7 @@
         content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:16px }'
     });
 </script>
+<!-- TINY JS -->
 @endsection
 
 @endsection
