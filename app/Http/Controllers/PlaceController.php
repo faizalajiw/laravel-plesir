@@ -133,7 +133,63 @@ class PlaceController extends Controller
         $categories = Category::all();
         return view('place.edit', compact('places', 'categories'));
     }
-    
+
+    // Update Place
+    public function update(Request $request, Place $places)
+    {
+        $places = Place::findOrFail($request->id);
+
+        $request->validate([
+            'title'              => 'required|unique:places,title,' . $places->id,
+            'category_id'        => 'required',
+            'description'        => 'required',
+            'operational_hours'  => 'required',
+            'address'            => 'required',
+            'latitude'           => 'required',
+            'longitude'          => 'required',
+        ]);
+
+        // Update place data
+        $places->title = $request->title;
+        $places->slug = Str::slug($request->title, '-');
+        $places->category_id = $request->category_id;
+        $places->description = $request->description;
+        $places->operational_hours = $request->operational_hours;
+        $places->address = $request->address;
+        $places->website = $request->website;
+        $places->social_media = $request->social_media;
+        $places->latitude = $request->latitude;
+        $places->longitude = $request->longitude;
+        $places->save();
+
+        //upload image
+        if ($request->hasFile('image')) {
+            // Hapus gambar lama dari penyimpanan
+            $images = $places->images;
+            foreach ($images as $image) {
+                Storage::disk('local')->delete('public/places/' . basename($image->image));
+                $image->delete();
+            }
+
+            // Mendapatkan file gambar yang diunggah
+            $images = $request->file('image');
+
+            //loop file image
+            foreach ($images as $image) {
+                //disimpan ke storage folder di server
+                $image->storeAs('public/places', $image->hashName());
+
+                //insert ke database
+                $places->images()->create([
+                    'image'     => $image->hashName(),
+                    'place_id'  => $places->id
+                ]);
+            }
+        }
+
+        Toastr::success('Tempat berhasil diubah');
+        return redirect()->to('list/my_places');
+    }
 
     public function delete(Request $request)
     {

@@ -97,6 +97,18 @@
                                         @enderror
                                     </div>
                                 </div>
+                      
+                                <div class="col-12">
+                                    <div class="form-group local-forms">
+                                        <label>Deskripsi <span class="login-danger">*</span></label>
+                                        <textarea id="basic-example" name="description" class="@error('description') is-invalid @enderror">{{ $places->description }}</textarea>
+                                        @error('description')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                    </div>
+                                </div>
                                 <div class="col-12 col-sm-4">
                                     <div class="form-group local-forms">
                                         <label>Alamat <span class="login-danger">*</span></label>
@@ -124,17 +136,6 @@
                                         <label>Social Media <span class="login-info">(optional)</span></label>
                                         <input type="text" class="form-control @error('social_media') is-invalid @enderror" name="social_media" value="{{ $places->social_media }}">
                                         @error('social_media')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="form-group local-forms">
-                                        <label>Deskripsi <span class="login-danger">*</span></label>
-                                        <textarea id="basic-example" name="description" class="@error('description') is-invalid @enderror">{{ $places->description }}</textarea>
-                                        @error('description')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
