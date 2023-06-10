@@ -11,20 +11,9 @@
                         <span>Settings</span>
                     </a>
                 </li> -->
-                <!-- <li class="submenu {{set_active(['home','teacher/dashboard','student/dashboard'])}}">
-                    <a href="#"><i class="fas feather-grid"></i>
-                        <span>Dashboard</span>
-                        <span class="menu-arrow"></span>
-                    </a>
-                    <ul>
-                        <li><a href="{{ route('home') }}" class="{{set_active(['home'])}}">Super Admin</a></li>
-                        <li><a href="admin-wisata.html">Admin Wisata</a></li>
-                        <li><a href="user.html">Pengguna</a></li>
-                    </ul>
-                </li> -->
 
                 <!-- DASHBOARD -->
-                <li class="{{set_active(['home','teacher/dashboard','student/dashboard'])}}">
+                <li class="{{set_active(['home'])}}">
                     <a href="{{ route('home') }}" class="{{set_active(['home'])}}"><i class="fas feather-grid"></i>
                         <span>Dashboard</span>
                     </a>

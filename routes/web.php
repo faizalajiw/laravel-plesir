@@ -9,9 +9,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserManagementController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\TypeFormController;
 use App\Http\Controllers\Setting;
-use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\PlaceController;
 use Illuminate\Support\Facades\Request;
 
@@ -74,8 +72,6 @@ Route::controller(RegisterController::class)->group(function () {
 Route::controller(HomeController::class)->group(function () {
     Route::get('/home', 'index')->middleware('auth')->name('home');
     Route::get('profile/user', 'userProfile')->middleware('auth')->name('profile/user');
-    Route::get('teacher/dashboard', 'teacherDashboardIndex')->middleware('auth')->name('teacher/dashboard');
-    Route::get('student/dashboard', 'studentDashboardIndex')->middleware('auth')->name('student/dashboard');
 });
 
 // ----------------------------- profile controller -------------------------//

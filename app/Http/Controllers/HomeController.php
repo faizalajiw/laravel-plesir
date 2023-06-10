@@ -46,16 +46,4 @@ class HomeController extends Controller
     {
         return view('profile.index');
     }
-
-    /** teacher dashboard */
-    public function teacherDashboardIndex()
-    {
-        return view('dashboard.teacher_dashboard');
-    }
-
-    /** student dashboard */
-    public function studentDashboardIndex()
-    {
-        return view('dashboard.student_dashboard');
-    }
 }

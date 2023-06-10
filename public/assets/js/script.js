@@ -38,20 +38,6 @@
     }); function animateElements() { $('.circle-bar1').each(function () { var elementPos = $(this).offset().top; var topOfWindow = $(window).scrollTop(); var percent = $(this).find('.circle-graph1').attr('data-percent'); var animate = $(this).data('animate'); if (elementPos < topOfWindow + $(window).height() - 30 && !animate) { $(this).data('animate', true); $(this).find('.circle-graph1').circleProgress({ value: percent / 100, size: 400, thickness: 30, fill: { color: '#6e6bfa' } }); } }); $('.circle-bar2').each(function () { var elementPos = $(this).offset().top; var topOfWindow = $(window).scrollTop(); var percent = $(this).find('.circle-graph2').attr('data-percent'); var animate = $(this).data('animate'); if (elementPos < topOfWindow + $(window).height() - 30 && !animate) { $(this).data('animate', true); $(this).find('.circle-graph2').circleProgress({ value: percent / 100, size: 400, thickness: 30, fill: { color: '#6e6bfa' } }); } }); $('.circle-bar3').each(function () { var elementPos = $(this).offset().top; var topOfWindow = $(window).scrollTop(); var percent = $(this).find('.circle-graph3').attr('data-percent'); var animate = $(this).data('animate'); if (elementPos < topOfWindow + $(window).height() - 30 && !animate) { $(this).data('animate', true); $(this).find('.circle-graph3').circleProgress({ value: percent / 100, size: 400, thickness: 30, fill: { color: '#6e6bfa' } }); } }); }
     if ($('.circle-bar').length > 0) { animateElements(); }
     $(window).scroll(animateElements); $(window).on('load', function () { if ($('#loader').length > 0) { $('#loader').delay(350).fadeOut('slow'); $('body').delay(350).css({ 'overflow': 'visible' }); } })
-    $('.app-listing .selectBox').on("click", function () { $(this).parent().find('#checkBoxes').fadeToggle(); $(this).parent().parent().siblings().find('#checkBoxes').fadeOut(); }); $('.invoices-main-form .selectBox').on("click", function () { $(this).parent().find('#checkBoxes-one').fadeToggle(); $(this).parent().parent().siblings().find('#checkBoxes-one').fadeOut(); }); if ($('.SortBy').length > 0) { var show = true; var checkbox1 = document.getElementById("checkBox"); $('.selectBoxes').on("click", function () { if (show) { checkbox1.style.display = "block"; show = false; } else { checkbox1.style.display = "none"; show = true; } }); }
-    $(function () { $("input[name='invoice']").click(function () { if ($("#chkYes").is(":checked")) { $("#show-invoices").show(); } else { $("#show-invoices").hide(); } }); }); $(".links-info-one").on('click', '.service-trash', function () { $(this).closest('.links-cont').remove(); return false; }); $(document).on("click", ".add-links", function () {
-        var experiencecontent = '<div class="links-cont">' +
-            '<div class="service-amount">' +
-            '<a href="#" class="service-trash"><i class="fe fe-minus-circle me-1"></i>Service Charge</a> <span>$ 4</span' +
-            '</div>' +
-            '</div>'; $(".links-info-one").append(experiencecontent); return false;
-    }); $(".links-info-discount").on('click', '.service-trash-one', function () { $(this).closest('.links-cont-discount').remove(); return false; }); $(document).on("click", ".add-links-one", function () {
-        var experiencecontent = '<div class="links-cont-discount">' +
-            '<div class="service-amount">' +
-            '<a href="#" class="service-trash-one"><i class="fe fe-minus-circle me-1"></i>Offer new</a> <span>$ 4 %</span' +
-            '</div>' +
-            '</div>'; $(".links-info-discount").append(experiencecontent); return false;
-    }); if ($('#summernote').length > 0) { $('#summernote').summernote({ height: 300, minHeight: null, maxHeight: null, focus: true }); }
     if ($('.counter').length > 0) { $('.counter').counterUp({ delay: 20, time: 2000 }); }
     if ($('#timer-countdown').length > 0) { $('#timer-countdown').countdown({ from: 180, to: 0, movingUnit: 1000, timerEnd: undefined, outputPattern: '$day Day $hour : $minute : $second', autostart: true }); }
     if ($('#timer-countup').length > 0) { $('#timer-countup').countdown({ from: 0, to: 180 }); }
