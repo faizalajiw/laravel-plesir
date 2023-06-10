@@ -34,12 +34,6 @@ class HomeController extends Controller
         $placeCount = Place::count();
         return view('dashboard.home', compact('penggunaCount', 'adminCount' , 'categoryCount', 'placeCount'));
     }
-    
-    /** count data */
-    // public function countData(){
-
-    //     return view('dashboard.home', );
-    // }
 
     /** profile user */
     public function userProfile()
