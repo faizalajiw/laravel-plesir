@@ -86,7 +86,7 @@
                             <div class="carousel-item {{ $key === 0 ? 'active' : '' }}" data-bs-interval="5000">
                                 <div class="row h-100 gap-5 justify-content-center">
                                     @foreach ($chunk as $category)
-                                    <div class="col-lg-6 col-sm-4 col-xl-2 mb-3 hover-top px-2">
+                                    <div class="col-4 col-sm-4 col-xl-2 mb-3 hover-top px-2">
                                         <div class="card h-100 w-100 text-white">
                                             <a class="stretched-link" href="!#">
                                                 <img class="img-fluid" src="{{ $category->image }}" alt="" />

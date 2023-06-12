@@ -60,13 +60,23 @@
                         </ul>
                     </div>
                     <div class="col-6 col-sm-4 col-lg-auto mb-3">
-                        <h6 class="mb-3 text-1000 fw-semi-bold">KATEGORI </h6>
+                        <h6 class="mb-3 text-1000 fw-semi-bold">KATEGORI</h6>
                         <ul class="list-unstyled mb-md-4 mb-lg-0">
-                            @foreach($categories as $category)
+                            @foreach($categories->take(4) as $category)
                             <li class="mb-3"><a class="text-700 text-decoration-none" href="#!">{{$category->name}}</a></li>
                             @endforeach
                         </ul>
                     </div>
+                    @if($categories->count() > 4)
+                    <div class="col-6 col-sm-4 col-lg-auto mb-3">
+                        <h6 class="mb-3 text-1000 fw-semi-bold">KATEGORI LAINNYA</h6>
+                        <ul class="list-unstyled mb-md-4 mb-lg-0">
+                            @foreach($categories->skip(4) as $category)
+                            <li class="mb-3"><a class="text-700 text-decoration-none" href="#!">{{$category->name}}</a></li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    @endif
                     <div class="col-6 col-sm-4 col-lg-auto mb-3">
                         <h6 class="mb-3 text-1000 fw-semi-bold">PANDUAN KERJASAMA </h6>
                         <ul class="list-unstyled mb-md-4 mb-lg-0">
@@ -74,7 +84,7 @@
                             <li class="mb-3"><a class="text-700 text-decoration-none" href="#!">Testimoni</a></li>
                         </ul>
                     </div>
-                    <div class="col-12 col-lg-auto mb-3">
+                    <div class="col-8 col-lg-auto mb-3">
                         <div class="col-12 col-lg-auto mb-4 mb-md-6 mb-lg-0 order-0"> <img class="mb-4" src="{{ URL::to('assets/img/plesir.png') }}" width="150" alt="jadoo" />
                             <p class="fs--1 text-secondary mb-0 fw-medium">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nisi, expedita? Adipisci.</p>
                         </div>
