@@ -43,12 +43,6 @@
         <!-- <div class="login-or">
             <span class="or-line"></span>
             <span class="span-or">or</span>
-        </div>
-        <div class="social-login">
-            <a href="#"><i class="fab fa-google-plus-g"></i></a>
-            <a href="#"><i class="fab fa-facebook-f"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-linkedin-in"></i></a>
         </div> -->
     </div>
 </div>
