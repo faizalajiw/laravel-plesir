@@ -11,6 +11,7 @@ use App\Http\Controllers\UserManagementController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Setting;
 use App\Http\Controllers\PlaceController;
+use App\Http\Controllers\Web\HomeController as WebHomeController;
 use Illuminate\Support\Facades\Request;
 
 
@@ -126,4 +127,11 @@ Route::controller(PlaceController::class)->group(function () {
 // ------------------------ setting -------------------------------//
 Route::controller(Setting::class)->group(function () {
     Route::get('setting/page', 'index')->middleware('auth')->name('setting/page');
+});
+
+
+
+// ------------------------ LANDING PAGE -------------------------------//
+Route::prefix('web')->group(function () {
+    Route::get('index', [WebHomeController::class, 'index'])->name('index');
 });

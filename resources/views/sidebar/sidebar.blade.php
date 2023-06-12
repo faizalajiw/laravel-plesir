@@ -107,6 +107,9 @@
                 <!-- Profile -->
 
                 <li>
+                    <a href="{{ route('index') }}"><i class="fas fa-sign-out-alt"></i><span>Web</span></a>
+                </li>
+                <li>
                     <a href="{{ route('logout') }}"><i class="fas fa-sign-out-alt"></i><span>Logout</span></a>
                 </li>
             </ul>
