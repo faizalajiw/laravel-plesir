@@ -23,6 +23,7 @@
     <!--    Main Content-->
     <!-- ===============================================-->
     <main class="main" id="top">
+        <!-- Navbar -->
         <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3 bg-light opacity-85" data-navbar-on-scroll="data-navbar-on-scroll">
             <div class="container"><a class="navbar-brand" href="index.html"><img class="d-inline-block align-top img-fluid" src="{{ URL::to('assets/img/plesir.png') }}" alt="" width="75" /></a>
                 <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
@@ -41,6 +42,34 @@
                 </div>
             </div>
         </nav>
+        <!-- Navbar -->
+
+        <!-- Carousel Banner -->
+        <div class="container-fluid px-0 mb-5">
+            <div id="header-carousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    @foreach ($sliders as $slider)
+                    <div class="carousel-item{{ $loop->first ? ' active' : '' }}">
+                        <img class="d-block w-100" src="{{ $slider->image }}" style="height: 500;object-fit: cover;" alt="Image">
+                        <div class="carousel-caption">
+                            <div class="container">
+                                <div class="row justify-content-{{ $loop->first ? 'start' : 'end' }}">
+                                    <div class="col-lg-8 text-{{ $loop->first ? 'start' : 'end' }}">
+                                        <p class="fs-4 text-white">Jelajahi Tegal</p>
+                                        <h1 class=" text-white mb-5 animated slideInRight">{{ $slider->title }}</h1>
+                                        <a href="#jelajah" class="btn btn-secondary rounded-pill py-3 px-4 animated slideIn{{ $loop->first ? 'Right' : 'Left' }}">Jelajahi Sekarang</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @endforeach
+
+                </div>
+            </div>
+        </div>
+        <!-- Carousel Banner -->
+
         {{-- content page --}}
         @yield('content')
 
@@ -108,7 +137,6 @@
     </main>
     <!-- ===============================================-->
     <!--    End of Main Content-->
-    <!-- ===============================================-->
 
 
     <!-- ===============================================-->
