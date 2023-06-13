@@ -45,6 +45,25 @@
                 @endif
                 <!-- USER MANAGEMENT -->
 
+                <!-- SLIDER -->
+                @if (Session::get('role_name') === 'Super Admin')
+                <li class="submenu {{set_active(['list/sliders','sliders/create','sliders/edit'])}}">
+                    <a href="#"><i class="fas fa-th-list"></i>
+                        <span>Slider Banner</span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <ul>
+                        <li>
+                            <a href="{{ route('list/sliders') }}" class="{{set_active(['list/sliders'])}}">Slider Banner</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('sliders/create') }}" class="{{set_active(['sliders/create'])}}">Tambah Slider Banner</a>
+                        </li>
+                    </ul>
+                </li>
+                @endif
+                <!-- SLIDER -->
+
                 <!-- KATEGORI -->
                 @if (Session::get('role_name') === 'Super Admin')
                 <li class="submenu {{set_active(['list/categories','categories/create','categories/edit'])}}">

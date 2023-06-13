@@ -25,7 +25,7 @@
                     <div class="container">
                         <div class="row justify-content-start">
                             <div class="col-lg-8 text-start">
-                                <p class="fs-4 text-white">Welcome to our dairy farm</p>
+                                <p class="fs-4 text-white">Jelajahi Tegal</p>
                                 <h1 class="display-1 text-white mb-5 animated slideInRight">The Farm of Dairy products</h1>
                                 <a href="" class="btn btn-secondary rounded-pill py-3 px-5 animated slideInRight">Explore More</a>
                             </div>
@@ -39,7 +39,7 @@
                     <div class="container">
                         <div class="row justify-content-end">
                             <div class="col-lg-8 text-end">
-                                <p class="fs-4 text-white">Welcome to our dairy farm</p>
+                                <p class="fs-4 text-white">Jelajahi Tegal</p>
                                 <h1 class="display-1 text-white mb-5 animated slideInRight">Best Organic Dairy Products</h1>
                                 <a href="" class="btn btn-secondary rounded-pill py-3 px-5 animated slideInLeft">Explore More</a>
                             </div>

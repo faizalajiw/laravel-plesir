@@ -11,6 +11,7 @@ use App\Http\Controllers\UserManagementController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Setting;
 use App\Http\Controllers\PlaceController;
+use App\Http\Controllers\SliderController;
 use App\Http\Controllers\Web\HomeController as WebHomeController;
 use Illuminate\Support\Facades\Request;
 
@@ -123,11 +124,21 @@ Route::controller(PlaceController::class)->group(function () {
     Route::post('places/delete', 'delete')->middleware(['auth', 'role:Super Admin,Admin Wisata'])->name('places/delete');
 });
 
+// ----------------------------- slider banner controller -------------------------//
+Route::middleware(['auth', 'role:Super Admin'])->group(function () {
+    Route::get('list/sliders', [SliderController::class, 'index'])->name('list/sliders');
+    Route::get('sliders/create', [SliderController::class, 'create'])->name('sliders/create');
+    Route::post('sliders/store', [SliderController::class, 'store'])->name('sliders/store');
+    Route::get('view/sliders/edit/{id}', [SliderController::class, 'edit'])->name('view/sliders/edit');
+    Route::post('sliders/update', [SliderController::class, 'update'])->name('sliders/update');
+    Route::post('sliders/delete', [SliderController::class, 'delete'])->name('sliders/delete');
+});
 
 // ------------------------ setting -------------------------------//
 Route::controller(Setting::class)->group(function () {
     Route::get('setting/page', 'index')->middleware('auth')->name('setting/page');
 });
+
 
 
 
