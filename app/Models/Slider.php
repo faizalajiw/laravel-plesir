@@ -19,12 +19,6 @@ class Slider extends Model
         'image',
     ];
 
-    // RELASI
-    public function place()
-    {
-        return $this->hasMany(Place::class);
-    }
-
     public function getImageAttribute($image)
     {
         return asset('storage/sliders/' . $image);

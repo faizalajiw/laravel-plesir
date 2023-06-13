@@ -19,34 +19,23 @@
 <div class="container-fluid px-0 mb-5">
     <div id="header-carousel" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img class="d-block w-100" src="assets/img/gallery/carousel-1.jpg" style="height: 500;object-fit: cover;" alt="Image">
+            @foreach ($sliders as $slider)
+            <div class="carousel-item{{ $loop->first ? ' active' : '' }}">
+                <img class="d-block w-100" src="{{ $slider->image }}" style="height: 500;object-fit: cover;" alt="Image">
                 <div class="carousel-caption">
                     <div class="container">
-                        <div class="row justify-content-start">
-                            <div class="col-lg-8 text-start">
+                        <div class="row justify-content-{{ $loop->first ? 'start' : 'end' }}">
+                            <div class="col-lg-8 text-{{ $loop->first ? 'start' : 'end' }}">
                                 <p class="fs-4 text-white">Jelajahi Tegal</p>
-                                <h1 class="display-1 text-white mb-5 animated slideInRight">The Farm of Dairy products</h1>
-                                <a href="" class="btn btn-secondary rounded-pill py-3 px-5 animated slideInRight">Explore More</a>
+                                <h1 class="display-1 text-white mb-5 animated slideInRight">{{ $slider->title }}</h1>
+                                <a href="#jelajah" class="btn btn-secondary rounded-pill py-3 px-4 animated slideIn{{ $loop->first ? 'Right' : 'Left' }}">Jelajahi Sekarang</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="carousel-item">
-                <img class="d-block w-100" src="assets/img/gallery/carousel-2.jpg" style="height: 500;object-fit: cover;" alt="Image">
-                <div class="carousel-caption">
-                    <div class="container">
-                        <div class="row justify-content-end">
-                            <div class="col-lg-8 text-end">
-                                <p class="fs-4 text-white">Jelajahi Tegal</p>
-                                <h1 class="display-1 text-white mb-5 animated slideInRight">Best Organic Dairy Products</h1>
-                                <a href="" class="btn btn-secondary rounded-pill py-3 px-5 animated slideInLeft">Explore More</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @endforeach
+
         </div>
     </div>
 </div>
