@@ -15,6 +15,7 @@
 
     <!--    Stylesheets-->
     <link href="{{ URL::to('web/assets/css/theme.css') }}" rel="stylesheet" />
+    <link href="{{ URL::to('web/assets/lib/animate/animate.min.css') }}" rel="stylesheet">
     <!-- ===============================================-->
 </head>
 

@@ -1,10 +1,9 @@
 @extends('layouts.web')
 @section('content')
 <!-- Banner -->
-<section class="py-0" id="header">
+<!-- <section class="py-0" id="header">
     <div class="bg-holder d-none d-md-block" style="background-image:url(assets/img/illustrations/hero.png);background-position:right top;background-size:contain;">
     </div>
-    <!--/.bg-holder-->
 
     <div class="container">
         <div class="row align-items-center min-vh-75 min-vh-lg-100">
@@ -14,7 +13,44 @@
             </div>
         </div>
     </div>
-</section>
+</section> -->
+
+<!-- Carousel Start -->
+<div class="container-fluid px-0 mb-5">
+    <div id="header-carousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img class="d-block w-100" src="assets/img/gallery/carousel-1.jpg" style="height: 500;object-fit: cover;" alt="Image">
+                <div class="carousel-caption">
+                    <div class="container">
+                        <div class="row justify-content-start">
+                            <div class="col-lg-8 text-start">
+                                <p class="fs-4 text-white">Welcome to our dairy farm</p>
+                                <h1 class="display-1 text-white mb-5 animated slideInRight">The Farm of Dairy products</h1>
+                                <a href="" class="btn btn-secondary rounded-pill py-3 px-5 animated slideInRight">Explore More</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img class="d-block w-100" src="assets/img/gallery/carousel-2.jpg" style="height: 500;object-fit: cover;" alt="Image">
+                <div class="carousel-caption">
+                    <div class="container">
+                        <div class="row justify-content-end">
+                            <div class="col-lg-8 text-end">
+                                <p class="fs-4 text-white">Welcome to our dairy farm</p>
+                                <h1 class="display-1 text-white mb-5 animated slideInRight">Best Organic Dairy Products</h1>
+                                <a href="" class="btn btn-secondary rounded-pill py-3 px-5 animated slideInLeft">Explore More</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Carousel End -->
 <!-- Banner -->
 
 <!-- About -->
