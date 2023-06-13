@@ -28,13 +28,13 @@
                 <div class="collapse navbar-collapse border-top border-lg-0 mt-4 mt-lg-0" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item px-3"><a class="nav-link fw-medium active" aria-current="page" href="#header">Home</a></li>
-                        <li class="nav-item px-3"><a class="nav-link fw-medium" href="#Opportuanities">Jelajahi Wisata</a></li>
-                        <li class="nav-item px-3"><a class="nav-link fw-medium" href="#testimonial">Tentang Kami</a></li>
-                        <li class="nav-item px-3"><a class="nav-link fw-medium" href="#invest">Panduan Kerjasama</a></li>
+                        <li class="nav-item px-3"><a class="nav-link fw-medium" href="#jelajah">Jelajahi Wisata</a></li>
+                        <li class="nav-item px-3"><a class="nav-link fw-medium" href="#about">Tentang Kami</a></li>
+                        <li class="nav-item px-3"><a class="nav-link fw-medium" href="#">Kerjasama</a></li>
                     </ul>
                     <form class="d-flex">
                         <div class="btn btn-lg btn-primary bg-gradient order-0">
-                            <a href="{{ route('register') }}" class="text-white">Daftar</a>
+                            <a href="{{ route('register') }}" class="text-white">Masuk</a>
                         </div>
                     </form>
                 </div>
@@ -78,7 +78,7 @@
                     </div>
                     @endif
                     <div class="col-6 col-sm-4 col-lg-auto mb-3">
-                        <h6 class="mb-3 text-1000 fw-semi-bold">PANDUAN KERJASAMA </h6>
+                        <h6 class="mb-3 text-1000 fw-semi-bold">KERJASAMA</h6>
                         <ul class="list-unstyled mb-md-4 mb-lg-0">
                             <li class="mb-3"><a class="text-700 text-decoration-none" href="#!">Cara bergabung</a></li>
                             <li class="mb-3"><a class="text-700 text-decoration-none" href="#!">Testimoni</a></li>

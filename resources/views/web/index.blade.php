@@ -18,10 +18,10 @@
 <!-- Banner -->
 
 <!-- About -->
-<section class="pt-5 pt-md-9" id="service">
+<section class="py-5 pt-md-7" id="about">
     <div class="container">
         <div class="mb-7 text-center">
-            <h3 class="fs-lg-2 fs-2 py-2 fw-bold font-normal">Tentang Kami</h3>
+            <h2 class="fs-md-3 fs-lg-4 fs-xl-5 py-2 fw-bold font-medium">Tentang Kami</h2>
             <h5 class="text-secondary">Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae, voluptatum?</h5>
         </div>
         <div class="row">
@@ -63,11 +63,11 @@
 <!-- About -->
 
 <!-- Jelajah Wisata -->
-<section class="pt-5">
+<section class="pt-5" id="jelajah">
     <div class="container">
         <div class="row flex-center mb-5">
             <div class="col-lg-8 text-center">
-                <h1 class="fw-bold fs-md-3 fs-lg-4 fs-xl-5">Jelajahi Wisata</h1>
+                <h2 class="fw-bold fs-md-3 fs-lg-4 fs-xl-5">Jelajahi Wisata</h2>
                 <hr class="mx-auto text-primary my-4" style="height:3px; width:70px;" />
                 <p class="mx-auto">Maecenas et eros non quam ultricies interdum. Proin ac dolor vel neque ullamcorper blandit vitae et felis. Morbi ante urna, imperdiet vel neque vitae, porta ullamcorper metus. Quisque bibendum venenatis eros sed commodo. Nullam ultrices tortor non diam ullamcorper auctor. In urna tellus, auctor sit amet est ut, scelerisque volutpat diam.</p>
             </div>
@@ -124,4 +124,69 @@
 </section>
 <!-- Jelajah Wisata -->
 
+<!-- Benefit Kerjasama -->
+<section class="py-0">
+    <div class="bg-holder" style="background-image:url(assets/img/illustrations/background.png);background-position:center bottom;background-size:cover;">
+    </div>
+    <!--/.bg-holder-->
+
+    <div class="container-lg">
+        <div class="row justify-content-center">
+            <div class="col-sm-8 col-md-9 col-xl-5 text-center pt-6">
+                <h2 class="fw-bold fs-md-3 fs-lg-4 fs-xl-5 lh-sm mb-3 text-white">Benefit Kerjasama</h2>
+                <p class="mb-5 text-white">Kesempatan untuk mempromosikan tempat wisata Anda dengan menjadi bagian dari kami.</p>
+            </div>
+            <div class="col-sm-9 col-md-12 col-xxl-9">
+                <div class="theme-tab">
+                    <ul class="nav justify-content-between">
+                        <li class="nav-item" role="presentation"><a class="nav-link active fw-semi-bold" href="#bootstrap-tab1" data-bs-toggle="tab" data-bs-target="#tab1" id="tab-1"><span class="nav-item-circle-parent"><span class="nav-item-circle">01</span></span></a></li>
+                        <li class="nav-item" role="presentation"><a class="nav-link fw-semi-bold" href="#bootstrap-tab2" data-bs-toggle="tab" data-bs-target="#tab2" id="tab-2"><span class="nav-item-circle-parent"><span class="nav-item-circle">02</span></span></a></li>
+                        <li class="nav-item" role="presentation"><a class="nav-link fw-semi-bold" href="#bootstrap-tab3" data-bs-toggle="tab" data-bs-target="#tab3" id="tab-3"><span class="nav-item-circle-parent"><span class="nav-item-circle">03</span></span></a></li>
+                    </ul>
+                    <div class="tab-content" id="myTabContent">
+                        <!-- 1 -->
+                        <div class="tab-pane fade show active" id="tab1" role="tabpanel" aria-labelledby="tab-1">
+                            <div class="row align-items-center my-6 mx-auto">
+                                <div class="col-md-6 col-lg-5 offset-md-1">
+                                    <h3 class="fw-bold lh-base text-white">Menjangkau Pengguna Yang Lebih Luas</h3>
+                                </div>
+                                <div class="col-md-5 text-white offset-lg-1">
+                                    <p class="fs-1 mb-0">Dengan menjadi mitra, Anda dapat menjangkau pengguna yang lebih luas.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 1 -->
+
+                        <!-- 2 -->
+                        <div class="tab-pane fade" id="tab2" role="tabpanel" aria-labelledby="tab-2">
+                            <div class="row align-items-center my-6 mx-auto">
+                                <div class="col-md-6 col-lg-5 offset-md-1">
+                                    <h3 class="fw-bold lh-base text-white">Post Tempat Usaha Anda</h3>
+                                </div>
+                                <div class="col-md-5 text-white offset-lg-1">
+                                    <p class="fs-1 mb-0">Anda akan memiliki akses ke dashboard sebagai Mitra dan dapat menambahkan konten tempat wisata/usaha Anda.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 2 -->
+
+                        <!-- 3 -->
+                        <div class="tab-pane fade" id="tab3" role="tabpanel" aria-labelledby="tab-3">
+                            <div class="row align-items-center my-6 mx-auto">
+                                <div class="col-md-12 col-lg-12 text-center mb-3">
+                                    <h3 class="fw-bold lh-base text-white">Mengetahui Lebih Lanjut?</h3>
+                                </div>
+                                <div class="col-md-12 col-lg-12 text-primary text-center">
+                                    <a class="btn btn-lg btn-light px-6" href="#" role="button">Lihat Detail</a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 3 -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Benefit Kerjasama -->
 @endsection
