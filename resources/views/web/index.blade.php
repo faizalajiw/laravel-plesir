@@ -27,7 +27,7 @@
                         <div class="row justify-content-{{ $loop->first ? 'start' : 'end' }}">
                             <div class="col-lg-8 text-{{ $loop->first ? 'start' : 'end' }}">
                                 <p class="fs-4 text-white">Jelajahi Tegal</p>
-                                <h1 class="display-1 text-white mb-5 animated slideInRight">{{ $slider->title }}</h1>
+                                <h1 class=" text-white mb-5 animated slideInRight">{{ $slider->title }}</h1>
                                 <a href="#jelajah" class="btn btn-secondary rounded-pill py-3 px-4 animated slideIn{{ $loop->first ? 'Right' : 'Left' }}">Jelajahi Sekarang</a>
                             </div>
                         </div>
