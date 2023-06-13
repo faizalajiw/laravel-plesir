@@ -1,21 +1,6 @@
 @extends('layouts.web')
 @section('content')
-<!-- Banner -->
-<!-- <section class="py-0" id="header">
-    <div class="bg-holder d-none d-md-block" style="background-image:url(assets/img/illustrations/hero.png);background-position:right top;background-size:contain;">
-    </div>
-
-    <div class="container">
-        <div class="row align-items-center min-vh-75 min-vh-lg-100">
-            <div class="col-md-7 col-lg-6 col-xxl-5 py-6 text-sm-start text-center">
-                <h1 class="mt-6 mb-sm-4 fw-semi-bold lh-sm fs-4 fs-lg-5 fs-xl-6">Plesir <br class="d-block d-lg-block" />Jelajahi Tegal</h1>
-                <p class="mb-4 fs-1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt est, voluptatum beatae ab id necessitatibus nemo iste itaque similique. Eos.</p><a class="btn btn-lg btn-primary" href="#" role="button">Jelajah</a>
-            </div>
-        </div>
-    </div>
-</section> -->
-
-<!-- Carousel Start -->
+<!-- Carousel Banner -->
 <div class="container-fluid px-0 mb-5">
     <div id="header-carousel" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
@@ -39,8 +24,7 @@
         </div>
     </div>
 </div>
-<!-- Carousel End -->
-<!-- Banner -->
+<!-- Carousel Banner -->
 
 <!-- About -->
 <section class="py-5 pt-md-7" id="about">
@@ -94,7 +78,7 @@
             <div class="col-lg-8 text-center">
                 <h2 class="fw-bold fs-md-3 fs-lg-4 fs-xl-5">Jelajahi Wisata</h2>
                 <hr class="mx-auto text-primary my-4" style="height:3px; width:70px;" />
-                <p class="mx-auto">Maecenas et eros non quam ultricies interdum. Proin ac dolor vel neque ullamcorper blandit vitae et felis. Morbi ante urna, imperdiet vel neque vitae, porta ullamcorper metus. Quisque bibendum venenatis eros sed commodo. Nullam ultrices tortor non diam ullamcorper auctor. In urna tellus, auctor sit amet est ut, scelerisque volutpat diam.</p>
+                <p class="mx-auto">Beragam wisata mulai dari wisata alam seperti pantai, laut, perbukitan, pegunungan, curug, hingga wisata kuliner, wisata sejarah, wisata spiritual, dll.</p>
             </div>
         </div>
         <div class="row h-100 flex-center">
