@@ -10,7 +10,7 @@
                 <div class="col-sm-12">
                     <div class="col">
                         <ul class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
                             <li class="breadcrumb-item active">{{ Session::get('name') }}</li>
                         </ul>
                         <h3 class="page-title">Welcome {{ Session::get('name') }}!</h3>

@@ -7,7 +7,7 @@ use App\Models\Place;
 use App\Models\User;
 use Illuminate\Http\Request;
 
-class HomeController extends Controller
+class DashboardController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -32,7 +32,7 @@ class HomeController extends Controller
         $adminCount = User::where('role_name', 'Admin Wisata')->count();
         $categoryCount = Category::count();
         $placeCount = Place::count();
-        return view('dashboard.home', compact('penggunaCount', 'adminCount' , 'categoryCount', 'placeCount'));
+        return view('dashboard.index', compact('penggunaCount', 'adminCount' , 'categoryCount', 'placeCount'));
     }
 
     /** profile user */

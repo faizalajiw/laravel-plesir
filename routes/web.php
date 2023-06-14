@@ -6,7 +6,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\HomeController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UserManagementController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Setting;
@@ -48,12 +48,6 @@ Route::get('/', function () {
     return view('web.index', compact('categories', 'sliders'));
 })->name('/');
 
-Route::group(['middleware' => 'auth'], function () {
-    Route::get('home', function () {
-        return view('home');
-    });
-});
-
 Auth::routes();
 
 // ----------------------------login ------------------------------//
@@ -77,8 +71,8 @@ Route::controller(RegisterController::class)->group(function () {
 });
 
 // -------------------------- main dashboard ----------------------//
-Route::controller(HomeController::class)->group(function () {
-    Route::get('/home', 'index')->middleware('auth')->name('home');
+Route::controller(DashboardController::class)->group(function () {
+    Route::get('/dashboard', 'index')->middleware('auth')->name('dashboard');
     Route::get('profile/user', 'userProfile')->middleware('auth')->name('profile/user');
 });
 

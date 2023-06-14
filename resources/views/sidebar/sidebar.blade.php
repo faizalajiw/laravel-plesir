@@ -13,8 +13,8 @@
                 </li> -->
 
                 <!-- DASHBOARD -->
-                <li class="{{set_active(['home'])}}">
-                    <a href="{{ route('home') }}" class="{{set_active(['home'])}}"><i class="fas feather-grid"></i>
+                <li class="{{set_active(['dashboard'])}}">
+                    <a href="{{ route('dashboard') }}" class="{{set_active(['dashboard'])}}"><i class="fas feather-grid"></i>
                         <span>Dashboard</span>
                     </a>
                 </li>
@@ -23,7 +23,7 @@
                 <!-- USER MANAGEMENT -->
                 @if (Session::get('role_name') === 'Super Admin')
                 <li class="submenu {{set_active(['list/users'])}}">
-                    <a href="#"><i class="fas fa-shield-alt"></i>
+                    <a href="#"><i class="fas fa-users-cog"></i>
                         <span>Manajemen User</span>
                         <span class="menu-arrow"></span>
                     </a>
@@ -48,7 +48,7 @@
                 <!-- SLIDER -->
                 @if (Session::get('role_name') === 'Super Admin')
                 <li class="submenu {{set_active(['list/sliders','sliders/create','sliders/edit'])}}">
-                    <a href="#"><i class="fas fa-th-list"></i>
+                    <a href="#"><i class="fas fa-image"></i>
                         <span>Slider Banner</span>
                         <span class="menu-arrow"></span>
                     </a>

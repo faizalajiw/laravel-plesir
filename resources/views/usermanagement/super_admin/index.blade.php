@@ -9,7 +9,7 @@
             <div class="row align-items-center">
                 <div class="col">
                     <ul class="breadcrumb">
-                        <li class="breadcrumb-item fw-bold"><a href="{{ route('home') }}">Dashboard</a></li>
+                        <li class="breadcrumb-item fw-bold"><a href="{{ route('dashboard') }}">Dashboard</a></li>
                         <li class="breadcrumb-item fw-bold active">Super Admin</li>
                     </ul>
                 </div>

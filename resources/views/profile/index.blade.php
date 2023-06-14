@@ -7,7 +7,7 @@
             <div class="row">
                 <div class="col">
                     <ul class="breadcrumb">
-                        <li class="breadcrumb-item fw-bold"><a href="{{ route('home') }}">Dashboard</a></li>
+                        <li class="breadcrumb-item fw-bold"><a href="{{ route('dashboard') }}">Dashboard</a></li>
                         <li class="breadcrumb-item fw-bold active">Profile</li>
                     </ul>
                 </div>

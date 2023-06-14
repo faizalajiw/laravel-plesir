@@ -41,7 +41,7 @@
                                 {{ session('name') }}
                             </button>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="{{ route('home') }}">Dashboard</a></li>
+                                <li><a class="dropdown-item" href="{{ route('dashboard') }}">Dashboard</a></li>
                                 <li><a class="dropdown-item" href="{{ route('logout') }}">Keluar</a></li>
                             </ul>
                         </div>
