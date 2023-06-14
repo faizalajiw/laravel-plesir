@@ -17617,6 +17617,7 @@ label {
   min-height: 100%;
   top: 0;
   left: 0;
+  background-image: url(../img/illustrations/footer-bg.png);
   background-size: cover;
   background-position: center;
   overflow: hidden;

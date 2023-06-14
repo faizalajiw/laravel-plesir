@@ -55,52 +55,47 @@
                 <p class="mx-auto">Beragam wisata mulai dari wisata alam seperti pantai, laut, perbukitan, pegunungan, curug, hingga wisata kuliner, wisata sejarah, wisata spiritual, dll.</p>
             </div>
         </div>
-        <div class="row h-100 flex-center">
-            <div class="row flex-lg-center">
-                <div class="col-md-12">
-                    <!-- CAROUSEL IMAGE -->
-                    <div id="carouselCategory" class="carousel slide" data-bs-touch="false" data-bs-interval="false">
-                        <div class="carousel-inner">
-                            @php
-                            $chunks = $categories->chunk(4); // Membagi data categories menjadi kelompok-kelompok dengan maksimal 4 data per kelompok
-                            @endphp
+        <div class="col-md-12">
+            <!-- CAROUSEL IMAGE -->
+            <div id="carouselCategory" class="carousel slide" data-bs-touch="false" data-bs-interval="false">
+                <div class="carousel-inner">
+                    @php
+                    $chunks = $categories->chunk(3); // Membagi data categories menjadi kelompok-kelompok dengan maksimal 4 data per kelompok
+                    @endphp
 
-                            @foreach ($chunks as $key => $chunk)
-                            <div class="carousel-item {{ $key === 0 ? 'active' : '' }}" data-bs-interval="5000">
-                                <div class="row h-100 gap-5 justify-content-center">
-                                    @foreach ($chunk as $category)
-                                    <div class="col-4 col-sm-4 col-xl-2 mb-3 hover-top px-2">
-                                        <div class="card h-100 w-100 text-white">
-                                            <a class="stretched-link" href="!#">
-                                                <img class="img-fluid" src="{{ $category->image }}" alt="" />
-                                            </a>
-                                            <div class="card-img-overlay d-flex align-items-end bg-dark-gradient">
-                                                <h5 class="text-white fs--1">{{ $category->name }}</h5>
-                                            </div>
-                                        </div>
+                    @foreach ($chunks as $key => $chunk)
+                    <div class="carousel-item {{ $key === 0 ? 'active' : '' }}" data-bs-interval="5000">
+                        <div class="row h-100 gap-5 justify-content-center">
+                            @foreach ($chunk as $category)
+                            <div class="col-6 col-sm-4 col-xl-3 mb-3 hover-top px-2">
+                                <div class="card h-100 text-white">
+                                    <a class="stretched-link" href="{{ route('jelajah-wisata', ['slug' => $category->slug]) }}">
+                                        <img class="img-fluid" src="{{ $category->image }}" alt="" />
+                                    </a>
+                                    <div class="card-img-overlay d-flex align-items-end bg-dark-gradient">
+                                        <h5 class="text-white fs-1">{{ $category->name }}</h5>
                                     </div>
-                                    @endforeach
                                 </div>
                             </div>
                             @endforeach
-                            <!-- CAROUSEL IMAGE -->
-                        </div>
-                        <div class="row mt-4">
-                            <div class="col-12 position-relative">
-                                <a class="carousel-control-prev carousel-icon z-index-2" href="#carouselCategory" role="button" data-bs-slide="prev">
-                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Previous</span>
-                                </a>
-                                <a class="carousel-control-next carousel-icon z-index-2" href="#carouselCategory" role="button" data-bs-slide="next">
-                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Next</span>
-                                </a>
-                            </div>
                         </div>
                     </div>
-
+                    @endforeach
+                </div>
+                <div class="row mt-4">
+                    <div class="col-12 position-relative">
+                        <a class="carousel-control-prev carousel-icon z-index-2" href="#carouselCategory" role="button" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </a>
+                        <a class="carousel-control-next carousel-icon z-index-2" href="#carouselCategory" role="button" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </a>
+                    </div>
                 </div>
             </div>
+            <!-- CAROUSEL IMAGE -->
         </div>
     </div>
     <!-- end of .container-->

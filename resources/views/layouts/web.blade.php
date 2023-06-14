@@ -75,7 +75,7 @@
 
         <!-- Footer -->
         <section class="py-0" id="contact">
-            <div class="bg-holder" style="background-image:url(assets/img/illustrations/footer-bg.png);background-position:center;background-size:cover;">
+            <div class="bg-holder">
             </div>
             <!--/.bg-holder-->
 
@@ -89,7 +89,7 @@
                             <li class="mb-3"><a class="text-700 text-decoration-none" href="#!">Kontak</a></li>
                         </ul>
                     </div>
-                    <div class="col-6 col-sm-4 col-lg-auto mb-3">
+                    <!-- <div class="col-6 col-sm-4 col-lg-auto mb-3">
                         <h6 class="mb-3 text-1000 fw-semi-bold">KATEGORI</h6>
                         <ul class="list-unstyled mb-md-4 mb-lg-0">
                             @foreach($categories->take(4) as $category)
@@ -106,7 +106,7 @@
                             @endforeach
                         </ul>
                     </div>
-                    @endif
+                    @endif -->
                     <div class="col-6 col-sm-4 col-lg-auto mb-3">
                         <h6 class="mb-3 text-1000 fw-semi-bold">KERJASAMA</h6>
                         <ul class="list-unstyled mb-md-4 mb-lg-0">
@@ -127,7 +127,7 @@
                         <p class="fs--1 text-dark my-2 text-center text-md-end">&copy; Plesir&nbsp;
                             <svg class="bi bi-suit-heart-fill" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#1F3A63" viewBox="0 0 16 16">
                                 <path d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1z"></path>
-                            </svg>&nbsp;by&nbsp;<a class="text-dark" href="https://themewagon.com/" target="_blank">Faizal </a>
+                            </svg>&nbsp;by&nbsp;<a class="text-dark" href="#" target="_blank">Faizal </a>
                         </p>
                     </div>
                 </div>
@@ -142,11 +142,11 @@
     <!-- ===============================================-->
     <!--    JavaScripts-->
     <!-- ===============================================-->
-    <script src="vendors/@popperjs/popper.min.js"></script>
-    <script src="vendors/bootstrap/bootstrap.min.js"></script>
-    <script src="vendors/is/is.min.js"></script>
+    <script src="{{ URL::to('web/vendors/@popperjs/popper.min.js') }}"></script>
+    <script src="{{ URL::to('web/vendors/bootstrap/bootstrap.min.js') }}"></script>
+    <script src="{{ URL::to('web/vendors/is/is.min.js') }}"></script>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=window.scroll"></script>
-    <script src="assets/js/theme.js"></script>
+    <script src="{{ URL::to('web/assets/js/theme.js') }}"></script>
 
     <link href="https://fonts.googleapis.com/css2?family=Chivo:wght@300;400;700;900&amp;display=swap" rel="stylesheet">
 </body>

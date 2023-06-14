@@ -12,7 +12,8 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Setting;
 use App\Http\Controllers\PlaceController;
 use App\Http\Controllers\SliderController;
-use App\Http\Controllers\Web\HomeController as WebHomeController;
+use App\Http\Controllers\Web\CategoryController as WebCategoryController;
+use App\Http\Controllers\Web\PlaceController as WebPlaceController;
 use Illuminate\Support\Facades\Request;
 
 
@@ -144,5 +145,7 @@ Route::controller(Setting::class)->group(function () {
 
 // ------------------------ LANDING PAGE -------------------------------//
 Route::prefix('web')->group(function () {
-    Route::get('index', [WebHomeController::class, 'index'])->name('index');
+    Route::get('index', [WebCategoryController::class, 'index'])->name('index');
+    Route::get('jelajah-wisata/{slug?}', [WebCategoryController::class, 'show'])->name('jelajah-wisata');    
+    Route::get('detail-wisata/{slug?}', [WebPlaceController::class, 'index'])->name('detail-wisata');    
 });
