@@ -15,7 +15,7 @@ class CategoryController extends Controller
     {
         $sliders = Slider::all();
         // card category
-        $categories = Category::all();
+        $categories = Category::oldest()->get();
         return view('web.index', compact('categories', 'sliders'));
     }
 

@@ -10,7 +10,7 @@
         <div class="row">
             <div class="col-lg-3 col-sm-6 mb-6">
                 <div class="card service-card shadow-hover rounded-3 text-center align-items-center">
-                    <div class="card-body p-xxl-5 p-4"> <img src="assets/img/service/street-sign.png" width="70" alt="Service" />
+                    <div class="card-body p-xxl-5 p-4"> <img src="{{ asset('web/assets/img/service/street-sign.png') }}" width="70" alt="Service" />
                         <h4 class="my-3">Beragam Wisata</h4>
                         <p class="mb-0 fw-medium">Lebih dari 20 wisata menarik di Tegal bisa anda temukan disini.</p>
                     </div>
@@ -18,7 +18,7 @@
             </div>
             <div class="col-lg-3 col-sm-6 mb-6">
                 <div class="card service-card shadow-hover rounded-3 text-center align-items-center">
-                    <div class="card-body p-xxl-5 p-4"> <img src="assets/img/service/destination.png" width="70" alt="Service" />
+                    <div class="card-body p-xxl-5 p-4"> <img src="{{ asset('web/assets/img/service/destination.png') }}" width="70" alt="Service" />
                         <h4 class="my-3">Rute Perjalanan</h4>
                         <p class="mb-0 fw-medium">Mengetahui jarak tujuan destinasi wisata dari tempat Anda.</p>
                     </div>
@@ -26,7 +26,7 @@
             </div>
             <div class="col-lg-3 col-sm-6 mb-6">
                 <div class="card service-card shadow-hover rounded-3 text-center align-items-center">
-                    <div class="card-body p-xxl-5 p-4"> <img src="assets/img/service/search.png" width="70" alt="Service" />
+                    <div class="card-body p-xxl-5 p-4"> <img src="{{ asset('web/assets/img/service/search.png') }}" width="70" alt="Service" />
                         <h4 class="my-3">Voice Search</h4>
                         <p class="mb-0 fw-medium">Temukan destinasi wisata dengan pencarian berbasis suara.</p>
                     </div>
@@ -34,7 +34,7 @@
             </div>
             <div class="col-lg-3 col-sm-6 mb-6">
                 <div class="card service-card shadow-hover rounded-3 text-center align-items-center">
-                    <div class="card-body p-xxl-5 p-4"> <img src="assets/img/service/deal.png" width="75" alt="Service" />
+                    <div class="card-body p-xxl-5 p-4"> <img src="{{ asset('web/assets/img/service/deal.png') }}" width="75" alt="Service" />
                         <h4 class="my-3">Kerjasama</h4>
                         <p class="mb-0 fw-medium">Menawarkan kerjasama untuk mempromosikan objek wisata.</p>
                     </div>
@@ -104,7 +104,7 @@
 
 <!-- Benefit Kerjasama -->
 <section class="py-0">
-    <div class="bg-holder" style="background-image:url(assets/img/illustrations/background.png);background-position:center bottom;background-size:cover;">
+    <div class="bg-holder" style="background-image:url(web/assets/img/illustrations/background.png);background-position:center bottom;background-size:cover;">
     </div>
     <!--/.bg-holder-->
 

@@ -14,6 +14,8 @@ use App\Http\Controllers\PlaceController;
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\Web\CategoryController as WebCategoryController;
 use App\Http\Controllers\Web\PlaceController as WebPlaceController;
+use App\Models\Category;
+use App\Models\Slider;
 use Illuminate\Support\Facades\Request;
 
 
@@ -40,8 +42,11 @@ if (!function_exists('set_active')) {
 }
 
 Route::get('/', function () {
-    return view('auth.login');
-});
+    $sliders = Slider::all();
+    // card category
+    $categories = Category::oldest()->get();
+    return view('web.index', compact('categories', 'sliders'));
+})->name('/');
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('home', function () {
