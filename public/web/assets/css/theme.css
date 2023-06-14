@@ -15,7 +15,7 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
 :root {
-  --bs-blue: #1F3A63;
+  --bs-blue: #03045E;
   --bs-indigo: #53ACF8;
   --bs-purple: #ad45f6;
   --bs-pink: #f6458e;
@@ -28,7 +28,7 @@
   --bs-white: #fff;
   --bs-gray: #C3C1C8;
   --bs-gray-dark: #616368;
-  --bs-primary: #1F3A63;
+  --bs-primary: #03045E;
   --bs-secondary: #4F5665;
   --bs-success: #66BB6A;
   --bs-info: #3EB8F4;
@@ -223,7 +223,7 @@ sup {
 }
 
 a {
-  color: #1F3A63;
+  color: #03045E;
   text-decoration: none;
 }
 
@@ -2877,8 +2877,8 @@ textarea.form-control-lg {
 }
 
 .form-check-input:checked {
-  background-color: #1F3A63;
-  border-color: #1F3A63;
+  background-color: #03045E;
+  border-color: #03045E;
 }
 
 .form-check-input:checked[type="checkbox"] {
@@ -2890,8 +2890,8 @@ textarea.form-control-lg {
 }
 
 .form-check-input[type="checkbox"]:indeterminate {
-  background-color: #1F3A63;
-  border-color: #1F3A63;
+  background-color: #03045E;
+  border-color: #03045E;
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10h8'/%3e%3c/svg%3e");
 }
 
@@ -2987,7 +2987,7 @@ textarea.form-control-lg {
   width: 1rem;
   height: 1rem;
   margin-top: -0.25rem;
-  background-color: #1F3A63;
+  background-color: #03045E;
   border: 0;
   border-radius: 1rem;
   -webkit-transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
@@ -3022,7 +3022,7 @@ textarea.form-control-lg {
 .form-range::-moz-range-thumb {
   width: 1rem;
   height: 1rem;
-  background-color: #1F3A63;
+  background-color: #03045E;
   border: 0;
   border-radius: 1rem;
   -moz-transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
@@ -3487,8 +3487,8 @@ fieldset:disabled .btn {
 
 .btn-primary {
   color: #fff;
-  background-color: #1F3A63;
-  border-color: #1F3A63;
+  background-color: #03045E;
+  border-color: #03045E;
 }
 
 .btn-primary:hover {
@@ -3522,8 +3522,8 @@ fieldset:disabled .btn {
 
 .btn-primary:disabled, .btn-primary.disabled {
   color: #fff;
-  background-color: #1F3A63;
-  border-color: #1F3A63;
+  background-color: #03045E;
+  border-color: #03045E;
 }
 
 .btn-secondary {
@@ -3732,13 +3732,13 @@ fieldset:disabled .btn {
 }
 
 .btn-light {
-  color: #1F3A63;
+  color: #03045E;
   background-color: #F9FAFD;
   border-color: #F9FAFD;
 }
 
 .btn-light:hover {
-  color: #1F3A63;
+  color: #03045E;
   background-color: #cbcbcb;
   border-color: #cbcbcb;
 }
@@ -3814,14 +3814,14 @@ fieldset:disabled .btn {
 }
 
 .btn-outline-primary {
-  color: #1F3A63;
-  border-color: #1F3A63;
+  color: #03045E;
+  border-color: #03045E;
 }
 
 .btn-outline-primary:hover {
   color: #fff;
-  background-color: #1F3A63;
-  border-color: #1F3A63;
+  background-color: #03045E;
+  border-color: #03045E;
 }
 
 .btn-check:focus + .btn-outline-primary, .btn-outline-primary:focus {
@@ -3832,8 +3832,8 @@ fieldset:disabled .btn {
 .btn-check:checked + .btn-outline-primary,
 .btn-check:active + .btn-outline-primary, .btn-outline-primary:active, .btn-outline-primary.active, .btn-outline-primary.dropdown-toggle.show {
   color: #fff;
-  background-color: #1F3A63;
-  border-color: #1F3A63;
+  background-color: #03045E;
+  border-color: #03045E;
 }
 
 .btn-check:checked + .btn-outline-primary:focus,
@@ -3843,7 +3843,7 @@ fieldset:disabled .btn {
 }
 
 .btn-outline-primary:disabled, .btn-outline-primary.disabled {
-  color: #1F3A63;
+  color: #03045E;
   background-color: transparent;
 }
 
@@ -4087,7 +4087,7 @@ fieldset:disabled .btn {
 
 .btn-link {
   font-weight: 400;
-  color: #1F3A63;
+  color: #03045E;
   text-decoration: none;
 }
 
@@ -4430,7 +4430,7 @@ fieldset:disabled .btn {
 .dropdown-item.active, .dropdown-item:active {
   color: #fff;
   text-decoration: none;
-  background-color: #1F3A63;
+  background-color: #03045E;
 }
 
 .dropdown-item.disabled, .dropdown-item:disabled {
@@ -4475,7 +4475,7 @@ fieldset:disabled .btn {
 
 .dropdown-menu-dark .dropdown-item.active, .dropdown-menu-dark .dropdown-item:active {
   color: #fff;
-  background-color: #1F3A63;
+  background-color: #03045E;
 }
 
 .dropdown-menu-dark .dropdown-item.disabled, .dropdown-menu-dark .dropdown-item:disabled {
@@ -4701,7 +4701,7 @@ fieldset:disabled .btn {
 .nav-pills .nav-link.active,
 .nav-pills .show > .nav-link {
   color: #fff;
-  background-color: #1F3A63;
+  background-color: #03045E;
 }
 
 .nav-fill > .nav-link,
@@ -5443,7 +5443,7 @@ fieldset:disabled .btn {
 .page-link {
   position: relative;
   display: block;
-  color: #1F3A63;
+  color: #03045E;
   background-color: #fff;
   border: 1px solid #E1E0E4;
   -webkit-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
@@ -5485,8 +5485,8 @@ fieldset:disabled .btn {
 .page-item.active .page-link {
   z-index: 3;
   color: #fff;
-  background-color: #1F3A63;
-  border-color: #1F3A63;
+  background-color: #03045E;
+  border-color: #03045E;
 }
 
 .page-item.disabled .page-link {
@@ -5708,7 +5708,7 @@ fieldset:disabled .btn {
   color: #fff;
   text-align: center;
   white-space: nowrap;
-  background-color: #1F3A63;
+  background-color: #03045E;
   -webkit-transition: width 0.6s ease;
   -o-transition: width 0.6s ease;
   transition: width 0.6s ease;
@@ -5798,8 +5798,8 @@ fieldset:disabled .btn {
 .list-group-item.active {
   z-index: 2;
   color: #fff;
-  background-color: #1F3A63;
-  border-color: #1F3A63;
+  background-color: #03045E;
+  border-color: #03045E;
 }
 
 .list-group-item + .list-group-item {
@@ -7341,7 +7341,7 @@ fieldset:disabled .btn {
 }
 
 .link-primary {
-  color: #1F3A63;
+  color: #03045E;
 }
 
 .link-primary:hover, .link-primary:focus {
@@ -7861,7 +7861,7 @@ fieldset:disabled .btn {
 }
 
 .border-primary {
-  border-color: #1F3A63 !important;
+  border-color: #03045E !important;
 }
 
 .border-secondary {
@@ -9501,7 +9501,7 @@ fieldset:disabled .btn {
 }
 
 .text-primary {
-  color: #1F3A63 !important;
+  color: #03045E !important;
 }
 
 .text-secondary {
@@ -9653,7 +9653,7 @@ fieldset:disabled .btn {
 }
 
 .bg-primary {
-  background-color: #1F3A63 !important;
+  background-color: #03045E !important;
 }
 
 .bg-secondary {
@@ -17973,7 +17973,7 @@ label {
 |   Custom circle
 -----------------------------------------------*/
 .circle-dashed {
-  border: 1px dashed #1F3A63;
+  border: 1px dashed #03045E;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -18096,7 +18096,7 @@ label {
 }
 
 .terms-sidebar .nav-link.active {
-  color: #1F3A63;
+  color: #03045E;
 }
 
 .card-price {
@@ -18256,7 +18256,7 @@ label {
 
 .carousel-indicators .active {
   opacity: 1;
-  background-color: #1F3A63;
+  background-color: #03045E;
   width: 9px;
   height: 9px;
 }
