@@ -29,7 +29,7 @@
                 <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse border-top border-lg-0 mt-4 mt-lg-0" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item px-3"><a class="nav-link fw-medium active" aria-current="page" href="#top">Home</a></li>
+                        <li class="nav-item px-3"><a class="nav-link fw-medium active" aria-current="page" href="{{ route('index') }}">Home</a></li>
                         <li class="nav-item px-3"><a class="nav-link fw-medium" href="#jelajah">Jelajahi Wisata</a></li>
                         <li class="nav-item px-3"><a class="nav-link fw-medium" href="#about">Tentang Kami</a></li>
                         <li class="nav-item px-3"><a class="nav-link fw-medium" href="#">Kerjasama</a></li>
@@ -84,9 +84,9 @@
                     <div class="col-6 col-sm-4 col-lg-auto mb-3">
                         <h6 class="mb-3 text-1000 fw-semi-bold">PLESIR </h6>
                         <ul class="list-unstyled mb-md-4 mb-lg-0">
-                            <li class="mb-3"><a class="text-700 text-decoration-none" href="#!">Jelajahi Wisata</a></li>
-                            <li class="mb-3"><a class="text-700 text-decoration-none" href="#!">Tentang Kami</a></li>
-                            <li class="mb-3"><a class="text-700 text-decoration-none" href="#!">Kontak</a></li>
+                            <li class="mb-3"><a class="text-700 text-decoration-none" href="#jelajah">Jelajahi Wisata</a></li>
+                            <li class="mb-3"><a class="text-700 text-decoration-none" href="#service">Layanan Kami</a></li>
+                            <li class="mb-3"><a class="text-700 text-decoration-none" href="#">Tentang Kami</a></li>
                         </ul>
                     </div>
                     <!-- <div class="col-6 col-sm-4 col-lg-auto mb-3">
@@ -111,7 +111,7 @@
                         <h6 class="mb-3 text-1000 fw-semi-bold">KERJASAMA</h6>
                         <ul class="list-unstyled mb-md-4 mb-lg-0">
                             <li class="mb-3"><a class="text-700 text-decoration-none" href="#!">Cara bergabung</a></li>
-                            <li class="mb-3"><a class="text-700 text-decoration-none" href="#!">Testimoni</a></li>
+                            <li class="mb-3"><a class="text-700 text-decoration-none" href="#!">Kontak Kami</a></li>
                         </ul>
                     </div>
                     <div class="col-8 col-lg-auto mb-3">

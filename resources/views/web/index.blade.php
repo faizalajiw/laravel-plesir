@@ -1,10 +1,10 @@
 @extends('layouts.web')
 @section('content')
-<!-- About -->
-<section class="py-5 pt-md-7" id="about">
+<!-- Service -->
+<section class="py-5 pt-md-7" id="service">
     <div class="container">
         <div class="mb-7 text-center">
-            <h2 class="fs-md-3 fs-lg-4 fs-xl-5 py-2 fw-bold font-medium">Tentang Kami</h2>
+            <h2 class="fs-md-3 fs-lg-4 fs-xl-5 py-2 fw-bold font-medium">Layanan Kami</h2>
             <h5 class="text-secondary">Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae, voluptatum?</h5>
         </div>
         <div class="row">
@@ -43,7 +43,7 @@
         </div>
     </div><!-- end of .container-->
 </section>
-<!-- About -->
+<!-- Service -->
 
 <!-- Jelajah Wisata -->
 <section class="pt-5" id="jelajah">
