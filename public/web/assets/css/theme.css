@@ -4411,7 +4411,7 @@ fieldset:disabled .btn {
 .dropdown-item {
   display: block;
   width: 100%;
-  padding: 0.25rem 1rem;
+  padding: 0.5rem 1rem;
   clear: both;
   font-weight: 400;
   color: #4F5665;
@@ -4422,9 +4422,9 @@ fieldset:disabled .btn {
 }
 
 .dropdown-item:hover, .dropdown-item:focus {
-  color: #474d5b;
+  color: #fff;
   text-decoration: none;
-  background-color: #EBEBED;
+  background-color: #112D58;
 }
 
 .dropdown-item.active, .dropdown-item:active {

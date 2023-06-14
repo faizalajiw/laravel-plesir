@@ -29,15 +29,27 @@
                 <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse border-top border-lg-0 mt-4 mt-lg-0" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item px-3"><a class="nav-link fw-medium active" aria-current="page" href="{{ route('index') }}">Home</a></li>
-                        <li class="nav-item px-3"><a class="nav-link fw-medium" href="#jelajah">Jelajahi Wisata</a></li>
-                        <li class="nav-item px-3"><a class="nav-link fw-medium" href="#about">Tentang Kami</a></li>
-                        <li class="nav-item px-3"><a class="nav-link fw-medium" href="#">Kerjasama</a></li>
+                        <li class="nav-item px-3"><a class="nav-link fw-semibold" href="{{ route('index') }}">Home</a></li>
+                        <li class="nav-item px-3"><a class="nav-link fw-semibold" href="#jelajah">Jelajahi Wisata</a></li>
+                        <li class="nav-item px-3"><a class="nav-link fw-semibold" href="#about">Tentang Kami</a></li>
+                        <li class="nav-item px-3"><a class="nav-link fw-semibold" href="#">Kerjasama</a></li>
                     </ul>
                     <form class="d-flex">
-                        <div class="btn btn-lg btn-primary bg-gradient order-0">
-                            <a href="{{ route('register') }}" class="text-white text-decoration-none">Masuk</a>
+                        @if (session('id'))
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-lg btn-primary bg-gradient dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                {{ session('name') }}
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="{{ route('home') }}">Dashboard</a></li>
+                                <li><a class="dropdown-item" href="{{ route('logout') }}">Keluar</a></li>
+                            </ul>
                         </div>
+                        @else
+                        <div class="btn btn-lg btn-primary bg-gradient order-0">
+                            <a href="{{ route('login') }}" class="text-white text-decoration-none">Masuk</a>
+                        </div>
+                        @endif
                     </form>
                 </div>
             </div>
@@ -115,7 +127,7 @@
                         </ul>
                     </div>
                     <div class="col-8 col-lg-auto mb-3">
-                        <div class="col-12 col-lg-auto mb-4 mb-md-6 mb-lg-0 order-0"> <img class="mb-4" src="{{ URL::to('assets/img/plesir.png') }}" width="150" alt="jadoo" />
+                        <div class="col-12 col-lg-auto mb-4 mb-md-6 mb-lg-0 order-0"> <img class="mb-4" src="{{ URL::to('assets/img/plesir.png') }}" width="150" alt="plesir" />
                             <p class="fs--1 text-secondary mb-0 fw-medium">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nisi, expedita? Adipisci.</p>
                         </div>
                     </div>
