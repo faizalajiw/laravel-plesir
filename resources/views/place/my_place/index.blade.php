@@ -69,6 +69,7 @@
                                         <th>Nama Tempat</th>
                                         <!-- <th>Pengelola</th> -->
                                         <th>Alamat</th>
+                                        <th>Hari</th>
                                         <th>Jam Operasional</th>
                                         <th>URL Website</th>
                                         <th>Social Media</th>
@@ -83,6 +84,7 @@
                                         <td>{{ $list->title }}</td>
                                         <!-- <td>{{ $list->user->name }}</td> -->
                                         <td>{{ $list->address }}</td>
+                                        <td>{{ $list->day }}</td>
                                         <td>{{ $list->operational_hours }}</td>
                                         <td>{{ $list->website }}</td>
                                         <td>{{ $list->social_media }}</td>

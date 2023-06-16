@@ -203,6 +203,9 @@ return [
         'address' => [
             'required' => 'Alamat tidak boleh kosong.',
         ],
+        'day' => [
+            'required' => 'Hari tidak boleh kosong.',
+        ],
         'operational_hours' => [
             'required' => 'Jam operasional tidak boleh kosong.',
         ],

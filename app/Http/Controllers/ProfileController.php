@@ -42,7 +42,7 @@ class ProfileController extends Controller
         Session::put('email', $request->email);
 
         Toastr::success('Data berhasil diupdate', 'Success');
-        return redirect()->intended('home');
+        return redirect()->intended('profile/user');
     }
 
     /** change password */
@@ -57,7 +57,7 @@ class ProfileController extends Controller
         User::find(auth()->user()->id)->update(['password' => Hash::make($request->new_password)]);
         DB::commit();
         Toastr::success('Password berhasil diupdate', 'Success');
-        return redirect()->intended('home');
+        return redirect()->intended('profile/user');
     }
 
     /** change avatar */
@@ -90,6 +90,6 @@ class ProfileController extends Controller
 
         // Berhasil mengubah avatar, lakukan sesuatu (misalnya, kembalikan response atau redirect)
         Toastr::success('Avatar berhasil diupdate', 'Success');
-        return redirect()->intended('home');
+        return redirect()->intended('profile/user');
     }
 }

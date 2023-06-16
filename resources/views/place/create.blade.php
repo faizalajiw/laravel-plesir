@@ -68,11 +68,31 @@
                                         @enderror
                                     </div>
                                 </div>
+
                                 <div class="col-12 col-sm-6">
                                     <div class="form-group local-forms">
                                         <label>Jam Operasional <span class="login-danger">*</span></label>
                                         <input type="text" name="operational_hours" class="form-control @error('operational_hours') is-invalid @enderror">
                                         @error('operational_hours')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-12">
+                                    <div class="form-group local-forms">
+                                        <label>Hari <span class="login-danger">*</span></label>
+                                        <select name="day[]" class="form-control select @error('day') is-invalid @enderror" multiple>
+                                            <option value="Senin" {{ (is_array(old('day')) && in_array('Senin', old('day'))) ? 'selected' : '' }}>Senin</option>
+                                            <option value="Selasa" {{ (is_array(old('day')) && in_array('Selasa', old('day'))) ? 'selected' : '' }}>Selasa</option>
+                                            <option value="Rabu" {{ (is_array(old('day')) && in_array('Rabu', old('day'))) ? 'selected' : '' }}>Rabu</option>
+                                            <option value="Kamis" {{ (is_array(old('day')) && in_array('Kamis', old('day'))) ? 'selected' : '' }}>Kamis</option>
+                                            <option value="Jumat" {{ (is_array(old('day')) && in_array('Jumat', old('day'))) ? 'selected' : '' }}>Jumat</option>
+                                            <option value="Sabtu" {{ (is_array(old('day')) && in_array('Sabtu', old('day'))) ? 'selected' : '' }}>Sabtu</option>
+                                            <option value="Minggu" {{ (is_array(old('day')) && in_array('Minggu', old('day'))) ? 'selected' : '' }}>Minggu</option>
+                                        </select>
+                                        @error('day')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>

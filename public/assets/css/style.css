@@ -1549,7 +1549,7 @@ div.dataTables_wrapper div.dataTables_length select {
 }
 .select2-container--default .select2-selection--multiple {
     border: 1px solid #ddd;
-    min-height: 40px;
+    min-height: 50px;
 }
 .nav-tabs {
     border-bottom: 1px solid #e6e6e6;

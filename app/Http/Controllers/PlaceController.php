@@ -75,9 +75,11 @@ class PlaceController extends Controller
             'image.*'           => 'image|mimes:jpeg,png,jpg,gif|max:2048',
             'image.*.place_id'  => 'required|exists:places,id',
             'category_id'       => 'required',
-            'description'       => 'required',
-            'operational_hours' => 'required',
             'address'           => 'required',
+            'day'               => 'required|array',
+            'day.*'             => 'in:Senin,Selasa,Rabu,Kamis,Jumat,Sabtu,Minggu',
+            'operational_hours' => 'required',
+            'description'       => 'required',
             'latitude'          => 'required',
             'longitude'         => 'required',
         ]);
@@ -89,14 +91,25 @@ class PlaceController extends Controller
                 'slug'              => Str::slug($request->title, '-'),
                 'user_id'           => auth()->id(),
                 'category_id'       => $request->category_id,
+                'address'           => $request->address,
+                // 'day'               => $request->day,
                 'operational_hours' => $request->operational_hours,
                 'description'       => $request->description,
-                'address'           => $request->address,
                 'website'           => $request->website,
                 'social_media'      => $request->social_media,
                 'latitude'          => $request->latitude,
                 'longitude'         => $request->longitude,
             ]);
+
+            // Simpan hari terpilih dalam bentuk array
+            $days = $request->day;
+
+            // Ubah array hari menjadi string terpisah dengan koma
+            $daysString = implode(', ', $days);
+
+            // Simpan nilai day ke dalam kolom day pada tabel places
+            $place->day = $daysString;
+            $place->save();
 
             //upload image
             if ($request->hasFile('image')) {
@@ -139,13 +152,14 @@ class PlaceController extends Controller
 
         $request->validate([
             'title'             => 'required|unique:places,title,' . $places->id,
-            'image'             => 'required|array',
+            'image'             => 'array',
             'image.*'           => 'image|mimes:jpeg,png,jpg,gif|max:2048',
             'image.*.place_id'  => 'required|exists:places,id',
             'category_id'       => 'required',
-            'description'       => 'required',
-            'operational_hours' => 'required',
             'address'           => 'required',
+            'day'               => 'required',
+            'operational_hours' => 'required',
+            'description'       => 'required',
             'latitude'          => 'required',
             'longitude'         => 'required',
         ]);
@@ -154,9 +168,15 @@ class PlaceController extends Controller
         $places->title = $request->title;
         $places->slug = Str::slug($request->title, '-');
         $places->category_id = $request->category_id;
-        $places->description = $request->description;
-        $places->operational_hours = $request->operational_hours;
         $places->address = $request->address;
+        // Simpan hari terpilih dalam bentuk array
+        $days = $request->day;
+        // Ubah array hari menjadi string terpisah dengan koma
+        $daysString = implode(', ', $days);
+        // Simpan nilai day ke dalam kolom day pada tabel places
+        $places->day = $daysString;
+        $places->operational_hours = $request->operational_hours;
+        $places->description = $request->description;
         $places->website = $request->website;
         $places->social_media = $request->social_media;
         $places->latitude = $request->latitude;
@@ -167,6 +187,7 @@ class PlaceController extends Controller
         if ($request->hasFile('image')) {
             // Hapus gambar lama dari penyimpanan
             $images = $places->images;
+            
             foreach ($images as $image) {
                 Storage::disk('local')->delete('public/places/' . basename($image->image));
                 $image->delete();
@@ -186,7 +207,7 @@ class PlaceController extends Controller
                     'place_id'  => $places->id
                 ]);
             }
-        }
+        } 
 
         Toastr::success('Tempat berhasil diubah');
         return redirect()->to('list/my_places');

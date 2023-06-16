@@ -55,7 +55,7 @@
                                         @enderror
                                     </div>
                                 </div>
-                                <div class="col-12 col-sm-6">
+                                <div class="col-12 col-sm-4">
                                     <div class="form-group local-forms">
                                         <label>Foto (banyak foto)<span class="login-danger">*</span></label>
                                         <input type="file" name="image[]" multiple class="form-control @error('image.*') is-invalid @enderror @error('image') is-invalid @enderror">
@@ -86,7 +86,27 @@
                                         @endif
                                     </div>
                                 </div>
-                                <div class="col-12 col-sm-6">
+                                <div class="col-12 col-sm-4">
+                                    <div class="form-group local-forms">
+                                        <label>Hari <span class="login-danger">*</span></label>
+                                        <!-- <input type="text" name="day" value="{{ $places->day }}" class="form-control @error('day') is-invalid @enderror"> -->
+                                        <select name="day[]" class="form-control select @error('day') is-invalid @enderror" multiple>
+                                            <option value="Senin" {{ (is_array($places->day) && in_array('Senin', $places->day)) ? 'selected' : '' }}>Senin</option>
+                                            <option value="Selasa" {{ (is_array($places->day) && in_array('Selasa', $places->day)) ? 'selected' : '' }}>Selasa</option>
+                                            <option value="Rabu" {{ (is_array($places->day) && in_array('Rabu', $places->day)) ? 'selected' : '' }}>Rabu</option>
+                                            <option value="Kamis" {{ (is_array($places->day) && in_array('Kamis', $places->day)) ? 'selected' : '' }}>Kamis</option>
+                                            <option value="Jumat" {{ (is_array($places->day) && in_array('Jumat', $places->day)) ? 'selected' : '' }}>Jumat</option>
+                                            <option value="Sabtu" {{ (is_array($places->day) && in_array('Sabtu', $places->day)) ? 'selected' : '' }}>Sabtu</option>
+                                            <option value="Minggu" {{ (is_array($places->day) && in_array('Minggu', $places->day)) ? 'selected' : '' }}>Minggu</option>
+                                        </select>
+                                        @error('day')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-4">
                                     <div class="form-group local-forms">
                                         <label>Jam Operasional <span class="login-danger">*</span></label>
                                         <input type="text" name="operational_hours" value="{{ $places->operational_hours }}" class="form-control @error('operational_hours') is-invalid @enderror">
@@ -97,7 +117,7 @@
                                         @enderror
                                     </div>
                                 </div>
-                      
+
                                 <div class="col-12">
                                     <div class="form-group local-forms">
                                         <label>Deskripsi <span class="login-danger">*</span></label>
