@@ -5,6 +5,7 @@
 <title>Home</title>
 <div class="page-wrapper">
     <div class="content container-fluid">
+        <!-- HEADER -->
         <div class="page-header">
             <div class="row">
                 <div class="col-sm-12">
@@ -18,131 +19,71 @@
                 </div>
             </div>
         </div>
+        <!-- HEADER -->
 
+        <!-- CARD -->
         <div class="row mt-5">
-            <!-- CARD 1 -->
-            <div class="col-xl-3 col-sm-6 col-12 d-flex">
-                <div class="card bg-comman w-100">
-                    <div class="card-body">
-                        <div class="db-widgets d-flex justify-content-between align-items-center">
-                            <div class="db-info">
-                                <h6>Pengguna</h6>
-                                <h3>{{ $penggunaCount }}</h3>
-                            </div>
-                            <div class="db-icon">
-                                <i class="fas fa-user"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @php
+            $cards = [
+            ['Pengguna', $penggunaCount, 'fas fa-user'],
+            ['Admin Wisata', $adminCount, 'fas fa-users-cog'],
+            ['Kategori Wisata', $categoryCount, 'fas fa-th-list'],
+            ['Tempat Wisata', $placeCount, 'fas fa-map-marked-alt']
+            ];
+            @endphp
 
-            <!-- CARD 2 -->
+            @foreach ($cards as $card)
             <div class="col-xl-3 col-sm-6 col-12 d-flex">
                 <div class="card bg-comman w-100">
                     <div class="card-body">
                         <div class="db-widgets d-flex justify-content-between align-items-center">
                             <div class="db-info">
-                                <h6>Admin Wisata</h6>
-                                <h3>{{ $adminCount }}</h3>
+                                <h6>{{ $card[0] }}</h6>
+                                <h3>{{ $card[1] }}</h3>
                             </div>
                             <div class="db-icon">
-                                <i class="fas fa-users-cog"></i>
+                                <i class="{{ $card[2] }}"></i>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <!-- CARD 3 -->
-            <div class="col-xl-3 col-sm-6 col-12 d-flex">
-                <div class="card bg-comman w-100">
-                    <div class="card-body">
-                        <div class="db-widgets d-flex justify-content-between align-items-center">
-                            <div class="db-info">
-                                <h6>Kategori Wisata</h6>
-                                <h3>{{ $categoryCount }}</h3>
-                            </div>
-                            <div class="db-icon">
-                                <i class="fas fa-th-list"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- CARD 4 -->
-            <div class="col-xl-3 col-sm-6 col-12 d-flex">
-                <div class="card bg-comman w-100">
-                    <div class="card-body">
-                        <div class="db-widgets d-flex justify-content-between align-items-center">
-                            <div class="db-info">
-                                <h6>Tempat Wisata</h6>
-                                <h3>{{ $placeCount }}</h3>
-                            </div>
-                            <div class="db-icon">
-                                <i class="fas fa-map-marked-alt"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
+        <!-- CARD -->
 
-        <div class="row">
-            <!-- Chart 1 -->
-            <!-- <div class="col-md-12 col-lg-12">
+        <div class="row mb-5">
+            <div class="graphbox">
+                <div class="box">
+                    <h5 class="card-title text-center">Data Pengunjung</h5>
+                    <canvas id="myPieChart"></canvas>
+                </div>
+                <div class="box">
+                    <h5 class="card-title text-center">Data Pengunjung</h5>
+                    <canvas id="myBarChart"></canvas>
+                </div>
+
+                <!-- PIE CHART PENGUNJUNG -->
+                <!-- <div class="col-md-12 col-lg-6">
                 <div class="card card-chart">
                     <div class="card-header">
                         <div class="row align-items-center">
-                            <div class="col-6">
-                                <h5 class="card-title">Overview</h5>
-                            </div>
-                            <div class="col-6">
-                                <ul class="chart-list-out">
-                                    <li><span class="circle-blue"></span>Admin Wisata</li>
-                                    <li><span class="circle-green"></span>User</li>
-                                    <li class="star-menus"><a href="javascript:;"><i class="fas fa-ellipsis-v"></i></a></li>
-                                </ul>
+                            <div class="col-12">
+                                <h5 class="card-title text-center">Data Pengunjung</h5>
                             </div>
                         </div>
                     </div>
                     <div class="card-body">
-                        <div id="apexcharts-area"></div>
+                        <canvas id="myPieChart"></canvas>
                     </div>
                 </div>
             </div> -->
-            <!-- Chart 1 -->
+                <!-- PIE CHART PENGUNJUNG -->
+            </div>
 
-            <!-- Chart 2 -->
-            <!-- <div class="col-md-12 col-lg-12">
-                <div class="card card-chart">
-                    <div class="card-header">
-                        <div class="row align-items-center">
-                            <div class="col-6">
-                                <h5 class="card-title">Number of Students</h5>
-                            </div>
-                            <div class="col-6">
-                                <ul class="chart-list-out">
-                                    <li><span class="circle-blue"></span>Girls</li>
-                                    <li><span class="circle-green"></span>Boys</li>
-                                    <li class="star-menus"><a href="javascript:;"><i
-                                                class="fas fa-ellipsis-v"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <div id="bar"></div>
-                    </div>
-                </div>
-            </div> -->
-            <!-- Chart 2 -->
-        </div>
-
-        <div class="row">
-            <!-- Aktivitas User -->
-            <!-- <div class="col-xl-6 d-flex">
+            <div class="row">
+                <!-- Aktivitas User -->
+                <!-- <div class="col-xl-6 d-flex">
 
                 <div class="card flex-fill student-space comman-shadow">
                     <div class="card-header d-flex align-items-center">
@@ -246,75 +187,8 @@
                     </div>
                 </div>
             </div> -->
-            <!-- Aktivitas User -->
-
-            <!-- Aktivitas Komentar -->
-            <!-- <div class="col-xl-6 d-flex">
-                <div class="card flex-fill comman-shadow">
-                    <div class="card-header d-flex align-items-center">
-                        <h5 class="card-title ">Aktivitas Komentar</h5>
-                        <ul class="chart-list-out student-ellips">
-                            <li class="star-menus"><a href="javascript:;"><i class="fas fa-ellipsis-v"></i></a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="card-body">
-                        <div class="activity-groups">
-                            <div class="activity-awards">
-                                <div class="award-boxs">
-                                    <img src="assets/img/icons/award-icon-01.svg" alt="Award">
-                                </div>
-                                <div class="award-list-outs">
-                                    <h4>1st place in "Chess”</h4>
-                                    <h5>John Doe won 1st place in "Chess"</h5>
-                                </div>
-                                <div class="award-time-list">
-                                    <span>1 Day ago</span>
-                                </div>
-                            </div>
-                            <div class="activity-awards">
-                                <div class="award-boxs">
-                                    <img src="assets/img/icons/award-icon-02.svg" alt="Award">
-                                </div>
-                                <div class="award-list-outs">
-                                    <h4>Participated in "Carrom"</h4>
-                                    <h5>Justin Lee participated in "Carrom"</h5>
-                                </div>
-                                <div class="award-time-list">
-                                    <span>2 hours ago</span>
-                                </div>
-                            </div>
-                            <div class="activity-awards">
-                                <div class="award-boxs">
-                                    <img src="assets/img/icons/award-icon-03.svg" alt="Award">
-                                </div>
-                                <div class="award-list-outs">
-                                    <h4>Internation conference in "St.John School"</h4>
-                                    <h5>Justin Leeattended internation conference in "St.John School"</h5>
-                                </div>
-                                <div class="award-time-list">
-                                    <span>2 Week ago</span>
-                                </div>
-                            </div>
-                            <div class="activity-awards mb-0">
-                                <div class="award-boxs">
-                                    <img src="assets/img/icons/award-icon-04.svg" alt="Award">
-                                </div>
-                                <div class="award-list-outs">
-                                    <h4>Won 1st place in "Chess"</h4>
-                                    <h5>John Doe won 1st place in "Chess"</h5>
-                                </div>
-                                <div class="award-time-list">
-                                    <span>3 Day ago</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div> -->
-            <!-- Aktivitas Komentar -->
+                <!-- Aktivitas User -->
+            </div>
         </div>
     </div>
-</div>
-@endsection
+    @endsection

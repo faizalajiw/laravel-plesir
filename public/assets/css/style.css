@@ -5164,20 +5164,22 @@ table.table-inbox tbody tr.checked {
     color: #7638ff;
     margin: 5px;
 }
-@media only screen and (min-width: 1199.5px) and (max-width: 1620px) {
-    .sm-box p {
-        color: #fff;
-        font-size: 12px;
-    }
-    .fa-twitter {
-        bottom: -6px !important;
-    }
-    .fa-instagram {
-        bottom: -4px !important;
-    }
-    .fa-linkedin-in {
-        bottom: -9px !important;
-    }
+.graphbox{
+    position: relative;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-gap: 25px;
+    min-height: 200px;
+}
+.graphbox .box{
+    position: relative;
+    width: 100%;
+    padding: 20px;
+    background-color: #fff;
+    border: 0;
+    border-radius: 10px;
+    box-shadow: 0 0 31px 3px rgba(44, 50, 63, 0.02);
 }
 @media (min-width: 768px) {
     .avatar-xxl {
@@ -5343,6 +5345,11 @@ table.table-inbox tbody tr.checked {
     }
 }
 @media (max-width: 991.98px) {
+    .graphbox{
+        grid-template-columns: 1fr;
+        height: 100%;
+        width: 100%;
+    }
     .header .header-left {
         position: absolute;
         width: 100%;
