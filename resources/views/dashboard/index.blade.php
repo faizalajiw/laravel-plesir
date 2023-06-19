@@ -52,8 +52,11 @@
         </div>
         <!-- CARD -->
 
+        <div class="row mt-3">
+            
+        </div>
         <!-- Statistik -->
-        <div class="row">
+        <div class="row mt-3">
             <div class="col-md-12 col-lg-4">
                 <div class="card card-chart">
                     <div class="card-header">
@@ -63,9 +66,7 @@
                             </div>
                             <div class="col-6">
                                 <ul class="chart-list-out">
-                                    <li><span class="circle-blue"></span>Teacher</li>
-                                    <li><span class="circle-green"></span>Student</li>
-                                    <li class="star-menus"><a href="javascript:;"><i class="fas fa-ellipsis-v"></i></a></li>
+                                    
                                 </ul>
                             </div>
                         </div>
@@ -84,9 +85,7 @@
                             </div>
                             <div class="col-6">
                                 <ul class="chart-list-out">
-                                    <li><span class="circle-blue"></span>Teacher</li>
-                                    <li><span class="circle-green"></span>Student</li>
-                                    <li class="star-menus"><a href="javascript:;"><i class="fas fa-ellipsis-v"></i></a></li>
+                                    
                                 </ul>
                             </div>
                         </div>
