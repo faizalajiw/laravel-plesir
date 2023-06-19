@@ -21,6 +21,7 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
             $table->text('description');
             $table->text('address');
+            $table->string('day')->nullable();
             $table->string('operational_hours');
             $table->string('website')->nullable();
             $table->string('social_media')->nullable();

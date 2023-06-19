@@ -1,16 +1,23 @@
+var senin = parseInt(document.getElementById('senin').innerText);
+var selasa = parseInt(document.getElementById('selasa').innerText);
+var rabu = parseInt(document.getElementById('rabu').innerText);
+var kamis = parseInt(document.getElementById('kamis').innerText);
+var jumat = parseInt(document.getElementById('jumat').innerText);
+var sabtu = parseInt(document.getElementById('sabtu').innerText);
+var minggu = parseInt(document.getElementById('minggu').innerText);
 // Data jumlah pengunjung harian
 var data = {
     labels: ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu'],
     datasets: [{
-        data: [20, 20, 20, 20, 20, 30, 50],
+        data: [senin, selasa, rabu, kamis, jumat, sabtu, minggu],
         backgroundColor: [
-            'rgba(0, 52, 89)',
-            'rgba(0, 126, 167)',
-            'rgba(0, 168, 232)',
-            'rgba(0, 52, 89)',
-            'rgba(0, 126, 167)',
-            'rgba(0, 168, 232)',
-            'rgba(0, 126, 167)'
+            'rgba(2, 103, 193)',
+            'rgba(239, 160, 11)',
+            'rgba(214, 81, 8)',
+            'rgba(89, 31, 10)',
+            'rgba(193, 18, 31)',
+            'rgba(105, 48, 195)',
+            'rgba(0, 121, 140)'
         ]
     }]
 };

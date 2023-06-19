@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Place;
 use App\Models\User;
+use App\Models\Visitor;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -32,7 +33,12 @@ class DashboardController extends Controller
         $adminCount = User::where('role_name', 'Admin Wisata')->count();
         $categoryCount = Category::count();
         $placeCount = Place::count();
-        return view('dashboard.index', compact('penggunaCount', 'adminCount' , 'categoryCount', 'placeCount'));
+
+        $userId = auth()->id(); // Mengambil ID pengguna yang sedang masuk
+        $visitor = Visitor::with('user')->where('user_id', $userId)->get();
+        $places = Place::with('user')->where('user_id', $userId)->get();
+        return view('dashboard.index', compact('visitor', 'places', 'penggunaCount', 'adminCount' , 'categoryCount', 'placeCount'));
+        // return view('dashboard.index', compact('penggunaCount', 'adminCount' , 'categoryCount', 'placeCount'));
     }
 
     /** profile user */

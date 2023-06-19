@@ -58,4 +58,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Place::class);
     }
+
+    public function visitor()
+    {
+        return $this->hasMany(Visitor::class);
+    }
 }

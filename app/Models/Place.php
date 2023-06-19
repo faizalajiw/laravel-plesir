@@ -20,6 +20,7 @@ class Place extends Model
         'category_id', 
         'user_id', 
         'description',  
+        'day',
         'address', 
         'operational_hours', 
         'website', 
@@ -42,5 +43,10 @@ class Place extends Model
     public function images()
     {
         return $this->hasMany(PlaceImage::class);
+    }
+    
+    public function visitor()
+    {
+        return $this->hasOne(Visitor::class);
     }
 }

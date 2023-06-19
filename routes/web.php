@@ -12,6 +12,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Setting;
 use App\Http\Controllers\PlaceController;
 use App\Http\Controllers\SliderController;
+use App\Http\Controllers\VisitorController;
 use App\Http\Controllers\Web\CategoryController as WebCategoryController;
 use App\Http\Controllers\Web\PlaceController as WebPlaceController;
 use App\Models\Category;
@@ -124,6 +125,17 @@ Route::controller(PlaceController::class)->group(function () {
     Route::post('places/delete', 'delete')->middleware(['auth', 'role:Super Admin,Admin Wisata'])->name('places/delete');
 });
 
+// ----------------------------- visitor controller -------------------------//
+Route::controller(VisitorController::class)->group(function () {
+    // Route::get('list/visitor', 'index')->middleware(['auth', 'role:Super Admin'])->name('list/places');
+    Route::get('list/history', 'history')->middleware(['auth', 'role:Super Admin,Admin Wisata'])->name('list/history');
+    Route::get('visitor/create', 'create')->middleware(['auth', 'role:Super Admin,Admin Wisata'])->name('visitor/create');
+    Route::post('visitor/store', 'store')->middleware(['auth', 'role:Super Admin,Admin Wisata'])->name('visitor/store');
+    Route::get('view/visitor/edit/{id}', 'edit')->middleware(['auth', 'role:Super Admin,Admin Wisata'])->name('view/visitor/edit');
+    Route::post('visitor/update', 'update')->middleware(['auth', 'role:Super Admin,Admin Wisata'])->name('visitor/update');
+    Route::post('visitor/delete', 'delete')->middleware(['auth', 'role:Super Admin,Admin Wisata'])->name('visitor/delete');
+});
+
 // ----------------------------- slider banner controller -------------------------//
 Route::middleware(['auth', 'role:Super Admin'])->group(function () {
     Route::get('list/sliders', [SliderController::class, 'index'])->name('list/sliders');
@@ -133,12 +145,6 @@ Route::middleware(['auth', 'role:Super Admin'])->group(function () {
     Route::post('sliders/update', [SliderController::class, 'update'])->name('sliders/update');
     Route::post('sliders/delete', [SliderController::class, 'delete'])->name('sliders/delete');
 });
-
-// ------------------------ setting -------------------------------//
-Route::controller(Setting::class)->group(function () {
-    Route::get('setting/page', 'index')->middleware('auth')->name('setting/page');
-});
-
 
 
 

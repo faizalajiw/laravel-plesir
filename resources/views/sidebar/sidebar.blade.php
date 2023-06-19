@@ -5,12 +5,6 @@
                 <li class="menu-title">
                     <span>Menu</span>
                 </li>
-                <!-- <li class="{{set_active(['setting/page'])}}">
-                    <a href="{{ route('setting/page') }}">
-                        <i class="fas fa-cog"></i> 
-                        <span>Settings</span>
-                    </a>
-                </li> -->
 
                 <!-- DASHBOARD -->
                 <li class="{{set_active(['dashboard'])}}">
@@ -103,6 +97,24 @@
                 @endif
                 <!-- TEMPAT -->
 
+                <!-- DATA PENGUNJUNG -->
+                <!-- SUPER ADMIN & ADMIN WISATA -->
+                @if (Session::get('role_name') === 'Super Admin' || Session::get('role_name') === 'Admin Wisata')
+                <li class="submenu {{set_active(['list/history','visitor/create'])}}">
+                    <a href="#"><i class="fas fa-chart-line"></i>
+                        <span>Data Pengunjung</span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <ul>
+                        <!-- ONLY SUPER ADMIN -->
+                        <li><a href="{{ route('list/history') }}" class="{{set_active(['list/history'])}}">Riwayat Pengunjung</a></li>
+                        <li><a href="{{ route('visitor/create') }}" class="{{set_active(['visitor/create'])}}">Tambah Data</a></li>
+                    </ul>
+                </li>
+                @endif
+                <!-- DATA PENGUNJUNG -->
+                
+                <!-- RATING & ULASAN -->
                 <li class="submenu">
                     <a href="#"><i class="fas fa-clipboard"></i>
                         <span>Rating & Ulasan</span>
@@ -113,10 +125,12 @@
                         <li><a href="#">Edit Ulasan</a></li>
                     </ul>
                 </li>
+                <!-- RATING & ULASAN -->
 
                 <li class="menu-title">
                     <span>Akun</span>
                 </li>
+                
                 <!-- Profile -->
                 <li class="{{set_active(['profile/user'])}}">
                     <a href="{{ route('profile/user') }}" class="{{set_active(['profile/user'])}}"><i class="fas fa-user"></i>

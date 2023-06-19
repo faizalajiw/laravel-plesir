@@ -1,9 +1,16 @@
+var senin = parseInt(document.getElementById('senin').innerText);
+var selasa = parseInt(document.getElementById('selasa').innerText);
+var rabu = parseInt(document.getElementById('rabu').innerText);
+var kamis = parseInt(document.getElementById('kamis').innerText);
+var jumat = parseInt(document.getElementById('jumat').innerText);
+var sabtu = parseInt(document.getElementById('sabtu').innerText);
+var minggu = parseInt(document.getElementById('minggu').innerText);
 // Data jumlah pengunjung harian
 var data = {
     labels: ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu'],
     datasets: [{
         label: 'Jumlah Pengunjung',
-        data: [20, 20, 20, 20, 20, 30, 50],
+        data: [senin, selasa, rabu, kamis, jumat, sabtu, minggu],
         backgroundColor: [
             'rgba(0, 52, 89)',
             'rgba(0, 126, 167)',
@@ -30,7 +37,7 @@ var config = {
         scales: {
             y: {
                 beginAtZero: true,
-                max: 100,
+                max: 160,
                 title: {
                     display: true,
                     text: 'Jumlah Pengunjung'
