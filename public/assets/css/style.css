@@ -2864,7 +2864,8 @@ footer p {
     margin-bottom: 5px;
 }
 .card-chart .card-body {
-    padding: 8px;
+    padding: 25px;
+    min-height: 425px;
 }
 .sm-box {
     padding: 11px;

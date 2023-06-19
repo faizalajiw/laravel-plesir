@@ -52,24 +52,21 @@
         </div>
         <!-- CARD -->
 
-        <div class="row mb-5">
-            <div class="graphbox">
-                <div class="box">
-                    <h5 class="card-title text-center">Data Pengunjung</h5>
-                    <canvas id="myPieChart"></canvas>
-                </div>
-                <div class="box">
-                    <h5 class="card-title text-center">Data Pengunjung</h5>
-                    <canvas id="myBarChart"></canvas>
-                </div>
-
-                <!-- PIE CHART PENGUNJUNG -->
-                <!-- <div class="col-md-12 col-lg-6">
+        <!-- Statistik -->
+        <div class="row">
+            <div class="col-md-12 col-lg-4">
                 <div class="card card-chart">
                     <div class="card-header">
                         <div class="row align-items-center">
-                            <div class="col-12">
-                                <h5 class="card-title text-center">Data Pengunjung</h5>
+                            <div class="col-6">
+                                <h5 class="card-title">Data Pengunjung</h5>
+                            </div>
+                            <div class="col-6">
+                                <ul class="chart-list-out">
+                                    <li><span class="circle-blue"></span>Teacher</li>
+                                    <li><span class="circle-green"></span>Student</li>
+                                    <li class="star-menus"><a href="javascript:;"><i class="fas fa-ellipsis-v"></i></a></li>
+                                </ul>
                             </div>
                         </div>
                     </div>
@@ -77,60 +74,80 @@
                         <canvas id="myPieChart"></canvas>
                     </div>
                 </div>
-            </div> -->
-                <!-- PIE CHART PENGUNJUNG -->
             </div>
-
-            <div class="row mt-5">
-                <!-- Tabel Data Pengunjung -->
-                <div class="col-xl-12 col-sm-12 col-12 d-flex">
-
-                    <div class="card flex-fill student-space comman-shadow">
-                        <div class="card-header d-flex align-items-center">
-                            <h5 class="card-title">Data Pengunjung</h5>
-                        </div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table star-student table-hover table-center table-borderless table-striped">
-                                    <thead class="thead-light">
-                                        <tr>
-                                            <th>No</th>
-                                            <th>Nama Tempat</th>
-                                            <th>Senin</th>
-                                            <th>Selasa</th>
-                                            <th>Rabu</th>
-                                            <th>Kamis</th>
-                                            <th>Jumat</th>
-                                            <th>Sabtu</th>
-                                            <th>Minggu</th>
-                                            <th>Total</th>
-                                            <th style="color: transparent; background-color: #F8F9FA;"></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach ($visitor as $list)
-                                        <tr>
-                                            <td>{{ $loop->iteration }}</td>
-                                            <td>{{ $list->place->title }}</td>
-                                            <td id="senin">{{ $list->senin }}</td>
-                                            <td id="selasa">{{ $list->selasa }}</td>
-                                            <td id="rabu">{{ $list->rabu }}</td>
-                                            <td id="kamis">{{ $list->kamis }}</td>
-                                            <td id="jumat">{{ $list->jumat }}</td>
-                                            <td id="sabtu">{{ $list->sabtu }}</td>
-                                            <td id="minggu">{{ $list->minggu }}</td>
-                                            <td>{{ $list->total_hari }}</td>
-                                            <td class="id" style="color: transparent; background-color: transparent;">{{ $list->id }}</td>
-                                        </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
+            <div class="col-md-12 col-lg-8">
+                <div class="card card-chart">
+                    <div class="card-header">
+                        <div class="row align-items-center">
+                            <div class="col-6">
+                                <h5 class="card-title">Data Pengunjung</h5>
+                            </div>
+                            <div class="col-6">
+                                <ul class="chart-list-out">
+                                    <li><span class="circle-blue"></span>Teacher</li>
+                                    <li><span class="circle-green"></span>Student</li>
+                                    <li class="star-menus"><a href="javascript:;"><i class="fas fa-ellipsis-v"></i></a></li>
+                                </ul>
                             </div>
                         </div>
                     </div>
+                    <div class="card-body">
+                        <canvas id="myBarChart"></canvas>
+                    </div>
                 </div>
-                <!-- Tabel Data Pengunjung -->
             </div>
         </div>
+        <!-- Statistik -->
+
+        <!-- Tabel Data Pengunjung -->
+        <div class="row mt-3">
+            <div class="col-xl-12 col-sm-12 col-12 d-flex">
+
+                <div class="card flex-fill student-space comman-shadow">
+                    <div class="card-header d-flex align-items-center">
+                        <h5 class="card-title">Data Pengunjung</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table star-student table-hover table-center table-borderless table-striped">
+                                <thead class="thead-light">
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Nama Tempat</th>
+                                        <th>Senin</th>
+                                        <th>Selasa</th>
+                                        <th>Rabu</th>
+                                        <th>Kamis</th>
+                                        <th>Jumat</th>
+                                        <th>Sabtu</th>
+                                        <th>Minggu</th>
+                                        <th>Total</th>
+                                        <th style="color: transparent; background-color: #F8F9FA;"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($visitor as $list)
+                                    <tr>
+                                        <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $list->place->title }}</td>
+                                        <td id="senin">{{ $list->senin }}</td>
+                                        <td id="selasa">{{ $list->selasa }}</td>
+                                        <td id="rabu">{{ $list->rabu }}</td>
+                                        <td id="kamis">{{ $list->kamis }}</td>
+                                        <td id="jumat">{{ $list->jumat }}</td>
+                                        <td id="sabtu">{{ $list->sabtu }}</td>
+                                        <td id="minggu">{{ $list->minggu }}</td>
+                                        <td>{{ $list->total_hari }}</td>
+                                        <td class="id" style="color: transparent; background-color: transparent;">{{ $list->id }}</td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Tabel Data Pengunjung -->
     </div>
     @endsection
