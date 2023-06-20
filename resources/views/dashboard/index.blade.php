@@ -6,7 +6,7 @@
 <div class="page-wrapper">
     <div class="content container-fluid">
         <!-- HEADER -->
-        <div class="page-header">
+        <div class="page-header mb-5">
             <div class="row">
                 <div class="col-sm-12">
                     <div class="col">
@@ -22,7 +22,7 @@
         <!-- HEADER -->
 
         <!-- CARD -->
-        <div class="row mt-5">
+        <div class="row mb-3">
             @php
             $cards = [
             ['Pengguna', $penggunaCount, 'fas fa-user'],
@@ -52,11 +52,12 @@
         </div>
         <!-- CARD -->
 
-        <div class="row mt-3">
-            
+        <div class="row mb-3">
+
         </div>
         <!-- Statistik -->
-        <div class="row mt-3">
+        @if (Session::get('role_name') === 'Admin Wisata')
+        <div class="row mb-3">
             <div class="col-md-12 col-lg-4">
                 <div class="card card-chart">
                     <div class="card-header">
@@ -66,7 +67,7 @@
                             </div>
                             <div class="col-6">
                                 <ul class="chart-list-out">
-                                    
+
                                 </ul>
                             </div>
                         </div>
@@ -85,7 +86,7 @@
                             </div>
                             <div class="col-6">
                                 <ul class="chart-list-out">
-                                    
+
                                 </ul>
                             </div>
                         </div>
@@ -96,10 +97,12 @@
                 </div>
             </div>
         </div>
+        @endif
         <!-- Statistik -->
 
         <!-- Tabel Data Pengunjung -->
-        <div class="row mt-3">
+        @if (Session::get('role_name') === 'Super Admin' || Session::get('role_name') === 'Admin Wisata')
+        <div class="row mb-3">
             <div class="col-xl-12 col-sm-12 col-12 d-flex">
 
                 <div class="card flex-fill student-space comman-shadow">
@@ -147,6 +150,15 @@
                 </div>
             </div>
         </div>
+        @endif
         <!-- Tabel Data Pengunjung -->
     </div>
+
+    @section('script')
+    <!-- CHART JS -->
+    <script src="{{ URL::to('assets/plugins/chartjs/charts.js') }}"></script>
+    <script src="{{ URL::to('assets/plugins/chartjs/pie-chart-data.js') }}"></script>
+    <script src="{{ URL::to('assets/plugins/chartjs/bar-chart-data.js') }}"></script>
+    @endsection
+
     @endsection

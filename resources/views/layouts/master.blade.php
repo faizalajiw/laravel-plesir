@@ -88,10 +88,11 @@
         @include('sidebar.sidebar')
         {{-- content page --}}
         @yield('content')
-        <footer>
+        <!-- <footer style="position: relative; left: 0; bottom: 0; width: 100%; text-align: center; padding: 20px 0;">
             <p>© 2023 Plesir Tegal.</p>
-        </footer>
-
+        </footer> -->
+        <br>
+        <br>
     </div>
 
     <script src="{{ URL::to('assets/js/jquery-3.6.0.min.js') }}"></script>
@@ -102,12 +103,6 @@
     <script src="{{ URL::to('assets/plugins/datatables/datatables.min.js') }}"></script>
     <script src="{{ URL::to('assets/plugins/select2/js/select2.min.js') }}"></script>
     <script src="{{ URL::to('assets/js/script.js') }}"></script>
-
-    <!-- CHART JS -->
-    <script src="{{ URL::to('assets/plugins/chartjs/charts.js') }}"></script>
-    <script src="{{ URL::to('assets/plugins/chartjs/pie-chart-data.js') }}"></script>
-    <script src="{{ URL::to('assets/plugins/chartjs/bar-chart-data.js') }}"></script>
-
 
     <!-- Load the `mapbox-gl-geocoder` plugin. -->
     <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.min.js"></script>
