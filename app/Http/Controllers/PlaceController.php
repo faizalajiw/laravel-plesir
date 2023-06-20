@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Place;
+use App\Models\User;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -14,25 +15,28 @@ class PlaceController extends Controller
     // Index Page
     public function index()
     {
+        $user = User::find(auth()->user()->id);
         $places = Place::all();
-        return view('place.index', compact('places'));
+        return view('place.index', compact('user', 'places'));
     }
 
     public function myPlace()
     {
+        $user = User::find(auth()->user()->id);
         $userId = auth()->id(); // Mengambil ID pengguna yang sedang masuk
-
+        
         $places = Place::with('user')->where('user_id', $userId)->get();
-        return view('place.my_place.index', compact('places'));
+        return view('place.my_place.index', compact('user', 'places'));
     }
-
+    
     // Search
     public function search(Request $request)
     {
+        $user = User::find(auth()->user()->id);
         // Ambil nilai dari input form
         $category = $request->input('category_id');
         $title = $request->input('title');
-        $user = $request->input('user_id');
+        // $user = $request->input('user_id');
 
         // Query untuk mencari tempat berdasarkan kriteria pencarian
         $places = Place::with('category', 'user')
@@ -54,15 +58,16 @@ class PlaceController extends Controller
             // })            
             ->get();
 
-        return view('place.index', compact('places'));
+        return view('place.index', compact('user', 'places'));
     }
 
     // Form Create
     public function create()
     {
+        $user = User::find(auth()->user()->id);
         $places = Place::with('category', 'user')->get();
         $categories = Category::all();
-        return view('place.create', compact('places', 'categories'));
+        return view('place.create', compact('user', 'places', 'categories'));
     }
 
     // Store Place
@@ -140,9 +145,10 @@ class PlaceController extends Controller
     // Form Edit 
     public function edit($id)
     {
+        $user = User::find(auth()->user()->id);
         $places = Place::with('category', 'user', 'images')->find($id);
         $categories = Category::all();
-        return view('place.edit', compact('places', 'categories'));
+        return view('place.edit', compact('user', 'places', 'categories'));
     }
 
     // Update Place

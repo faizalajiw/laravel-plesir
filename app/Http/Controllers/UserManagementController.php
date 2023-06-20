@@ -18,36 +18,40 @@ class UserManagementController extends Controller
     // Index Page
     public function index()
     {
+        $user = User::find(auth()->user()->id);
         $users = User::all();
-        // return response()->json($users);
 
-        return view('usermanagement.index', compact('users'));
+        // return response()->json($users);
+        return view('usermanagement.index', compact('user', 'users'));
     }
 
     // Only show 1 role
     public function showPengguna()
     {
-        
+        $user = User::find(auth()->user()->id);
         $users = User::where('role_name', 'Pengguna')->get();
         // return response()->json($users);
-        return view('usermanagement.pengguna.index', compact('users'));
+        return view('usermanagement.pengguna.index', compact('user', 'users'));
     }
 
     public function showAdmin()
     {
+        $user = User::find(auth()->user()->id);
         $users = User::where('role_name', 'Admin Wisata')->get();
-        return view('usermanagement.admin_wisata.index', compact('users'));
+        return view('usermanagement.admin_wisata.index', compact('user', 'users'));
     }
 
     public function showSuper()
     {
+        $user = User::find(auth()->user()->id);
         $users = User::where('role_name', 'Super Admin')->get();
-        return view('usermanagement.super_admin.index', compact('users'));
+        return view('usermanagement.super_admin.index', compact('user', 'users'));
     }
 
     // Search
     public function search(Request $request)
     {
+        $user = User::find(auth()->user()->id);
         $users = User::query();
 
         if ($request->filled('users_id')) {
@@ -64,14 +68,15 @@ class UserManagementController extends Controller
 
         $users = $users->get();
 
-        return view('usermanagement.index', compact('users'));
+        return view('usermanagement.index', compact('user', 'users'));
     }
 
     /** User Create */
     public function create()
     {
+        $user = User::find(auth()->user()->id);
         $role = DB::table('role_type_users')->get();
-        return view('usermanagement.create', compact('role'));
+        return view('usermanagement.create', compact('user', 'role'));
     }
     /** User Create */
 
@@ -88,17 +93,22 @@ class UserManagementController extends Controller
         ]);
 
         // Mengupload image jika ada file yang diunggah
-        $image = $request->file('image');
-        $image->storeAs('public/users', $image->hashName());
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $image->storeAs('public/users', $image->hashName());
+            $imagePath = $image->hashName();
+        } else {
+            $imagePath = null;
+        }
 
         //create category
         $user = User::create([
-            'name'          => $request->name, //mengambil request gambar
-            'username'      => $request->username, //mengambil request gambar
-            'email'         => $request->email, //mengambil request gambar
-            'role_name'     => $request->role_name, //mengambil request gambar
-            'password'      => Hash::make($request->new_password), //mengambil request gambar
-            'image'        => $image->hashName(), //mengambil request gambar
+            'name'          => $request->name, //mengambil request name
+            'username'      => $request->username, //mengambil request username
+            'email'         => $request->email, //mengambil request email
+            'role_name'     => $request->role_name, //mengambil request role_name
+            'password'      => Hash::make($request->new_password), //mengambil request password
+            'image'         => $imagePath, //mengambil request image
         ]);
 
         // Menghasilkan users_id sesuai dengan pola yang diinginkan
@@ -122,9 +132,11 @@ class UserManagementController extends Controller
     /** User Edit */
     public function edit($id)
     {
+        $user = User::find(auth()->user()->id);
         $users = User::where('id', $id)->first();
         $role = DB::table('role_type_users')->get();
-        return view('usermanagement.edit', compact('users', 'role'));
+        // return response()->json($users);
+        return view('usermanagement.edit', compact('user', 'users', 'role'));
     }
     /** User Edit */
 
@@ -152,7 +164,7 @@ class UserManagementController extends Controller
             Toastr::error('User Tidak Ditemukan');
             return redirect()->back();
         }
-        
+
         $users->name = $request->name;
         $users->username = $request->username;
         $users->email = $request->email;

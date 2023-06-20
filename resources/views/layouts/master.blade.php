@@ -53,7 +53,7 @@
                     <a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
                         <span class="user-img">
                             <div class="avatar avatar-lg text-center">
-                                <img class="rounded-circle" src="{{ url('storage/' . Session::get('avatar')) }}" alt="Foto">
+                                <img class="rounded-circle" src="{{ $user->image }}" alt="Foto">
                             </div>
                             <div class="user-text">
                                 <h6>{{ Session::get('name') }}</h6>
@@ -64,7 +64,7 @@
                     <div class="dropdown-menu">
                         <div class="user-header">
                             <div class="avatar avatar-sm">
-                                <img src="{{ url('storage/' . Session::get('avatar')) }}" alt="Foto" class="avatar-img rounded-circle">
+                                <img src="{{ $user->image }}" alt="Foto" class="avatar-img rounded-circle">
                             </div>
                             <div class="user-text">
                                 <h6>{{ Session::get('name') }}</h6>
@@ -76,7 +76,7 @@
                         @if (Session::get('role_name') === 'Super Admin' || Session::get('role_name') === 'Admin Wisata')
                         <a class="dropdown-item" href="{{ route('list/my_places') }}">Kelola Tempat</a>
                         @endif
-                        <a class="dropdown-item" href="#">Ulasan Saya</a>
+                        <a class="dropdown-item" href="{{ route('list/review') }}">Ulasan Saya</a>
                         <a class="dropdown-item" href="{{ route('logout') }}">Logout</a>
                     </div>
                 </li>

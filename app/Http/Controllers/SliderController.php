@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Slider;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Support\Facades\Storage;
@@ -11,13 +12,15 @@ class SliderController extends Controller
 {
     public function index()
     {
+        $user = User::find(auth()->user()->id);
         $sliders = Slider::all();
-        return view('slider.index', compact('sliders'));
+        return view('slider.index', compact('user', 'sliders'));
     }
-
+    
     public function create()
     {
-        return view('slider.create');
+        $user = User::find(auth()->user()->id);
+        return view('slider.create', compact('user'));
     }
 
     public function store(Request $request, Slider $sliders)
@@ -48,8 +51,9 @@ class SliderController extends Controller
 
     public function edit($id)
     {
+        $user = User::find(auth()->user()->id);
         $sliders = Slider::where('id', $id)->first();
-        return view('slider.edit', compact('sliders'));
+        return view('slider.edit', compact('user', 'sliders'));
     }
 
     public function update(Request $request, Slider $sliders)

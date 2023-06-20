@@ -74,10 +74,10 @@
                                 <div class="col-12 col-sm-4">
                                     <div class="form-group local-forms">
                                         <label>Role <span class="login-danger">*</span></label>
-                                        <select class="form-control select @error('role_name') is-invalid @enderror" name="role_name" value="{{ $users->role_name }}">
+                                        <select class="form-control select @error('role_name') is-invalid @enderror" name="role_name">
                                             <option disabled selected>Pilih Role</option>
                                             @foreach ($role as $name)
-                                            <option value="{{ $name->role_type }}">{{ $name->role_type }}</option>
+                                            <option value="{{ $name->role_type }}" @if ($name->role_type == $users->role_name) selected @endif>{{ $name->role_type }}</option>
                                             @endforeach
                                         </select>
                                         @error('role_name')

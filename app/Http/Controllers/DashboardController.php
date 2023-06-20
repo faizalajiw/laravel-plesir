@@ -29,6 +29,7 @@ class DashboardController extends Controller
     /** home dashboard */
     public function index()
     {
+        $user = User::find(auth()->user()->id);
         $penggunaCount = User::where('role_name', 'Pengguna')->count();
         $adminCount = User::where('role_name', 'Admin Wisata')->count();
         $categoryCount = Category::count();
@@ -37,7 +38,7 @@ class DashboardController extends Controller
         $userId = auth()->id(); // Mengambil ID pengguna yang sedang masuk
         $visitor = Visitor::with('user')->where('user_id', $userId)->get();
         $places = Place::with('user')->where('user_id', $userId)->get();
-        return view('dashboard.index', compact('visitor', 'places', 'penggunaCount', 'adminCount' , 'categoryCount', 'placeCount'));
-        // return view('dashboard.index', compact('penggunaCount', 'adminCount' , 'categoryCount', 'placeCount'));
+        return view('dashboard.index', compact('user', 'visitor', 'places', 'penggunaCount', 'adminCount' , 'categoryCount', 'placeCount'));
+        // return response()->json($user);
     }
 }

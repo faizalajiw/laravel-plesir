@@ -13,19 +13,20 @@ class ReviewController extends Controller
 {
     public function index()
     {
+        $user = User::find(auth()->user()->id);
         $userId = auth()->id(); // Mengambil ID pengguna yang sedang masuk
 
         $reviews = Review::with('user', 'place')->where('user_id', $userId)->get();
         // return response()->json($reviews);
-        return view('review.index', compact('reviews'));
+        return view('review.index', compact('user', 'reviews'));
     }
 
     public function create()
     {
-        $users = User::find(auth()->user()->id);
+        $user = User::find(auth()->user()->id);
         $places = Place::all();
 
-        return view('review.create', compact('users', 'places'));
+        return view('review.create', compact('user', 'places'));
     }
 
     public function store(Request $request)

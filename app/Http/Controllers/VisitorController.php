@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Place;
+use App\Models\User;
 use App\Models\Visitor;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
@@ -13,18 +14,20 @@ class VisitorController extends Controller
     // List Data Pengunjung
     public function history()
     {
+        $user = User::find(auth()->user()->id);
         $userId = auth()->id(); // Mengambil ID pengguna yang sedang masuk
         $visitor = Visitor::with('user')->where('user_id', $userId)->get();
         $places = Place::with('user')->where('user_id', $userId)->get();
-        return view('visitor.index', compact('places', 'visitor'));
+        return view('visitor.index', compact('user', 'places', 'visitor'));
     }
-
+    
     // Form Create
     public function create()
     {
+        $user = User::find(auth()->user()->id);
         $userId = auth()->id(); // Mengambil ID pengguna yang sedang masuk
         $places = Place::with('user')->where('user_id', $userId)->get();
-        return view('visitor.create', compact('places'));
+        return view('visitor.create', compact('user', 'places'));
     }
 
     public function store(Request $request)
@@ -53,10 +56,11 @@ class VisitorController extends Controller
     // Form Edit 
     public function edit($id)
     {
+        $user = User::find(auth()->user()->id);
         $userId = auth()->id(); // Mengambil ID pengguna yang sedang masuk
         $visitor = Visitor::findOrFail($id);
         $places = Place::with('user')->where('user_id', $userId)->get();
-        return view('visitor.edit', compact('visitor', 'places'));
+        return view('visitor.edit', compact('user', 'visitor', 'places'));
     }
 
     public function update(Request $request, Visitor $visitor)
@@ -91,20 +95,6 @@ class VisitorController extends Controller
         $visitor->minggu = $totalMinggu;
         $visitor->total_hari = $totalHari;
         $visitor->save();
-
-        // // Update data visitor
-        // $visitor->place_id = $request->place_id;
-        // $visitor->senin = $request->senin;
-        // $visitor->selasa = $request->selasa;
-        // $visitor->rabu =  $request->rabu;
-        // $visitor->kamis =  $request->kamis;
-        // $visitor->jumat =  $request->jumat;
-        // $visitor->sabtu =  $request->sabtu;
-        // $visitor->minggu =  $request->minggu;
-
-
-        // // Simpan perubahan
-        // $visitor->save();
 
         Toastr::success('Data Pengunjung berhasil diperbarui :)', 'Success');
         return redirect()->to('list/history');

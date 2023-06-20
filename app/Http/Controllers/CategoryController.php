@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Brian2694\Toastr\Facades\Toastr;
@@ -13,13 +14,15 @@ class CategoryController extends Controller
 {
     public function index()
     {
+        $user = User::find(auth()->user()->id);
         $categories = Category::all();
-        return view('category.index', compact('categories'));
+        return view('category.index', compact('user', 'categories'));
     }
-
+    
     public function create()
     {
-        return view('category.create');
+        $user = User::find(auth()->user()->id);
+        return view('category.create', compact('user'));
     }
 
     public function store(Request $request, Category $categories)
@@ -51,8 +54,9 @@ class CategoryController extends Controller
 
     public function edit($id)
     {
+        $user = User::find(auth()->user()->id);
         $categories = Category::where('id', $id)->first();
-        return view('category.edit', compact('categories'));
+        return view('category.edit', compact('user', 'categories'));
     }
 
     public function update(Request $request, Category $categories)
@@ -89,7 +93,6 @@ class CategoryController extends Controller
         Toastr::success('Kategori berhasil diubah');
         return redirect()->to('/list/categories');
     }
-
 
     public function delete(Request $request)
     {
