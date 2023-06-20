@@ -20,15 +20,24 @@ class ProfileController extends Controller
         $this->middleware('auth');
     }
 
+    /** profile user */
+    public function index()
+    {
+        $user = User::find(auth()->user()->id);
+        // return response()->json($user);
+
+        return view('profile.index', compact('user'));
+    }
+
     /** change detail akun */
     public function changeProfileDetail(Request $request)
     {
         $request->validate([
-            'name'      => ['required','regex:/^[A-Za-z\s]+$/'],
-            'username'  => ['required','max:50','regex:/^\S*$/', Rule::unique('users')->ignore(auth()->user()->id),],
-            'email'     => ['required','email','regex:/^\S*$/', Rule::unique('users')->ignore(auth()->user()->id),],
+            'name'      => ['required', 'regex:/^[A-Za-z\s]+$/'],
+            'username'  => ['required', 'max:50', 'regex:/^\S*$/', Rule::unique('users')->ignore(auth()->user()->id),],
+            'email'     => ['required', 'email', 'regex:/^\S*$/', Rule::unique('users')->ignore(auth()->user()->id),],
         ]);
-        
+
         // Simpan request
         $user = User::find(auth()->user()->id);
         $user->name = $request->name;
@@ -50,8 +59,8 @@ class ProfileController extends Controller
     {
         $request->validate([
             'current_password'     => ['required', new MatchOldPassword],
-            'new_password'         => ['required','min:8','regex:/^\S*$/'],
-            'new_confirm_password' => ['required','same:new_password'],
+            'new_password'         => ['required', 'min:8', 'regex:/^\S*$/'],
+            'new_confirm_password' => ['required', 'same:new_password'],
         ]);
 
         User::find(auth()->user()->id)->update(['password' => Hash::make($request->new_password)]);
@@ -61,35 +70,34 @@ class ProfileController extends Controller
     }
 
     /** change avatar */
-    public function changeProfileAvatar(Request $request)
+    public function changeProfileImage(Request $request)
     {
+        $user = User::find(auth()->user()->id);
         // Validasi request
         $request->validate([
-            'avatar' => ['nullable','image','mimes:jpeg,png,jpg,gif','max:2048'], // Sesuaikan dengan kebutuhan Anda
+            'image' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif', 'max:2048'], // Sesuaikan dengan kebutuhan Anda
         ]);
 
-        // Mengambil file avatar yang diunggah
-        $avatarFile = $request->file('avatar');
+        // Update image
+        if ($request->hasFile('image')) {
+            $oldImagePath = $user->image;
 
-        // Menyimpan file avatar ke dalam storage link
-        $avatarPath = $avatarFile->store('avatar', 'public'); // Menyimpan dalam direktori 'avatars' di storage link 'public'
+            // Mengunggah gambar baru
+            $image = $request->file('image');
+            $newImagePath = $image->store('public/users');
 
-        // Update avatar path pada model user (misalnya)
-        $user = User::where('id', auth()->user()->id)->first();
+            if ($oldImagePath) {
+                // Menghapus gambar lama jika ada
+                Storage::disk('local')->delete('public/users/' . basename($oldImagePath));
+            }
 
-        // Hapus avatar lama jika ada
-        if ($user->avatar) {
-            Storage::disk('public')->delete($user->avatar);
+            $user->image = basename($newImagePath);
         }
 
-        $user->avatar = $avatarPath;
         $user->save();
 
-        // Update data avatar dalam variabel Session
-        Session::put('avatar', $avatarPath);
-
         // Berhasil mengubah avatar, lakukan sesuatu (misalnya, kembalikan response atau redirect)
-        Toastr::success('Avatar berhasil diupdate', 'Success');
+        Toastr::success('Foto berhasil diupdate', 'Success');
         return redirect()->intended('profile/user');
     }
 }

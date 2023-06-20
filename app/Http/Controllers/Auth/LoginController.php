@@ -74,7 +74,7 @@ class LoginController extends Controller
                 'username' => $user->username,
                 'email' => $user->email,
                 'role_name' => $user->role_name,
-                'avatar' => $user->avatar,
+                'image' => $user->image,
                 'users_id' => $user->users_id,
             ]);
 

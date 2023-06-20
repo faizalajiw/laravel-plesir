@@ -89,9 +89,9 @@
                                 </div>
                                 <div class="col-12 col-sm-4">
                                     <div class="form-group local-forms">
-                                        <label>Avatar <span>(optional)</span></label>
-                                        <input type="file" class="form-control @error('avatar') is-invalid @enderror" name="avatar" value="{{ $users->avatar }}">
-                                        @error('avatar')
+                                        <label>Foto <span>(optional)</span></label>
+                                        <input type="file" class="form-control @error('image') is-invalid @enderror" name="image">
+                                        @error('image')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>

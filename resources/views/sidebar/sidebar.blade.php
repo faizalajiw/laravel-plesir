@@ -115,14 +115,14 @@
                 <!-- DATA PENGUNJUNG -->
                 
                 <!-- RATING & ULASAN -->
-                <li class="submenu">
+                <li class="submenu {{set_active(['list/review','review/create'])}}">
                     <a href="#"><i class="fas fa-clipboard"></i>
                         <span>Rating & Ulasan</span>
                         <span class="menu-arrow"></span>
                     </a>
                     <ul>
-                        <li><a href="#">Lihat Ulasan Saya</a></li>
-                        <li><a href="#">Edit Ulasan</a></li>
+                        <li><a href="{{ route ('list/review') }}" class="{{set_active(['list/review'])}}">Lihat Ulasan Saya</a></li>
+                        <li><a href="{{ route ('review/create') }}" class="{{set_active(['review/create'])}}">Nilai Tempat</a></li>
                     </ul>
                 </li>
                 <!-- RATING & ULASAN -->

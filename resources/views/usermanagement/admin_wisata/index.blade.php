@@ -66,7 +66,7 @@
                                     <tr>
                                         <th>No</th>
                                         <th>Users ID</th>
-                                        <th>Avatar</th>
+                                        <th>Foto</th>
                                         <th>Nama</th>
                                         <th>Username</th>
                                         <th>Email</th>
@@ -83,7 +83,7 @@
                                         <td>
                                             <h2 class="table-avatar">
                                                 <a class="avatar avatar-sm me-2">
-                                                    <img class="avatar-img rounded-circle" alt="Avatar" src="{{ url('storage/' . $list->avatar) }}">
+                                                    <img class="avatar-img rounded-circle" alt="Avatar" src="{{ $list->image }}">
                                                 </a>
                                             </h2>
                                         </td>

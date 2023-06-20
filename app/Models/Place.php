@@ -49,4 +49,9 @@ class Place extends Model
     {
         return $this->hasOne(Visitor::class);
     }
+
+    public function review()
+    {
+        return $this->hasMany(Place::class);
+    }
 }

@@ -19,13 +19,17 @@ class UserManagementController extends Controller
     public function index()
     {
         $users = User::all();
+        // return response()->json($users);
+
         return view('usermanagement.index', compact('users'));
     }
 
     // Only show 1 role
     public function showPengguna()
     {
+        
         $users = User::where('role_name', 'Pengguna')->get();
+        // return response()->json($users);
         return view('usermanagement.pengguna.index', compact('users'));
     }
 
@@ -63,7 +67,6 @@ class UserManagementController extends Controller
         return view('usermanagement.index', compact('users'));
     }
 
-
     /** User Create */
     public function create()
     {
@@ -72,7 +75,7 @@ class UserManagementController extends Controller
     }
     /** User Create */
 
-    /** User Create */
+    /** User Store */
     public function store(Request $request)
     {
         $request->validate([
@@ -81,15 +84,22 @@ class UserManagementController extends Controller
             'email'         => ['nullable', 'email', 'regex:/^\S*$/', Rule::unique('users')->ignore($request->user()->id)],
             'new_password'  => ['required', 'min:8', 'regex:/^\S*$/'],
             'role_name'     => ['required', 'string'],
-            'avatar'        => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif', 'max:2048'],
+            'image'         => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif', 'max:2048'],
         ]);
 
-        $user = new User();
-        $user->name = $request->name;
-        $user->username = $request->username;
-        $user->email = $request->email;
-        $user->role_name = $request->role_name;
-        $user->password = Hash::make($request->new_password);
+        // Mengupload image jika ada file yang diunggah
+        $image = $request->file('image');
+        $image->storeAs('public/users', $image->hashName());
+
+        //create category
+        $user = User::create([
+            'name'          => $request->name, //mengambil request gambar
+            'username'      => $request->username, //mengambil request gambar
+            'email'         => $request->email, //mengambil request gambar
+            'role_name'     => $request->role_name, //mengambil request gambar
+            'password'      => Hash::make($request->new_password), //mengambil request gambar
+            'image'        => $image->hashName(), //mengambil request gambar
+        ]);
 
         // Menghasilkan users_id sesuai dengan pola yang diinginkan
         if ($request->role_name === 'Super Admin') {
@@ -102,18 +112,12 @@ class UserManagementController extends Controller
             $user->users_id = ''; // jika tidak ada pola khusus, biarkan kosong
         }
 
-        // Mengupload avatar jika ada file yang diunggah
-        if ($request->hasFile('avatar')) {
-            $avatarPath = $request->file('avatar')->store('avatar', 'public');
-            $user->avatar = $avatarPath;
-        }
-
         $user->save();
 
         Toastr::success('User berhasil ditambahkan :)', 'Success');
         return redirect()->to('/list/users');
     }
-    /** User Create */
+    /** User Store */
 
     /** User Edit */
     public function edit($id)
@@ -134,8 +138,9 @@ class UserManagementController extends Controller
             'email'         => ['nullable', 'email', 'regex:/^\S*$/', Rule::unique('users')->ignore($request->id)],
             'new_password'  => ['required', 'min:8', 'regex:/^\S*$/'],
             'role_name'     => ['required', 'string'],
-            'avatar'        => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif', 'max:2048'],
+            'image'        => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif', 'max:2048'],
         ]);
+        $users = User::findOrFail($request->id);
 
         $user = Auth::user();
         if ($user->role_name !== 'Super Admin') {
@@ -143,43 +148,48 @@ class UserManagementController extends Controller
             return redirect()->back();
         }
 
-        $userToUpdate = User::find($request->id);
-        if (!$userToUpdate) {
+        if (!$users) {
             Toastr::error('User Tidak Ditemukan');
             return redirect()->back();
         }
-
-        $userToUpdate->name = $request->name;
-        $userToUpdate->username = $request->username;
-        $userToUpdate->email = $request->email;
-        $userToUpdate->role_name = $request->role_name;
+        
+        $users->name = $request->name;
+        $users->username = $request->username;
+        $users->email = $request->email;
+        $users->role_name = $request->role_name;
 
         // Mengubah users_id sesuai dengan pola yang diinginkan berdasarkan role_name yang diperbarui
         if ($request->role_name === 'Super Admin') {
-            $userToUpdate->users_id = 'SUPER' . Str::upper(Str::random(5)); // contoh pola untuk super admin
+            $users->users_id = 'SUPER' . Str::upper(Str::random(5)); // contoh pola untuk super admin
         } elseif ($request->role_name === 'Admin Wisata') {
-            $userToUpdate->users_id = 'ADMIN' . Str::upper(Str::random(5)); // contoh pola untuk admin wisata
+            $users->users_id = 'ADMIN' . Str::upper(Str::random(5)); // contoh pola untuk admin wisata
         } elseif ($request->role_name === 'Pengguna') {
-            $userToUpdate->users_id = 'USER' . Str::upper(Str::random(6)); // contoh pola untuk pengguna
+            $users->users_id = 'USER' . Str::upper(Str::random(6)); // contoh pola untuk pengguna
         } else {
-            $userToUpdate->users_id = ''; // jika tidak ada pola khusus, biarkan kosong
+            $users->users_id = ''; // jika tidak ada pola khusus, biarkan kosong
         }
 
-        // Menghapus avatar lama dan menyimpan avatar baru jika ada file avatar yang diunggah
-        if ($request->hasFile('avatar')) {
-            if ($userToUpdate->avatar) {
-                Storage::disk('public')->delete($userToUpdate->avatar);
+        // Update image
+        if ($request->hasFile('image')) {
+            $oldImagePath = $users->image;
+
+            // Mengunggah gambar baru
+            $image = $request->file('image');
+            $newImagePath = $image->store('public/users');
+
+            if ($oldImagePath) {
+                // Menghapus gambar lama jika ada
+                Storage::disk('local')->delete('public/users/' . basename($oldImagePath));
             }
 
-            $avatarPath = $request->file('avatar')->store('avatar', 'public');
-            $userToUpdate->avatar = $avatarPath;
+            $users->image = basename($newImagePath);
         }
 
-        $userToUpdate->save();
+        $users->save();
 
         // Update password jika ada perubahan
         if ($request->new_password) {
-            $userToUpdate->password = Hash::make($request->new_password);
+            $users->password = Hash::make($request->new_password);
         }
         // Change password
         if ($request->current_password && $request->new_password && $request->new_confirm_password) {
@@ -189,8 +199,8 @@ class UserManagementController extends Controller
                 'new_confirm_password' => ['same:new_password'],
             ]);
 
-            $userToUpdate->password = Hash::make($request->new_password);
-            $userToUpdate->save();
+            $users->password = Hash::make($request->new_password);
+            $users->save();
         }
 
         Toastr::success('Berhasil Diupdate');
@@ -201,18 +211,18 @@ class UserManagementController extends Controller
     /** User Delete */
     public function delete(Request $request)
     {
-        // Hapus avatar jika ada
+        // Hapus image jika ada
         $userId = $request->id;
         $user = User::find($userId);
 
-        if ($user->avatar) {
-            Storage::disk('public')->delete($user->avatar);
+        if ($user) {
+            Storage::disk('local')->delete('public/users/' . basename($user->image));
             $user->delete();
 
             Toastr::success('Berhasil dihapus');
             return redirect()->back();
         }
-        if (!$user->avatar) {
+        if (!$user->image) {
             $user->delete();
             Toastr::success('Berhasil dihapus');
             return redirect()->back();

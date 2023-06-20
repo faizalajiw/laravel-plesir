@@ -11,6 +11,7 @@ use App\Http\Controllers\UserManagementController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Setting;
 use App\Http\Controllers\PlaceController;
+use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\VisitorController;
 use App\Http\Controllers\Web\CategoryController as WebCategoryController;
@@ -74,14 +75,14 @@ Route::controller(RegisterController::class)->group(function () {
 // -------------------------- main dashboard ----------------------//
 Route::controller(DashboardController::class)->group(function () {
     Route::get('/dashboard', 'index')->middleware('auth')->name('dashboard');
-    Route::get('profile/user', 'userProfile')->middleware('auth')->name('profile/user');
 });
 
 // ----------------------------- profile controller -------------------------//
 Route::controller(ProfileController::class)->group(function () {
+    Route::get('profile/user', 'index')->middleware('auth')->name('profile/user');
     Route::post('change/detail', 'changeProfileDetail')->middleware('auth')->name('change/detail');
     Route::post('change/password', 'changeProfilePassword')->middleware('auth')->name('change/password');
-    Route::post('change/avatar', 'changeProfileAvatar')->middleware('auth')->name('change/avatar');
+    Route::post('change/image', 'changeProfileImage')->middleware('auth')->name('change/image');
 });
 
 // ----------------------------- user management controller -------------------------//
@@ -134,6 +135,16 @@ Route::controller(VisitorController::class)->group(function () {
     Route::get('view/visitor/edit/{id}', 'edit')->middleware(['auth', 'role:Super Admin,Admin Wisata'])->name('view/visitor/edit');
     Route::post('visitor/update', 'update')->middleware(['auth', 'role:Super Admin,Admin Wisata'])->name('visitor/update');
     Route::post('visitor/delete', 'delete')->middleware(['auth', 'role:Super Admin,Admin Wisata'])->name('visitor/delete');
+});
+
+// ----------------------------- review controller -------------------------//
+Route::controller(ReviewController::class)->group(function () {
+    Route::get('list/review', 'index')->middleware(['auth'])->name('list/review');
+    Route::get('review/create', 'create')->middleware(['auth', 'role:Super Admin,Pengguna'])->name('review/create');
+    Route::post('review/store', 'store')->middleware(['auth', 'role:Super Admin,Pengguna'])->name('review/store');
+    // Route::get('view/review/edit/{id}', 'edit')->middleware(['auth', 'role:Super Admin,Admin Wisata'])->name('view/review/edit');
+    // Route::post('review/update', 'update')->middleware(['auth', 'role:Super Admin,Admin Wisata'])->name('review/update');
+    // Route::post('review/delete', 'delete')->middleware(['auth', 'role:Super Admin,Admin Wisata'])->name('review/delete');
 });
 
 // ----------------------------- slider banner controller -------------------------//

@@ -66,7 +66,7 @@
                                     <tr>
                                         <th>No</th>
                                         <th>Users ID</th>
-                                        <th>Avatar</th>
+                                        <th>Foto</th>
                                         <th>Nama</th>
                                         <th>Username</th>
                                         <th>Email</th>
@@ -83,7 +83,7 @@
                                         <td>
                                             <h2 class="table-avatar">
                                                 <a class="avatar avatar-sm me-2">
-                                                    <img class="avatar-img rounded-circle" alt="Avatar" src="{{ url('storage/' . $list->avatar) }}">
+                                                    <img class="avatar-img rounded-circle" alt="Avatar" src="{{ $list->image }}">
                                                 </a>
                                             </h2>
                                         </td>
@@ -127,7 +127,7 @@
                     @csrf
                     <div class="delete-wrap text-center">
                         <input type="hidden" name="id" class="e_id" value="">
-                        <input type="hidden" name="avatar" class="e_avatar" value="">
+                        <input type="hidden" name="image" class="e_image" value="">
                         <h2>Hapus Data?</h2>
                         <div class="submit-section">
                             <button type="submit" class="btn btn-success me-2">Ya</button>
@@ -146,7 +146,7 @@
     $(document).on('click', '.user_delete', function() {
         var _this = $(this).parents('tr');
         $('.e_id').val(_this.find('.id').text());
-        $('.e_avatar').val(_this.find('.avatar').text());
+        $('.e_image').val(_this.find('.image').text());
     });
 </script>
 @endsection

@@ -40,10 +40,4 @@ class DashboardController extends Controller
         return view('dashboard.index', compact('visitor', 'places', 'penggunaCount', 'adminCount' , 'categoryCount', 'placeCount'));
         // return view('dashboard.index', compact('penggunaCount', 'adminCount' , 'categoryCount', 'placeCount'));
     }
-
-    /** profile user */
-    public function userProfile()
-    {
-        return view('profile.index');
-    }
 }

@@ -24,7 +24,7 @@ class User extends Authenticatable
         'email',
         'password',
         'role_name',
-        'avatar',
+        'image',
         'users_id',
     ];
 
@@ -62,5 +62,15 @@ class User extends Authenticatable
     public function visitor()
     {
         return $this->hasMany(Visitor::class);
+    }
+
+    public function review()
+    {
+        return $this->hasMany(Review::class);
+    }
+
+    public function getImageAttribute($image)
+    {
+        return asset('storage/users/' . $image);
     }
 }

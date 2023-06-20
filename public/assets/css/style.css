@@ -5182,6 +5182,21 @@ table.table-inbox tbody tr.checked {
     border-radius: 10px;
     box-shadow: 0 0 31px 3px rgba(44, 50, 63, 0.02);
 }
+.rating {
+    list-style: none;
+    padding: 0;
+    display: inline-block;
+}
+
+.rating li {
+    display: inline-block;
+    color: #ffc300;
+    cursor: pointer;
+}
+
+.rating li i {
+    font-size: 18px;
+}
 @media (min-width: 768px) {
     .avatar-xxl {
         width: 8rem;

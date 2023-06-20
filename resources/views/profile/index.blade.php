@@ -23,26 +23,26 @@
                     <div class="row align-items-center">
                         <div class="col-auto profile-image">
                             <div class="avatar-profile">
-                                <a href="{{ url('storage/' . Session::get('avatar')) }}">
-                                    <img alt="Foto" src="{{ url('storage/' . Session::get('avatar')) }}">
+                                <a href="{{ $user->image }}">
+                                    <img alt="Foto" src="{{ $user->image }}">
                                 </a>
                             </div>
                         </div>
                         <div class="col ms-md-n2 profile-user-info">
-                            <h4 class="user-name my-1">{{ Session::get('name') }}</h4>
-                            <h6 class="text-muted">{{ Session::get('role_name') }}</h6>
+                            <h4 class="user-name my-1">{{ $user->name }}</h4>
+                            <h6 class="text-muted">{{ $user->role_name }}</h6>
                         </div>
                         <div class="col-auto profile-btn">
                             <button class="btn btn-primary" id="editButton">Edit</button>
                         </div>
 
-                        <form action="{{ route('change/avatar') }}" method="POST" enctype="multipart/form-data" id="avatarForm" style="display: none;">
+                        <form action="{{ route('change/image') }}" method="POST" enctype="multipart/form-data" id="imageForm" style="display: none;">
                             @csrf
                             <div class="modal-body">
                                 <div class="mb-3">
-                                    <label for="avatar" class="form-label">Upload Gambar: <span class="login-danger">(.jpeg/.png/.jpg/.gif) max.2MB*</span></label>
-                                    <input type="file" class="form-control @error('avatar') is-invalid @enderror" id="avatar" name="avatar">
-                                    @error('avatar')
+                                    <label class="form-label">Upload Gambar: <span class="login-danger">(.jpeg/.png/.jpg/.gif) max.2MB*</span></label>
+                                    <input type="file" class="form-control @error('image') is-invalid @enderror" id="image" name="image">
+                                    @error('image')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -57,12 +57,12 @@
 
                         <script>
                             document.getElementById('editButton').addEventListener('click', function() {
-                                var form = document.getElementById('avatarForm');
+                                var form = document.getElementById('imageForm');
                                 form.style.display = 'block';
                             });
 
                             document.getElementById('cancelButton').addEventListener('click', function() {
-                                var form = document.getElementById('avatarForm');
+                                var form = document.getElementById('imageForm');
                                 form.style.display = 'none';
                             });
                         </script>
