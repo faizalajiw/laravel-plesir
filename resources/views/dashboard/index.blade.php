@@ -54,7 +54,25 @@
         @endif
         <!-- CARD -->
 
-        <!-- <div class="row mb-3"></div> -->
+        <!-- FILTER -->
+        <div class="search-group-form mt-3">
+            <form action="{{ route('dashboard/filter') }}" method="GET">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="form-group">
+                            <input type="text" name="place_id" class="form-control" style="font-size: 15px;" placeholder="Filter berdasarkan Tempat ..." value="{{ request('place') }}">
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-2">
+                        <div class="form-group">
+                            <button type="submit" class="form-control btn btn-primary text-white">Filter</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!-- FILTER -->
 
         <!-- Statistik -->
         @if (Session::get('role_name') === 'Admin Wisata')

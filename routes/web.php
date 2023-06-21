@@ -75,6 +75,7 @@ Route::controller(RegisterController::class)->group(function () {
 // -------------------------- main dashboard ----------------------//
 Route::controller(DashboardController::class)->group(function () {
     Route::get('/dashboard', 'index')->middleware('auth')->name('dashboard');
+    Route::get('dashboard/filter', 'search')->middleware(['auth', 'role:Super Admin,Admin Wisata'])->name('dashboard/filter');
 });
 
 // ----------------------------- profile controller -------------------------//

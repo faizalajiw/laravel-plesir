@@ -38,7 +38,30 @@ class DashboardController extends Controller
         $userId = auth()->id(); // Mengambil ID pengguna yang sedang masuk
         $visitor = Visitor::with('user')->where('user_id', $userId)->get();
         $places = Place::with('user')->where('user_id', $userId)->get();
+        // return response()->json($visitor);
         return view('dashboard.index', compact('user', 'visitor', 'places', 'penggunaCount', 'adminCount' , 'categoryCount', 'placeCount'));
-        // return response()->json($user);
     }
+
+        // Search
+        public function search(Request $request)
+        {
+            $user = User::find(auth()->user()->id);
+            
+            // Ambil nilai dari input form
+            $place = $request->input('place_id');
+        
+            // Query untuk mencari tempat berdasarkan kriteria pencarian
+            $visitor = Visitor::with('user', 'place')
+                ->when($place, function ($query) use ($place) {
+                    // Filter berdasarkan tempat jika ada nilai
+                    return $query->whereHas('place', function ($query) use ($place) {
+                        $query->where('title', 'like', '%' . $place . '%');
+                    });
+                })         
+                ->get();
+
+                // return response()->json($visitor);
+            return view('dashboard.index', compact('user', 'visitor'));
+        }
+        
 }
