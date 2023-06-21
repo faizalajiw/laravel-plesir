@@ -30,10 +30,10 @@ class VisitorController extends Controller
         return view('visitor.create', compact('user', 'places'));
     }
 
-    public function store(Request $request)
+    public function store(Request $request, Visitor $visitor)
     {
         $request->validate([
-            'place_id'     => 'required',
+            'place_id' => 'required|unique:visitors,place_id,' . $visitor->id,
         ]);
 
         $visitor = Visitor::create([

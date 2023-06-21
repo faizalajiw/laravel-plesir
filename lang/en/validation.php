@@ -194,6 +194,10 @@ return [
         'role_name' => [
             'required' => 'Role tidak boleh kosong.',
         ],
+        'place_id' => [
+            'required'  => 'Place tidak boleh kosong.',
+            'unique'    => 'Anda sudah menggunakan data Tempat ini.',
+        ],
         'category_id' => [
             'required' => 'Kategori tidak boleh kosong.',
         ],

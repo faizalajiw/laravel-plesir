@@ -26,7 +26,7 @@
                                     <h5 class="form-title"><span>Tambah Jumlah Pengunjung</span></h5>
                                 </div>
                                 <input type="hidden" class="form-control" name="id" value="{{ $visitor->id }}">
-                                <div class="col-12 col-sm-12">
+                                <div class="col-12 col-sm-12" hidden>
                                     <div class="form-group local-forms">
                                         <label>Nama Tempat <span class="login-danger">*</span></label>
                                         <select name="place_id" id="place_id" class="form-control select @error('place_id') is-invalid @enderror">
