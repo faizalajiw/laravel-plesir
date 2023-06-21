@@ -16,32 +16,53 @@
             </div>
         </div>
 
-        <div class="row mt-5">
+        <div class="row mt-3">
             <!-- CARD -->
             @foreach($groupedReviews as $review)
             @php
             $firstReview = $review->first(); // Mengambil ulasan pertama dari grup
             $place = $firstReview->place;
-            $averageRating = $review->avg('rating');
+            $averageRating = round($review->avg('rating'), 1);
             $reviewCount = $review->count();
-            @endphp
-            <div class="col-xl-4 col-md-6 col-12">
-                <div class="card bg-comman w-100">
-                    <div class="card-body">
-                        <div class="db-widgets d-flex justify-content-between align-items-center">
-                            <div class="db-info">
-                                <h6 class="mb-2">Nilai {{ $averageRating }} (dari {{ $reviewCount }} ulasan)<span></span></h6>
-                                <h5 class="fw-bold">{{ $place->title }}</h5>
-                            </div>
-                            <div class="db-icon">
-                                <i class="fas fa-map-marker-alt"></i>
+
+            $wholeRating = floor($averageRating); // Bagian bilangan bulat dari nilai rata-rata
+            $decimalRating = $averageRating - $wholeRating; // Bagian desimal dari nilai rata-rata
+
+            $starCount = $wholeRating; // Jumlah bintang yang akan ditampilkan
+            $halfStar = false; // Menyimpan informasi apakah akan menampilkan setengah bintang
+
+            if ($decimalRating >= 0.25 && $decimalRating < 0.75) { $halfStar=true; // Setengah bintang ditampilkan jika desimal di antara 0.25 dan 0.75 } elseif ($decimalRating>= 0.75) {
+                $starCount++; // Bintang penuh ditambahkan jika desimal lebih dari atau sama dengan 0.75
+                }
+                @endphp
+
+                <div class="col-xl-4 col-md-6 col-12">
+                    <div class="card bg-comman w-100">
+                        <div class="card-body">
+                            <div class="db-widgets d-flex justify-content-between align-items-center">
+                                <div class="db-info">
+                                    <h6 class="mb-2">{{ $averageRating }}
+                                        @for ($i = 1; $i <= 5; $i++) @if ($i <=$starCount) @if ($halfStar && $i==$starCount) <i class="fas fa-star-half-alt text-warning"></i>
+                                            @else
+                                            <i class="fas fa-star text-warning"></i>
+                                            @endif
+                                            @else
+                                            <i class="far fa-star"></i>
+                                            @endif
+                                            @endfor
+                                            (dari {{ $reviewCount }} ulasan)<span></span>
+                                    </h6>
+                                    <h5 class="fw-bold">{{ $place->title }}</h5>
+                                </div>
+                                <div class="db-icon">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            @endforeach
-            <!-- CARD -->
+                @endforeach
+                <!-- CARD -->
         </div>
 
         <div class="row text-center mt-3">
