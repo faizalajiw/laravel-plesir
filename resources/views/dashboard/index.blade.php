@@ -63,7 +63,7 @@
                             <input type="text" name="place_id" class="form-control" style="font-size: 15px;" placeholder="Filter berdasarkan Tempat ..." value="{{ request('place') }}">
                         </div>
                     </div>
-                    
+
                     <div class="col-lg-2">
                         <div class="form-group">
                             <button type="submit" class="form-control btn btn-primary text-white">Filter</button>
@@ -84,15 +84,20 @@
                             <div class="col-6">
                                 <h5 class="card-title">Data Pengunjung</h5>
                             </div>
-                            <div class="col-6">
-                                <ul class="chart-list-out">
-
-                                </ul>
-                            </div>
+                            <div class="col-6"></div>
                         </div>
                     </div>
                     <div class="card-body">
                         <canvas id="myPieChart"></canvas>
+                        @if ($visitor->isEmpty())
+                        <tr>
+                            <td colspan="11">
+                                <div class="text-center">
+                                    <p class="text-muted mt-3">Tidak ada data pengunjung yang tersedia.</p>
+                                </div>
+                            </td>
+                        </tr>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -103,15 +108,20 @@
                             <div class="col-6">
                                 <h5 class="card-title">Data Pengunjung</h5>
                             </div>
-                            <div class="col-6">
-                                <ul class="chart-list-out">
-
-                                </ul>
-                            </div>
+                            <div class="col-6"></div>
                         </div>
                     </div>
                     <div class="card-body">
                         <canvas id="myBarChart"></canvas>
+                        @if ($visitor->isEmpty())
+                        <tr>
+                            <td colspan="11">
+                                <div class="text-center">
+                                    <p class="text-muted mt-3">Tidak ada data pengunjung yang tersedia.</p>
+                                </div>
+                            </td>
+                        </tr>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -162,6 +172,15 @@
                                         <td class="id" style="color: transparent; background-color: transparent;">{{ $list->id }}</td>
                                     </tr>
                                     @endforeach
+                                    @if ($visitor->isEmpty())
+                                    <tr>
+                                        <td colspan="11">
+                                            <div class="text-center">
+                                                <p class="text-muted mt-3">Tidak ada data pengunjung yang tersedia.</p>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    @endif
                                 </tbody>
                             </table>
                         </div>

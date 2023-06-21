@@ -21,10 +21,10 @@ class DashboardController extends Controller
     }
 
     /**
-    * Show the application dashboard.
-    *
-    * @return \Illuminate\Contracts\Support\Renderable
-    */
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
 
     /** home dashboard */
     public function index()
@@ -39,29 +39,28 @@ class DashboardController extends Controller
         $visitor = Visitor::with('user')->where('user_id', $userId)->get();
         $places = Place::with('user')->where('user_id', $userId)->get();
         // return response()->json($visitor);
-        return view('dashboard.index', compact('user', 'visitor', 'places', 'penggunaCount', 'adminCount' , 'categoryCount', 'placeCount'));
+        return view('dashboard.index', compact('user', 'visitor', 'places', 'penggunaCount', 'adminCount', 'categoryCount', 'placeCount'));
     }
 
-        // Search
-        public function search(Request $request)
-        {
-            $user = User::find(auth()->user()->id);
-            
-            // Ambil nilai dari input form
-            $place = $request->input('place_id');
-        
-            // Query untuk mencari tempat berdasarkan kriteria pencarian
-            $visitor = Visitor::with('user', 'place')
-                ->when($place, function ($query) use ($place) {
-                    // Filter berdasarkan tempat jika ada nilai
-                    return $query->whereHas('place', function ($query) use ($place) {
-                        $query->where('title', 'like', '%' . $place . '%');
-                    });
-                })         
-                ->get();
+    // Search
+    public function search(Request $request)
+    {
+        $user = User::find(auth()->user()->id);
 
-                // return response()->json($visitor);
-            return view('dashboard.index', compact('user', 'visitor'));
-        }
-        
+        // Ambil nilai dari input form
+        $place = $request->input('place_id');
+
+        // Query untuk mencari tempat berdasarkan kriteria pencarian
+        $visitor = Visitor::with('user', 'place')
+            ->when($place, function ($query) use ($place) {
+                // Filter berdasarkan tempat jika ada nilai
+                return $query->whereHas('place', function ($query) use ($place) {
+                    $query->where('title', 'like', '%' . $place . '%');
+                });
+            })
+            ->get();
+
+        // return response()->json($visitor);
+        return view('dashboard.index', compact('user', 'visitor'));
+    }
 }
