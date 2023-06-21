@@ -113,7 +113,7 @@
                 </li>
                 @endif
                 <!-- DATA PENGUNJUNG -->
-                
+
                 <!-- RATING & ULASAN -->
                 <li class="submenu {{set_active(['list/review','review/create'])}}">
                     <a href="#"><i class="fas fa-clipboard"></i>
@@ -121,8 +121,17 @@
                         <span class="menu-arrow"></span>
                     </a>
                     <ul>
-                        <li><a href="{{ route ('list/review') }}" class="{{set_active(['list/review'])}}">Lihat Ulasan Saya</a></li>
+                        <!-- ONLY SUPER ADMIN -->
+                        @if (Session::get('role_name') === 'Super Admin')
+                        <li><a href="{{ route('list/review') }}" class="{{set_active(['list/review'])}}">Lihat Ulasan</a></li>
+                        @endif
+                        @if (Session::get('role_name') === 'Admin Wisata')
+                        <li><a href="{{ route('list/reviews') }}" class="{{set_active(['list/reviews'])}}">Lihat Ulasan</a></li>
+                        @endif
+                        @if (Session::get('role_name') === 'Pengguna')
+                        <li><a href="{{ route ('list/my_review') }}" class="{{set_active(['list/my_review'])}}">Ulasan Saya</a></li>
                         <li><a href="{{ route ('review/create') }}" class="{{set_active(['review/create'])}}">Nilai Tempat</a></li>
+                        @endif
                     </ul>
                 </li>
                 <!-- RATING & ULASAN -->
@@ -130,7 +139,7 @@
                 <li class="menu-title">
                     <span>Akun</span>
                 </li>
-                
+
                 <!-- Profile -->
                 <li class="{{set_active(['profile/user'])}}">
                     <a href="{{ route('profile/user') }}" class="{{set_active(['profile/user'])}}"><i class="fas fa-user"></i>

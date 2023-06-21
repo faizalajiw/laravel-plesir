@@ -9,42 +9,13 @@
             <div class="row align-items-center">
                 <div class="col">
                     <ul class="breadcrumb">
-                        <li class="breadcrumb-item fw-bold"><a href="{{ route('review/create') }}">Rating & Ulasan</a></li>
-                        <li class="breadcrumb-item fw-bold active">Semua Ulasan</li>
+                        <li class="breadcrumb-item fw-bold"><a href="{{ route('list/my_review') }}">Rating & Ulasan</a></li>
+                        <li class="breadcrumb-item fw-bold active">Ulasan Saya</li>
                     </ul>
                 </div>
             </div>
         </div>
-
-        <div class="row mt-5">
-            <!-- CARD -->
-            @foreach($groupedReviews as $review)
-            @php
-            $firstReview = $review->first(); // Mengambil ulasan pertama dari grup
-            $place = $firstReview->place;
-            $averageRating = $review->avg('rating');
-            $reviewCount = $review->count();
-            @endphp
-            <div class="col-xl-4 col-md-6 col-12">
-                <div class="card bg-comman w-100">
-                    <div class="card-body">
-                        <div class="db-widgets d-flex justify-content-between align-items-center">
-                            <div class="db-info">
-                                <h6 class="mb-2">Nilai {{ $averageRating }} (dari {{ $reviewCount }} ulasan)<span></span></h6>
-                                <h5 class="fw-bold">{{ $place->title }}</h5>
-                            </div>
-                            <div class="db-icon">
-                                <i class="fas fa-map-marker-alt"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            @endforeach
-            <!-- CARD -->
-        </div>
-
-        <div class="row text-center mt-3">
+        <div class="row text-center mt-5">
             @foreach($reviews as $review)
             <div class="col-md-4 mb-4 mb-md-0">
                 <div class="card">

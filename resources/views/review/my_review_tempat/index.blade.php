@@ -9,8 +9,8 @@
             <div class="row align-items-center">
                 <div class="col">
                     <ul class="breadcrumb">
-                        <li class="breadcrumb-item fw-bold"><a href="{{ route('review/create') }}">Rating & Ulasan</a></li>
-                        <li class="breadcrumb-item fw-bold active">Semua Ulasan</li>
+                        <li class="breadcrumb-item fw-bold"><a href="#">Rating & Ulasan</a></li>
+                        <li class="breadcrumb-item fw-bold active">Lihat Ulasan</li>
                     </ul>
                 </div>
             </div>
@@ -46,20 +46,10 @@
 
         <div class="row text-center mt-3">
             @foreach($reviews as $review)
+            @if($review->place->user_id === auth()->user()->id)
             <div class="col-md-4 mb-4 mb-md-0">
                 <div class="card">
                     <div class="card-body py-4 mt-2">
-                        <div class="delete-form">
-                            <form action="{{ route('review/delete', $review->id) }}" method="POST" class="d-inline">
-                                @csrf
-                                <button type="submit" class="btn btn-sm bg-danger-light">
-                                    <div class="delete-form">
-                                        <i class="fas fa-trash"></i>
-                                    </div>
-                                </button>
-                            </form>
-                        </div>
-
                         <div class="avatar-profile">
                             <img src="{{ $review->user->image }}" class="rounded-circle shadow-1-strong" width="100" height="100" />
                         </div>
@@ -79,6 +69,7 @@
                     </div>
                 </div>
             </div>
+            @endif
             @endforeach
         </div>
     </div>

@@ -4696,6 +4696,13 @@ table.table-inbox tbody tr.checked {
     display: inline-block;
     margin-bottom: 18px;
 }
+.delete-form {
+    position: absolute;
+    top: 0;
+    right: 5px;
+    padding: 10px;
+    /* color: red; */
+}
 .edit-delete-btn a {
     margin-right: 6px;
     font-size: 12px;

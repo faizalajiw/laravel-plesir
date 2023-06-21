@@ -139,12 +139,14 @@ Route::controller(VisitorController::class)->group(function () {
 
 // ----------------------------- review controller -------------------------//
 Route::controller(ReviewController::class)->group(function () {
-    Route::get('list/review', 'index')->middleware(['auth'])->name('list/review');
+    Route::get('list/review', 'index')->middleware(['auth', 'role:Super Admin'])->name('list/review');
+    Route::get('list/reviews', 'myReviewTempat')->middleware(['auth', 'role:Admin Wisata'])->name('list/reviews');
+    Route::get('list/my_review', 'myReview')->middleware(['auth', 'role:Super Admin,Pengguna'])->name('list/my_review');
     Route::get('review/create', 'create')->middleware(['auth', 'role:Super Admin,Pengguna'])->name('review/create');
     Route::post('review/store', 'store')->middleware(['auth', 'role:Super Admin,Pengguna'])->name('review/store');
     // Route::get('view/review/edit/{id}', 'edit')->middleware(['auth', 'role:Super Admin,Admin Wisata'])->name('view/review/edit');
     // Route::post('review/update', 'update')->middleware(['auth', 'role:Super Admin,Admin Wisata'])->name('review/update');
-    // Route::post('review/delete', 'delete')->middleware(['auth', 'role:Super Admin,Admin Wisata'])->name('review/delete');
+    Route::post('review/delete/{id}', 'delete')->middleware(['auth'])->name('review/delete');
 });
 
 // ----------------------------- slider banner controller -------------------------//

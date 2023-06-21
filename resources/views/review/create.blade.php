@@ -9,7 +9,7 @@
             <div class="row align-items-center">
                 <div class="col">
                     <ul class="breadcrumb">
-                        <li class="breadcrumb-item fw-bold"><a href="{{ route('review/create') }}">Rating & Ulasan</a></li>
+                        <li class="breadcrumb-item fw-bold"><a href="#">Rating & Ulasan</a></li>
                         <li class="breadcrumb-item fw-bold active">Nilai Tempat</li>
                     </ul>
                 </div>
@@ -71,7 +71,12 @@
                                 <div class="col-12">
                                     <div class="d-flex gap-4">
                                         <div class="button-cancel">
-                                            <a href="{{ route('list/categories') }}" class="btn btn-danger">Batal</a>
+                                            @if (Session::get('role_name') === 'Super Admin')
+                                            <a href="{{ route('list/review') }}" class="btn btn-danger">Batal</a>
+                                            @endif
+                                            @if (Session::get('role_name') === 'Pengguna')
+                                            <a href="{{ route('list/my_review') }}" class="btn btn-danger">Batal</a>
+                                            @endif
                                         </div>
                                         <div class="button-submit">
                                             <button type="submit" class="btn btn-primary">Simpan</button>

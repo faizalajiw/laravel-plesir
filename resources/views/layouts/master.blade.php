@@ -76,7 +76,15 @@
                         @if (Session::get('role_name') === 'Super Admin' || Session::get('role_name') === 'Admin Wisata')
                         <a class="dropdown-item" href="{{ route('list/my_places') }}">Kelola Tempat</a>
                         @endif
-                        <a class="dropdown-item" href="{{ route('list/review') }}">Ulasan Saya</a>
+                        @if (Session::get('role_name') === 'Super Admin')
+                        <a class="dropdown-item" href="{{ route('list/review') }}">Lihat Ulasan</a>
+                        @endif
+                        @if (Session::get('role_name') === 'Admin Wisata')
+                        <a class="dropdown-item" href="{{ route('list/reviews') }}">Lihat Ulasan</a>
+                        @endif
+                        @if (Session::get('role_name') === 'Pengguna')
+                        <a class="dropdown-item" href="{{ route('list/my_review') }}">Ulasan Saya</a>
+                        @endif
                         <a class="dropdown-item" href="{{ route('logout') }}">Logout</a>
                     </div>
                 </li>

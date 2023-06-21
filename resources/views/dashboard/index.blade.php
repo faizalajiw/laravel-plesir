@@ -22,6 +22,7 @@
         <!-- HEADER -->
 
         <!-- CARD -->
+        @if (Session::get('role_name') === 'Super Admin')
         <div class="row mb-3">
             @php
             $cards = [
@@ -50,11 +51,11 @@
             </div>
             @endforeach
         </div>
+        @endif
         <!-- CARD -->
 
-        <div class="row mb-3">
+        <!-- <div class="row mb-3"></div> -->
 
-        </div>
         <!-- Statistik -->
         @if (Session::get('role_name') === 'Admin Wisata')
         <div class="row mb-3">
