@@ -23,33 +23,86 @@
 
         <!-- CARD -->
         @if (Session::get('role_name') === 'Super Admin')
-        <div class="row mb-3">
-            @php
-            $cards = [
-            ['Pengguna', $penggunaCount, 'fas fa-user'],
-            ['Admin Wisata', $adminCount, 'fas fa-users-cog'],
-            ['Kategori Wisata', $categoryCount, 'fas fa-th-list'],
-            ['Tempat Wisata', $placeCount, 'fas fa-map-marked-alt']
-            ];
-            @endphp
-
-            @foreach ($cards as $card)
+        <div class="row mt-5">
+            <!-- CARD 1 -->
             <div class="col-xl-3 col-sm-6 col-12 d-flex">
                 <div class="card bg-comman w-100">
-                    <div class="card-body">
-                        <div class="db-widgets d-flex justify-content-between align-items-center">
-                            <div class="db-info">
-                                <h6>{{ $card[0] }}</h6>
-                                <h3>{{ $card[1] }}</h3>
-                            </div>
-                            <div class="db-icon">
-                                <i class="{{ $card[2] }}"></i>
+                    <a href="{{ route('list/users/pengguna') }}">
+                        <div class="card-body">
+                            <div class="db-widgets d-flex justify-content-between align-items-center">
+                                <div class="db-info">
+                                    <h6>Pengguna</h6>
+                                    <h3>{{ $penggunaCount }}</h3>
+                                </div>
+                                <div class="db-icon">
+                                    <i class="fas fa-user"></i>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
             </div>
-            @endforeach
+            <!-- CARD 1 -->
+
+            <!-- CARD 2 -->
+            <div class="col-xl-3 col-sm-6 col-12 d-flex">
+                <div class="card bg-comman w-100">
+                    <a href="{{ route('list/users/admin') }}">
+                        <div class="card-body">
+                            <div class="db-widgets d-flex justify-content-between align-items-center">
+                                <div class="db-info">
+                                    <h6>Admin Wisata</h6>
+                                    <h3>{{ $adminCount }}</h3>
+                                </div>
+                                <div class="db-icon">
+                                    <i class="fas fa-users-cog"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- CARD 2 -->
+
+            <!-- CARD 3 -->
+            <div class="col-xl-3 col-sm-6 col-12 d-flex">
+                <div class="card bg-comman w-100">
+                    <a href="{{ route('list/categories') }}">
+                        <div class="card-body">
+                            <div class="db-widgets d-flex justify-content-between align-items-center">
+                                <div class="db-info">
+                                    <h6>Kategori Wisata</h6>
+                                    <h3>{{ $categoryCount }}</h3>
+                                </div>
+                                <div class="db-icon">
+                                    <i class="fas fa-th-list"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- CARD 3 -->
+
+            <!-- CARD 4 -->
+            <div class="col-xl-3 col-sm-6 col-12 d-flex">
+                <div class="card bg-comman w-100">
+                    <a href="{{ route('list/places') }}">
+                        <div class="card-body">
+                            <div class="db-widgets d-flex justify-content-between align-items-center">
+                                <div class="db-info">
+                                    <h6>Tempat Wisata</h6>
+                                    <h3>{{ $placeCount }}</h3>
+                                </div>
+                                <div class="db-icon">
+                                    <i class="fas fa-map-marked-alt"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- CARD 4 -->
         </div>
         @endif
         <!-- CARD -->
