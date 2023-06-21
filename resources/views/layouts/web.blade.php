@@ -41,7 +41,15 @@
                                 {{ session('name') }}
                             </button>
                             <ul class="dropdown-menu">
+                                @if (Session::get('role_name') === 'Super Admin')
                                 <li><a class="dropdown-item" href="{{ route('dashboard') }}">Dashboard</a></li>
+                                @endif
+                                @if (Session::get('role_name') === 'Admin Wisata')
+                                <li><a class="dropdown-item" href="{{ route('dashboard/admin-wisata') }}">Dashboard</a></li>
+                                @endif
+                                @if (Session::get('role_name') === 'Pengguna')
+                                <li><a class="dropdown-item" href="{{ route('dashboard/user') }}">Dashboard</a></li>
+                                @endif
                                 <li><a class="dropdown-item" href="{{ route('logout') }}">Keluar</a></li>
                             </ul>
                         </div>

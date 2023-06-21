@@ -12,13 +12,24 @@ use Illuminate\Support\Facades\DB;
 class VisitorController extends Controller
 {
     // List Data Pengunjung
+    public function index()
+    {
+        $user = User::find(auth()->user()->id);
+
+        // $userId = auth()->id(); // Mengambil ID pengguna yang sedang masuk
+        $visitor = Visitor::with('user', 'place')->get();
+        // return response()->json($visitor);
+        return view('visitor.index', compact('user', 'visitor'));
+    }
+
+    // Riwayat Pengunjung 
     public function history()
     {
         $user = User::find(auth()->user()->id);
         $userId = auth()->id(); // Mengambil ID pengguna yang sedang masuk
         $visitor = Visitor::with('user')->where('user_id', $userId)->get();
         $places = Place::with('user')->where('user_id', $userId)->get();
-        return view('visitor.index', compact('user', 'places', 'visitor'));
+        return view('visitor.history.index', compact('user', 'places', 'visitor'));
     }
     
     // Form Create

@@ -31,12 +31,30 @@
     <div class="main-wrapper">
         <div class="header">
             <div class="header-left">
+                @if (Session::get('role_name') === 'Super Admin')
                 <a href="{{ route('dashboard') }}" class="logo">
                     <img src="{{ URL::to('assets/img/plesir.png') }}" alt="Logo">
                 </a>
                 <a href="{{ route('dashboard') }}" class="logo logo-small">
                     <img src="{{ URL::to('assets/img/plesir-small.png') }}" alt="Logo" width="30" height="30">
                 </a>
+                @endif
+                @if (Session::get('role_name') === 'Admin Wisata')
+                <a href="{{ route('dashboard/admin-wisata') }}" class="logo">
+                    <img src="{{ URL::to('assets/img/plesir.png') }}" alt="Logo">
+                </a>
+                <a href="{{ route('dashboard/admin-wisata') }}" class="logo logo-small">
+                    <img src="{{ URL::to('assets/img/plesir-small.png') }}" alt="Logo" width="30" height="30">
+                </a>
+                @endif
+                @if (Session::get('role_name') === 'Pengguna')
+                <a href="{{ route('dashboard/user') }}" class="logo">
+                    <img src="{{ URL::to('assets/img/plesir.png') }}" alt="Logo">
+                </a>
+                <a href="{{ route('dashboard/user') }}" class="logo logo-small">
+                    <img src="{{ URL::to('assets/img/plesir-small.png') }}" alt="Logo" width="30" height="30">
+                </a>
+                @endif
             </div>
             <div class="menu-toggle">
                 <a href="javascript:void(0);" id="toggle_btn">

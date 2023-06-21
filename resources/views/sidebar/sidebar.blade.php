@@ -7,10 +7,22 @@
                 </li>
 
                 <!-- DASHBOARD -->
-                <li class="{{set_active(['dashboard'])}}">
+                <li class="{{set_active(['dashboard', 'dashboard/admin-wisata', 'dashboard/user'])}}">
+                    @if (Session::get('role_name') === 'Super Admin')
                     <a href="{{ route('dashboard') }}" class="{{set_active(['dashboard'])}}"><i class="fas feather-grid"></i>
                         <span>Dashboard</span>
                     </a>
+                    @endif
+                    @if (Session::get('role_name') === 'Admin Wisata')
+                    <a href="{{ route('dashboard/admin-wisata') }}" class="{{set_active(['dashboard/admin-wisata'])}}"><i class="fas feather-grid"></i>
+                        <span>Dashboard</span>
+                    </a>
+                    @endif
+                    @if (Session::get('role_name') === 'Pengguna')
+                    <a href="{{ route('dashboard/user') }}" class="{{set_active(['dashboard/user'])}}"><i class="fas feather-grid"></i>
+                        <span>Dashboard</span>
+                    </a>
+                    @endif
                 </li>
                 <!-- DASHBOARD -->
 
@@ -107,6 +119,9 @@
                     </a>
                     <ul>
                         <!-- ONLY SUPER ADMIN -->
+                        @if (Session::get('role_name') === 'Super Admin')
+                        <li><a href="{{ route('list/visitor') }}" class="{{set_active(['list/visitor'])}}">List Pengunjung</a></li>
+                        @endif
                         <li><a href="{{ route('list/history') }}" class="{{set_active(['list/history'])}}">Riwayat Pengunjung</a></li>
                         <li><a href="{{ route('visitor/create') }}" class="{{set_active(['visitor/create'])}}">Tambah Data</a></li>
                     </ul>

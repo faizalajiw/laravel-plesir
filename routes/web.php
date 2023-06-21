@@ -9,7 +9,6 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UserManagementController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\Setting;
 use App\Http\Controllers\PlaceController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\SliderController;
@@ -74,7 +73,9 @@ Route::controller(RegisterController::class)->group(function () {
 
 // -------------------------- main dashboard ----------------------//
 Route::controller(DashboardController::class)->group(function () {
-    Route::get('/dashboard', 'index')->middleware('auth')->name('dashboard');
+    Route::get('dashboard', 'index')->middleware('auth', 'role:Super Admin')->name('dashboard');
+    Route::get('dashboard/admin-wisata', 'indexAdminWisata')->middleware('auth', 'role:Admin Wisata')->name('dashboard/admin-wisata');
+    Route::get('dashboard/user', 'indexUser')->middleware('auth', 'role:Pengguna')->name('dashboard/user');
     Route::get('dashboard/filter', 'search')->middleware(['auth', 'role:Super Admin,Admin Wisata'])->name('dashboard/filter');
 });
 
@@ -129,7 +130,7 @@ Route::controller(PlaceController::class)->group(function () {
 
 // ----------------------------- visitor controller -------------------------//
 Route::controller(VisitorController::class)->group(function () {
-    // Route::get('list/visitor', 'index')->middleware(['auth', 'role:Super Admin'])->name('list/places');
+    Route::get('list/visitor', 'index')->middleware(['auth', 'role:Super Admin'])->name('list/visitor');
     Route::get('list/history', 'history')->middleware(['auth', 'role:Super Admin,Admin Wisata'])->name('list/history');
     Route::get('visitor/create', 'create')->middleware(['auth', 'role:Super Admin,Admin Wisata'])->name('visitor/create');
     Route::post('visitor/store', 'store')->middleware(['auth', 'role:Super Admin,Admin Wisata'])->name('visitor/store');

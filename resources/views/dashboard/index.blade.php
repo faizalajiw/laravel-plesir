@@ -55,6 +55,7 @@
         <!-- CARD -->
 
         <!-- FILTER -->
+        @if (Session::get('role_name') === 'Super Admin' || Session::get('role_name') === 'Admin Wisata')
         <div class="search-group-form mt-3">
             <form action="{{ route('dashboard/filter') }}" method="GET">
                 <div class="row">
@@ -72,6 +73,7 @@
                 </div>
             </form>
         </div>
+        @endif
         <!-- FILTER -->
 
         <!-- Statistik -->
@@ -145,6 +147,7 @@
                                     <tr>
                                         <th>No</th>
                                         <th>Nama Tempat</th>
+                                        <th>Nama Pengelola</th>
                                         <th>Senin</th>
                                         <th>Selasa</th>
                                         <th>Rabu</th>
@@ -161,6 +164,7 @@
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $list->place->title }}</td>
+                                        <td>{{ $list->user->name }}</td>
                                         <td id="senin">{{ $list->senin }}</td>
                                         <td id="selasa">{{ $list->selasa }}</td>
                                         <td id="rabu">{{ $list->rabu }}</td>

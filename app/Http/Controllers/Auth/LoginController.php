@@ -79,7 +79,7 @@ class LoginController extends Controller
             ]);
 
             Toastr::success('Login berhasil :)', 'Success');
-            return redirect()->intended('dashboard');
+            return redirect()->intended('/');
         }
 
         Toastr::error('Username atau Password salah :(', 'Gagal');

@@ -26,6 +26,7 @@ class DashboardController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
 
+
     /** home dashboard */
     public function index()
     {
@@ -35,11 +36,28 @@ class DashboardController extends Controller
         $categoryCount = Category::count();
         $placeCount = Place::count();
 
+        $visitor = Visitor::with('user', 'place')->get();
+        // return response()->json($visitor);
+        return view('dashboard.index', compact('user', 'visitor', 'penggunaCount', 'adminCount', 'categoryCount', 'placeCount'));
+    }
+
+    /** home dashboard */
+    public function indexAdminWisata()
+    {
+        $user = User::find(auth()->user()->id);
+
         $userId = auth()->id(); // Mengambil ID pengguna yang sedang masuk
         $visitor = Visitor::with('user')->where('user_id', $userId)->get();
         $places = Place::with('user')->where('user_id', $userId)->get();
         // return response()->json($visitor);
-        return view('dashboard.index', compact('user', 'visitor', 'places', 'penggunaCount', 'adminCount', 'categoryCount', 'placeCount'));
+        return view('dashboard.index', compact('user', 'visitor', 'places'));
+    }
+
+    public function indexUser()
+    {
+        $user = User::find(auth()->user()->id);
+        // return response()->json($visitor);
+        return view('dashboard.index', compact('user'));
     }
 
     // Search
