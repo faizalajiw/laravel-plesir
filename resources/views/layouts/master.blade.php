@@ -98,7 +98,7 @@
                         <a class="dropdown-item" href="{{ route('list/review') }}">Lihat Ulasan</a>
                         @endif
                         @if (Session::get('role_name') === 'Admin Wisata')
-                        <a class="dropdown-item" href="{{ route('list/reviews') }}">Lihat Ulasan</a>
+                        <a class="dropdown-item" href="{{ route('list/my_review_tempat') }}">Lihat Ulasan</a>
                         @endif
                         @if (Session::get('role_name') === 'Pengguna')
                         <a class="dropdown-item" href="{{ route('list/my_review') }}">Ulasan Saya</a>

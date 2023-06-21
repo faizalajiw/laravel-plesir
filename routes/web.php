@@ -141,8 +141,14 @@ Route::controller(VisitorController::class)->group(function () {
 
 // ----------------------------- review controller -------------------------//
 Route::controller(ReviewController::class)->group(function () {
+    // Only Super Admin
     Route::get('list/review', 'index')->middleware(['auth', 'role:Super Admin'])->name('list/review');
-    Route::get('list/reviews', 'myReviewTempat')->middleware(['auth', 'role:Admin Wisata'])->name('list/reviews');
+    Route::get('review/detail/{id}', 'details')->middleware(['auth', 'role:Super Admin'])->name('review/detail');
+    
+    // Only Admin Wisata
+    Route::get('list/my_review_tempat', 'myReviewTempat')->middleware(['auth', 'role:Admin Wisata'])->name('list/my_review_tempat');
+    Route::get('my_review_tempat/detail/{id}', 'detail')->middleware(['auth', 'role:Admin Wisata'])->name('my_review_tempat/detail');
+    
     Route::get('list/my_review', 'myReview')->middleware(['auth', 'role:Super Admin,Pengguna'])->name('list/my_review');
     Route::get('review/create', 'create')->middleware(['auth', 'role:Super Admin,Pengguna'])->name('review/create');
     Route::post('review/store', 'store')->middleware(['auth', 'role:Super Admin,Pengguna'])->name('review/store');

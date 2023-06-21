@@ -141,7 +141,7 @@
                         <li><a href="{{ route('list/review') }}" class="{{set_active(['list/review'])}}">Lihat Ulasan</a></li>
                         @endif
                         @if (Session::get('role_name') === 'Admin Wisata')
-                        <li><a href="{{ route('list/reviews') }}" class="{{set_active(['list/reviews'])}}">Lihat Ulasan</a></li>
+                        <li><a href="{{ route('list/my_review_tempat') }}" class="{{set_active(['list/my_review_tempat'])}}">Lihat Ulasan</a></li>
                         @endif
                         @if (Session::get('role_name') === 'Pengguna')
                         <li><a href="{{ route ('list/my_review') }}" class="{{set_active(['list/my_review'])}}">Ulasan Saya</a></li>

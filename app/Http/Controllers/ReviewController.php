@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 
 class ReviewController extends Controller
 {
+    // SUPER ADMIN
     public function index()
     {
         $user = User::find(auth()->user()->id); // Mengambil ID pengguna yang sedang masuk
@@ -22,6 +23,17 @@ class ReviewController extends Controller
         return view('review.index', compact('user', 'reviews', 'groupedReviews'));
     }
     
+    public function details($id)
+    {
+        $user = User::find(auth()->user()->id);
+        
+        $reviews = Review::where('place_id', $id)->with('user', 'place')->get();
+        
+        return view('review.detail', compact('user', 'reviews'));
+    }
+    // SUPER ADMIN
+    
+    // ADMIN WISATA
     public function myReviewTempat()
     {
         $user = User::find(auth()->user()->id);
@@ -29,15 +41,28 @@ class ReviewController extends Controller
         $reviews = Review::whereHas('place', function ($query) {
             $query->where('user_id', auth()->user()->id);
         })->with('user', 'place')->get();
-
+        
         $review = Review::whereHas('place', function ($query) {
             $query->where('user_id', auth()->user()->id);
         })->with('user', 'place')->get();
+        
         $groupedReviews = $review->groupBy('place_id');
-            
+        
+        // return response()->json($groupedReviews);
         return view('review.my_review_tempat.index', compact('user', 'reviews', 'groupedReviews'));
     }
     
+    public function detail($id)
+    {
+        $user = User::find(auth()->user()->id);
+        
+        $reviews = Review::where('place_id', $id)->with('user', 'place')->get();
+        
+        return view('review.my_review_tempat.detail', compact('user', 'reviews'));
+    }
+    // ADMIN WISATA
+
+    // Pengguna
     public function myReview()
     {
         $user = User::find(auth()->user()->id);
@@ -47,6 +72,7 @@ class ReviewController extends Controller
         // return response()->json($reviews);
         return view('review.my_review.index', compact('user', 'reviews'));
     }
+    // Pengguna
 
     public function create()
     {
