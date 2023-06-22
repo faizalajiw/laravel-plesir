@@ -108,7 +108,7 @@
         <!-- CARD -->
 
         <!-- FILTER -->
-        @if (Session::get('role_name') === 'Super Admin' || Session::get('role_name') === 'Admin Wisata')
+        @if (Session::get('role_name') === 'Admin Wisata')
         <div class="search-group-form mt-3">
             <form action="{{ route('dashboard/filter') }}" method="GET">
                 <div class="row">
@@ -134,14 +134,6 @@
         <div class="row mb-3">
             <div class="col-md-12 col-lg-4">
                 <div class="card card-chart">
-                    <div class="card-header">
-                        <div class="row align-items-center">
-                            <div class="col-6">
-                                <h5 class="card-title">Data Pengunjung</h5>
-                            </div>
-                            <div class="col-6"></div>
-                        </div>
-                    </div>
                     <div class="card-body">
                         <canvas id="myPieChart"></canvas>
                         @if ($visitor->isEmpty())
@@ -158,14 +150,6 @@
             </div>
             <div class="col-md-12 col-lg-8">
                 <div class="card card-chart">
-                    <div class="card-header">
-                        <div class="row align-items-center">
-                            <div class="col-6">
-                                <h5 class="card-title">Data Pengunjung</h5>
-                            </div>
-                            <div class="col-6"></div>
-                        </div>
-                    </div>
                     <div class="card-body">
                         <canvas id="myBarChart"></canvas>
                         @if ($visitor->isEmpty())
@@ -216,7 +200,7 @@
                                     @foreach ($visitor as $list)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $list->place->title }}</td>
+                                        <td id="place_title">{{ $list->place->title }}</td>
                                         <td>{{ $list->user->name }}</td>
                                         <td id="senin">{{ $list->senin }}</td>
                                         <td id="selasa">{{ $list->selasa }}</td>

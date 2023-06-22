@@ -47,10 +47,9 @@ class DashboardController extends Controller
         $user = User::find(auth()->user()->id);
 
         $userId = auth()->id(); // Mengambil ID pengguna yang sedang masuk
-        $visitor = Visitor::with('user')->where('user_id', $userId)->get();
-        $places = Place::with('user')->where('user_id', $userId)->get();
+        $visitor = Visitor::with('user', 'place')->where('user_id', $userId)->get();
         // return response()->json($visitor);
-        return view('dashboard.index', compact('user', 'visitor', 'places'));
+        return view('dashboard.index', compact('user', 'visitor'));
     }
 
     public function indexUser()
@@ -65,6 +64,7 @@ class DashboardController extends Controller
     {
         $user = User::find(auth()->user()->id);
 
+        $userId = auth()->id(); 
         // Ambil nilai dari input form
         $place = $request->input('place_id');
 
@@ -76,7 +76,7 @@ class DashboardController extends Controller
                     $query->where('title', 'like', '%' . $place . '%');
                 });
             })
-            ->get();
+            ->where('user_id', $userId)->get();
 
         // return response()->json($visitor);
         return view('dashboard.index', compact('user', 'visitor'));

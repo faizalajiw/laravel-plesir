@@ -1,3 +1,4 @@
+var places = document.querySelector('#place_title').innerText;
 var senin = parseInt(document.getElementById('senin').innerText);
 var selasa = parseInt(document.getElementById('selasa').innerText);
 var rabu = parseInt(document.getElementById('rabu').innerText);
@@ -32,6 +33,14 @@ var config = {
         plugins: {
             legend: {
                 display: false
+            },
+            title: {
+                display: true,
+                text: 'Grafik Jumlah Pengunjung Harian ' + places,
+                color: 'black',
+                font: {
+                    size: 16
+                }
             },
         },
         scales: {
