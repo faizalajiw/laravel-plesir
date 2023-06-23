@@ -5187,10 +5187,10 @@ fieldset:disabled .btn {
   flex-direction: column;
   min-width: 0;
   word-wrap: break-word;
-  background-color: #fff;
+  background-color: #f8f7ff;
   background-clip: border-box;
   border: 0 solid rgba(0, 0, 0, 0.125);
-  border-radius: 0.25rem;
+  border-radius: 10px;
 }
 
 .card > hr {
@@ -9685,7 +9685,7 @@ fieldset:disabled .btn {
 }
 
 .bg-body {
-  background-color: #fff !important;
+  background-color: #FFFFFF !important;
 }
 
 .bg-transparent {
@@ -18099,12 +18099,6 @@ label {
   color: #03045E;
 }
 
-.card-price {
-  padding-left: .75rem;
-  padding-right: .75rem;
-  text-align: center;
-}
-
 .backdrop {
   -webkit-backdrop-filter: blur(3px);
   backdrop-filter: blur(3px);
@@ -18263,7 +18257,7 @@ label {
 
 .carousel-control-prev {
   left: auto;
-  right: 45px;
+  right: auto;
 }
 
 .card-span {

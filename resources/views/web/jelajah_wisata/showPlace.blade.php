@@ -24,7 +24,7 @@
                             @foreach ($chunk as $place)
                             <div class="col-6 col-sm-4 col-xl-3 mb-3 hover-top px-2">
                                 <div class="card h-100">
-                                    <a class="stretched-link" href="#">
+                                    <a class="stretched-link" href="{{ route('detail-wisata', $place->slug) }}">
                                         @if ($place->images->isNotEmpty())
                                         <img class="img-fluid" src="{{ asset($place->images->first()->image) }}" alt="Place Image" />
                                         @endif

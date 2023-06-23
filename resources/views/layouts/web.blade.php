@@ -5,18 +5,24 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!--    Document Title-->
+    <!-- Document Title-->
     <title>Plesir</title>
     <!-- ===============================================-->
 
-    <!--    Favicons-->
+    <!-- Favicons -->
     <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="{{ URL::to('assets/plugins/fontawesome/css/fontawesome.min.css') }}">
+    <link rel="stylesheet" href="{{ URL::to('assets/plugins/fontawesome/css/all.min.css') }}">
     <!-- ===============================================-->
 
-    <!--    Stylesheets-->
+    <!-- Stylesheets -->
     <link href="{{ URL::to('web/assets/css/theme.css') }}" rel="stylesheet" />
     <link href="{{ URL::to('web/assets/lib/animate/animate.min.css') }}" rel="stylesheet">
     <!-- ===============================================-->
+
+    <!-- MAPBOX -->
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css' rel='stylesheet' />
 </head>
 
 <body>
@@ -24,15 +30,15 @@
     <!-- ===============================================-->
     <main class="main" id="top">
         <!-- Navbar -->
-        <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3 bg-light opacity-85" data-navbar-on-scroll="data-navbar-on-scroll">
+        <nav class="navbar navbar-expand-lg navbar-light relative py-3 bg-light" data-navbar-on-scroll="data-navbar-on-scroll">
             <div class="container"><a class="navbar-brand" href="index.html"><img class="d-inline-block align-top img-fluid" src="{{ URL::to('assets/img/plesir.png') }}" alt="" width="75" /></a>
                 <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse border-top border-lg-0 mt-4 mt-lg-0" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item px-3"><a class="nav-link fw-semibold" href="{{ route('/') }}">Home</a></li>
-                        <li class="nav-item px-3"><a class="nav-link fw-semibold" href="#jelajah">Jelajahi Wisata</a></li>
-                        <li class="nav-item px-3"><a class="nav-link fw-semibold" href="#about">Tentang Kami</a></li>
-                        <li class="nav-item px-3"><a class="nav-link fw-semibold" href="#">Kerjasama</a></li>
+                        <li class="nav-item px-3"><a class="nav-link fw-bold text-primary" href="{{ route('/') }}">Home</a></li>
+                        <li class="nav-item px-3"><a class="nav-link fw-bold text-primary" href="#jelajah">Jelajahi Wisata</a></li>
+                        <li class="nav-item px-3"><a class="nav-link fw-bold text-primary" href="#about">Tentang Kami</a></li>
+                        <li class="nav-item px-3"><a class="nav-link fw-bold text-primary" href="#">Kerjasama</a></li>
                     </ul>
                     <form class="d-flex">
                         @if (session('id'))
@@ -109,24 +115,7 @@
                             <li class="mb-3"><a class="text-700 text-decoration-none" href="#">Tentang Kami</a></li>
                         </ul>
                     </div>
-                    <!-- <div class="col-6 col-sm-4 col-lg-auto mb-3">
-                        <h6 class="mb-3 text-1000 fw-semi-bold">KATEGORI</h6>
-                        <ul class="list-unstyled mb-md-4 mb-lg-0">
-                            @foreach($categories->take(4) as $category)
-                            <li class="mb-3"><a class="text-700 text-decoration-none" href="#!">{{$category->name}}</a></li>
-                            @endforeach
-                        </ul>
-                    </div>
-                    @if($categories->count() > 4)
-                    <div class="col-6 col-sm-4 col-lg-auto mb-3">
-                        <h6 class="mb-3 text-1000 fw-semi-bold">KATEGORI LAINNYA</h6>
-                        <ul class="list-unstyled mb-md-4 mb-lg-0">
-                            @foreach($categories->skip(4) as $category)
-                            <li class="mb-3"><a class="text-700 text-decoration-none" href="#!">{{$category->name}}</a></li>
-                            @endforeach
-                        </ul>
-                    </div>
-                    @endif -->
+
                     <div class="col-6 col-sm-4 col-lg-auto mb-3">
                         <h6 class="mb-3 text-1000 fw-semi-bold">KERJASAMA</h6>
                         <ul class="list-unstyled mb-md-4 mb-lg-0">
@@ -159,16 +148,21 @@
     <!--    End of Main Content-->
 
 
-    <!-- ===============================================-->
     <!--    JavaScripts-->
-    <!-- ===============================================-->
     <script src="{{ URL::to('web/vendors/@popperjs/popper.min.js') }}"></script>
     <script src="{{ URL::to('web/vendors/bootstrap/bootstrap.min.js') }}"></script>
     <script src="{{ URL::to('web/vendors/is/is.min.js') }}"></script>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=window.scroll"></script>
     <script src="{{ URL::to('web/assets/js/theme.js') }}"></script>
+    <!-- ===============================================-->
 
     <link href="https://fonts.googleapis.com/css2?family=Chivo:wght@300;400;700;900&amp;display=swap" rel="stylesheet">
+    <!-- ===============================================-->
+
+    <!-- Load the `mapbox-gl-geocoder` plugin. -->
+    <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.min.js"></script>
+    <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.css" type="text/css">
+    @yield('script')
 </body>
 
 </html>

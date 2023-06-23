@@ -13,7 +13,7 @@ use App\Http\Controllers\PlaceController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\VisitorController;
-use App\Http\Controllers\Web\CategoryController as WebCategoryController;
+use App\Http\Controllers\Web\HomeController as WebHomeController;
 use App\Http\Controllers\Web\PlaceController as WebPlaceController;
 use App\Models\Category;
 use App\Models\Slider;
@@ -76,7 +76,7 @@ Route::controller(DashboardController::class)->group(function () {
     Route::get('dashboard', 'index')->middleware('auth', 'role:Super Admin')->name('dashboard');
     Route::get('dashboard/admin-wisata', 'indexAdminWisata')->middleware('auth', 'role:Admin Wisata')->name('dashboard/admin-wisata');
     Route::get('dashboard/user', 'indexUser')->middleware('auth', 'role:Pengguna')->name('dashboard/user');
-    Route::get('dashboard/filter', 'search')->middleware(['auth', 'role:Super Admin,Admin Wisata'])->name('dashboard/filter');
+    Route::get('dashboard/filter', 'search')->middleware(['auth', 'role:Admin Wisata'])->name('dashboard/filter');
 });
 
 // ----------------------------- profile controller -------------------------//
@@ -171,7 +171,6 @@ Route::middleware(['auth', 'role:Super Admin'])->group(function () {
 
 // ------------------------ LANDING PAGE -------------------------------//
 Route::prefix('web')->group(function () {
-    Route::get('index', [WebCategoryController::class, 'index'])->name('index');
-    Route::get('jelajah-wisata/{slug?}', [WebCategoryController::class, 'show'])->name('jelajah-wisata');    
-    Route::get('detail-wisata/{slug?}', [WebPlaceController::class, 'index'])->name('detail-wisata');    
+    Route::get('jelajah-wisata/{slug?}', [WebHomeController::class, 'show'])->name('jelajah-wisata');    
+    Route::get('detail-wisata/{slug?}', [WebHomeController::class, 'showDetail'])->name('detail-wisata');    
 });

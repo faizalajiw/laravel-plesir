@@ -8,17 +8,9 @@ use App\Models\Place;
 use App\Models\Slider;
 use Illuminate\Http\Request;
 
-class CategoryController extends Controller
+class HomeController extends Controller
 {
-    // menampilkan di home
-    public function index()
-    {
-        $sliders = Slider::all();
-        // card category
-        $categories = Category::oldest()->get();
-        return view('web.index', compact('categories', 'sliders'));
-    }
-
+    // Menampilkan Category di Home
     public function show($slug)
     {
         $sliders = Slider::all();
@@ -31,6 +23,17 @@ class CategoryController extends Controller
             ->latest()
             ->get();
 
-        return view('web.category.showCategory', compact('categories', 'places', 'sliders'));
+        // return response()->json($places);
+        return view('web.jelajah_wisata.showPlace', compact('categories', 'places', 'sliders'));
+    }
+
+    public function showDetail($slug)
+    {
+        $sliders = Slider::all();
+
+        // Get Detail Place
+        $places = Place::with('category', 'images')->where('slug', $slug)->first();
+        // return response()->json($places);
+        return view('web.jelajah_wisata.showDetailPlace', compact('sliders', 'places'));
     }
 }

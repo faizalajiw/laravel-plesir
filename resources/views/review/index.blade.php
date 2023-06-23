@@ -53,7 +53,8 @@
                                                 @endfor
                                                 (dari {{ $reviewCount }} ulasan)<span></span>
                                         </h6>
-                                        <h5 class="fw-bold">{{ $place->title }}</h5>
+                                        <h4 class="text-primary fw-bold">{{ $place->title }}</h4>
+                                        <h6 class="fw-bold">{{ $place->address }}</h6>
                                     </div>
                                     <div class="db-icon">
                                         <i class="fas fa-map-marker-alt"></i>
