@@ -13,8 +13,7 @@ use App\Http\Controllers\PlaceController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\VisitorController;
-use App\Http\Controllers\Web\HomeController as WebHomeController;
-use App\Http\Controllers\Web\PlaceController as WebPlaceController;
+use App\Http\Controllers\Web\FrontendController as FrontendController;
 use App\Models\Category;
 use App\Models\Slider;
 use Illuminate\Support\Facades\Request;
@@ -171,6 +170,6 @@ Route::middleware(['auth', 'role:Super Admin'])->group(function () {
 
 // ------------------------ LANDING PAGE -------------------------------//
 Route::prefix('web')->group(function () {
-    Route::get('jelajah-wisata/{slug?}', [WebHomeController::class, 'show'])->name('jelajah-wisata');    
-    Route::get('detail-wisata/{slug?}', [WebHomeController::class, 'showDetail'])->name('detail-wisata');    
+    Route::get('jelajah-wisata/{slug?}', [FrontendController::class, 'show'])->name('jelajah-wisata');    
+    Route::get('detail-wisata/{slug?}', [FrontendController::class, 'showDetail'])->name('detail-wisata');    
 });

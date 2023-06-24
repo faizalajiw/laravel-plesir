@@ -3,11 +3,30 @@
 <!-- Jelajah Wisata -->
 <section class="pt-5" id="jelajah">
     <div class="container">
+        <!-- ATAS -->
         <div class="row">
             <!-- KIRI -->
             <div class="col-md-12 col-lg-7 col-sm-7">
                 <div class="card shadow-sm p-4 mb-5">
                     <div class="text-center" style="font-size: 25px; color: #1A3154;">{{ $places->title }}</div>
+                    <div class="rating">
+                        <ul class="rating list-unstyled d-flex justify-content-center">
+                            <div class="me-2">Rating {{ $averageRating }}</div>
+                            @for ($i = 1; $i <= 5; $i++) @if ($i <=$wholeStars) <li><i class="fas fa-star text-warning"></i></li>
+                                @elseif ($fractionStar >= 0.75)
+                                <li><i class="fas fa-star text-warning"></i></li>
+                                @elseif ($fractionStar >= 0.5)
+                                <li><i class="fas fa-star-half-alt text-warning"></i></li>
+                                @elseif ($fractionStar >= 0.25)
+                                <li><i class="fas fa-star-half-alt text-warning"></i></li>
+                                @else
+                                <li><i class="far fa-star"></i></li>
+                                @endif
+                                @endfor
+                                <span class="ms-2">(dari {{ $reviewCount }} ulasan)</span>
+                        </ul>
+                    </div>
+
                     <hr>
                     <!-- CARD CAROUSEL -->
                     <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
@@ -81,6 +100,38 @@
             </div>
             <!-- KANAN -->
         </div>
+        <!-- ATAS -->
+        <br>
+        <!-- BAWAH -->
+        <div class="row">
+            <div class="col-12 text-center fw-bold fs-5">Apa Kata Mereka?</div>
+            @foreach ($reviews as $review)
+            <div class="col-md-4 mb-4 mb-md-0">
+                <div class="card">
+                    <div class="card-body py-4 mt-2">
+                        <div class="avatar-profile">
+                            <img src="{{ $review->user->image }}" class="rounded-circle shadow-1-strong" width="100" height="100" />
+                        </div>
+                        <div class="fw-medium fs-1 my-2">Diulas oleh {{ $review->user->name }}</div>
+                        <h5 class="fw-bold">{{ $review->place->title }}</h5>
+                        <ul class="rating list-unstyled d-flex">
+                            <!-- <div class="me-2">{{ $review->rating }}</div> -->
+                            @for ($i = 1; $i <= 5; $i++) @if ($i <=$review->rating)
+                                <li><i class="fas fa-star text-warning"></i></li>
+                                @else
+                                <li><i class="far fa-star"></i></li>
+                                @endif
+                                @endfor
+                        </ul>
+                        <p class="mb-2">
+                            <i class="fas fa-quote-left pe-2"></i>{{ $review->ulasan }}
+                        </p>
+                    </div>
+                </div>
+            </div>
+            @endforeach
+        </div>
+        <!-- BAWAH -->
     </div>
 </section>
 <!-- Jelajah Wisata -->
@@ -108,8 +159,8 @@
 
     // Membuat popup
     var popup = new mapboxgl.Popup({
-        closeOnClick: false
-    })
+            closeOnClick: false
+        })
         .setHTML('<h6>{{ $places->title }}</h6><br/><p>{{ $places->address }}</p>');
 
     // Menghubungkan marker dengan popup
