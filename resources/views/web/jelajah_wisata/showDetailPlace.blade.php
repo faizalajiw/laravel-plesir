@@ -66,7 +66,7 @@
                     <!-- MAPS -->
 
                     <!-- RUTE -->
-                    <a href="#" class="btn btn-primary my-2 py-2">
+                    <a href="{{ route('rute-wisata', $places->slug) }}?longitude={{ $places->longitude }}&latitude={{ $places->latitude }}" class="btn btn-primary my-2 py-2">
                         <div class="my-1">Buka Rute</div>
                     </a>
                     <hr>

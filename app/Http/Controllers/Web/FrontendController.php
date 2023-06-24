@@ -27,7 +27,8 @@ class FrontendController extends Controller
         return view('web.jelajah_wisata.showPlace', compact('categories', 'places', 'sliders'));
     }
 
-    public function showDetail($slug, Place $places)
+    // Menampilkan Detail Tempat
+    public function showDetail($slug)
     {
         $sliders = Slider::all();
 
@@ -43,7 +44,19 @@ class FrontendController extends Controller
         // Hitung Jumlah Ulasan
         $reviewCount = Review::where('place_id', $places->id)->count();
 
-        // return response()->json($reviews);
+        // return response()->json($places);
         return view('web.jelajah_wisata.showDetailPlace', compact('sliders', 'places', 'reviews', 'averageRating' , 'wholeStars', 'fractionStar', 'reviewCount'));
+    }
+
+    // Menampilkan Rute Tempat
+    public function showDirection($slug)
+    {
+        $sliders = Slider::all();
+
+        // Get Detail Place
+        $places = Place::with('category', 'images')->where('slug', $slug)->first();
+
+        // return response()->json($places);
+        return view('web.jelajah_wisata.showDirection', compact('sliders', 'places'));
     }
 }
