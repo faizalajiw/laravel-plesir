@@ -23,8 +23,12 @@ class FrontendController extends Controller
             ->latest()
             ->get();
 
-        // return response()->json($places);
-        return view('web.jelajah_wisata.showPlace', compact('categories', 'places', 'sliders'));
+        // Get Review Place group by place id
+        $review  = Review::with('user', 'place')->get();
+        $groupedReviews = $review->groupBy('place_id');
+
+        // return response()->json($groupedReviews);
+        return view('web.jelajah_wisata.showPlace', compact('categories', 'places', 'sliders','groupedReviews'));
     }
 
     // Menampilkan Detail Tempat
@@ -42,10 +46,10 @@ class FrontendController extends Controller
         $wholeStars = floor($averageRating); // Bagian integer dari rata-rata rating
         $fractionStar = $averageRating - $wholeStars; // Bagian pecahan dari rata-rata rating
         // Hitung Jumlah Ulasan
-        $reviewCount = Review::where('place_id', $places->id)->count();
+        $reviewCount = $reviews->count();
 
-        // return response()->json($places);
-        return view('web.jelajah_wisata.showDetailPlace', compact('sliders', 'places', 'reviews', 'averageRating' , 'wholeStars', 'fractionStar', 'reviewCount'));
+        // return response()->json($wholeStars);
+        return view('web.jelajah_wisata.showDetailPlace', compact('sliders', 'places', 'reviews', 'averageRating', 'wholeStars', 'fractionStar', 'reviewCount'));
     }
 
     // Menampilkan Rute Tempat

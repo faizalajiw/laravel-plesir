@@ -11,22 +11,17 @@
                     <div class="text-center" style="font-size: 25px; color: #1A3154;">{{ $places->title }}</div>
                     <div class="rating">
                         <ul class="rating list-unstyled d-flex justify-content-center">
-                            <div class="me-2">Rating {{ $averageRating }}</div>
+                            <div class="me-2">{{ $averageRating }}</div>
                             @for ($i = 1; $i <= 5; $i++) @if ($i <=$wholeStars) <li><i class="fas fa-star text-warning"></i></li>
-                                @elseif ($fractionStar >= 0.75)
-                                <li><i class="fas fa-star text-warning"></i></li>
-                                @elseif ($fractionStar >= 0.5)
-                                <li><i class="fas fa-star-half-alt text-warning"></i></li>
-                                @elseif ($fractionStar >= 0.25)
+                                @elseif ($fractionStar >= 0.5 && $i == $wholeStars + 1)
                                 <li><i class="fas fa-star-half-alt text-warning"></i></li>
                                 @else
                                 <li><i class="far fa-star"></i></li>
                                 @endif
                                 @endfor
-                                <span class="ms-2">(dari {{ $reviewCount }} ulasan)</span>
+                                <span class="ms-2">({{ $reviewCount }} ulasan)</span>
                         </ul>
                     </div>
-
                     <hr>
                     <!-- CARD CAROUSEL -->
                     <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
@@ -104,7 +99,7 @@
         <br>
         <!-- BAWAH -->
         <div class="row">
-            <div class="col-12 text-center fw-bold fs-5">Apa Kata Mereka?</div>
+            <h2 class="fw-bold fs-md-3 fs-lg-4 mb-5 text-center">Apa Kata Mereka?</h2>
             @foreach ($reviews as $review)
             <div class="col-md-4 mb-4 mb-md-0">
                 <div class="card">
@@ -112,10 +107,9 @@
                         <div class="avatar-profile">
                             <img src="{{ $review->user->image }}" class="rounded-circle shadow-1-strong" width="100" height="100" />
                         </div>
-                        <div class="fw-medium fs-1 my-2">Diulas oleh {{ $review->user->name }}</div>
-                        <h5 class="fw-bold">{{ $review->place->title }}</h5>
-                        <ul class="rating list-unstyled d-flex">
-                            <!-- <div class="me-2">{{ $review->rating }}</div> -->
+                        <div class="fw-medium fs--1 my-2 text-center">Diulas oleh {{ $review->user->name }}</div>
+                        <h5 class="fw-bold text-center">{{ $review->place->title }}</h5>
+                        <ul class="rating list-unstyled d-flex justify-content-center">
                             @for ($i = 1; $i <= 5; $i++) @if ($i <=$review->rating)
                                 <li><i class="fas fa-star text-warning"></i></li>
                                 @else

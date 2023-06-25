@@ -10,63 +10,65 @@
             </div>
         </div>
 
-        <div class="col-md-12">
-            <!-- CAROUSEL IMAGE -->
-            <div id="carouselCategory" class="carousel slide" data-bs-touch="false" data-bs-interval="false">
-                <div class="carousel-inner">
-                    @php
-                    $chunks = $places->chunk(3); // Membagi data places menjadi kelompok-kelompok dengan maksimal 4 data per kelompok
-                    @endphp
-
-                    @foreach ($chunks as $key => $chunk)
-                    <div class="carousel-item {{ $key === 0 ? 'active' : '' }}" data-bs-interval="5000">
-                        <div class="row h-100 gap-5 justify-content-center">
-                            @foreach ($chunk as $place)
-                            <div class="col-6 col-sm-4 col-xl-3 mb-3 hover-top px-2">
-                                <div class="card h-100">
-                                    <a class="stretched-link" href="{{ route('detail-wisata', $place->slug) }}">
+        <!-- PLACE -->
+        <div id="carouselCategory" class="carousel slide" data-bs-ride="carousel" data-bs-touch="true">
+            <div class="carousel-inner">
+                @php
+                $groupedReviewsChunks = $groupedReviews->chunk(6); // Membagi data menjadi kelompok dengan max 3 data
+                $active = 'active';
+                @endphp
+                @foreach($groupedReviewsChunks as $chunk)
+                <div class="carousel-item {{ $active }}">
+                    <div class="row">
+                        @foreach($chunk as $review)
+                        @php
+                        $firstReview = $review->first();
+                        $place = $firstReview->place;
+                        $averageRating = round($review->avg('rating'), 1);
+                        $reviewCount = $review->count();
+                        @endphp
+                        <div class="col-md-4 mb-4">
+                            <div class="card shadow-sm">
+                                <a class="stretched-link" href="{{ route('detail-wisata', $place->slug) }}">
+                                    <div class="bg-image hover-overlay mb-2">
                                         @if ($place->images->isNotEmpty())
-                                        <img class="img-fluid" src="{{ asset($place->images->first()->image) }}" alt="Place Image" />
+                                        <img class="img-fluid" style="height: 190px; width: 1550px;  object-fit: cover; justify-content: center;" src="{{ asset($place->images->first()->image) }}" alt="Place Image" />
                                         @endif
-                                    </a>
-                                    <div class="card-img-overlay d-flex align-items-end bg-dark-gradient">
-                                        <h5 class="text-white fs-1">{{ $place->title }}</h5>
                                     </div>
+                                </a>
+                                <div class="p-3">
+                                    <h6 class="mb-2">Nilai {{ $averageRating }}
+                                        <i class="fas fa-star text-warning"></i>
+                                        (dari {{ $reviewCount }} ulasan)<span></span>
+                                    </h6>
+                                    <h5 class="card-title fw-bold">{{$place->title}}</h5>
+                                    <p class="mb-2"><i class="fas fa-map-marker-alt me-2 text-danger"></i>{{$place->address}}</p>
+                                    <p class="card-text">{{ Str::words(strip_tags($place->description), 10) }}</p>
                                 </div>
                             </div>
-                            @endforeach
                         </div>
+                        @endforeach
                     </div>
-                    @endforeach
                 </div>
-                <div class="row mt-4">
-                    <div class="col-12 position-relative">
-                        <a class="carousel-control-prev carousel-icon z-index-2" href="#carouselCategory" role="button" data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
-                        </a>
-                        <a class="carousel-control-next carousel-icon z-index-2" href="#carouselCategory" role="button" data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
-                        </a>
-                    </div>
+                @php
+                $active = ''; // Hapus kelas 'active' setelah carousel item pertama
+                @endphp
+                @endforeach
+            </div>
+            <div class="row mt-4">
+                <div class="col-12 position-relative">
+                    <a class="carousel-control-prev carousel-icon z-index-2" href="#carouselCategory" role="button" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </a>
+                    <a class="carousel-control-next carousel-icon z-index-2" href="#carouselCategory" role="button" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </a>
                 </div>
             </div>
-            <!-- CAROUSEL IMAGE -->
         </div>
-
-
-        <!-- <div class="col-md-12">
-                @foreach($places as $place)
-                <h2>{{ $place->title }}</h2>
-                <p>{{ $place->address }}</p>
-                <div>
-                    @if ($place->images->isNotEmpty())
-                    <img src="{{ $place->images->first()->image }}" alt="Place Image">
-                    @endif
-                </div>
-                @endforeach
-            </div> -->
+        <!-- PLACE -->
     </div>
 </section>
 <!-- Jelajah Wisata -->
