@@ -78,32 +78,6 @@
         </nav>
         <!-- Navbar -->
 
-        <!-- Carousel Banner -->
-        <div class="container-fluid px-0 mb-5">
-            <div id="header-carousel" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-inner">
-                    @foreach ($sliders as $slider)
-                    <div class="carousel-item{{ $loop->first ? ' active' : '' }}">
-                        <img class="d-block w-100" src="{{ $slider->image }}" style="height: 500;object-fit: cover;" alt="Image">
-                        <div class="carousel-caption">
-                            <div class="container">
-                                <div class="row justify-content-{{ $loop->first ? 'start' : 'end' }}">
-                                    <div class="col-lg-8 text-{{ $loop->first ? 'start' : 'end' }}">
-                                        <p class="fs-4 text-white">Jelajahi Tegal</p>
-                                        <h1 class=" text-white mb-5 animated slideInRight">{{ $slider->title }}</h1>
-                                        <a href="#jelajah" class="btn btn-light rounded-pill py-3 px-4 animated slideIn{{ $loop->first ? 'Right' : 'Left' }}">Jelajahi Sekarang</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    @endforeach
-
-                </div>
-            </div>
-        </div>
-        <!-- Carousel Banner -->
-
         {{-- content page --}}
         @yield('content')
 
@@ -116,7 +90,7 @@
             <div class="container">
                 <div class="row justify-content-lg-between min-vh-10" style="padding-top:5rem">
                     <div class="col-6 col-sm-4 col-lg-auto mb-3">
-                        <h6 class="mb-3 text-1000 fw-semi-bold">PLESIR </h6>
+                        <h5 class="mb-3 text-1000 fw-semi-bold">PLESIR </h5>
                         <ul class="list-unstyled mb-md-4 mb-lg-0">
                             <li class="mb-3"><a class="text-700 text-decoration-none" href="#jelajah">Jelajahi Wisata</a></li>
                             <li class="mb-3"><a class="text-700 text-decoration-none" href="#service">Layanan Kami</a></li>
@@ -125,7 +99,7 @@
                     </div>
 
                     <div class="col-6 col-sm-4 col-lg-auto mb-3">
-                        <h6 class="mb-3 text-1000 fw-semi-bold">KERJASAMA</h6>
+                        <h5 class="mb-3 text-1000 fw-semi-bold">KERJASAMA</h5>
                         <ul class="list-unstyled mb-md-4 mb-lg-0">
                             <li class="mb-3"><a class="text-700 text-decoration-none" href="#!">Cara bergabung</a></li>
                             <li class="mb-3"><a class="text-700 text-decoration-none" href="#!">Kontak Kami</a></li>
@@ -154,7 +128,6 @@
     </main>
     <!-- ===============================================-->
     <!--    End of Main Content-->
-
 
     <!--    JavaScripts-->
     <script src="{{ URL::to('web/vendors/@popperjs/popper.min.js') }}"></script>

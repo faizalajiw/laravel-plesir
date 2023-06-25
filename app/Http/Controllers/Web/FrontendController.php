@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Place;
 use App\Models\Review;
 use App\Models\Slider;
+use App\Models\Visitor;
 
 class FrontendController extends Controller
 {
@@ -28,7 +29,7 @@ class FrontendController extends Controller
         $groupedReviews = $review->groupBy('place_id');
 
         // return response()->json($groupedReviews);
-        return view('web.jelajah_wisata.showPlace', compact('categories', 'places', 'sliders','groupedReviews'));
+        return view('web.jelajah_wisata.showPlace', compact('categories', 'places', 'sliders', 'groupedReviews'));
     }
 
     // Menampilkan Detail Tempat
@@ -48,8 +49,11 @@ class FrontendController extends Controller
         // Hitung Jumlah Ulasan
         $reviewCount = $reviews->count();
 
-        // return response()->json($wholeStars);
-        return view('web.jelajah_wisata.showDetailPlace', compact('sliders', 'places', 'reviews', 'averageRating', 'wholeStars', 'fractionStar', 'reviewCount'));
+        // Get Visitor for Specific Place ID
+        $visitor = Visitor::where('place_id', $places->id)->get();
+
+        // return response()->json($visitor);
+        return view('web.jelajah_wisata.showDetailPlace', compact('sliders', 'places', 'reviews', 'visitor', 'averageRating', 'wholeStars', 'fractionStar', 'reviewCount'));
     }
 
     // Menampilkan Rute Tempat
