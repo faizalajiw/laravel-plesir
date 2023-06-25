@@ -51,7 +51,7 @@
 
             <!-- KANAN -->
             <div class="col-md-12 col-lg-5 col-sm-5">
-                <!-- KETERANGAN -->
+                <!-- CARD -->
                 <div class="card shadow-sm p-4 mb-5">
                     <!-- MAPS -->
                     <div class="maps">
@@ -93,20 +93,17 @@
                     </div>
                     <!-- KETERANGAN -->
                 </div>
-                <!-- KETERANGAN -->
+                <!-- CARD -->
 
                 <!-- CHART PENGUNJUNG-->
                 <div class="card card-chart">
                     <div class="card-body">
-                        <canvas id="myPieChart" style="max-height: 300px;"></canvas>
                         @if ($visitor->isEmpty())
-                        <tr>
-                            <td colspan="11">
-                                <div class="text-center">
-                                    <p class="text-muted mt-3">Tidak ada data pengunjung yang tersedia.</p>
-                                </div>
-                            </td>
-                        </tr>
+                        <div class="text-center">
+                            <p class="mt-3">Tidak ada data pengunjung yang tersedia.</p>
+                        </div>
+                        @else
+                        <canvas id="myPieChart" style="max-height: 300px;"></canvas>
                         @endif
                     </div>
                 </div>
@@ -116,66 +113,6 @@
         </div>
         <!-- ATAS -->
 
-        <!-- Tabel Pengunjung -->
-        <div hidden class="row">
-            <div class="col-xl-12 col-sm-12 col-12 d-flex">
-                <div class="card flex-fill student-space comman-shadow">
-                    <div class="card-header d-flex align-items-center">
-                        <h5 class="card-title">Data Pengunjung</h5>
-                    </div>
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <table class="table star-student table-hover table-center table-borderless table-striped">
-                                <thead class="thead-light">
-                                    <tr>
-                                        <th>No</th>
-                                        <th>Nama Tempat</th>
-                                        <th>Nama Pengelola</th>
-                                        <th>Senin</th>
-                                        <th>Selasa</th>
-                                        <th>Rabu</th>
-                                        <th>Kamis</th>
-                                        <th>Jumat</th>
-                                        <th>Sabtu</th>
-                                        <th>Minggu</th>
-                                        <th>Total</th>
-                                        <th style="color: transparent; background-color: #F8F9FA;"></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($visitor as $list)
-                                    <tr>
-                                        <td>{{ $loop->iteration }}</td>
-                                        <td id="place_title">{{ $list->place->title }}</td>
-                                        <td>{{ $list->user->name }}</td>
-                                        <td id="senin">{{ $list->senin }}</td>
-                                        <td id="selasa">{{ $list->selasa }}</td>
-                                        <td id="rabu">{{ $list->rabu }}</td>
-                                        <td id="kamis">{{ $list->kamis }}</td>
-                                        <td id="jumat">{{ $list->jumat }}</td>
-                                        <td id="sabtu">{{ $list->sabtu }}</td>
-                                        <td id="minggu">{{ $list->minggu }}</td>
-                                        <td>{{ $list->total_hari }}</td>
-                                        <td class="id" style="color: transparent; background-color: transparent;">{{ $list->id }}</td>
-                                    </tr>
-                                    @endforeach
-                                    @if ($visitor->isEmpty())
-                                    <tr>
-                                        <td colspan="11">
-                                            <div class="text-center">
-                                                <p class="text-muted mt-3">Tidak ada data pengunjung yang tersedia.</p>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    @endif
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Tabel Pengunjung -->
     </div>
 </div>
 <!-- Jelajah Wisata -->
@@ -183,9 +120,11 @@
 <!-- Review -->
 <div class="my-8">
     <div class="container">
-        <!-- BAWAH -->
         <div class="row">
             <h2 class="fw-bold fs-md-3 fs-lg-4 mb-5 text-center">Apa Kata Mereka?</h2>
+            @if ($reviews->isEmpty())
+            <p class="text-center">Tidak ada ulasan yang tersedia.</p>
+            @else
             @foreach ($reviews as $review)
             <div class="col-md-4 mb-4 mb-md-0">
                 <div class="card">
@@ -210,11 +149,72 @@
                 </div>
             </div>
             @endforeach
+            @endif
         </div>
-        <!-- BAWAH -->
     </div>
 </div>
 <!-- Review -->
+
+<!-- Tabel Pengunjung -->
+<div hidden class="row">
+    <div class="col-xl-12 col-sm-12 col-12 d-flex">
+        <div class="card flex-fill student-space comman-shadow">
+            <div class="card-header d-flex align-items-center">
+                <h5 class="card-title">Data Pengunjung</h5>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table star-student table-hover table-center table-borderless table-striped">
+                        <thead class="thead-light">
+                            <tr>
+                                <th>No</th>
+                                <th>Nama Tempat</th>
+                                <th>Nama Pengelola</th>
+                                <th>Senin</th>
+                                <th>Selasa</th>
+                                <th>Rabu</th>
+                                <th>Kamis</th>
+                                <th>Jumat</th>
+                                <th>Sabtu</th>
+                                <th>Minggu</th>
+                                <th>Total</th>
+                                <th style="color: transparent; background-color: #F8F9FA;"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($visitor as $list)
+                            <tr>
+                                <td>{{ $loop->iteration }}</td>
+                                <td id="place_title">{{ $list->place->title }}</td>
+                                <td>{{ $list->user->name }}</td>
+                                <td id="senin">{{ $list->senin }}</td>
+                                <td id="selasa">{{ $list->selasa }}</td>
+                                <td id="rabu">{{ $list->rabu }}</td>
+                                <td id="kamis">{{ $list->kamis }}</td>
+                                <td id="jumat">{{ $list->jumat }}</td>
+                                <td id="sabtu">{{ $list->sabtu }}</td>
+                                <td id="minggu">{{ $list->minggu }}</td>
+                                <td>{{ $list->total_hari }}</td>
+                                <td class="id" style="color: transparent; background-color: transparent;">{{ $list->id }}</td>
+                            </tr>
+                            @endforeach
+                            @if ($visitor->isEmpty())
+                            <tr>
+                                <td colspan="11">
+                                    <div class="text-center">
+                                        <p class="mt-3">Tidak ada data pengunjung yang tersedia.</p>
+                                    </div>
+                                </td>
+                            </tr>
+                            @endif
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Tabel Pengunjung -->
 
 @section('script')
 <!-- MAPBOX -->
