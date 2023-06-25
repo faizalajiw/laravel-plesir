@@ -81,19 +81,21 @@
                 <p class="mx-auto">Beragam wisata mulai dari wisata alam seperti pantai, laut, perbukitan, pegunungan, curug, hingga wisata kuliner, wisata sejarah, wisata spiritual, dll.</p>
             </div>
         </div>
+
         <!-- SEARCH -->
         <div class="row height d-flex justify-content-center align-items-center mb-5">
             <div class="col-md-6">
                 <div class="form">
                     <i class="fa fa-search"></i>
                     <form action="{{ route('cari-wisata') }}" method="GET">
-                        <input type="text" class="form-control form-input" name="query" placeholder="Cari Destinasi...">
+                        <input type="text" id="search-input" class="form-control form-input" name="query" placeholder="Cari Destinasi...">
                         <span class="left-pan"><i class="fa fa-microphone"></i></span>
                     </form>
                 </div>
             </div>
         </div>
         <!-- SEARCH -->
+
         <div class="col-md-12">
             <!-- CAROUSEL IMAGE -->
             <div id="carouselCategory" class="carousel slide" data-bs-touch="false" data-bs-interval="false">
@@ -206,4 +208,30 @@
     </div>
 </section>
 <!-- Benefit Kerjasama -->
+
+<script>
+  // Mendapatkan referensi elemen-elemen yang diperlukan
+  const searchInput = document.getElementById('search-input');
+  const microphoneIcon = document.querySelector('.fa-microphone');
+
+  // Buat instance dari SpeechRecognition
+  const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition || window.mozSpeechRecognition || window.msSpeechRecognition)();
+
+  // Konfigurasi SpeechRecognition
+  recognition.lang = 'id-ID'; // Atur bahasa yang digunakan (disesuaikan dengan kebutuhan Anda)
+
+  // Tambahkan event listener saat microphone icon diklik
+  microphoneIcon.addEventListener('click', () => {
+    recognition.start(); // Memulai pengenalan suara
+  });
+
+  // Tangani hasil pengenalan suara
+  recognition.addEventListener('result', (event) => {
+    const transcript = event.results[0][0].transcript; // Mendapatkan teks hasil pengenalan suara
+    searchInput.value = transcript; // Mengisi nilai input teks dengan teks hasil pengenalan suara
+
+    searchInput.closest('form').submit();
+  });
+</script>
+
 @endsection

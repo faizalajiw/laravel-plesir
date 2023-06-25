@@ -130,6 +130,7 @@
     <!--    End of Main Content-->
 
     <!--    JavaScripts-->
+    <script src="{{ URL::to('assets/js/jquery-3.6.0.min.js') }}"></script>
     <script src="{{ URL::to('web/vendors/@popperjs/popper.min.js') }}"></script>
     <script src="{{ URL::to('web/vendors/bootstrap/bootstrap.min.js') }}"></script>
     <script src="{{ URL::to('web/vendors/is/is.min.js') }}"></script>

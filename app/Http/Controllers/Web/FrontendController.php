@@ -76,21 +76,25 @@ class FrontendController extends Controller
         $places = Place::with('category', 'images')
             ->where('title', 'like', '%' . $query . '%')
             ->first();
-
-        // Get Review Place
-        $reviews = Review::where('place_id', $places->id)->with('user')->get();
-        // Hitung Review
-        $average = $reviews->avg('rating'); // Menghitung rata-rata rating
-        $averageRating = round($average, 1); // Bulatkan rata-rata rating menjadi 1 angka desimal
-        $wholeStars = floor($averageRating); // Bagian integer dari rata-rata rating
-        $fractionStar = $averageRating - $wholeStars; // Bagian pecahan dari rata-rata rating
-        // Hitung Jumlah Ulasan
-        $reviewCount = $reviews->count();
-
-        // Get Visitor for Specific Place ID
-        $visitor = Visitor::where('place_id', $places->id)->get();
-
-        // return response()->json($reviews);
-        return view('web.jelajah_wisata.showDetailPlace', compact('places', 'reviews', 'visitor', 'averageRating', 'wholeStars', 'fractionStar', 'reviewCount'));
+    
+        if ($places) {
+            // Get Review Place
+            $reviews = Review::where('place_id', $places->id)->with('user')->get();
+            // Hitung Review
+            $average = $reviews->avg('rating');
+            $averageRating = round($average, 1);
+            $wholeStars = floor($averageRating);
+            $fractionStar = $averageRating - $wholeStars;
+            // Hitung Jumlah Ulasan
+            $reviewCount = $reviews->count();
+    
+            // Get Visitor for Specific Place ID
+            $visitor = Visitor::where('place_id', $places->id)->get();
+    
+            return view('web.jelajah_wisata.showDetailPlace', compact('places', 'reviews', 'visitor', 'averageRating', 'wholeStars', 'fractionStar', 'reviewCount'));
+        } else {
+            return view('errors.404'); // Ganti 'halaman-lain' dengan nama route halaman yang ingin Anda alihkan
+        }
     }
+    
 }
