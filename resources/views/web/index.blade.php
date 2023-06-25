@@ -81,6 +81,19 @@
                 <p class="mx-auto">Beragam wisata mulai dari wisata alam seperti pantai, laut, perbukitan, pegunungan, curug, hingga wisata kuliner, wisata sejarah, wisata spiritual, dll.</p>
             </div>
         </div>
+        <!-- SEARCH -->
+        <div class="row height d-flex justify-content-center align-items-center mb-5">
+            <div class="col-md-6">
+                <div class="form">
+                    <i class="fa fa-search"></i>
+                    <form action="{{ route('cari-wisata') }}" method="GET">
+                        <input type="text" class="form-control form-input" name="query" placeholder="Cari Destinasi...">
+                        <span class="left-pan"><i class="fa fa-microphone"></i></span>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- SEARCH -->
         <div class="col-md-12">
             <!-- CAROUSEL IMAGE -->
             <div id="carouselCategory" class="carousel slide" data-bs-touch="false" data-bs-interval="false">
