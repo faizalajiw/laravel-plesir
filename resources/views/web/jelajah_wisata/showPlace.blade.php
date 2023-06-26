@@ -69,7 +69,6 @@
                                     </h6>
                                     <h5 class="card-title fw-bold">{{$place->title}}</h5>
                                     <p class="mb-2"><i class="fas fa-map-marker-alt me-2 text-danger"></i>{{$place->address}}</p>
-                                    <p class="card-text">{{ Str::words(strip_tags($place->description), 10) }}</p>
                                 </div>
                             </div>
                         </div>

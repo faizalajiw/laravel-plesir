@@ -30,8 +30,8 @@
 <section class="py-5 pt-md-7" id="service">
     <div class="container">
         <div class="mb-7 text-center">
-            <h2 class="fs-md-3 fs-lg-4 fs-xl-5 py-2 fw-bold font-medium">Layanan Kami</h2>
-            <h5 class="text-secondary">Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae, voluptatum?</h5>
+            <h2 class="fs-md-3 fs-lg-4 fs-xl-5 py-2 fw-bold font-medium">Layanan Plesir</h2>
+            <p class="px-1 fs-1">Plesir menawarkan beberapa layanan untuk membantu pengguna menemukan informasi wisata menarik di Tegal</p>
         </div>
         <div class="row">
             <div class="col-lg-3 col-sm-6 mb-6">
@@ -61,8 +61,8 @@
             <div class="col-lg-3 col-sm-6 mb-6">
                 <div class="card service-card shadow-hover rounded-3 text-center align-items-center">
                     <div class="card-body p-xxl-5 p-4"> <img src="{{ asset('web/assets/img/service/deal.png') }}" width="75" alt="Service" />
-                        <h4 class="my-3">Kerjasama</h4>
-                        <p class="mb-0 fw-medium">Menawarkan kerjasama untuk mempromosikan objek wisata.</p>
+                        <h4 class="my-3">Kerja Sama</h4>
+                        <p class="mb-0 fw-medium">Menawarkan kerja sama untuk mempromosikan objek wisata.</p>
                     </div>
                 </div>
             </div>
@@ -74,11 +74,11 @@
 <!-- Jelajah Wisata -->
 <section class="pt-5" id="jelajah">
     <div class="container">
-        <div class="row flex-center mb-5">
+        <div class="row flex-center mb-3">
             <div class="col-lg-8 text-center">
                 <h2 class="fw-bold fs-md-3 fs-lg-4 fs-xl-5">Jelajahi Wisata</h2>
                 <hr class="mx-auto text-primary my-4" style="height:3px; width:70px;" />
-                <p class="mx-auto">Beragam wisata mulai dari wisata alam seperti pantai, laut, perbukitan, pegunungan, curug, hingga wisata kuliner, wisata sejarah, wisata spiritual, dll.</p>
+                <p class="px-1 fs-1">Beragam wisata mulai dari wisata alam seperti pantai, laut, perbukitan, pegunungan, curug, hingga wisata kuliner, wisata sejarah, wisata spiritual, dll.</p>
             </div>
         </div>
 
@@ -151,9 +151,9 @@
 
     <div class="container-lg">
         <div class="row justify-content-center">
-            <div class="col-sm-8 col-md-9 col-xl-5 text-center pt-6">
-                <h2 class="fw-bold fs-md-3 fs-lg-4 fs-xl-5 lh-sm mb-3 text-white">Benefit Kerjasama</h2>
-                <p class="mb-5 text-white">Kesempatan untuk mempromosikan tempat wisata Anda dengan menjadi bagian dari kami.</p>
+            <div class="col-sm-6 col-md-6 col-xl-6 text-center pt-6">
+                <h2 class="fw-bold fs-md-3 fs-lg-4 fs-xl-5 lh-sm mb-3 text-white">Benefit Kerja Sama</h2>
+                <p class="mb-5 text-white fs-1">Kesempatan untuk mempromosikan tempat wisata Anda dengan menjadi bagian dari Plesir.</p>
             </div>
             <div class="col-sm-9 col-md-12 col-xxl-9">
                 <div class="theme-tab">
@@ -196,7 +196,7 @@
                                     <h3 class="fw-bold lh-base text-white">Mengetahui Lebih Lanjut?</h3>
                                 </div>
                                 <div class="col-md-12 col-lg-12 text-primary text-center">
-                                    <a class="btn btn-lg btn-light px-6" href="#" role="button">Lihat Detail</a>
+                                    <a class="btn btn-lg btn-light px-6" href="{{ route('kerjasama') }}" role="button">Lihat Detail</a>
                                 </div>
                             </div>
                         </div>

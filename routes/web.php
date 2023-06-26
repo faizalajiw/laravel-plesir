@@ -174,4 +174,5 @@ Route::prefix('web')->group(function () {
     Route::get('detail-wisata/{slug?}', [FrontendController::class, 'showDetail'])->name('detail-wisata'); 
     Route::get('rute-wisata/{slug}', [FrontendController::class, 'showDirection'])->name('rute-wisata');   
     Route::get('cari-wisata/{slug?}', [FrontendController::class, 'searchPlace'])->name('cari-wisata'); 
+    Route::get('kerjasama', [FrontendController::class, 'partnership'])->name('kerjasama'); 
 });

@@ -153,7 +153,7 @@
                                 </div>
                                 <div class="col-12 col-sm-4">
                                     <div class="form-group local-forms">
-                                        <label>Social Media <span class="login-info">(optional)</span></label>
+                                        <label>Instagram <span class="login-info">(optional)</span></label>
                                         <input type="text" name="social_media" value="{{ $places->social_media }}" class="form-control @error('social_media') is-invalid @enderror">
                                         @error('social_media')
                                         <span class="invalid-feedback" role="alert">

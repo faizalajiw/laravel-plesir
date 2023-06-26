@@ -1,6 +1,6 @@
 @extends('layouts.web')
 @section('content')
-<!-- Jelajah Wisata -->
+<!-- Detail Tempat -->
 <div class="mt-5" id="jelajah">
     <div class="container">
         <!-- ATAS -->
@@ -43,7 +43,7 @@
                     </div>
                     <!-- CARD CAROUSEL -->
                     <hr>
-                    <div>{{ strip_tags($places->description) }}</div>
+                    <div>{!! $places->description !!}</div>
                 </div>
 
             </div>
@@ -83,8 +83,12 @@
                             <div>{{ $places->operational_hours }}</div>
                         </div>
                         <div class="my-2">
-                            <div class="mb-1"><i class="fab fa-instagram me-2"></i>Social Media</div>
-                            <div>{{ $places->social_media }}</div>
+                            <div class="mb-1"><i class="fab fa-instagram me-2"></i>Instagram</div>
+                            <div>
+                                <a href="https://www.instagram.com/{{ $places->social_media }}" target="_blank">
+                                    {{ $places->social_media }}
+                                </a>
+                            </div>
                         </div>
                         <div class="my-2">
                             <div class="mb-1"><i class="fas fa-globe me-2"></i>Website</div>
@@ -115,7 +119,7 @@
 
     </div>
 </div>
-<!-- Jelajah Wisata -->
+<!-- Detail Tempat -->
 
 <!-- Review -->
 <div class="my-8">

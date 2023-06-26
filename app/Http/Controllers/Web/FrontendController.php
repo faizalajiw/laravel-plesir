@@ -97,4 +97,9 @@ class FrontendController extends Controller
         }
     }
     
+    // Tentang Kami
+    public function partnership(){
+        $sliders = Slider::all();
+        return view('web.kerjasama', compact('sliders'));
+    }
 }
