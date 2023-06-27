@@ -21,12 +21,14 @@ class FrontendController extends Controller
 
         // Get the places based on the category
         $places = Place::where('category_id', $categories->id)
-            ->with('category', 'images')
+            ->with('category', 'images', 'review')
             ->latest()
             ->get();
 
         // Get Review Place group by place id
-        $review  = Review::with('user', 'place')->get();
+        $review = Review::whereIn('place_id', $places->pluck('id'))
+            ->with('user', 'place')
+            ->get();
         $groupedReviews = $review->groupBy('place_id');
 
         // return response()->json($groupedReviews);
@@ -41,7 +43,7 @@ class FrontendController extends Controller
         // Get Detail Place
         $places = Place::with('category', 'images')->where('slug', $slug)->first();
         // Get Review Place
-        $reviews = Review::where('place_id', $places->id)->with('user')->get();
+        $reviews = Review::where('place_id', $places->id)->with('user', 'place')->get();
         // Hitung Review
         $average = $reviews->avg('rating'); // Menghitung rata-rata rating
         $averageRating = round($average, 1); // Bulatkan rata-rata rating menjadi 1 angka desimal
@@ -76,7 +78,7 @@ class FrontendController extends Controller
         $places = Place::with('category', 'images')
             ->where('title', 'like', '%' . $query . '%')
             ->first();
-    
+
         if ($places) {
             // Get Review Place
             $reviews = Review::where('place_id', $places->id)->with('user')->get();
@@ -87,18 +89,19 @@ class FrontendController extends Controller
             $fractionStar = $averageRating - $wholeStars;
             // Hitung Jumlah Ulasan
             $reviewCount = $reviews->count();
-    
+
             // Get Visitor for Specific Place ID
             $visitor = Visitor::where('place_id', $places->id)->get();
-    
+
             return view('web.jelajah_wisata.showDetailPlace', compact('places', 'reviews', 'visitor', 'averageRating', 'wholeStars', 'fractionStar', 'reviewCount'));
         } else {
             return view('errors.404'); // Ganti 'halaman-lain' dengan nama route halaman yang ingin Anda alihkan
         }
     }
-    
+
     // Tentang Kami
-    public function partnership(){
+    public function partnership()
+    {
         $sliders = Slider::all();
         return view('web.kerjasama', compact('sliders'));
     }

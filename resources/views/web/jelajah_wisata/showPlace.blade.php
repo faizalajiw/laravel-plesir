@@ -40,7 +40,7 @@
         <div id="carouselCategory" class="carousel slide" data-bs-ride="carousel" data-bs-touch="true">
             <div class="carousel-inner">
                 @php
-                $groupedReviewsChunks = $groupedReviews->chunk(6); // Membagi data menjadi kelompok dengan max 3 data
+                $groupedReviewsChunks = $groupedReviews->chunk(3); // Membagi data menjadi kelompok dengan max 3 data
                 $active = 'active';
                 @endphp
                 @foreach($groupedReviewsChunks as $chunk)
@@ -63,10 +63,14 @@
                                     </div>
                                 </a>
                                 <div class="p-3">
-                                    <h6 class="mb-2">Nilai {{ $averageRating }}
+                                    @if ($reviewCount > 0)
+                                    <h6 class="mb-2">Nilai {{ round($averageRating, 1) }}
                                         <i class="fas fa-star text-warning"></i>
                                         (dari {{ $reviewCount }} ulasan)<span></span>
                                     </h6>
+                                    @else
+                                    <h6 class="mb-2">Belum ada ulasan</h6>
+                                    @endif
                                     <h5 class="card-title fw-bold">{{$place->title}}</h5>
                                     <p class="mb-2"><i class="fas fa-map-marker-alt me-2 text-danger"></i>{{$place->address}}</p>
                                 </div>

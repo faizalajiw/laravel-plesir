@@ -52,6 +52,6 @@ class Place extends Model
 
     public function review()
     {
-        return $this->hasMany(Place::class);
+        return $this->hasMany(Review::class);
     }
 }
