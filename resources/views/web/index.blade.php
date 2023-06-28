@@ -76,7 +76,7 @@
     <div class="container">
         <div class="row flex-center mb-3">
             <div class="col-lg-8 text-center">
-                <h2 class="fw-bold fs-md-3 fs-lg-4 fs-xl-5">Jelajahi Wisata</h2>
+                <h2 class="fw-bold fs-md-3 fs-lg-4 fs-xl-5">Kategori Wisata</h2>
                 <hr class="mx-auto text-primary my-4" style="height:3px; width:70px;" />
                 <p class="px-1 fs-1">Beragam wisata mulai dari wisata alam seperti pantai, laut, perbukitan, pegunungan, curug, hingga wisata kuliner, wisata sejarah, wisata spiritual, dll.</p>
             </div>
@@ -97,46 +97,21 @@
         <!-- SEARCH -->
 
         <div class="col-md-12">
-            <!-- CAROUSEL IMAGE -->
-            <div id="carouselCategory" class="carousel slide" data-bs-touch="false" data-bs-interval="false">
-                <div class="carousel-inner">
-                    @php
-                    $chunks = $categories->chunk(3); // Membagi data categories menjadi kelompok-kelompok dengan maksimal 4 data per kelompok
-                    @endphp
-
-                    @foreach ($chunks as $key => $chunk)
-                    <div class="carousel-item {{ $key === 0 ? 'active' : '' }}" data-bs-interval="5000">
-                        <div class="row h-100 gap-5 justify-content-center">
-                            @foreach ($chunk as $category)
-                            <div class="col-6 col-sm-4 col-xl-3 mb-3 hover-top px-2">
-                                <div class="card h-100 text-white">
-                                    <a class="stretched-link" href="{{ route('jelajah-wisata', ['slug' => $category->slug]) }}">
-                                        <img class="img-fluid" src="{{ $category->image }}" alt="" />
-                                    </a>
-                                    <div class="card-img-overlay d-flex align-items-end bg-dark-gradient">
-                                        <h5 class="text-white fs-1">{{ $category->name }}</h5>
-                                    </div>
-                                </div>
+            <div class="row h-100 gap-5 justify-content-center">
+                @foreach ($categories as $category)
+                <div class="col-6 col-sm-4 col-xl-3 mb-3 hover-top px-2">
+                    <div class="card h-100 text-white">
+                        <a class="stretched-link" href="{{ route('kategori', ['slug' => $category->slug]) }}">
+                            <img class="img-fluid" src="{{ $category->image }}" alt="" />
+                            <div class="card-img-overlay d-flex align-items-end bg-dark-gradient">
+                                <h5 class="text-white fs-1">{{ $category->name }}</h5>
                             </div>
-                            @endforeach
-                        </div>
-                    </div>
-                    @endforeach
-                </div>
-                <div class="row mt-4">
-                    <div class="col-12 position-relative">
-                        <a class="carousel-control-prev carousel-icon z-index-2" href="#carouselCategory" role="button" data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
-                        </a>
-                        <a class="carousel-control-next carousel-icon z-index-2" href="#carouselCategory" role="button" data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
                         </a>
                     </div>
                 </div>
+                @endforeach
             </div>
-            <!-- CAROUSEL IMAGE -->
+
         </div>
     </div>
     <!-- end of .container-->
@@ -210,28 +185,28 @@
 <!-- Benefit Kerjasama -->
 
 <script>
-  // Mendapatkan referensi elemen-elemen yang diperlukan
-  const searchInput = document.getElementById('search-input');
-  const microphoneIcon = document.querySelector('.fa-microphone');
+    // Mendapatkan referensi elemen-elemen yang diperlukan
+    const searchInput = document.getElementById('search-input');
+    const microphoneIcon = document.querySelector('.fa-microphone');
 
-  // Buat instance dari SpeechRecognition
-  const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition || window.mozSpeechRecognition || window.msSpeechRecognition)();
+    // Buat instance dari SpeechRecognition
+    const recognition = new(window.SpeechRecognition || window.webkitSpeechRecognition || window.mozSpeechRecognition || window.msSpeechRecognition)();
 
-  // Konfigurasi SpeechRecognition
-  recognition.lang = 'id-ID'; // Atur bahasa yang digunakan (disesuaikan dengan kebutuhan Anda)
+    // Konfigurasi SpeechRecognition
+    recognition.lang = 'id-ID'; // Atur bahasa yang digunakan (disesuaikan dengan kebutuhan Anda)
 
-  // Tambahkan event listener saat microphone icon diklik
-  microphoneIcon.addEventListener('click', () => {
-    recognition.start(); // Memulai pengenalan suara
-  });
+    // Tambahkan event listener saat microphone icon diklik
+    microphoneIcon.addEventListener('click', () => {
+        recognition.start(); // Memulai pengenalan suara
+    });
 
-  // Tangani hasil pengenalan suara
-  recognition.addEventListener('result', (event) => {
-    const transcript = event.results[0][0].transcript; // Mendapatkan teks hasil pengenalan suara
-    searchInput.value = transcript; // Mengisi nilai input teks dengan teks hasil pengenalan suara
+    // Tangani hasil pengenalan suara
+    recognition.addEventListener('result', (event) => {
+        const transcript = event.results[0][0].transcript; // Mendapatkan teks hasil pengenalan suara
+        searchInput.value = transcript; // Mengisi nilai input teks dengan teks hasil pengenalan suara
 
-    searchInput.closest('form').submit();
-  });
+        searchInput.closest('form').submit();
+    });
 </script>
 
 @endsection

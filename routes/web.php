@@ -170,7 +170,8 @@ Route::middleware(['auth', 'role:Super Admin'])->group(function () {
 
 // ------------------------ LANDING PAGE -------------------------------//
 Route::prefix('web')->group(function () {
-    Route::get('jelajah-wisata/{slug?}', [FrontendController::class, 'show'])->name('jelajah-wisata');    
+    Route::get('jelajah-wisata/{slug?}', [FrontendController::class, 'allPlace'])->name('jelajah-wisata');    
+    Route::get('kategori/{slug?}', [FrontendController::class, 'showByCategory'])->name('kategori');    
     Route::get('detail-wisata/{slug?}', [FrontendController::class, 'showDetail'])->name('detail-wisata'); 
     Route::get('rute-wisata/{slug}', [FrontendController::class, 'showDirection'])->name('rute-wisata');   
     Route::get('cari-wisata/{slug?}', [FrontendController::class, 'searchPlace'])->name('cari-wisata'); 

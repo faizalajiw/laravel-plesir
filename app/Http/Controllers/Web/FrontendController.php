@@ -12,8 +12,23 @@ use Illuminate\Http\Request;
 
 class FrontendController extends Controller
 {
-    // Menampilkan Category di Home
-    public function show($slug)
+    // Menampilkan Semua Tempat
+    public function allPlace()
+    {
+        $sliders = Slider::all();
+
+        $places = Place::with('category', 'images', 'review')->latest()->get();
+        // Get Review Place group by place id
+        $review = Review::whereIn('place_id', $places->pluck('id'))
+            ->with('user', 'place')
+            ->get();
+        $groupedReviews = $review->groupBy('place_id');
+
+        // return response()->json($places);
+        return view('web.jelajahWisata', compact('places', 'groupedReviews', 'sliders'));
+    }
+    // Menampilkan Tempat Berdasarkan Kategori
+    public function showByCategory($slug)
     {
         $sliders = Slider::all();
         // Get the category based on the slug
@@ -32,7 +47,7 @@ class FrontendController extends Controller
         $groupedReviews = $review->groupBy('place_id');
 
         // return response()->json($groupedReviews);
-        return view('web.jelajah_wisata.showPlace', compact('categories', 'places', 'sliders', 'groupedReviews'));
+        return view('web.place.showByCategory', compact('categories', 'places', 'sliders', 'groupedReviews'));
     }
 
     // Menampilkan Detail Tempat
@@ -56,7 +71,7 @@ class FrontendController extends Controller
         $visitor = Visitor::where('place_id', $places->id)->get();
 
         // return response()->json($places);
-        return view('web.jelajah_wisata.showDetailPlace', compact('sliders', 'places', 'reviews', 'visitor', 'averageRating', 'wholeStars', 'fractionStar', 'reviewCount'));
+        return view('web.place.showDetailPlace', compact('sliders', 'places', 'reviews', 'visitor', 'averageRating', 'wholeStars', 'fractionStar', 'reviewCount'));
     }
 
     // Menampilkan Rute Tempat
@@ -68,7 +83,7 @@ class FrontendController extends Controller
         $places = Place::with('category', 'images')->where('slug', $slug)->first();
 
         // return response()->json($places);
-        return view('web.jelajah_wisata.showDirection', compact('sliders', 'places'));
+        return view('web.place.showDirection', compact('sliders', 'places'));
     }
 
     // Search
@@ -93,7 +108,7 @@ class FrontendController extends Controller
             // Get Visitor for Specific Place ID
             $visitor = Visitor::where('place_id', $places->id)->get();
 
-            return view('web.jelajah_wisata.showDetailPlace', compact('places', 'reviews', 'visitor', 'averageRating', 'wholeStars', 'fractionStar', 'reviewCount'));
+            return view('web.place.showDetailPlace', compact('places', 'reviews', 'visitor', 'averageRating', 'wholeStars', 'fractionStar', 'reviewCount'));
         } else {
             return view('errors.404'); // Ganti 'halaman-lain' dengan nama route halaman yang ingin Anda alihkan
         }

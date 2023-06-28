@@ -44,7 +44,7 @@
                 <div class="collapse navbar-collapse border-top border-lg-0 mt-4 mt-lg-0" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item px-3"><a class="nav-link fw-bold text-primary" href="{{ route('/') }}">Home</a></li>
-                        <li class="nav-item px-3"><a class="nav-link fw-bold text-primary" href="#jelajah">Jelajahi Wisata</a></li>
+                        <li class="nav-item px-3"><a class="nav-link fw-bold text-primary" href="{{ route('jelajah-wisata') }}">Jelajah Wisata</a></li>
                         <li class="nav-item px-3"><a class="nav-link fw-bold text-primary" href="{{ route('kerjasama') }}">Kerja Sama</a></li>
                     </ul>
                     <form class="d-flex">
@@ -91,7 +91,7 @@
                     <div class="col-6 col-sm-4 col-lg-auto mb-3">
                         <h5 class="mb-3 text-1000 fw-semi-bold">PLESIR </h5>
                         <ul class="list-unstyled mb-md-4 mb-lg-0">
-                            <li class="mb-3"><a class="text-700 text-decoration-none" href="#jelajah">Jelajahi Wisata</a></li>
+                            <li class="mb-3"><a class="text-700 text-decoration-none" href="{{ route('jelajah-wisata') }}">Jelajah Wisata</a></li>
                             <li class="mb-3"><a class="text-700 text-decoration-none" href="#service">Layanan Plesir</a></li>
                         </ul>
                     </div>
