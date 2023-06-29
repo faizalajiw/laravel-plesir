@@ -89,13 +89,13 @@
                                 <p class="text-muted mb-0">{{ Session::get('role_name') }}</p>
                             </div>
                         </div>
-                        <a class="dropdown-item" href="{{ route('/') }}">Website</a>
-                        <a class="dropdown-item" href="{{ route('profile/user') }}">Profile</a>
+                        <a class="dropdown-item" href="{{ route('/') }}"><span><i class="fas fa-external-link-alt me-2"></i></span>Website</a>
+                        <a class="dropdown-item" href="{{ route('profile/user') }}"><span><i class="fas fa-user me-2"></i></span>Profil</a>
                         @if (Session::get('role_name') === 'Super Admin' || Session::get('role_name') === 'Admin Wisata')
-                        <a class="dropdown-item" href="{{ route('list/my_places') }}">Kelola Tempat</a>
+                        <a class="dropdown-item" href="{{ route('list/my_places') }}"><span><i class="fas fa-map-marked-alt me-2"></i></span>Kelola Tempat</a>
                         @endif
                         @if (Session::get('role_name') === 'Super Admin')
-                        <a class="dropdown-item" href="{{ route('list/review') }}">Lihat Ulasan</a>
+                        <a class="dropdown-item" href="{{ route('list/review') }}"><span><i class="fas fa-star me-2"></i></span>Lihat Ulasan</a>
                         @endif
                         @if (Session::get('role_name') === 'Admin Wisata')
                         <a class="dropdown-item" href="{{ route('list/my_review_tempat') }}">Lihat Ulasan</a>
@@ -103,7 +103,7 @@
                         @if (Session::get('role_name') === 'Pengguna')
                         <a class="dropdown-item" href="{{ route('list/my_review') }}">Ulasan Saya</a>
                         @endif
-                        <a class="dropdown-item" href="{{ route('logout') }}">Logout</a>
+                        <a class="dropdown-item" href="{{ route('logout') }}"><span><i class="fas fa-sign-out-alt me-2"></i></span>Logout</a>
                     </div>
                 </li>
                 <!-- HEADER PROFILE -->

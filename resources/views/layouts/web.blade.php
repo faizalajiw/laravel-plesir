@@ -20,6 +20,11 @@
     <link href="{{ URL::to('web/assets/lib/animate/animate.min.css') }}" rel="stylesheet">
     <!-- ===============================================-->
 
+    {{-- message toastr --}}
+    <link rel="stylesheet" href="{{ URL::to('assets/css/toastr.min.css') }}">
+    <script src="{{ URL::to('assets/js/toastr_jquery.min.js') }}"></script>
+    <script src="{{ URL::to('assets/js/toastr.min.js') }}"></script>
+
     <!-- MAPBOX -->
     <script src="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js"></script>
     <link href="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css" rel="stylesheet">
@@ -92,7 +97,7 @@
                         <h5 class="mb-3 text-1000 fw-semi-bold">PLESIR </h5>
                         <ul class="list-unstyled mb-md-4 mb-lg-0">
                             <li class="mb-3"><a class="text-700 text-decoration-none" href="{{ route('jelajah-wisata') }}">Jelajah Wisata</a></li>
-                            <li class="mb-3"><a class="text-700 text-decoration-none" href="#service">Layanan Plesir</a></li>
+                            <li class="mb-3"><a class="text-700 text-decoration-none" href="{{ route('/') }}">Layanan Plesir</a></li>
                         </ul>
                     </div>
 
@@ -100,7 +105,7 @@
                         <h5 class="mb-3 text-1000 fw-semi-bold">KERJA SAMA</h5>
                         <ul class="list-unstyled mb-md-4 mb-lg-0">
                             <li class="mb-3"><a class="text-700 text-decoration-none" href="{{ route('kerjasama') }}">Cara bergabung</a></li>
-                            <li class="mb-3"><a class="text-700 text-decoration-none" href="{{ route('kerjasama') }}">Gabung</a></li>
+                            <li class="mb-3"><a class="text-700 text-decoration-none" href="https://wa.me/6281991181804?text=Halo%2C%20saya%20ingin%20bergabung%20sebagai%20admin%20wisata">Gabung</a></li>
                         </ul>
                     </div>
                     <div class="col-8 col-lg-auto mb-3">

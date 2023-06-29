@@ -9,8 +9,8 @@
             <div class="row align-items-center">
                 <div class="col">
                     <ul class="breadcrumb">
-                        <li class="breadcrumb-item fw-bold"><a href="{{ route('list/users') }}">Users</a></li>
-                        <li class="breadcrumb-item fw-bold active">Edit User</li>
+                        <li class="breadcrumb-item"><a href="{{ route('list/users') }}">Manajemen User</a></li>
+                        <li class="breadcrumb-item active">Edit</li>
                     </ul>
                 </div>
             </div>

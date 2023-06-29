@@ -78,11 +78,11 @@ class LoginController extends Controller
                 'users_id' => $user->users_id,
             ]);
 
-            Toastr::success('Login berhasil :)', 'Success');
+            Toastr::success('Login berhasil.');
             return redirect()->intended('/');
         }
 
-        Toastr::error('Username atau Password salah :(', 'Gagal');
+        Toastr::error('Username atau Password salah.');
         return redirect('login');
     }
 
@@ -96,7 +96,7 @@ class LoginController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        Toastr::success('Logout successfully :)', 'Success');
+        Toastr::success('Logout Berhasil');
         return redirect('/');
     }
 }

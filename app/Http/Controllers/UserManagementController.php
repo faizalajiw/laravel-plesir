@@ -124,7 +124,7 @@ class UserManagementController extends Controller
 
         $user->save();
 
-        Toastr::success('User berhasil ditambahkan :)', 'Success');
+        Toastr::success('User Berhasil Ditambahkan.');
         return redirect()->to('/list/users');
     }
     /** User Store */
@@ -150,13 +150,13 @@ class UserManagementController extends Controller
             'email'         => ['nullable', 'email', 'regex:/^\S*$/', Rule::unique('users')->ignore($request->id)],
             'new_password'  => ['required', 'min:8', 'regex:/^\S*$/'],
             'role_name'     => ['required', 'string'],
-            'image'        => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif', 'max:2048'],
+            'image'         => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif', 'max:2048'],
         ]);
         $users = User::findOrFail($request->id);
 
         $user = Auth::user();
         if ($user->role_name !== 'Super Admin') {
-            Toastr::error('Gagal Diupdate');
+            Toastr::error('User Gagal Diupdate');
             return redirect()->back();
         }
 
@@ -215,7 +215,7 @@ class UserManagementController extends Controller
             $users->save();
         }
 
-        Toastr::success('Berhasil Diupdate');
+        Toastr::success('User Berhasil Diupdate');
         return redirect()->to('/list/users');
     }
     /** User Update */
@@ -231,15 +231,15 @@ class UserManagementController extends Controller
             Storage::disk('local')->delete('public/users/' . basename($user->image));
             $user->delete();
 
-            Toastr::success('Berhasil dihapus');
+            Toastr::success('User Berhasil Dihapus');
             return redirect()->back();
         }
         if (!$user->image) {
             $user->delete();
-            Toastr::success('Berhasil dihapus');
+            Toastr::success('User Berhasil Dihapus');
             return redirect()->back();
         } else {
-            Toastr::error('Gagal dihapus');
+            Toastr::error('User Gagal Dihapus');
             return redirect()->back();
         }
     }

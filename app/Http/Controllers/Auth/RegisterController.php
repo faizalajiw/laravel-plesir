@@ -39,7 +39,7 @@ class RegisterController extends Controller
         $user->users_id = 'USER' . Str::upper(Str::random(6)); // contoh pola untuk pengguna
         $user->save();
 
-        Toastr::success('Create new account successfully :)', 'Success');
+        Toastr::success('Akun Berhasil Dibuat');
         return redirect('login');
     }
 }

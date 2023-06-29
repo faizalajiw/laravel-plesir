@@ -1,5 +1,6 @@
 @extends('layouts.web')
 @section('content')
+{!! Toastr::message() !!}
 <!-- Carousel Banner -->
 <div class="container-fluid px-0 mb-5">
     <div id="header-carousel" class="carousel slide" data-bs-ride="carousel">

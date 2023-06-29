@@ -9,8 +9,8 @@
             <div class="row align-items-center">
                 <div class="col">
                     <ul class="breadcrumb">
-                        <li class="breadcrumb-item fw-bold"><a href="{{ route('list/places') }}">Tempat</a></li>
-                        <li class="breadcrumb-item fw-bold active">Kelola Tempat Saya</li>
+                        <li class="breadcrumb-item"><a href="{{ route('list/places') }}">Tempat</a></li>
+                        <li class="breadcrumb-item active">Kelola Tempat Saya</li>
                     </ul>
                 </div>
             </div>
@@ -54,7 +54,7 @@
                                 </div>
                                 <div class="col-auto text-end float-end ms-auto download-grp">
                                     <a href="{{ route('places/create') }}" class="btn btn-primary">
-                                        <i class="fas fa-plus me-2"></i>Add
+                                        <i class="fas fa-plus me-2"></i>Tambah
                                     </a>
                                 </div>
                             </div>

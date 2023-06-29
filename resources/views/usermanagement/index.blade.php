@@ -9,8 +9,8 @@
             <div class="row align-items-center">
                 <div class="col">
                     <ul class="breadcrumb">
-                        <li class="breadcrumb-item fw-bold"><a href="{{ route('dashboard') }}">Dashboard</a></li>
-                        <li class="breadcrumb-item fw-bold active">Semua</li>
+                        <li class="breadcrumb-item"><a href="{{ route('list/users') }}">Manajemen User</a></li>
+                        <li class="breadcrumb-item active">Semua</li>
                     </ul>
                 </div>
             </div>
@@ -50,11 +50,11 @@
                         <div class="page-header">
                             <div class="row align-items-center">
                                 <div class="col">
-                                    <h3 class="form-title">Semua List</h3>
+                                    <h3 class="form-title">Semua</h3>
                                 </div>
                                 <div class="col-auto text-end float-end ms-auto download-grp">
                                     <a href="{{ route('users/create') }}" class="btn btn-primary">
-                                        <i class="fas fa-plus me-2"></i>Add
+                                        <i class="fas fa-plus me-2"></i>Tambah
                                     </a>
                                 </div>
                             </div>

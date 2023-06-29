@@ -9,13 +9,13 @@
             <div class="row align-items-center">
                 <div class="col">
                     <ul class="breadcrumb">
-                        <li class="breadcrumb-item fw-bold"><a href="{{ route('list/users') }}">Users</a></li>
-                        <li class="breadcrumb-item fw-bold active">Tambah User</li>
+                        <li class="breadcrumb-item"><a href="{{ route('list/users') }}">Manajemen User</a></li>
+                        <li class="breadcrumb-item active">Tambah</li>
                     </ul>
                 </div>
             </div>
         </div>
-        <div class="row">
+        <div class="row mt-5">
             <div class="col-sm-12">
                 <div class="card">
                     <div class="card-body">

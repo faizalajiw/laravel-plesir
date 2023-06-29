@@ -9,8 +9,8 @@
             <div class="row">
                 <div class="col">
                     <ul class="breadcrumb">
-                        <li class="breadcrumb-item fw-bold"><a href="{{ route('dashboard') }}">Dashboard</a></li>
-                        <li class="breadcrumb-item fw-bold active">Profile</li>
+                        <li class="breadcrumb-item fw-bold"><a href="{{ route('profile/user') }}">Akun</a></li>
+                        <li class="breadcrumb-item fw-bold active">Profil</li>
                     </ul>
                 </div>
             </div>

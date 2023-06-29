@@ -60,10 +60,10 @@
                     </a>
                     <ul>
                         <li>
-                            <a href="{{ route('list/sliders') }}" class="{{set_active(['list/sliders'])}}">Slider Banner</a>
+                            <a href="{{ route('list/sliders') }}" class="{{set_active(['list/sliders'])}}">View Banner</a>
                         </li>
                         <li>
-                            <a href="{{ route('sliders/create') }}" class="{{set_active(['sliders/create'])}}">Tambah Slider Banner</a>
+                            <a href="{{ route('sliders/create') }}" class="{{set_active(['sliders/create'])}}">Tambah Banner</a>
                         </li>
                     </ul>
                 </li>
@@ -79,7 +79,7 @@
                     </a>
                     <ul>
                         <li>
-                            <a href="{{ route('list/categories') }}" class="{{set_active(['list/categories'])}}">Kategori</a>
+                            <a href="{{ route('list/categories') }}" class="{{set_active(['list/categories'])}}">View Kategori</a>
                         </li>
                         <li>
                             <a href="{{ route('categories/create') }}" class="{{set_active(['categories/create'])}}">Tambah Kategori</a>
@@ -100,7 +100,7 @@
                     <ul>
                         <!-- ONLY SUPER ADMIN -->
                         @if (Session::get('role_name') === 'Super Admin')
-                        <li><a href="{{ route('list/places') }}" class="{{set_active(['list/places'])}}">Kelola Semua Tempat</a></li>
+                        <li><a href="{{ route('list/places') }}" class="{{set_active(['list/places'])}}">Kelola Semua</a></li>
                         @endif
                         <li><a href="{{ route('list/my_places') }}" class="{{set_active(['list/my_places'])}}">Kelola Tempat Saya</a></li>
                         <li><a href="{{ route('places/create') }}" class="{{set_active(['places/create'])}}">Tambah Tempat</a></li>
@@ -131,7 +131,7 @@
 
                 <!-- RATING & ULASAN -->
                 <li class="submenu {{set_active(['list/review','review/create'])}}">
-                    <a href="#"><i class="fas fa-clipboard"></i>
+                    <a href="#"><i class="fas fa-star"></i>
                         <span>Rating & Ulasan</span>
                         <span class="menu-arrow"></span>
                     </a>
@@ -143,7 +143,7 @@
                         @if (Session::get('role_name') === 'Admin Wisata')
                         <li><a href="{{ route('list/my_review_tempat') }}" class="{{set_active(['list/my_review_tempat'])}}">Lihat Ulasan</a></li>
                         @endif
-                        @if (Session::get('role_name') === 'Pengguna')
+                        @if (Session::get('role_name') === 'Super Admin' || Session::get('role_name') === 'Pengguna')
                         <li><a href="{{ route ('list/my_review') }}" class="{{set_active(['list/my_review'])}}">Ulasan Saya</a></li>
                         <li><a href="{{ route ('review/create') }}" class="{{set_active(['review/create'])}}">Nilai Tempat</a></li>
                         @endif
@@ -158,7 +158,7 @@
                 <!-- Profile -->
                 <li class="{{set_active(['profile/user'])}}">
                     <a href="{{ route('profile/user') }}" class="{{set_active(['profile/user'])}}"><i class="fas fa-user"></i>
-                        <span>Profile</span>
+                        <span>Profil</span>
                     </a>
                 </li>
                 <!-- Profile -->
