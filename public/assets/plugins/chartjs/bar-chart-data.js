@@ -36,7 +36,7 @@ var config = {
             },
             title: {
                 display: true,
-                text: 'Grafik Jumlah Pengunjung Harian ' + places,
+                text: 'Jumlah Pengunjung ' + places,
                 color: 'black',
                 font: {
                     size: 16

@@ -29,7 +29,7 @@ class CategoryController extends Controller
     {
         $request->validate([
             'name' => 'required|unique:categories,name,' . $categories->id,
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:3048',
         ]);
 
         try {
@@ -64,8 +64,8 @@ class CategoryController extends Controller
         $categories = Category::findOrFail($request->id);
 
         $request->validate([
-            'name' => 'required',
-            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'name' => 'required|unique:categories,name,' . $categories->id,
+            'image' => 'image|mimes:jpeg,png,jpg,gif|max:3048',
         ]);
 
         // Update name

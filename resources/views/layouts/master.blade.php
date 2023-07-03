@@ -98,10 +98,10 @@
                         <a class="dropdown-item" href="{{ route('list/review') }}"><span><i class="fas fa-star me-2"></i></span>Lihat Ulasan</a>
                         @endif
                         @if (Session::get('role_name') === 'Admin Wisata')
-                        <a class="dropdown-item" href="{{ route('list/my_review_tempat') }}">Lihat Ulasan</a>
+                        <a class="dropdown-item" href="{{ route('list/my_review_tempat') }}"><span><i class="fas fa-star me-2"></i></span>Lihat Ulasan</a>
                         @endif
                         @if (Session::get('role_name') === 'Pengguna')
-                        <a class="dropdown-item" href="{{ route('list/my_review') }}">Ulasan Saya</a>
+                        <a class="dropdown-item" href="{{ route('list/my_review') }}"><span><i class="fas fa-star me-2"></i></span>Ulasan Saya</a>
                         @endif
                         <a class="dropdown-item" href="{{ route('logout') }}"><span><i class="fas fa-sign-out-alt me-2"></i></span>Logout</a>
                     </div>

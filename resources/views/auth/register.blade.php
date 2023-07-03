@@ -62,11 +62,11 @@
             </div>
             <div class="forgotpass">
                 <div class="subtitle-left">Sudah Punya Akun?
-                    <a href="{{ route('login') }}">Login</a>
+                    <a href="{{ route('login') }}">Masuk</a>
                 </div>
             </div>
             <div class="form-group">
-                <button class="btn btn-primary btn-block" type="submit">Register</button>
+                <button class="btn btn-primary btn-block" type="submit">Daftar</button>
             </div>
         </form>
     </div>

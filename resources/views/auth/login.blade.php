@@ -32,12 +32,12 @@
             </div>
             <div class="forgotpass">
                 <div class="subtitle-left">Belum punya akun?
-                    <a href="{{ route('register') }}">Register</a>
+                    <a href="{{ route('register') }}">Daftar</a>
                 </div>
                 <a class="subtitle-right" href="{{ route('password.request') }}">Lupa Password?</a>
             </div>
             <div class="form-group">
-                <button class="btn btn-primary btn-block" type="submit">Login</button>
+                <button class="btn btn-primary btn-block" type="submit">Masuk</button>
             </div>
         </form>
         <!-- <div class="login-or">

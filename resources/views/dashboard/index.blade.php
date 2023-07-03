@@ -287,6 +287,12 @@
         </div>
         @endif
         <!-- Tabel Data Pengunjung -->
+
+        @if (Session::get('role_name') === 'Pengguna')
+        <div class="text-center">
+            <img class="img-fluid" src="{{ URL::to('assets/img/login.png') }}" alt="Logo">
+        </div>
+        @endif
     </div>
 
     @section('script')

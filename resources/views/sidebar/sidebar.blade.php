@@ -37,9 +37,9 @@
                         <li>
                             <a href="{{ route('list/users') }}" class="{{set_active(['list/users'])}}">Semua</a>
                         </li>
-                        <li>
+                        <!-- <li>
                             <a href="{{ route('list/users/super') }}" class="{{set_active(['list/users/super'])}}">Super Admin</a>
-                        </li>
+                        </li> -->
                         <li>
                             <a href="{{ route('list/users/admin') }}" class="{{set_active(['list/users/admin'])}}">Admin Wisata</a>
                         </li>
