@@ -120,9 +120,9 @@
                     <ul>
                         <!-- ONLY SUPER ADMIN -->
                         @if (Session::get('role_name') === 'Super Admin')
-                        <li><a href="{{ route('list/visitor') }}" class="{{set_active(['list/visitor'])}}">List Pengunjung</a></li>
+                        <li><a href="{{ route('list/visitor') }}" class="{{set_active(['list/visitor'])}}">Kelola Semua</a></li>
                         @endif
-                        <li><a href="{{ route('list/history') }}" class="{{set_active(['list/history'])}}">Riwayat Pengunjung</a></li>
+                        <li><a href="{{ route('list/history') }}" class="{{set_active(['list/history'])}}">Kelola Pengunjung</a></li>
                         <li><a href="{{ route('visitor/create') }}" class="{{set_active(['visitor/create'])}}">Tambah Data</a></li>
                     </ul>
                 </li>
