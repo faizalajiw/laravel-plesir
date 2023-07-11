@@ -75,7 +75,7 @@
             </div>
         </div>
         <!-- Section 4 -->
-
+        @guest
         <div class="mb-8">
             <div class="text-center">
                 <a href="https://wa.me/6281991181804?text=Halo%2C%20saya%20ingin%20bergabung%20sebagai%20admin%20wisata" class="btn btn-primary py-3 px-6">
@@ -83,6 +83,17 @@
                 </a>
             </div>
         </div>
+        @endguest
+        
+        @if (auth()->check() && auth()->user()->role_name === 'Pengguna')
+        <div class="mb-8">
+            <div class="text-center">
+                <a href="https://wa.me/6281991181804?text=Halo%2C%20saya%20ingin%20bergabung%20sebagai%20admin%20wisata" class="btn btn-primary py-3 px-6">
+                    <div class="fs-1 my-1"><span class="me-2"><i class="fab fa-whatsapp" style="color: #ffffff;"></i></span>Gabung Sekarang!</div>
+                </a>
+            </div>
+        </div>
+        @endif
     </div>
 </section>
 <!-- Bekerja Sama -->
