@@ -24,42 +24,42 @@ class PlaceController extends Controller
     {
         $user = User::find(auth()->user()->id);
         $userId = auth()->id(); // Mengambil ID pengguna yang sedang masuk
-        
+
         $places = Place::with('user')->where('user_id', $userId)->get();
         // return response()->json($places);
         return view('place.my_place.index', compact('user', 'places'));
     }
-    
+
     // Search
     public function search(Request $request)
     {
         $user = User::find(auth()->user()->id);
+
         // Ambil nilai dari input form
         $category = $request->input('category_id');
         $title = $request->input('title');
-        // $user = $request->input('user_id');
+        $user = $request->input('user_id');
 
         // Query untuk mencari tempat berdasarkan kriteria pencarian
-        $places = Place::with('category', 'user')
-            ->when($category, function ($query) use ($category) {
-                // Filter berdasarkan kategori jika ada nilai
-                return $query->whereHas('category', function ($query) use ($category) {
-                    $query->where('name', 'like', '%' . $category . '%');
-                });
-            })
-            ->when($title, function ($query) use ($title) {
-                // Filter berdasarkan nama tempat jika ada nilai
-                return $query->where('title', 'like', '%' . $title . '%');
-            })
-            // ->when($user, function ($query) use ($user) {
-            //     // Filter berdasarkan pengelola jika ada nilai
-            //     return $query->whereHas('user', function ($query) use ($user) {
-            //         $query->where('name', 'like', '%' . $user . '%');
-            //     });
-            // })            
-            ->get();
+        $query = Place::with('category', 'user');
+        if ($category) {
+            $query->whereHas('category', function ($query) use ($category) {
+                $query->where('name', 'like', '%' . $category . '%');
+            });
+        }
 
-        // return response()->json($places);
+        if ($title) {
+            $query->where('title', 'like', '%' . $title . '%');
+        }
+
+        if ($user) {
+            $query->whereHas('user', function ($query) use ($user) {
+                $query->where('name', 'like', '%' . $user . '%');
+            });
+        }
+
+        $places = $query->get();
+
         return view('place.index', compact('user', 'places'));
     }
 
@@ -195,7 +195,7 @@ class PlaceController extends Controller
         if ($request->hasFile('image')) {
             // Hapus gambar lama dari penyimpanan
             $images = $places->images;
-            
+
             foreach ($images as $image) {
                 Storage::disk('local')->delete('public/places/' . basename($image->image));
                 $image->delete();
@@ -215,7 +215,7 @@ class PlaceController extends Controller
                     'place_id'  => $places->id
                 ]);
             }
-        } 
+        }
 
         Toastr::success('Tempat berhasil diubah');
         return redirect()->to('list/my_places');

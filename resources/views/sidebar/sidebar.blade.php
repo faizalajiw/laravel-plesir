@@ -98,11 +98,12 @@
                         <span class="menu-arrow"></span>
                     </a>
                     <ul>
-                        <!-- ONLY SUPER ADMIN -->
                         @if (Session::get('role_name') === 'Super Admin')
-                        <li><a href="{{ route('list/places') }}" class="{{set_active(['list/places'])}}">Kelola Semua</a></li>
+                        <li><a href="{{ route('list/places') }}" class="{{set_active(['list/places'])}}">Kelola Tempat</a></li>
                         @endif
-                        <li><a href="{{ route('list/my_places') }}" class="{{set_active(['list/my_places'])}}">Kelola Tempat Saya</a></li>
+                        @if (Session::get('role_name') === 'Admin Wisata')
+                        <li><a href="{{ route('list/my_places') }}" class="{{set_active(['list/my_places'])}}">Kelola Tempat</a></li>
+                        @endif
                         <li><a href="{{ route('places/create') }}" class="{{set_active(['places/create'])}}">Tambah Tempat</a></li>
                     </ul>
                 </li>
@@ -118,11 +119,12 @@
                         <span class="menu-arrow"></span>
                     </a>
                     <ul>
-                        <!-- ONLY SUPER ADMIN -->
                         @if (Session::get('role_name') === 'Super Admin')
-                        <li><a href="{{ route('list/visitor') }}" class="{{set_active(['list/visitor'])}}">Kelola Semua</a></li>
+                        <li><a href="{{ route('list/visitor') }}" class="{{set_active(['list/visitor'])}}">Kelola Pengunjung</a></li>
                         @endif
+                        @if (Session::get('role_name') === 'Admin Wisata')
                         <li><a href="{{ route('list/history') }}" class="{{set_active(['list/history'])}}">Kelola Pengunjung</a></li>
+                        @endif
                         <li><a href="{{ route('visitor/create') }}" class="{{set_active(['visitor/create'])}}">Tambah Data</a></li>
                     </ul>
                 </li>
@@ -136,15 +138,14 @@
                         <span class="menu-arrow"></span>
                     </a>
                     <ul>
-                        <!-- ONLY SUPER ADMIN -->
-                        @if (Session::get('role_name') === 'Super Admin')
+                        <!-- @if (Session::get('role_name') === 'Super Admin')
                         <li><a href="{{ route('list/review') }}" class="{{set_active(['list/review'])}}">Lihat Ulasan</a></li>
-                        @endif
+                        @endif -->
                         @if (Session::get('role_name') === 'Admin Wisata')
                         <li><a href="{{ route('list/my_review_tempat') }}" class="{{set_active(['list/my_review_tempat'])}}">Lihat Ulasan</a></li>
                         @endif
                         @if (Session::get('role_name') === 'Super Admin' || Session::get('role_name') === 'Pengguna')
-                        <li><a href="{{ route ('list/my_review') }}" class="{{set_active(['list/my_review'])}}">Ulasan Saya</a></li>
+                        <li><a href="{{ route ('list/my_review') }}" class="{{set_active(['list/my_review'])}}">Lihat Ulasan</a></li>
                         <li><a href="{{ route ('review/create') }}" class="{{set_active(['review/create'])}}">Nilai Tempat</a></li>
                         @endif
                     </ul>

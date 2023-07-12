@@ -71,10 +71,10 @@
                                 <div class="col-12">
                                     <div class="d-flex gap-4">
                                         <div class="button-cancel">
-                                            @if (Session::get('role_name') === 'Super Admin')
+                                            <!-- @if (Session::get('role_name') === 'Super Admin')
                                             <a href="{{ route('list/review') }}" class="btn btn-danger">Batal</a>
-                                            @endif
-                                            @if (Session::get('role_name') === 'Pengguna')
+                                            @endif -->
+                                            @if (Session::get('role_name') === 'Super Admin' || Session::get('role_name') === 'Pengguna')
                                             <a href="{{ route('list/my_review') }}" class="btn btn-danger">Batal</a>
                                             @endif
                                         </div>

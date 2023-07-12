@@ -71,7 +71,7 @@
                     <a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
                         <span class="user-img">
                             <div class="avatar avatar-lg text-center">
-                                <img class="rounded-circle" src="{{ $user->image }}" alt="Foto">
+                                <img class="rounded-circle" src="{{ Session::get('image') }}" alt="Foto">
                             </div>
                             <div class="user-text">
                                 <h6>{{ Session::get('name') }}</h6>
@@ -82,7 +82,7 @@
                     <div class="dropdown-menu">
                         <div class="user-header">
                             <div class="avatar avatar-sm">
-                                <img src="{{ $user->image }}" alt="Foto" class="avatar-img rounded-circle">
+                                <img src="{{ Session::get('image') }}" alt="Foto" class="avatar-img rounded-circle">
                             </div>
                             <div class="user-text">
                                 <h6>{{ Session::get('name') }}</h6>
@@ -90,19 +90,7 @@
                             </div>
                         </div>
                         <a class="dropdown-item" href="{{ route('/') }}"><span><i class="fas fa-external-link-alt me-2"></i></span>Website</a>
-                        <a class="dropdown-item" href="{{ route('profile/user') }}"><span><i class="fas fa-user me-2"></i></span>Profil</a>
-                        @if (Session::get('role_name') === 'Super Admin' || Session::get('role_name') === 'Admin Wisata')
-                        <a class="dropdown-item" href="{{ route('list/my_places') }}"><span><i class="fas fa-map-marked-alt me-2"></i></span>Kelola Tempat</a>
-                        @endif
-                        @if (Session::get('role_name') === 'Super Admin')
-                        <a class="dropdown-item" href="{{ route('list/review') }}"><span><i class="fas fa-star me-2"></i></span>Lihat Ulasan</a>
-                        @endif
-                        @if (Session::get('role_name') === 'Admin Wisata')
-                        <a class="dropdown-item" href="{{ route('list/my_review_tempat') }}"><span><i class="fas fa-star me-2"></i></span>Lihat Ulasan</a>
-                        @endif
-                        @if (Session::get('role_name') === 'Pengguna')
-                        <a class="dropdown-item" href="{{ route('list/my_review') }}"><span><i class="fas fa-star me-2"></i></span>Ulasan Saya</a>
-                        @endif
+                        <a class="dropdown-item" href="{{ route('profile/user') }}"><span><i class="fas fa-user me-2"></i></span>Profil</a>                     
                         <a class="dropdown-item" href="{{ route('logout') }}"><span><i class="fas fa-sign-out-alt me-2"></i></span>Logout</a>
                     </div>
                 </li>

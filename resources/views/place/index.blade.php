@@ -10,7 +10,7 @@
                 <div class="col">
                     <ul class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{ route('list/places') }}">Tempat</a></li>
-                        <li class="breadcrumb-item active">Kelola Semua</li>
+                        <li class="breadcrumb-item active">Kelola Tempat</li>
                     </ul>
                 </div>
             </div>
@@ -29,11 +29,11 @@
                             <input type="text" name="title" class="form-control" style="font-size: 15px;" placeholder="Cari berdasarkan Nama Tempat ..." value="{{ request('title') }}">
                         </div>
                     </div>
-                    <!-- <div class="col-lg-3">
+                    <div class="col-lg-3">
                         <div class="form-group">
                             <input type="text" name="user_id" class="form-control" style="font-size: 15px;" placeholder="Cari berdasarkan Pengelola ..." value="{{ request('user') }}">
                         </div>
-                    </div> -->
+                    </div>
                     <div class="col-lg-2">
                         <div class="form-group">
                             <button type="submit" class="form-control btn btn-primary text-white">Cari</button>
@@ -50,7 +50,7 @@
                         <div class="page-header">
                             <div class="row align-items-center">
                                 <div class="col">
-                                    <h3 class="form-title">Kelola Semua</h3>
+                                    <h3 class="form-title">Kelola Tempat</h3>
                                 </div>
                                 <div class="col-auto text-end float-end ms-auto download-grp">
                                     <a href="{{ route('places/create') }}" class="btn btn-primary">
