@@ -16,7 +16,7 @@
             </div>
         </div>
 
-        <div class="search-group-form mt-5">
+        <!-- <div class="search-group-form mt-5">
             <form action="{{ route('places/search') }}" method="GET">
                 <div class="row">
                     <div class="col-lg-3">
@@ -41,9 +41,9 @@
                     </div>
                 </div>
             </form>
-        </div>
+        </div> -->
 
-        <div class="row">
+        <div class="row mt-5">
             <div class="col-sm-12">
                 <div class="card card-table">
                     <div class="card-body">
