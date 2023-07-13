@@ -60,15 +60,15 @@
                             </button>
                             <ul class="dropdown-menu">
                                 @if (Session::get('role_name') === 'Super Admin')
-                                <li><a class="dropdown-item" href="{{ route('dashboard') }}">Dashboard</a></li>
+                                <li><a class="dropdown-item" href="{{ route('dashboard') }}"><i class="fas fa-external-link-alt me-2"></i>Dashboard</a></li>
                                 @endif
                                 @if (Session::get('role_name') === 'Admin Wisata')
-                                <li><a class="dropdown-item" href="{{ route('dashboard/admin-wisata') }}">Dashboard</a></li>
+                                <li><a class="dropdown-item" href="{{ route('dashboard/admin-wisata') }}"><i class="fas fa-external-link-alt me-2"></i>Dashboard</a></li>
                                 @endif
                                 @if (Session::get('role_name') === 'Pengguna')
-                                <li><a class="dropdown-item" href="{{ route('dashboard/user') }}">Dashboard</a></li>
+                                <li><a class="dropdown-item" href="{{ route('dashboard/user') }}"><i class="fas fa-external-link-alt me-2"></i>Dashboard</a></li>
                                 @endif
-                                <li><a class="dropdown-item" href="{{ route('logout') }}">Keluar</a></li>
+                                <li><a class="dropdown-item" href="{{ route('logout') }}"><i class="fas fa-sign-out-alt me-2"></i>Logout</a></li>
                             </ul>
                         </div>
                         @else
