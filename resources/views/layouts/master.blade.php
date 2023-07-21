@@ -90,7 +90,7 @@
                             </div>
                         </div>
                         <a class="dropdown-item" href="{{ route('/') }}"><span><i class="fas fa-external-link-alt me-2"></i></span>Website</a>
-                        <a class="dropdown-item" href="{{ route('profile/user') }}"><span><i class="fas fa-user me-2"></i></span>Profil</a>                     
+                        <a class="dropdown-item" href="{{ route('profile/user') }}"><span><i class="fas fa-user me-2"></i></span>Profil</a>
                         <a class="dropdown-item" href="{{ route('logout') }}"><span><i class="fas fa-sign-out-alt me-2"></i></span>Logout</a>
                     </div>
                 </li>
@@ -121,6 +121,10 @@
     <!-- Load the `mapbox-gl-geocoder` plugin. -->
     <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.min.js"></script>
     <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.css" type="text/css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     @yield('script')
 </body>
 

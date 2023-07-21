@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
@@ -11,14 +12,14 @@
     <link rel="stylesheet" href="{{ URL::to('assets/plugins/select2/css/select2.min.css') }}">
     <link rel="stylesheet" href="{{ URL::to('assets/css/style.css') }}">
     {{-- message toastr --}}
-	<link rel="stylesheet" href="{{ URL::to('assets/css/toastr.min.css') }}">
-	<script src="{{ URL::to('assets/js/toastr_jquery.min.js') }}"></script>
-	<script src="{{ URL::to('assets/js/toastr.min.js') }}"></script>
+    <link rel="stylesheet" href="{{ URL::to('assets/css/toastr.min.css') }}">
+    <script src="{{ URL::to('assets/js/toastr_jquery.min.js') }}"></script>
+    <script src="{{ URL::to('assets/js/toastr.min.js') }}"></script>
 </head>
 
 <body>
-    <style>    
-        .invalid-feedback{
+    <style>
+        .invalid-feedback {
             font-size: 14px;
         }
     </style>
@@ -39,6 +40,10 @@
     <script src="{{ URL::to('assets/js/feather.min.js') }}"></script>
     <script src="{{ URL::to('assets/plugins/select2/js/select2.min.js') }}"></script>
     <script src="{{ URL::to('assets/js/script.js') }}"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </body>
 
 </html>
