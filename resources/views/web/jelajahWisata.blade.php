@@ -130,6 +130,10 @@
     // Tambahkan event listener saat microphone icon diklik
     microphoneIcon.addEventListener('click', () => {
         recognition.start(); // Memulai pengenalan suara
+        // Mengganti kelas ikon menjadi active setelah pengenalan selesai
+        microphoneIcon.classList.remove('fa-microphone');
+        microphoneIcon.classList.add('fas', 'fa-microphone-alt');
+        microphoneIcon.style.transform = 'scale(1.8)'; // Anda dapat menyesuaikan faktor skala sesuai kebutuhan
     });
 
     // Tangani hasil pengenalan suara
@@ -138,6 +142,13 @@
         searchInput.value = transcript; // Mengisi nilai input teks dengan teks hasil pengenalan suara
 
         searchInput.closest('form').submit();
+    });
+
+    // Tambahkan event listener untuk mereset ukuran ikon setelah pengenalan suara selesai
+    recognition.addEventListener('end', () => {
+        microphoneIcon.style.transform = 'scale(1)'; // Mengembalikan ukuran ikon ke ukuran semula
+        microphoneIcon.classList.remove('fas', 'fa-microphone-alt');
+        microphoneIcon.classList.add('fas', 'fa-microphone');
     });
 </script>
 @endsection
