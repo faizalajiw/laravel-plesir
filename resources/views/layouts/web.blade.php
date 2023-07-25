@@ -48,9 +48,9 @@
                 <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse border-top border-lg-0 mt-4 mt-lg-0" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item px-3"><a class="nav-link fw-bold text-primary" href="{{ route('/') }}">Home</a></li>
-                        <li class="nav-item px-3"><a class="nav-link fw-bold text-primary" href="{{ route('jelajah-wisata') }}">Jelajah Wisata</a></li>
-                        <li class="nav-item px-3"><a class="nav-link fw-bold text-primary" href="{{ route('kerjasama') }}">Kerja Sama</a></li>
+                        <li class="nav-item px-3"><a class="nav-link px-3 fw-bold {{ Request::route()->getName() === '/' ? 'active' : '' }}" href="{{ route('/') }}">Home</a></li>
+                        <li class="nav-item px-3"><a class="nav-link px-3 fw-bold {{ Request::route()->getName() === 'jelajah-wisata' ? 'active' : '' }}" href="{{ route('jelajah-wisata') }}">Jelajah Wisata</a></li>
+                        <li class="nav-item px-3"><a class="nav-link px-3 fw-bold {{ Request::route()->getName() === 'kerjasama' ? 'active' : '' }}" href="{{ route('kerjasama') }}">Kerja Sama</a></li>
                     </ul>
                     <form class="d-flex">
                         @if (session('id'))
