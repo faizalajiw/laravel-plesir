@@ -72,14 +72,27 @@
                                 <div class="col-12 col-sm-6">
                                     <div class="form-group local-forms">
                                         <label>Jam Operasional <span class="login-danger">*</span></label>
-                                        <input type="text" name="operational_hours" class="form-control @error('operational_hours') is-invalid @enderror">
-                                        @error('operational_hours')
+                                        <div class="input-group">
+                                            <input type="time" name="hours_start" class="form-control @error('hours_start') is-invalid @enderror" min="00:00" max="23:59">
+                                            <div class="input-group-prepend input-group-append">
+                                                <span class="input-group-text">-</span>
+                                            </div>
+                                            <input type="time" name="hours_end" class="form-control @error('hours_end') is-invalid @enderror" min="00:00" max="23:59">
+                                        </div>
+                                        @error('hours_start')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                        @error('hours_end')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
                                         @enderror
                                     </div>
                                 </div>
+
+
                                 <div class="col-12 col-sm-12">
                                     <div class="form-group local-forms">
                                         <label>Hari <span class="login-danger">*</span></label>

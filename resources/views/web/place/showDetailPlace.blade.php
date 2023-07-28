@@ -80,7 +80,10 @@
                         </div>
                         <div class="my-2">
                             <div class="mb-1"><i class="fas fa-clock me-2"></i>Jam Operasional</div>
-                            <div>{{ $places->operational_hours }}</div>
+                            <div class="d-flex">
+                                <div class="me-1">{{ $places->hours_start }} -</div>
+                                <div>{{ $places->hours_end }} WIB</div>
+                            </div>
                         </div>
                         <div class="my-2">
                             <div class="mb-1"><i class="fab fa-instagram me-2"></i>Instagram</div>

@@ -22,7 +22,8 @@ return new class extends Migration
             $table->text('description');
             $table->text('address');
             $table->string('day')->nullable();
-            $table->string('operational_hours');
+            $table->string('hours_start');
+            $table->string('hours_end');
             $table->string('website')->nullable();
             $table->string('social_media')->nullable();
             $table->string('longitude');

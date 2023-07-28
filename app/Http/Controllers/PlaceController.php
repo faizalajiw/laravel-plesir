@@ -85,7 +85,8 @@ class PlaceController extends Controller
             'address'           => 'required',
             'day'               => 'required|array',
             'day.*'             => 'in:Senin,Selasa,Rabu,Kamis,Jumat,Sabtu,Minggu',
-            'operational_hours' => 'required',
+            'hours_start'       => 'required',
+            'hours_end'         => 'required',
             'description'       => 'required',
             'latitude'          => 'required',
             'longitude'         => 'required',
@@ -100,7 +101,8 @@ class PlaceController extends Controller
                 'category_id'       => $request->category_id,
                 'address'           => $request->address,
                 // 'day'               => $request->day,
-                'operational_hours' => $request->operational_hours,
+                'hours_start'       => $request->hours_start,
+                'hours_end'         => $request->hours_end,
                 'description'       => $request->description,
                 'website'           => $request->website,
                 'social_media'      => $request->social_media,
@@ -137,7 +139,7 @@ class PlaceController extends Controller
             }
 
             Toastr::success('Tempat berhasil ditambahkan :)', 'Success');
-            return redirect()->to('list/my_places');
+            return redirect()->to('list/places');
         } catch (\Exception $e) {
             Toastr::error('Terjadi kesalahan saat menyimpan data.', 'Error');
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
@@ -166,7 +168,8 @@ class PlaceController extends Controller
             'category_id'       => 'required',
             'address'           => 'required',
             'day'               => 'required',
-            'operational_hours' => 'required',
+            'hours_start'       => 'required',
+            'hours_end'         => 'required',
             'description'       => 'required',
             'latitude'          => 'required',
             'longitude'         => 'required',
@@ -183,7 +186,8 @@ class PlaceController extends Controller
         $daysString = implode(', ', $days);
         // Simpan nilai day ke dalam kolom day pada tabel places
         $places->day = $daysString;
-        $places->operational_hours = $request->operational_hours;
+        $places->hours_start = $request->hours_start;
+        $places->hours_end = $request->hours_end;
         $places->description = $request->description;
         $places->website = $request->website;
         $places->social_media = $request->social_media;
@@ -218,7 +222,7 @@ class PlaceController extends Controller
         }
 
         Toastr::success('Tempat berhasil diubah');
-        return redirect()->to('list/my_places');
+        return redirect()->to('list/places');
     }
 
     public function delete(Request $request)
