@@ -225,7 +225,7 @@
 <!-- MAPBOX -->
 <script>
     // Inisialisasi peta
-    mapboxgl.accessToken = '{{ env("LARAVEL_APP_MAPBOX") }}';
+    mapboxgl.accessToken = 'pk.eyJ1IjoiZmFpemFsYWppdyIsImEiOiJjbGUyYmczYWgwN3JqM3BtanB5NDZqY2xiIn0.jWcan3Z7z2mxRfrLkkjaJQ';
     var map = new mapboxgl.Map({
         container: 'mapContainer', // container ID
         style: 'mapbox://styles/mapbox/streets-v12', // style URL

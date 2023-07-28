@@ -223,7 +223,7 @@
 @section('script')
 <!-- MAPBOX -->
 <script>
-    mapboxgl.accessToken = '{{ env("LARAVEL_APP_MAPBOX") }}';
+    mapboxgl.accessToken = 'pk.eyJ1IjoiZmFpemFsYWppdyIsImEiOiJjbGUyYmczYWgwN3JqM3BtanB5NDZqY2xiIn0.jWcan3Z7z2mxRfrLkkjaJQ';
 
     // Mendapatkan nilai longitude dan latitude dari elemen dengan ID yang sesuai
     var longitude = parseFloat(document.getElementById('longitude').textContent);
