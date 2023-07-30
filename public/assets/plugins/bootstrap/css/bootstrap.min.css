@@ -2412,6 +2412,7 @@ textarea.form-control-lg {
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5;
+    height: 50px;
     color: #212529;
     text-align: center;
     white-space: nowrap;

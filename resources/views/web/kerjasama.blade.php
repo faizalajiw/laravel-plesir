@@ -1,5 +1,7 @@
 @extends('layouts.web')
 @section('content')
+{!! Toastr::message() !!}
+<title>Kerja Sama</title>
 <!-- Bekerja Sama -->
 <section class="py-5 pt-md-7" id="kerjasama">
     <div class="container">

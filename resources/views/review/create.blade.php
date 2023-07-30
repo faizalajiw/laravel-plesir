@@ -2,7 +2,7 @@
 @section('content')
 {{-- message --}}
 {!! Toastr::message() !!}
-<title>Tambah - Review</title>
+<title>Nilai Tempat</title>
 <div class="page-wrapper">
     <div class="content container-fluid">
         <div class="page-header">

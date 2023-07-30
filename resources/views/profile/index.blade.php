@@ -2,7 +2,7 @@
 @section('content')
 {{-- message --}}
 {!! Toastr::message() !!}
-<title>Profile</title>
+<title>Profil</title>
 <div class="page-wrapper">
     <div class="content container-fluid">
         <div class="page-header mb-5">

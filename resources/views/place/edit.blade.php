@@ -55,7 +55,7 @@
                                         @enderror
                                     </div>
                                 </div>
-                                <div class="col-12 col-sm-4">
+                                <div class="col-12 col-sm-12">
                                     <div class="form-group local-forms">
                                         <label>Foto (banyak foto)<span class="login-danger">*</span></label>
                                         <input type="file" name="image[]" multiple class="form-control @error('image.*') is-invalid @enderror @error('image') is-invalid @enderror">
@@ -86,7 +86,7 @@
                                         @endif
                                     </div>
                                 </div>
-                                <div class="col-12 col-sm-4">
+                                <div class="col-12 col-sm-6">
                                     <div class="form-group local-forms">
                                         <label>Hari <span class="login-danger">*</span></label>
                                         <!-- <input type="text" name="day" value="{{ $places->day }}" class="form-control @error('day') is-invalid @enderror"> -->
@@ -106,15 +106,15 @@
                                         @enderror
                                     </div>
                                 </div>
-                                <div class="col-12 col-sm-4">
+                                <div class="col-12 col-sm-6">
                                     <div class="form-group local-forms">
                                         <label>Jam Operasional <span class="login-danger">*</span></label>
                                         <div class="input-group">
-                                            <input type="time" name="hours_start" class="form-control @error('hours_start') is-invalid @enderror" min="00:00" max="23:59">
+                                            <input type="time" name="hours_start" value="{{ $places->hours_start }}" class="form-control @error('hours_start') is-invalid @enderror" min="00:00" max="23:59">
                                             <div class="input-group-prepend input-group-append">
                                                 <span class="input-group-text">-</span>
                                             </div>
-                                            <input type="time" name="hours_end" class="form-control @error('hours_end') is-invalid @enderror" min="00:00" max="23:59">
+                                            <input type="time" name="hours_end" value="{{ $places->hours_end }}" class="form-control @error('hours_end') is-invalid @enderror" min="00:00" max="23:59">
                                         </div>
                                         @error('hours_start')
                                         <span class="invalid-feedback" role="alert">
