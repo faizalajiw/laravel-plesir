@@ -158,32 +158,6 @@
                                     </div>
                                 </div>
 
-                                @if (Session::get('role_name') === 'Super Admin')
-                                <div class="col-12 col-sm-6">
-                                    <div class="form-group local-forms">
-                                        <label>Latitude <span class="login-danger">*</span></label>
-                                        <input type="text" name="latitude" id="latitude" class="form-control @error('latitude') is-invalid @enderror">
-                                        @error('latitude')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="col-12 col-sm-6">
-                                    <div class="form-group local-forms">
-                                        <label>Longitude <span class="login-danger">*</span></label>
-                                        <input type="text" name="longitude" id="longitude" class="form-control @error('longitude') is-invalid @enderror">
-                                        @error('longitude')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                        @enderror
-                                    </div>
-                                </div>
-                                @endif
-
-                                @if (Session::get('role_name') === 'Admin Wisata')
                                 <div class="col-12 col-sm-6">
                                     <div class="form-group local-forms">
                                         <label>Latitude <span class="login-danger">*</span></label>
@@ -206,7 +180,7 @@
                                         @enderror
                                     </div>
                                 </div>
-                                @endif
+
                                 <div class="col-12 px-2">
                                     <div id="mapContainer" style="height: 400px;"></div>
                                 </div>
