@@ -9,6 +9,8 @@ use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Support\Facades\Hash;
 use App\Rules\MatchOldPassword;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\StatusUpdateNotification;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Str;
@@ -139,10 +141,17 @@ class UserManagementController extends Controller
         $users = User::where('id', $id)->first();
         $role = DB::table('role_type_users')->get();
         $status = DB::table('users_status')->get();
-        // return response()->json($status);
+        // return response()->json($user);
         return view('usermanagement.edit', compact('user', 'users', 'role', 'status'));
     }
     /** User Edit */
+
+    // Email Notif
+
+    public function sendStatusUpdateNotificationEmail(User $user)
+    {
+        Mail::to($user->email)->send(new StatusUpdateNotification($user));
+    }
 
     /** User Update */
     public function update(Request $request)
@@ -175,7 +184,11 @@ class UserManagementController extends Controller
         $users->email = $request->email;
         $users->role_name = $request->role_name;
         $users->status = $request->status;
-        
+        // Panggil metode untuk mengirim email notifikasi jika status berubah
+        if ($request->status !== $users->getOriginal('status')) {
+            $this->sendStatusUpdateNotificationEmail($users);
+        }
+
         // Mengubah users_id sesuai dengan pola yang diinginkan berdasarkan role_name yang diperbarui
         if ($request->role_name === 'Super Admin') {
             $users->users_id = 'SUPER' . Str::upper(Str::random(5)); // contoh pola untuk super admin
@@ -186,7 +199,7 @@ class UserManagementController extends Controller
         } else {
             $users->users_id = ''; // jika tidak ada pola khusus, biarkan kosong
         }
-        
+
         // Update image
         if ($request->hasFile('image')) {
             $oldImagePath = $users->image;
