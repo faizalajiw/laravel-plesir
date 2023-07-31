@@ -88,6 +88,22 @@
                                 </div>
                                 <div class="col-12 col-sm-4">
                                     <div class="form-group local-forms">
+                                        <label>Status <span>(optional)</span></label>
+                                        <select class="form-control select @error('status') is-invalid @enderror" name="status">
+                                            <option disabled selected>Pilih Status</option>
+                                            @foreach ($status as $name)
+                                            <option value="{{ $name->status }}" @if ($name->status == $user->status) selected @endif>{{ $name->status }}</option>
+                                            @endforeach
+                                        </select>
+                                        <!-- @error('image')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror -->
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-4">
+                                    <div class="form-group local-forms">
                                         <label>Foto <span>(optional)</span></label>
                                         <input type="file" class="form-control @error('image') is-invalid @enderror" name="image">
                                         @error('image')

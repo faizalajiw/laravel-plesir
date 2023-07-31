@@ -71,6 +71,7 @@
                                         <th>Username</th>
                                         <th>Email</th>
                                         <th>Role Name</th>
+                                        <th>Status</th>
                                         <th style="color: transparent; background-color: #F8F9FA;"></th>
                                         <th class="text-center">Action</th>
                                     </tr>
@@ -91,6 +92,7 @@
                                         <td>{{ $list->username }}</td>
                                         <td>{{ $list->email }}</td>
                                         <td>{{ $list->role_name }}</td>
+                                        <td>{{ $list->status }}</td>
                                         <td class="id" style="color: transparent; background-color: transparent;">{{ $list->id }}</td>
                                         @if (Session::get('role_name') === 'Super Admin')
                                         <td class="text-center">

@@ -76,7 +76,8 @@ class UserManagementController extends Controller
     {
         $user = User::find(auth()->user()->id);
         $role = DB::table('role_type_users')->get();
-        return view('usermanagement.create', compact('user', 'role'));
+        $status = DB::table('users_status')->get();
+        return view('usermanagement.create', compact('user', 'role', 'status'));
     }
     /** User Create */
 
@@ -89,6 +90,7 @@ class UserManagementController extends Controller
             'email'         => ['nullable', 'email', 'regex:/^\S*$/', Rule::unique('users')->ignore($request->user()->id)],
             'new_password'  => ['required', 'min:8', 'regex:/^\S*$/'],
             'role_name'     => ['required', 'string'],
+            'status'        => ['required', 'string'],
             'image'         => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif', 'max:2048'],
         ]);
 
@@ -107,6 +109,7 @@ class UserManagementController extends Controller
             'username'      => $request->username, //mengambil request username
             'email'         => $request->email, //mengambil request email
             'role_name'     => $request->role_name, //mengambil request role_name
+            'status'        => $request->status, //mengambil request role_name
             'password'      => Hash::make($request->new_password), //mengambil request password
             'image'         => $imagePath, //mengambil request image
         ]);
@@ -135,8 +138,9 @@ class UserManagementController extends Controller
         $user = User::find(auth()->user()->id);
         $users = User::where('id', $id)->first();
         $role = DB::table('role_type_users')->get();
-        // return response()->json($users);
-        return view('usermanagement.edit', compact('user', 'users', 'role'));
+        $status = DB::table('users_status')->get();
+        // return response()->json($status);
+        return view('usermanagement.edit', compact('user', 'users', 'role', 'status'));
     }
     /** User Edit */
 
@@ -150,6 +154,7 @@ class UserManagementController extends Controller
             'email'         => ['nullable', 'email', 'regex:/^\S*$/', Rule::unique('users')->ignore($request->id)],
             'new_password'  => ['required', 'min:8', 'regex:/^\S*$/'],
             'role_name'     => ['required', 'string'],
+            'status'        => ['required', 'string'],
             'image'         => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif', 'max:2048'],
         ]);
         $users = User::findOrFail($request->id);
@@ -169,7 +174,8 @@ class UserManagementController extends Controller
         $users->username = $request->username;
         $users->email = $request->email;
         $users->role_name = $request->role_name;
-
+        $users->status = $request->status;
+        
         // Mengubah users_id sesuai dengan pola yang diinginkan berdasarkan role_name yang diperbarui
         if ($request->role_name === 'Super Admin') {
             $users->users_id = 'SUPER' . Str::upper(Str::random(5)); // contoh pola untuk super admin
@@ -180,7 +186,7 @@ class UserManagementController extends Controller
         } else {
             $users->users_id = ''; // jika tidak ada pola khusus, biarkan kosong
         }
-
+        
         // Update image
         if ($request->hasFile('image')) {
             $oldImagePath = $users->image;

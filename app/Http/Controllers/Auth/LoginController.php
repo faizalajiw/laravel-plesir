@@ -67,6 +67,17 @@ class LoginController extends Controller
             ]);
         }
 
+        // Memeriksa status akun sebelum proses otentikasi
+        if ($user->status === 'Pending') {
+            Toastr::warning('Harap Tunggu Persetujuan, Kami Akan Meninjau Anda Terlebih Dahulu');
+            return redirect('login');
+        }
+        // Memeriksa status akun sebelum proses otentikasi
+        if ($user->status === 'Nonaktif') {
+            Toastr::error('Akun Anda Belum Diaktifkan');
+            return redirect('login');
+        }
+
         if (Auth::attempt($credentials)) {
             session([
                 'id' => $user->id,
@@ -74,6 +85,7 @@ class LoginController extends Controller
                 'username' => $user->username,
                 'email' => $user->email,
                 'role_name' => $user->role_name,
+                'status' => $user->status,  
                 'image' => $user->image,
                 'users_id' => $user->users_id,
             ]);

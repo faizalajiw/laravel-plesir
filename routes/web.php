@@ -68,6 +68,8 @@ Route::controller(ForgotPasswordController::class)->group(function () {
 Route::controller(RegisterController::class)->group(function () {
     Route::get('/register', 'register')->name('register');
     Route::post('/register', 'storeUser')->name('register.store');
+    Route::get('/register-admin', 'registerAdmin')->name('register-admin');
+    Route::post('/register-admin', 'storeAdmin')->name('register-admin.store');
 });
 
 // -------------------------- main dashboard ----------------------//
