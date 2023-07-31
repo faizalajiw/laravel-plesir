@@ -7,8 +7,8 @@
         <div class="row">
             <!-- KANAN -->
             <div class="col-md-12 col-lg-12 col-sm-12">
-                <div class="card shadow-sm p-2 mb-5">
-                    <div style="font-size: 20px; color: #1A3154; margin-top: 15px; margin-left: 5px;"><i class="fas fa-location-arrow me-2"></i> Rute Lokasi {{ $places->title }}</div>
+                <div class="card shadow-sm p-2 mb-5" style="background-color: #1A3154;">
+                    <div style="font-size: 20px; color: #FFFFFF; margin-top: 15px; margin-left: 5px;"><i class="fas fa-location-arrow me-2"></i> Rute Lokasi {{ $places->title }}</div>
                     <hr>
                     <!-- MAPS -->
                     <div class="maps">

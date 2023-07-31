@@ -225,25 +225,8 @@
     var map = new mapboxgl.Map({
         container: 'mapContainer', // container ID
         style: 'mapbox://styles/mapbox/streets-v12', // style URL
-        center: [parseFloat(document.getElementById('longitude').value), parseFloat(document.getElementById('latitude').value)], // starting position [lng, lat]
-        zoom: 17 // starting zoom
-    });
-
-    // Init marker
-    var marker = new mapboxgl.Marker({
-        draggable: true,
-        color: 'rgb(56, 32, 201, 1)' // Warna marker
-    });
-
-    // Tambahkan marker awal berdasarkan nilai inputan
-    var initialLngLat = [parseFloat(document.getElementById('longitude').value), parseFloat(document.getElementById('latitude').value)];
-    marker.setLngLat(initialLngLat).addTo(map);
-
-    // Event listener saat marker digeser
-    marker.on('dragend', function() {
-        var lngLat = marker.getLngLat();
-        document.getElementById('latitude').value = lngLat.lat;
-        document.getElementById('longitude').value = lngLat.lng;
+        center: [109.12410532246922, -6.87670482108234], // starting position [lng, lat]
+        zoom: 12 // starting zoom
     });
 
     // Init geocoder
@@ -258,9 +241,56 @@
     // Menambahkan geocoder ke peta
     map.addControl(geocoder);
 
+    // Init marker
+    var marker = new mapboxgl.Marker({
+        draggable: true,
+        color: 'rgb(56, 32, 201, 1)' // Warna marker
+    });
+
     // Event listener saat geocoder mendapatkan hasil
     geocoder.on('result', function(e) {
         var lngLat = e.result.geometry.coordinates;
+
+        // Hapus marker sebelumnya (jika ada)
+        if (marker) {
+            marker.remove();
+        }
+
+        // Buat marker baru
+        marker.setLngLat(lngLat).addTo(map);
+
+        // Update inputan latitude dan longitude
+        document.getElementById('latitude').value = lngLat[1];
+        document.getElementById('longitude').value = lngLat[0];
+
+        // Update inputan latitude dan longitude saat marker digeser
+        marker.on('dragend', function() {
+            var lngLat = marker.getLngLat();
+            document.getElementById('latitude').value = lngLat.lat;
+            document.getElementById('longitude').value = lngLat.lng;
+        });
+    });
+
+    // Update inputan latitude dan longitude saat marker digeser (untuk marker awal)
+    marker.on('dragend', function() {
+        var lngLat = marker.getLngLat();
+        document.getElementById('latitude').value = lngLat.lat;
+        document.getElementById('longitude').value = lngLat.lng;
+    });
+
+    // Tambahkan GeolocateControl untuk deteksi lokasi pengguna
+    var geolocate = new mapboxgl.GeolocateControl({
+        positionOptions: {
+            enableHighAccuracy: true
+        },
+        trackUserLocation: true
+    });
+
+    map.addControl(geolocate);
+
+    // Event listener saat lokasi pengguna ditemukan
+    geolocate.on('geolocate', function(e) {
+        var lngLat = [e.coords.longitude, e.coords.latitude];
 
         // Hapus marker sebelumnya (jika ada)
         if (marker) {

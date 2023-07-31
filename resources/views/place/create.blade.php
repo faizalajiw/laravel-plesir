@@ -88,7 +88,7 @@
                                         @enderror
                                     </div>
                                 </div>
-                                
+
                                 <div class="col-12 col-sm-6">
                                     <div class="form-group local-forms">
                                         <label>Jam Operasional <span class="login-danger">*</span></label>
@@ -293,6 +293,33 @@
         var lngLat = marker.getLngLat();
         document.getElementById('latitude').value = lngLat.lat;
         document.getElementById('longitude').value = lngLat.lng;
+    });
+
+    // Tambahkan GeolocateControl untuk deteksi lokasi pengguna
+    var geolocate = new mapboxgl.GeolocateControl({
+        positionOptions: {
+            enableHighAccuracy: true
+        },
+        trackUserLocation: true
+    });
+
+    map.addControl(geolocate);
+
+    // Event listener saat lokasi pengguna ditemukan
+    geolocate.on('geolocate', function(e) {
+        var lngLat = [e.coords.longitude, e.coords.latitude];
+
+        // Hapus marker sebelumnya (jika ada)
+        if (marker) {
+            marker.remove();
+        }
+
+        // Buat marker baru
+        marker.setLngLat(lngLat).addTo(map);
+
+        // Update inputan latitude dan longitude
+        document.getElementById('latitude').value = lngLat[1];
+        document.getElementById('longitude').value = lngLat[0];
     });
 </script>
 <!-- MAPBOX -->
