@@ -15,7 +15,7 @@
                             <div class="col-lg-8 text-{{ $loop->first ? 'start' : 'end' }}">
                                 <p class="fs-4 text-white">Jelajahi Tegal</p>
                                 <h1 class=" text-white mb-5 animated slideInRight">{{ $slider->title }}</h1>
-                                <a href="#jelajah" class="btn btn-light rounded-pill py-3 px-4 animated slideIn{{ $loop->first ? 'Right' : 'Left' }}">Jelajahi Sekarang</a>
+                                <a href="{{ route('jelajah-wisata') }}" class="btn btn-light rounded-pill py-3 px-4 animated slideIn{{ $loop->first ? 'Right' : 'Left' }}">Jelajahi Sekarang</a>
                             </div>
                         </div>
                     </div>

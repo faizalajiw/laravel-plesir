@@ -139,7 +139,7 @@ class PlaceController extends Controller
             }
 
             Toastr::success('Tempat berhasil ditambahkan :)', 'Success');
-            return redirect()->to('list/places');
+            return redirect()->to('list/my_places');
         } catch (\Exception $e) {
             Toastr::error('Terjadi kesalahan saat menyimpan data.', 'Error');
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
@@ -222,7 +222,7 @@ class PlaceController extends Controller
         }
 
         Toastr::success('Tempat berhasil diubah');
-        return redirect()->to('list/places');
+        return redirect()->to('list/my_places');
     }
 
     public function delete(Request $request)
