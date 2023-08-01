@@ -38,7 +38,6 @@ class PlaceController extends Controller
         // Ambil nilai dari input form
         $category = $request->input('category_id');
         $title = $request->input('title');
-        $user = $request->input('user_id');
 
         // Query untuk mencari tempat berdasarkan kriteria pencarian
         $query = Place::with('category', 'user');
@@ -50,12 +49,6 @@ class PlaceController extends Controller
 
         if ($title) {
             $query->where('title', 'like', '%' . $title . '%');
-        }
-
-        if ($user) {
-            $query->whereHas('user', function ($query) use ($user) {
-                $query->where('name', 'like', '%' . $user . '%');
-            });
         }
 
         $places = $query->get();
