@@ -8,7 +8,7 @@
             <!-- KIRI -->
             <div class="col-md-12 col-lg-7 col-sm-7">
                 <div class="card shadow-sm p-4 mb-5">
-                    <div class="text-center" style="font-size: 25px; color: #1A3154;">{{ $places->title }}</div>
+                    <div class="text-center fw-bold" style="font-size: 25px; color: #1A3154;">{{ $places->title }}</div>
                     <div class="rating">
                         <ul class="rating list-unstyled d-flex justify-content-center">
                             <div class="me-2">{{ $averageRating }}</div>

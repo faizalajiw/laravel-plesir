@@ -19,7 +19,7 @@ class UsersSeeder extends Seeder
         DB::table('users')->insert([
             'name'      => 'Super Admin',
             'username'  => 'superadmin',
-            'email'     => 'superadmin@plesir.my.id',
+            'email'     => 'cs.plesirtegal@gmail.com',
             'password'  => Hash::make('password'),
             'role_name' => 'Super Admin',
             'users_id'  => 'SUPER' . Str::upper(Str::random(5)),
@@ -27,7 +27,7 @@ class UsersSeeder extends Seeder
         DB::table('users')->insert([
             'name'      => 'Admin Wisata',
             'username'  => 'adminwisata',
-            'email'     => 'adminwisata@plesir.my.id',
+            'email'     => 'faizalajiwibowo7@gmail.com',
             'password'  => Hash::make('password'),
             'role_name' => 'Admin Wisata',
             'users_id'  => 'ADMIN' . Str::upper(Str::random(5)),
@@ -35,7 +35,7 @@ class UsersSeeder extends Seeder
         DB::table('users')->insert([
             'name'      => 'Faizal Aji Wibowo',
             'username'  => 'faizalajiw',
-            'email'     => 'faizalajiw@plesir.my.id',
+            'email'     => 'faizalajiwibowo9@gmail.com',
             'password'  => Hash::make('password'),
             'role_name' => 'Pengguna',
             'users_id'  => 'USER' . Str::upper(Str::random(6)),
