@@ -201,7 +201,12 @@
                                 <div class="col-12 mt-4">
                                     <div class="d-flex gap-4">
                                         <div class="button-cancel">
+                                            @if (Session::get('role_name') === 'Super Admin')
                                             <a href="{{ route('list/places') }}" class="btn btn-danger">Batal</a>
+                                            @endif
+                                            @if (Session::get('role_name') === 'Admin Wisata')
+                                            <a href="{{ route('list/my_places') }}" class="btn btn-danger">Batal</a>
+                                            @endif
                                         </div>
                                         <div class="button-submit">
                                             <button type="submit" class="btn btn-primary">Simpan</button>

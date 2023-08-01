@@ -138,8 +138,18 @@ class PlaceController extends Controller
                 }
             }
 
-            Toastr::success('Tempat berhasil ditambahkan :)', 'Success');
-            return redirect()->to('list/my_places');
+            Toastr::success('Tempat berhasil ditambahkan');
+
+            $roleName = User::find(auth()->user()->id);
+            // Lakukan pengecekan role dan redirect sesuai kondisi
+            if ($roleName->role_name === 'Super Admin') {
+                return redirect()->to('list/places');
+            } elseif ($roleName->role_name === 'Admin Wisata') {
+                return redirect()->to('list/my_places');
+            } else {
+                // Jika role name tidak dikenali, ganti dengan URL default atau berikan pesan kesalahan
+                return redirect()->to('/');
+            }
         } catch (\Exception $e) {
             Toastr::error('Terjadi kesalahan saat menyimpan data.', 'Error');
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
@@ -222,7 +232,16 @@ class PlaceController extends Controller
         }
 
         Toastr::success('Tempat berhasil diubah');
-        return redirect()->to('list/my_places');
+        $roleName = User::find(auth()->user()->id);
+        // Lakukan pengecekan role dan redirect sesuai kondisi
+        if ($roleName->role_name === 'Super Admin') {
+            return redirect()->to('list/places');
+        } elseif ($roleName->role_name === 'Admin Wisata') {
+            return redirect()->to('list/my_places');
+        } else {
+            // Jika role name tidak dikenali, ganti dengan URL default atau berikan pesan kesalahan
+            return redirect()->to('/');
+        }
     }
 
     public function delete(Request $request)
