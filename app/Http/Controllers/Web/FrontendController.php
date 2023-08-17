@@ -110,7 +110,8 @@ class FrontendController extends Controller
 
             return view('web.place.showDetailPlace', compact('places', 'reviews', 'visitor', 'averageRating', 'wholeStars', 'fractionStar', 'reviewCount'));
         } else {
-            return view('errors.404'); // Ganti 'halaman-lain' dengan nama route halaman yang ingin Anda alihkan
+            // return view('errors.404'); // Ganti 'halaman-lain' dengan nama route halaman yang ingin Anda alihkan
+            return view('errors.404', compact('places', 'query'));
         }
     }
 

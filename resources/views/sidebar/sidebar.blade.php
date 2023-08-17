@@ -37,9 +37,6 @@
                         <li>
                             <a href="{{ route('list/users') }}" class="{{set_active(['list/users'])}}">Semua</a>
                         </li>
-                        <!-- <li>
-                            <a href="{{ route('list/users/super') }}" class="{{set_active(['list/users/super'])}}">Super Admin</a>
-                        </li> -->
                         <li>
                             <a href="{{ route('list/users/admin') }}" class="{{set_active(['list/users/admin'])}}">Admin Wisata</a>
                         </li>
@@ -111,20 +108,15 @@
                 <!-- TEMPAT -->
 
                 <!-- DATA PENGUNJUNG -->
-                <!-- SUPER ADMIN & ADMIN WISATA -->
-                @if (Session::get('role_name') === 'Super Admin' || Session::get('role_name') === 'Admin Wisata')
+                <!-- ADMIN WISATA -->
+                @if (Session::get('role_name') === 'Admin Wisata')
                 <li class="submenu {{set_active(['list/history','visitor/create'])}}">
                     <a href="#"><i class="fas fa-chart-line"></i>
                         <span>Data Pengunjung</span>
                         <span class="menu-arrow"></span>
                     </a>
                     <ul>
-                        @if (Session::get('role_name') === 'Super Admin')
-                        <li><a href="{{ route('list/visitor') }}" class="{{set_active(['list/visitor'])}}">Kelola Pengunjung</a></li>
-                        @endif
-                        @if (Session::get('role_name') === 'Admin Wisata')
                         <li><a href="{{ route('list/history') }}" class="{{set_active(['list/history'])}}">Kelola Pengunjung</a></li>
-                        @endif
                         <li><a href="{{ route('visitor/create') }}" class="{{set_active(['visitor/create'])}}">Tambah Data</a></li>
                     </ul>
                 </li>
@@ -132,24 +124,23 @@
                 <!-- DATA PENGUNJUNG -->
 
                 <!-- RATING & ULASAN -->
+                @if (Session::get('role_name') === 'Admin Wisata' || Session::get('role_name') === 'Pengguna')
                 <li class="submenu {{set_active(['list/review','review/create'])}}">
                     <a href="#"><i class="fas fa-star"></i>
                         <span>Rating & Ulasan</span>
                         <span class="menu-arrow"></span>
                     </a>
                     <ul>
-                        <!-- @if (Session::get('role_name') === 'Super Admin')
-                        <li><a href="{{ route('list/review') }}" class="{{set_active(['list/review'])}}">Lihat Ulasan</a></li>
-                        @endif -->
                         @if (Session::get('role_name') === 'Admin Wisata')
                         <li><a href="{{ route('list/my_review_tempat') }}" class="{{set_active(['list/my_review_tempat'])}}">Lihat Ulasan</a></li>
                         @endif
-                        @if (Session::get('role_name') === 'Super Admin' || Session::get('role_name') === 'Pengguna')
+                        @if (Session::get('role_name') === 'Pengguna')
                         <li><a href="{{ route ('list/my_review') }}" class="{{set_active(['list/my_review'])}}">Lihat Ulasan</a></li>
                         <li><a href="{{ route ('review/create') }}" class="{{set_active(['review/create'])}}">Nilai Tempat</a></li>
                         @endif
                     </ul>
                 </li>
+                @endif
                 <!-- RATING & ULASAN -->
 
                 <li class="menu-title">

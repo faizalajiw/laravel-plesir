@@ -88,7 +88,6 @@ Route::controller(ProfileController::class)->group(function () {
 
 // ----------------------------- user management controller -------------------------//
 Route::middleware(['auth', 'role:Super Admin'])->group(function () {
-    // SEMUA PENGGUNA
     Route::get('list/users', [UserManagementController::class, 'index'])->name('list/users');
     Route::get('users/search', [UserManagementController::class, 'search'])->name('users/search');
     Route::get('users/create', [UserManagementController::class, 'create'])->name('users/create');
@@ -96,10 +95,8 @@ Route::middleware(['auth', 'role:Super Admin'])->group(function () {
     Route::get('view/users/edit/{id}', [UserManagementController::class, 'edit'])->name('view/users/edit');
     Route::post('users/update', [UserManagementController::class, 'update'])->name('users/update');
     Route::post('users/delete', [UserManagementController::class, 'delete'])->name('users/delete');
-    // SEMUA PENGGUNA
 
     // ONLY 1 ROLE
-    Route::get('list/users/super', [UserManagementController::class, 'showSuper'])->name('list/users/super');
     Route::get('list/users/admin', [UserManagementController::class, 'showAdmin'])->name('list/users/admin');
     Route::get('list/users/pengguna', [UserManagementController::class, 'showPengguna'])->name('list/users/pengguna');
     // ONLY 1 ROLE
@@ -130,27 +127,23 @@ Route::controller(PlaceController::class)->group(function () {
 // ----------------------------- visitor controller -------------------------//
 Route::controller(VisitorController::class)->group(function () {
     Route::get('list/visitor', 'index')->middleware(['auth', 'role:Super Admin'])->name('list/visitor');
-    Route::get('list/history', 'history')->middleware(['auth', 'role:Super Admin,Admin Wisata'])->name('list/history');
-    Route::get('visitor/create', 'create')->middleware(['auth', 'role:Super Admin,Admin Wisata'])->name('visitor/create');
-    Route::post('visitor/store', 'store')->middleware(['auth', 'role:Super Admin,Admin Wisata'])->name('visitor/store');
-    Route::get('view/visitor/edit/{id}', 'edit')->middleware(['auth', 'role:Super Admin,Admin Wisata'])->name('view/visitor/edit');
-    Route::post('visitor/update', 'update')->middleware(['auth', 'role:Super Admin,Admin Wisata'])->name('visitor/update');
-    Route::post('visitor/delete', 'delete')->middleware(['auth', 'role:Super Admin,Admin Wisata'])->name('visitor/delete');
+    Route::get('list/history', 'history')->middleware(['auth', 'role:Admin Wisata'])->name('list/history');
+    Route::get('visitor/create', 'create')->middleware(['auth', 'role:Admin Wisata'])->name('visitor/create');
+    Route::post('visitor/store', 'store')->middleware(['auth', 'role:Admin Wisata'])->name('visitor/store');
+    Route::get('view/visitor/edit/{id}', 'edit')->middleware(['auth', 'role:Admin Wisata'])->name('view/visitor/edit');
+    Route::post('visitor/update', 'update')->middleware(['auth', 'role:Admin Wisata'])->name('visitor/update');
+    Route::post('visitor/delete', 'delete')->middleware(['auth', 'role:Admin Wisata'])->name('visitor/delete');
 });
 
 // ----------------------------- review controller -------------------------//
 Route::controller(ReviewController::class)->group(function () {
-    // Only Super Admin
-    Route::get('list/review', 'index')->middleware(['auth', 'role:Super Admin'])->name('list/review');
-    Route::get('review/detail/{id}', 'details')->middleware(['auth', 'role:Super Admin'])->name('review/detail');
-    
     // Only Admin Wisata
     Route::get('list/my_review_tempat', 'myReviewTempat')->middleware(['auth', 'role:Admin Wisata'])->name('list/my_review_tempat');
     Route::get('my_review_tempat/detail/{id}', 'detail')->middleware(['auth', 'role:Admin Wisata'])->name('my_review_tempat/detail');
     
-    Route::get('list/my_review', 'myReview')->middleware(['auth', 'role:Super Admin,Pengguna'])->name('list/my_review');
-    Route::get('review/create', 'create')->middleware(['auth', 'role:Super Admin,Pengguna'])->name('review/create');
-    Route::post('review/store', 'store')->middleware(['auth', 'role:Super Admin,Pengguna'])->name('review/store');
+    Route::get('list/my_review', 'myReview')->middleware(['auth', 'role:Pengguna'])->name('list/my_review');
+    Route::get('review/create', 'create')->middleware(['auth', 'role:Pengguna'])->name('review/create');
+    Route::post('review/store', 'store')->middleware(['auth', 'role:Pengguna'])->name('review/store');
     // Route::get('view/review/edit/{id}', 'edit')->middleware(['auth', 'role:Super Admin,Admin Wisata'])->name('view/review/edit');
     // Route::post('review/update', 'update')->middleware(['auth', 'role:Super Admin,Admin Wisata'])->name('review/update');
     Route::post('review/delete/{id}', 'delete')->middleware(['auth'])->name('review/delete');

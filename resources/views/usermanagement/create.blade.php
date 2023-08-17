@@ -76,7 +76,9 @@
                                         <select class="form-control select @error('role_name') is-invalid @enderror" name="role_name" id="role_name">
                                             <option selected disabled>Pilih Role</option>
                                             @foreach ($role as $name)
+                                            @if ($name->role_type !== 'Super Admin')
                                             <option value="{{ $name->role_type }}">{{ $name->role_type }}</option>
+                                            @endif
                                             @endforeach
                                         </select>
                                         @error('role_name')
