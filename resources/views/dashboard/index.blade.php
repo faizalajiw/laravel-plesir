@@ -107,32 +107,10 @@
         @endif
         <!-- CARD -->
 
-        <!-- FILTER -->
-        @if (Session::get('role_name') === 'Admin Wisata')
-        <div class="search-group-form mt-3">
-            <form action="{{ route('dashboard/filter') }}" method="GET">
-                <div class="row">
-                    <div class="col-lg-4">
-                        <div class="form-group">
-                            <input type="text" name="place_id" class="form-control" style="font-size: 15px;" placeholder="Filter berdasarkan Tempat ..." value="{{ request('place') }}">
-                        </div>
-                    </div>
-
-                    <div class="col-lg-2">
-                        <div class="form-group">
-                            <button type="submit" class="form-control btn btn-primary text-white">Filter</button>
-                        </div>
-                    </div>
-                </div>
-            </form>
-        </div>
-        @endif
-        <!-- FILTER -->
-
         <!-- Statistik -->
         @if (Session::get('role_name') === 'Admin Wisata')
         <div class="row mb-3">
-            <div class="col-md-12 col-lg-4">
+            <!-- <div class="col-md-12 col-lg-4">
                 <div class="card card-chart">
                     <div class="card-body">
                         <canvas id="myPieChart"></canvas>
@@ -203,7 +181,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <!-- <div class="col-md-12 col-lg-8">
                 <div class="card card-chart">
                     <div class="card-body">
@@ -225,7 +203,7 @@
         <!-- Statistik -->
 
         <!-- Tabel Data Pengunjung -->
-        @if (Session::get('role_name') === 'Super Admin')
+        <!-- @if (Session::get('role_name') === 'Super Admin')
         <div class="row mb-3">
             <div class="col-xl-12 col-sm-12 col-12 d-flex">
 
@@ -285,7 +263,7 @@
                 </div>
             </div>
         </div>
-        @endif
+        @endif -->
         <!-- Tabel Data Pengunjung -->
 
         @if (Session::get('role_name') === 'Pengguna')

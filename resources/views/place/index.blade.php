@@ -10,7 +10,7 @@
                 <div class="col">
                     <ul class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{ route('list/places') }}">Tempat</a></li>
-                        <li class="breadcrumb-item active">Kelola Tempat</li>
+                        <li class="breadcrumb-item active">Lihat Tempat</li>
                     </ul>
                 </div>
             </div>
@@ -50,13 +50,15 @@
                         <div class="page-header">
                             <div class="row align-items-center">
                                 <div class="col">
-                                    <h3 class="form-title">Kelola Tempat</h3>
+                                    <h3 class="form-title">Lihat Tempat</h3>
                                 </div>
+                                @if (Session::get('role_name') === 'Admin Wisata')
                                 <div class="col-auto text-end float-end ms-auto download-grp">
                                     <a href="{{ route('places/create') }}" class="btn btn-primary">
                                         <i class="fas fa-plus me-2"></i>Tambah
                                     </a>
                                 </div>
+                                @endif
                             </div>
                         </div>
 
@@ -68,8 +70,10 @@
                                         <th>Kategori</th>
                                         <th>Nama Tempat</th>
                                         <th>Pengelola</th>
+                                        @if (Session::get('role_name') === 'Admin Wisata')
                                         <th style="color: transparent; background-color: #F8F9FA;"></th>
                                         <th class="text-center">Action</th>
+                                        @endif
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -79,8 +83,8 @@
                                         <td>{{ $list->category->name }}</td>
                                         <td>{{ $list->title }}</td>
                                         <td>{{ $list->user->name }}</td>
+                                        @if (Session::get('role_name') === 'Admin Wisata')
                                         <td class="id" style="color: transparent; background-color: transparent;">{{ $list->id }}</td>
-                                        @if (Session::get('role_name') === 'Super Admin' || Session::get('role_name') === 'Admin Wisata')
                                         <td class="text-center">
                                             <div class="actions gap-3">
                                                 <a href="{{ route('view/places/edit', ['id' => $list->id]) }}" class="btn btn-sm bg-danger-light">

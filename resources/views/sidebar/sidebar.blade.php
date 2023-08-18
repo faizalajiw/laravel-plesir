@@ -96,12 +96,12 @@
                     </a>
                     <ul>
                         @if (Session::get('role_name') === 'Super Admin')
-                        <li><a href="{{ route('list/places') }}" class="{{set_active(['list/places'])}}">Kelola Tempat</a></li>
+                        <li><a href="{{ route('list/places') }}" class="{{set_active(['list/places'])}}">Lihat Tempat</a></li>
                         @endif
                         @if (Session::get('role_name') === 'Admin Wisata')
                         <li><a href="{{ route('list/my_places') }}" class="{{set_active(['list/my_places'])}}">Kelola Tempat</a></li>
-                        @endif
                         <li><a href="{{ route('places/create') }}" class="{{set_active(['places/create'])}}">Tambah Tempat</a></li>
+                        @endif
                     </ul>
                 </li>
                 @endif
@@ -109,7 +109,7 @@
 
                 <!-- DATA PENGUNJUNG -->
                 <!-- ADMIN WISATA -->
-                @if (Session::get('role_name') === 'Admin Wisata')
+                <!-- @if (Session::get('role_name') === 'Admin Wisata')
                 <li class="submenu {{set_active(['list/history','visitor/create'])}}">
                     <a href="#"><i class="fas fa-chart-line"></i>
                         <span>Data Pengunjung</span>
@@ -120,7 +120,7 @@
                         <li><a href="{{ route('visitor/create') }}" class="{{set_active(['visitor/create'])}}">Tambah Data</a></li>
                     </ul>
                 </li>
-                @endif
+                @endif -->
                 <!-- DATA PENGUNJUNG -->
 
                 <!-- RATING & ULASAN -->
