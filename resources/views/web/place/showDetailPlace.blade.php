@@ -99,11 +99,40 @@
                             </div>
                         </div>
                         <div class="my-2">
-                            <div class="mb-1"><i class="fas fa-globe me-2"></i>Website</div>
+                            <div class="mb-1"><i class="fas fa-money-bill me-2"></i>Harga Tiket Masuk</div>
                             <div>{{ $places->website }}</div>
                         </div>
                     </div>
                     <!-- KETERANGAN -->
+                </div>
+                <!-- CARD -->
+
+                <!-- CARD -->
+                <div class="card shadow-sm p-4 mb-5">
+                    <!-- TIKET -->
+                    <div class="row justify-content-center">
+                        <div class="col-12">
+                            <div class="card shadow">
+                                <div class="card-body">
+                                    <form method="POST" action="#" class="user">
+                                        @csrf
+                                        <div class="form-group mb-2">
+                                            <label for="tanggal">Pilih Tanggal</label>
+                                            <input type="date" class="form-control" id="tanggal" name="tanggal" required />
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="quantity">Jumlah Tiket</label><br>
+                                            <input type="number" name="quantity" class="form-control @error('quantity') is-invalid @enderror">
+                                        </div>
+                                        <button type="submit" class="btn btn-primary btn-user btn-block mt-4" style="font-size: 16px">
+                                            Pesan Tiket
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- TIKET -->
                 </div>
                 <!-- CARD -->
 

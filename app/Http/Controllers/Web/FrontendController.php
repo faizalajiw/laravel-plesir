@@ -115,10 +115,16 @@ class FrontendController extends Controller
         }
     }
 
-    // Tentang Kami
+    // Kerjasama
     public function partnership()
     {
         $sliders = Slider::all();
         return view('web.kerjasama', compact('sliders'));
+    }
+
+    public function tiket()
+    {
+        $sliders = Slider::all();
+        return view('web.pesanTiket', compact('sliders'));
     }
 }

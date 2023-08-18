@@ -130,9 +130,9 @@
                                 </div>
                                 <div class="col-12 col-sm-4">
                                     <div class="form-group local-forms">
-                                        <label>URL Website <span class="login-info">(optional)</span></label>
-                                        <input type="text" name="website" class="form-control @error('website') is-invalid @enderror">
-                                        @error('website')
+                                        <label>Harga <span class="login-info"></span></label>
+                                        <input type="text" name="price" class="form-control @error('price') is-invalid @enderror">
+                                        @error('price')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
@@ -218,11 +218,31 @@
 <script>
     // Inisialisasi peta
     mapboxgl.accessToken = 'pk.eyJ1IjoiZmFpemFsYWppdyIsImEiOiJjbGUyYmczYWgwN3JqM3BtanB5NDZqY2xiIn0.jWcan3Z7z2mxRfrLkkjaJQ';
+
+    // Batas Kota Tegal
+    const kotaTegalBounds = [
+        [109.1080, -6.9000], // Sudut barat daya
+        [109.1500, -6.8697] // Sudut timur laut
+    ];
+
+    // Batas Kabupaten Tegal
+    const kabupatenTegalBounds = [
+        [109.2193, -7.2336], // Sudut barat daya
+        [109.3600, -6.5850] // Sudut timur laut
+    ];
+
+    // Menggabungkan batas Kota Tegal dan Kabupaten Tegal
+    const combinedBounds = [
+        [Math.min(kotaTegalBounds[0][0], kabupatenTegalBounds[0][0]), Math.min(kotaTegalBounds[0][1], kabupatenTegalBounds[0][1])],
+        [Math.max(kotaTegalBounds[1][0], kabupatenTegalBounds[1][0]), Math.max(kotaTegalBounds[1][1], kabupatenTegalBounds[1][1])]
+    ];
+
     var map = new mapboxgl.Map({
         container: 'mapContainer', // container ID
         style: 'mapbox://styles/mapbox/streets-v12', // style URL
         center: [109.12410532246922, -6.87670482108234], // starting position [lng, lat]
-        zoom: 12 // starting zoom
+        maxBounds: combinedBounds,
+        zoom: 10 // starting zoom
     });
 
     // Init geocoder
