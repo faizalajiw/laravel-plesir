@@ -137,7 +137,7 @@
                 <!-- CARD -->
 
                 <!-- CHART PENGUNJUNG-->
-                <div class="card card-chart">
+                <!-- <div class="card card-chart">
                     <div class="card-body">
                         @if ($visitor->isEmpty())
                         <div class="text-center">
@@ -147,7 +147,7 @@
                         <canvas id="myPieChart" style="max-height: 300px;"></canvas>
                         @endif
                     </div>
-                </div>
+                </div> -->
                 <!-- CHART PENGUNJUNG -->
             </div>
             <!-- KANAN -->
