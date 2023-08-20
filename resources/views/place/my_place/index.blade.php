@@ -67,7 +67,7 @@
                                         <th>No</th>
                                         <th>Kategori</th>
                                         <th>Nama Tempat</th>
-                                        <th>Alamat</th>
+                                        <th>Harga Tiket Masuk</th>
                                         <!-- <th>Pengelola</th> -->
                                         <th style="color: transparent; background-color: #F8F9FA;"></th>
                                         <th class="text-center">Action</th>                                    </tr>
@@ -78,7 +78,7 @@
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $list->category->name }}</td>
                                         <td>{{ $list->title }}</td>
-                                        <td>{{ $list->address }}</td>
+                                        <td>Rp. {{ $list->price }}</td>
                                         <!-- <td>{{ $list->user->name }}</td> -->
                                         <td class="id" style="color: transparent; background-color: transparent;">{{ $list->id }}</td>
                                         @if (Session::get('role_name') === 'Super Admin' || Session::get('role_name') === 'Admin Wisata')

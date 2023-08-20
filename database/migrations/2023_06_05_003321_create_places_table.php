@@ -22,12 +22,12 @@ return new class extends Migration
             $table->text('description');
             $table->text('address');
             $table->string('day')->nullable();
-            $table->string('hours_start');
-            $table->string('hours_end');
-            $table->string('website')->nullable();
+            $table->time('hours_start');
+            $table->time('hours_end');
             $table->string('social_media')->nullable();
-            $table->string('longitude');
-            $table->string('latitude');
+            $table->integer('price')->nullable();
+            $table->double('longitude');
+            $table->double('latitude');
             $table->timestamps();
 
             // relationship category

@@ -71,7 +71,7 @@
 
                                 <div class="col-12 col-sm-6">
                                     <div class="form-group local-forms">
-                                        <label>Hari <span class="login-danger">*</span></label>
+                                        <label>Hari Operasional<span class="login-danger">*</span></label>
                                         <select name="day[]" class="form-control select @error('day') is-invalid @enderror" multiple>
                                             <option value="Senin" {{ (is_array(old('day')) && in_array('Senin', old('day'))) ? 'selected' : '' }}>Senin</option>
                                             <option value="Selasa" {{ (is_array(old('day')) && in_array('Selasa', old('day'))) ? 'selected' : '' }}>Selasa</option>
@@ -116,7 +116,6 @@
                                     </div>
                                 </div>
 
-
                                 <div class="col-12 col-sm-4">
                                     <div class="form-group local-forms">
                                         <label>Alamat <span class="login-danger">*</span></label>
@@ -130,7 +129,7 @@
                                 </div>
                                 <div class="col-12 col-sm-4">
                                     <div class="form-group local-forms">
-                                        <label>Harga <span class="login-info"></span></label>
+                                        <label>Harga Tiket Masuk<span class="login-danger">*</span></label>
                                         <input type="text" name="price" class="form-control @error('price') is-invalid @enderror">
                                         @error('price')
                                         <span class="invalid-feedback" role="alert">

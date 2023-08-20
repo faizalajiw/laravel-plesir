@@ -88,7 +88,7 @@
                                 </div>
                                 <div class="col-12 col-sm-6">
                                     <div class="form-group local-forms">
-                                        <label>Hari <span class="login-danger">*</span></label>
+                                        <label>Hari Operasional<span class="login-danger">*</span></label>
                                         <!-- <input type="text" name="day" value="{{ $places->day }}" class="form-control @error('day') is-invalid @enderror"> -->
                                         <select name="day[]" class="form-control select @error('day') is-invalid @enderror" multiple>
                                             <option value="Senin" {{ (is_array($places->day) && in_array('Senin', $places->day)) ? 'selected' : '' }}>Senin</option>
@@ -106,21 +106,25 @@
                                         @enderror
                                     </div>
                                 </div>
-                                <div class="col-12 col-sm-6">
+                                <div class="col-12 col-sm-3">
                                     <div class="form-group local-forms">
-                                        <label>Jam Operasional <span class="login-danger">*</span></label>
+                                        <label>Jam Buka <span class="login-danger">*</span></label>
                                         <div class="input-group">
                                             <input type="time" name="hours_start" value="{{ $places->hours_start }}" class="form-control @error('hours_start') is-invalid @enderror" min="00:00" max="23:59">
-                                            <div class="input-group-prepend input-group-append">
-                                                <span class="input-group-text">-</span>
-                                            </div>
-                                            <input type="time" name="hours_end" value="{{ $places->hours_end }}" class="form-control @error('hours_end') is-invalid @enderror" min="00:00" max="23:59">
                                         </div>
                                         @error('hours_start')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
                                         @enderror
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-3">
+                                    <div class="form-group local-forms">
+                                        <label>Jam Tutup <span class="login-danger">*</span></label>
+                                        <div class="input-group">
+                                            <input type="time" name="hours_end" value="{{ $places->hours_end }}" class="form-control @error('hours_end') is-invalid @enderror" min="00:00" max="23:59">
+                                        </div>
                                         @error('hours_end')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -153,8 +157,8 @@
                                 </div>
                                 <div class="col-12 col-sm-4">
                                     <div class="form-group local-forms">
-                                        <label>Harga <span class="login-info"></span></label>
-                                        <input type="text" name="price" class="form-control @error('price') is-invalid @enderror">
+                                        <label>Harga Tiket Masuk<span class="login-danger">*</span></label>
+                                        <input type="text" name="price" value="{{ $places->price }}" class="form-control @error('price') is-invalid @enderror">
                                         @error('price')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>

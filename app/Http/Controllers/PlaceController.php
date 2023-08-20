@@ -104,8 +104,8 @@ class PlaceController extends Controller
                 'hours_start'       => $request->hours_start,
                 'hours_end'         => $request->hours_end,
                 'description'       => $request->description,
-                'website'           => $request->price,
                 'social_media'      => $request->social_media,
+                'price'             => $request->price,
                 'latitude'          => $request->latitude,
                 'longitude'         => $request->longitude,
             ]);
@@ -199,8 +199,8 @@ class PlaceController extends Controller
         $places->hours_start = $request->hours_start;
         $places->hours_end = $request->hours_end;
         $places->description = $request->description;
-        $places->website = $request->price;
         $places->social_media = $request->social_media;
+        $places->price = $request->price;
         $places->latitude = $request->latitude;
         $places->longitude = $request->longitude;
         $places->save();
