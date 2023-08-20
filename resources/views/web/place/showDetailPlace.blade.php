@@ -100,7 +100,7 @@
                         </div>
                         <div class="my-2">
                             <div class="mb-1"><i class="fas fa-money-bill me-2"></i>Harga Tiket Masuk</div>
-                            <div>{{ $places->website }}</div>
+                            <div>Rp. {{ $places->price }}</div>
                         </div>
                     </div>
                     <!-- KETERANGAN -->
@@ -114,20 +114,61 @@
                         <div class="col-12">
                             <div class="card shadow">
                                 <div class="card-body">
-                                    <form method="POST" action="#" class="user">
+                                    <div class="text-center fw-bold" style="font-size: 20px; color: #1A3154;">Pesan Tiket</div>
+                                    <form method="POST" action="#" enctype="multipart/form-data">
                                         @csrf
+                                        <div class="form-group mb-2">
+                                            <label for="title">Nama Tempat</label>
+                                            <input disabled type="text" value="{{ $places->title }}" class="form-control" id="title" name="title" required />
+                                        </div>
                                         <div class="form-group mb-2">
                                             <label for="tanggal">Pilih Tanggal</label>
                                             <input type="date" class="form-control" id="tanggal" name="tanggal" required />
                                         </div>
+                                        <div class="form-group mb-2">
+                                            <label for="total">Harga</label>
+                                            <input disabled type="text" id="price" value="{{ $places->price }}" class="form-control" id="price" name="price" required />
+                                        </div>
                                         <div class="form-group">
                                             <label for="quantity">Jumlah Tiket</label><br>
-                                            <input type="number" name="quantity" class="form-control @error('quantity') is-invalid @enderror">
+                                            <input type="number" id="quantity" name="quantity" class="form-control @error('quantity') is-invalid @enderror">
+                                        </div>
+                                        <div class="form-group mb-2">
+                                            <label for="total">Total Harga</label>
+                                            <input disabled type="text" class="form-control" id="total" name="total" required />
                                         </div>
                                         <button type="submit" class="btn btn-primary btn-user btn-block mt-4" style="font-size: 16px">
                                             Pesan Tiket
                                         </button>
                                     </form>
+
+                                    <script>
+                                        // Ambil elemen-elemen input dan output
+                                        const priceInput = document.getElementById('price');
+                                        const quantityInput = document.getElementById('quantity');
+                                        const totalOutput = document.getElementById('total');
+
+                                        // Fungsi untuk menghitung total harga
+                                        function calculateTotal() {
+                                            const price = parseFloat(priceInput.value);
+                                            const quantity = parseInt(quantityInput.value);
+                                            const total = price * quantity;
+
+                                            // Tampilkan hasil perhitungan pada elemen output dengan format mata uang
+                                            totalOutput.value = isNaN(total) ? '' : formatCurrency(total);
+                                        }
+
+                                        // Fungsi untuk memformat angka menjadi format mata uang
+                                        function formatCurrency(amount) {
+                                            return new Intl.NumberFormat('id-ID', {
+                                                style: 'currency',
+                                                currency: 'IDR'
+                                            }).format(amount);
+                                        }
+
+                                        // Panggil fungsi calculateTotal saat input berubah
+                                        quantityInput.addEventListener('input', calculateTotal);
+                                    </script>
                                 </div>
                             </div>
                         </div>
