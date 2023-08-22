@@ -164,8 +164,8 @@ Route::middleware(['auth', 'role:Super Admin'])->group(function () {
 
 // ----------------------------- history order controller -------------------------//
 Route::controller(HistoryOrderController::class)->group(function () {
-    Route::get('list/history-order', 'index')->middleware(['auth', 'role:Pengguna'])->name('list/history-order');
-    Route::get('list/order', 'order')->middleware(['auth', 'role:Admin Wisata'])->name('list/order');
+    Route::get('list/history-order', 'historyPengguna')->middleware(['auth', 'role:Pengguna'])->name('list/history-order');
+    Route::get('list/order', 'historyAdmin')->middleware(['auth', 'role:Admin Wisata'])->name('list/order');
     Route::get('order/create', 'create')->middleware(['auth', 'role:Admin Wisata'])->name('order/create');
 });
 

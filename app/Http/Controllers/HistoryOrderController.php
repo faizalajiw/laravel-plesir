@@ -8,16 +8,16 @@ use App\Models\User;
 
 class HistoryOrderController extends Controller
 {
-    public function index()
+    public function historyPengguna()
     {
         $user = User::find(auth()->user()->id);
         $userId = auth()->id(); // Mengambil ID pengguna yang sedang masuk
         $order = Order::with('user')->where('user_id', $userId)->get();
         // return response()->json($order);
-        return view('history.index', compact('user', 'order'));
+        return view('history.pengguna', compact('user', 'order'));
     }
 
-    public function order()
+    public function historyAdmin()
     {
         $user = User::find(auth()->user()->id);
         $userId = auth()->id();
@@ -28,7 +28,7 @@ class HistoryOrderController extends Controller
             })
             ->get();
         // return response()->json($order);
-        return view('pemesanan.index', compact('user', 'order'));
+        return view('history.adminWisata', compact('user', 'order'));
     }
 
     // public function create()

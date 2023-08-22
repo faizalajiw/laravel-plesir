@@ -31,7 +31,7 @@
                             <table class="table border-0 star-table table-hover table-center mb-0 datatable table-striped">
                                 <thead class="table-thread">
                                     <tr>
-                                        <th hidden>No</th>
+                                        <th >No</th>
                                         <th>Nama</th>
                                         <th>Wisata</th>
                                         <th>Jumlah Tiket</th>
@@ -46,14 +46,19 @@
                                     @foreach ($order as $list)
                                     @if ($list->status === 'Berhasil')
                                     <tr>
-                                        <td hidden>{{ $loop->iteration }}</td>
+                                        <td >{{ $loop->iteration }}</td>
                                         <td>{{ $list->name }}</td>
                                         <td>{{ $list->place_title }}</td>
                                         <td>{{ $list->quantity }}</td>
                                         <td>{{ $list->total }}</td>
                                         <td>{{ $list->tanggal }}</td>
-                                        <td class="badge rounded-pill bg-success text-white my-2">{{ $list->status }}</td>
-                                        <td>Lihat Invoice</td>
+                                        <td>
+                                            <a href="#" class="badge rounded-pill bg-success text-white my-2 py-2">{{ $list->status }}</a>
+                                        </td>
+                                        <td>
+
+                                            <a href="{{ route('invoice', ['id' => $list->id]) }}" class="badge rounded-pill bg-info text-white my-2 py-2">Lihat Invoice</a>
+                                        </td>
                                         <td class="id" style="color: transparent; background-color: transparent;">{{ $list->id }}</td>
                                     </tr>
                                     @endif
