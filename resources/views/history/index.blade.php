@@ -44,7 +44,7 @@
                                 </thead>
                                 <tbody>
                                     @foreach ($order as $list)
-                                    @if ($list->status === 'Lunas')
+                                    @if ($list->status === 'Berhasil')
                                     <tr>
                                         <td hidden>{{ $loop->iteration }}</td>
                                         <td>{{ $list->name }}</td>
@@ -53,7 +53,7 @@
                                         <td>{{ $list->total }}</td>
                                         <td>{{ $list->tanggal }}</td>
                                         <td class="badge rounded-pill bg-success text-white my-2">{{ $list->status }}</td>
-                                        <td>Cetak PDF</td>
+                                        <td>Lihat Invoice</td>
                                         <td class="id" style="color: transparent; background-color: transparent;">{{ $list->id }}</td>
                                     </tr>
                                     @endif

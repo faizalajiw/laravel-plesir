@@ -23,7 +23,7 @@ return new class extends Migration
             $table->integer('price');
             $table->integer('quantity');
             $table->bigInteger('total');
-            $table->enum('status', ['Belum Dibayar', 'Lunas']);
+            $table->enum('status', ['Belum Dibayar', 'Berhasil']);
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

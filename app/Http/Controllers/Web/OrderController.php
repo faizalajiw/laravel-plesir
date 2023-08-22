@@ -31,7 +31,7 @@ class OrderController extends Controller
     {
         $user = auth()->user(); // Mengambil data pengguna yang sedang login
         $request->merge([
-            'status' => 'Lunas',
+            'status' => 'Berhasil',
             'user_id' => $user->id, // Menambahkan user_id ke request
         ]);
         Order::create($request->all());
@@ -86,7 +86,7 @@ class OrderController extends Controller
         if ($hashed == $request->signature_key) {
             if ($request->transaction_status == 'capture') {
                 $order = Order::find($request->order_id);
-                $order->update(['status' => 'Lunas']);
+                $order->update(['status' => 'Berhasil']);
             }
         }
     }
