@@ -53,7 +53,7 @@ class DashboardController extends Controller
                 $query->where('user_id', $userId);
             })
             ->get();
-        return response()->json($order);
+        // return response()->json($order);
         return view('history.adminWisata', compact('user', 'order'));
     }
 
