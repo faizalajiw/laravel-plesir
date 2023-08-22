@@ -58,6 +58,9 @@
                         <li class="nav-item px-3">
                             <a class="nav-link fw-bold px-3 {{ set_active('web/kerjasama') }}" href="{{ route('kerjasama') }}">Kerja Sama</a>
                         </li>
+                        <li class="nav-item px-3">
+                            <a class="nav-link fw-bold px-3 {{ set_active('web/pesan-tiket') }}" href="{{ route('pesan-tiket') }}">Pesan Tiket</a>
+                        </li>
                     </ul>
                     <form class="d-flex">
                         @if (session('id'))

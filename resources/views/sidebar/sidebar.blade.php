@@ -147,6 +147,13 @@
                     <span>Akun</span>
                 </li>
 
+                <!-- HISTORY ORDER -->
+                <li class="{{set_active(['list/history-order'])}}">
+                    <a href="{{ route('list/history-order') }}" class="{{set_active(['list/history-order'])}}"><i class="fas fa-user"></i>
+                        <span>Riwayat Pemesanan</span>
+                    </a>
+                </li>
+                <!-- HISTORY ORDER -->
                 <!-- Profile -->
                 <li class="{{set_active(['profile/user'])}}">
                     <a href="{{ route('profile/user') }}" class="{{set_active(['profile/user'])}}"><i class="fas fa-user"></i>

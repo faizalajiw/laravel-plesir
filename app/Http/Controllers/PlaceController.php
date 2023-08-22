@@ -26,7 +26,7 @@ class PlaceController extends Controller
         $userId = auth()->id(); // Mengambil ID pengguna yang sedang masuk
 
         $places = Place::with('user')->where('user_id', $userId)->get();
-        // return response()->json($places);
+        // return response()->json($userId);
         return view('place.my_place.index', compact('user', 'places'));
     }
 
@@ -83,6 +83,7 @@ class PlaceController extends Controller
             'image.*.place_id'  => 'required|exists:places,id',
             'category_id'       => 'required',
             'address'           => 'required',
+            'price'             => 'required',
             'day'               => 'required|array',
             'day.*'             => 'in:Senin,Selasa,Rabu,Kamis,Jumat,Sabtu,Minggu',
             'hours_start'       => 'required',

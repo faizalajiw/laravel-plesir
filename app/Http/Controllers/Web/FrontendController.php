@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Place;
 use App\Models\Review;
 use App\Models\Slider;
+use App\Models\User;
 use App\Models\Visitor;
 use Illuminate\Http\Request;
 
@@ -70,7 +71,7 @@ class FrontendController extends Controller
         // Get Visitor for Specific Place ID
         $visitor = Visitor::where('place_id', $places->id)->get();
 
-        // return response()->json($places);
+        // return response()->json($user);
         return view('web.place.showDetailPlace', compact('sliders', 'places', 'reviews', 'visitor', 'averageRating', 'wholeStars', 'fractionStar', 'reviewCount'));
     }
 
@@ -120,11 +121,5 @@ class FrontendController extends Controller
     {
         $sliders = Slider::all();
         return view('web.kerjasama', compact('sliders'));
-    }
-
-    public function tiket()
-    {
-        $sliders = Slider::all();
-        return view('web.pesanTiket', compact('sliders'));
     }
 }

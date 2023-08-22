@@ -107,7 +107,7 @@ h6,
     font-family: "Chivo", "Open Sans", -apple-system, BlinkMacSystemFont,
         "Segoe UI", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji",
         "Segoe UI Emoji", "Segoe UI Symbol";
-    font-weight: 500;
+    font-weight: 400;
     line-height: 1.2;
     color: #112d58;
 }
@@ -10055,7 +10055,7 @@ fieldset:disabled .btn {
 }
 
 .bg-success {
-    background-color: #112d58 !important;
+    background-color: #198754 !important;
 }
 
 .bg-info {

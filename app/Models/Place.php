@@ -22,9 +22,9 @@ class Place extends Model
         'description',  
         'day',
         'address', 
+        'price', 
         'hours_start', 
         'hours_end', 
-        'website', 
         'social_media',
         'longitude', 
         'latitude'
