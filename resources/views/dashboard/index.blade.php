@@ -206,7 +206,7 @@
 
         <!-- Tabel Data Pengunjung -->
         @if (Session::get('role_name') === 'Super Admin')
-        <div class="row mb-3">
+        <!-- <div class="row mb-3">
             <div class="col-xl-12 col-sm-12 col-12 d-flex">
 
                 <div class="card flex-fill student-space comman-shadow">
@@ -264,7 +264,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
         @endif
         <!-- Tabel Data Pengunjung -->
 
