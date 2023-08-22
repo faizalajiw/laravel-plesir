@@ -181,5 +181,6 @@ Route::prefix('web')->group(function () {
     Route::get('checkout-tiket', [OrderController::class, 'orderByAdmin'])->name('checkout-tiket'); 
     Route::post('order/store', [OrderController::class, 'store'])->name('order/store'); 
     Route::post('checkout/{id}', [OrderController::class, 'checkout'])->name('checkout'); 
+    Route::get('checkout/check/{id}', [OrderController::class, 'invoice'])->name('check');
     Route::get('checkout/invoice/{id}', [OrderController::class, 'invoice'])->name('invoice');
 });

@@ -142,10 +142,6 @@
                 @endif
                 <!-- RATING & ULASAN -->
 
-                <li class="menu-title">
-                    <span>Akun</span>
-                </li>
-
                 <!-- HISTORY ORDER -->
                 @if (Session::get('role_name') === 'Pengguna')
                 <li class="{{set_active(['list/history-order'])}}">
@@ -162,6 +158,10 @@
                 </li>
                 @endif
                 <!-- HISTORY ORDER -->
+
+                <li class="menu-title">
+                    <span>Akun</span>
+                </li>
 
                 <!-- Profile -->
                 <li class="{{set_active(['profile/user'])}}">

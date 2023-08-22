@@ -9,7 +9,7 @@
             <div class="row align-items-center">
                 <div class="col">
                     <ul class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="#">Akun</a></li>
+                        <li class="breadcrumb-item"><a href="#">Menu</a></li>
                         <li class="breadcrumb-item active">Riwayat Pemesanan</li>
                     </ul>
                 </div>
@@ -31,7 +31,7 @@
                             <table class="table border-0 star-table table-hover table-center mb-0 datatable table-striped">
                                 <thead class="table-thread">
                                     <tr>
-                                        <th >No</th>
+                                        <th>No</th>
                                         <th>Nama</th>
                                         <th>Wisata</th>
                                         <th>Jumlah Tiket</th>
@@ -44,24 +44,29 @@
                                 </thead>
                                 <tbody>
                                     @foreach ($order as $list)
-                                    @if ($list->status === 'Berhasil')
                                     <tr>
-                                        <td >{{ $loop->iteration }}</td>
+                                        <td>{{ $loop->iteration }}</td>
                                         <td>{{ $list->name }}</td>
                                         <td>{{ $list->place_title }}</td>
                                         <td>{{ $list->quantity }}</td>
                                         <td>{{ $list->total }}</td>
-                                        <td>{{ $list->tanggal }}</td>
+                                        <td>{{ date('d-m-Y', strtotime($list->tanggal)) }}</td>
                                         <td>
-                                            <a href="#" class="badge rounded-pill bg-success text-white my-2 py-2">{{ $list->status }}</a>
+                                            @if ($list->status === 'Berhasil')
+                                            <a href="#" class="badge rounded-pill bg-success text-white my-1 py-2">{{ $list->status }}</a>
+                                            @else
+                                            <a href="#" class="badge rounded-pill bg-warning text-white my-1 py-2">{{ $list->status }}</a>
+                                            @endif
                                         </td>
                                         <td>
-
-                                            <a href="{{ route('invoice', ['id' => $list->id]) }}" class="badge rounded-pill bg-info text-white my-2 py-2">Lihat Invoice</a>
+                                            @if ($list->status === 'Berhasil')
+                                            <a href="{{ route('invoice', ['id' => $list->id]) }}" class="badge rounded-pill bg-info text-white my-1 py-2">Lihat Invoice</a>
+                                            @else
+                                            <a href="{{ route('check', ['id' => $list->id]) }}" class="badge rounded-pill bg-secondary text-white my-1 py-2">Bayar Sekarang</a>
+                                            @endif
                                         </td>
                                         <td class="id" style="color: transparent; background-color: transparent;">{{ $list->id }}</td>
                                     </tr>
-                                    @endif
                                     @endforeach
                                 </tbody>
                             </table>

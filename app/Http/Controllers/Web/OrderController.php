@@ -13,7 +13,7 @@ class OrderController extends Controller
     public function index()
     {
         $places = Place::all();
-        
+
         // return response()->json($places);
         return view('web.pesanTiket', compact('places'));
     }
@@ -94,7 +94,39 @@ class OrderController extends Controller
     public function invoice($id)
     {
         $order = Order::find($id);
-        // return response()->json($order);
-        return view('web.invoice', compact('order'));
+
+        $user = auth()->user(); // Mengambil data pengguna yang sedang login
+
+        // Check the status
+        if ($order->status === 'Belum Dibayar') {
+            // Generate Snap Token
+            \Midtrans\Config::$serverKey = config('midtrans.server_key');
+            \Midtrans\Config::$isProduction = false;
+            \Midtrans\Config::$isSanitized = true;
+            \Midtrans\Config::$is3ds = true;
+
+            $params = [
+                'transaction_details' => [
+                    'order_id' => $order->id,
+                    'gross_amount' => $order->total,
+                ],
+                'ticket_details' => [
+                    'place_title' => $order->place_title,
+                    'tanggal'   => $order->tanggal,
+                    'price'     => $order->price,
+                    'quantity'  => $order->quantity,
+                ],
+                'user_details' => [
+                    'name'      => $user->name,
+                ],
+            ];
+
+            $snapToken = \Midtrans\Snap::getSnapToken($params);
+
+            return view('web.invoice', compact('order', 'user', 'snapToken'));
+        }
+
+        // If the status is not "Belum Dibayar," proceed to show the invoice view
+        return view('web.invoice', compact('order', 'user'));
     }
 }

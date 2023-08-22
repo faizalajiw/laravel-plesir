@@ -1,6 +1,7 @@
 @extends('layouts.web')
 @section('content')
 <title>Invoice Tiket</title>
+<script type="text/javascript" src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="{{config('midtrans.client_key')}}"></script>
 <!-- TIKET -->
 <div class="container mt-5 mb-5">
     <div class="row justify-content-center" style="margin-bottom: 35px;">
@@ -52,13 +53,51 @@
                             </tr>
                             <tr>
                                 <td class="text-right h5">Status Pembayaran</td>
+                                @if ($order->status === 'Berhasil')
                                 <td class="text-right h5 badge rounded-pill bg-success text-white my-2">{{ $order->status }}</td>
+                                @else
+                                <td class="text-right h5 badge rounded-pill bg-warning text-white my-2">{{ $order->status }}</td>
+                                @endif
                             </tr>
                         </table>
+                        @if ($order->status === 'Belum Dibayar')
+                        <button id="pay-button" class="btn btn-primary py-2 px-3">Lanjutkan Pembayaran</button>
+                        @endif
                     </div>
                 </div>
             </div>
         </div>
         <!-- TIKET -->
     </div>
+    
+    @if ($order->status === 'Belum Dibayar')
+    <script type="text/javascript">
+        // For example trigger on button clicked, or any time you need
+        var payButton = document.getElementById('pay-button');
+        payButton.addEventListener('click', function() {
+            // Trigger snap popup. @TODO: Replace TRANSACTION_TOKEN_HERE with your transaction token
+            window.snap.pay('{{$snapToken}}', {
+                onSuccess: function(result) {
+                    /* You may add your own implementation here */
+                    window.location.href = '{{$order->id}}';
+                    console.log(result);
+                },
+                onPending: function(result) {
+                    /* You may add your own implementation here */
+                    alert("wating your payment!");
+                    console.log(result);
+                },
+                onError: function(result) {
+                    /* You may add your own implementation here */
+                    alert("payment failed!");
+                    console.log(result);
+                },
+                onClose: function() {
+                    /* You may add your own implementation here */
+                    alert('you closed the popup without finishing the payment');
+                }
+            })
+        });
+    </script>
+    @endif
     @endsection
