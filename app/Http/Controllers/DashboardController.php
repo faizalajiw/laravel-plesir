@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Order;
 use App\Models\Place;
 use App\Models\User;
 use App\Models\Visitor;
@@ -45,11 +46,15 @@ class DashboardController extends Controller
     public function indexAdminWisata()
     {
         $user = User::find(auth()->user()->id);
-
-        $userId = auth()->id(); // Mengambil ID pengguna yang sedang masuk
-        $visitor = Visitor::with('user', 'place')->where('user_id', $userId)->get();
-        // return response()->json($visitor);
-        return view('dashboard.index', compact('user', 'visitor'));
+        $userId = auth()->id();
+        // Mengambil semua pesanan yang terkait dengan place_id yang dimiliki oleh pengguna
+        $order = Order::with('user', 'place') // Pastikan Anda memiliki relasi 'place' di model Order
+            ->whereHas('place', function ($query) use ($userId) {
+                $query->where('user_id', $userId);
+            })
+            ->get();
+        return response()->json($order);
+        return view('history.adminWisata', compact('user', 'order'));
     }
 
     public function indexUser()

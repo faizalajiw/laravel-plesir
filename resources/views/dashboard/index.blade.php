@@ -126,14 +126,32 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-12 col-lg-8 d-flex">
-                <div class="card flex-fill student-space comman-shadow">
-                    <div class="card-header d-flex align-items-center">
-                        <h5 class="card-title">Data Pengunjung</h5>
+
+            <div class="col-md-12 col-lg-8">
+                <div class="card card-chart">
+                    <div class="card-body">
+                        <canvas id="myBarChart"></canvas>
+                        @if ($visitor->isEmpty())
+                        <tr>
+                            <td colspan="11">
+                                <div class="text-center">
+                                    <p class="text-muted mt-3">Tidak ada data pengunjung yang tersedia.</p>
+                                </div>
+                            </td>
+                        </tr>
+                        @endif
+                    </div>
+                </div>
+            </div>
+
+            <div hidden class="col-md-12 col-lg-8 d-flex">
+                <div hidden class="card flex-fill student-space comman-shadow">
+                    <div hidden class="card-header d-flex align-items-center">
+                        <h5 hidden class="card-title">Data Pengunjung</h5>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table star-student table-hover table-center table-borderless table-striped">
+                            <table hidden class="table star-student table-hover table-center table-borderless table-striped">
                                 <thead class="thead-light">
                                     <tr>
                                         <th>No</th>
@@ -182,28 +200,12 @@
                     </div>
                 </div>
             </div> -->
-            <!-- <div class="col-md-12 col-lg-8">
-                <div class="card card-chart">
-                    <div class="card-body">
-                        <canvas id="myBarChart"></canvas>
-                        @if ($visitor->isEmpty())
-                        <tr>
-                            <td colspan="11">
-                                <div class="text-center">
-                                    <p class="text-muted mt-3">Tidak ada data pengunjung yang tersedia.</p>
-                                </div>
-                            </td>
-                        </tr>
-                        @endif
-                    </div>
-                </div>
-            </div> -->
         </div>
         @endif
         <!-- Statistik -->
 
         <!-- Tabel Data Pengunjung -->
-        <!-- @if (Session::get('role_name') === 'Super Admin')
+        @if (Session::get('role_name') === 'Super Admin')
         <div class="row mb-3">
             <div class="col-xl-12 col-sm-12 col-12 d-flex">
 
@@ -263,7 +265,7 @@
                 </div>
             </div>
         </div>
-        @endif -->
+        @endif
         <!-- Tabel Data Pengunjung -->
 
         @if (Session::get('role_name') === 'Pengguna')
