@@ -6,11 +6,11 @@
     <div class="row justify-content-center">
         <div class="col-8">
             @if (auth()->check())
-            @if (auth()->user()->role_name === 'Pengguna')
+            @if (auth()->user()->role_name === 'Admin Wisata')
             <div class="card shadow">
                 <div class="card-body">
-                    <div class="text-center fw-bold" style="font-size: 20px; color: #1A3154;">Pesan Tiket</div>
-                    <form action="checkout/{id}" method="POST" enctype="multipart/form-data">
+                    <div class="text-center fw-bold" style="font-size: 20px; color: #1A3154;">Checkout Tiket</div>
+                    <form action="{{ route('order/store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <input type="hidden" id="name" name="name" value="{{ auth()->user()->name }}">
                         <div class="form-group mb-2">
@@ -42,7 +42,6 @@
                             <label for="total">Total Harga</label>
                             <input readonly type="number" class="form-control" id="total" name="total" required />
                         </div>
-                        <p class="mt-3">Jika ingin pesan tiket, harap pembayaran diselesaikan sampai akhir</p>
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary btn-block mt-2" style="font-size: 16px">
                                 Pesan Tiket

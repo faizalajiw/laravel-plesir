@@ -13,11 +13,33 @@ class OrderController extends Controller
     public function index()
     {
         $places = Place::all();
+        
         // return response()->json($places);
         return view('web.pesanTiket', compact('places'));
     }
+    public function orderByAdmin()
+    {
+        $user = User::find(auth()->user()->id);
+        $userId = auth()->id(); // Mengambil ID pengguna yang sedang masuk
 
-    public function checkout(Request $request, $id)
+        $places = Place::with('user')->where('user_id', $userId)->get();
+        // return response()->json($places);
+        return view('web.pesanByAdmin', compact('places', 'user'));
+    }
+
+    public function store(Request $request)
+    {
+        $user = auth()->user(); // Mengambil data pengguna yang sedang login
+        $request->merge([
+            'status' => 'Lunas',
+            'user_id' => $user->id, // Menambahkan user_id ke request
+        ]);
+        Order::create($request->all());
+        // return response()->json($places);
+        return redirect()->route('list/order')->with('success', 'Pesanan tiket berhasil dibuat!');
+    }
+
+    public function checkout(Request $request)
     {
         $user = auth()->user(); // Mengambil data pengguna yang sedang login
         $request->merge([

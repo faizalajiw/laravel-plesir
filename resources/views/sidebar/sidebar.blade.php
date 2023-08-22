@@ -100,7 +100,6 @@
                         @endif
                         @if (Session::get('role_name') === 'Admin Wisata')
                         <li><a href="{{ route('list/my_places') }}" class="{{set_active(['list/my_places'])}}">Kelola Tempat</a></li>
-                        <li><a href="{{ route('places/create') }}" class="{{set_active(['places/create'])}}">Tambah Tempat</a></li>
                         @endif
                     </ul>
                 </li>
@@ -148,12 +147,22 @@
                 </li>
 
                 <!-- HISTORY ORDER -->
+                @if (Session::get('role_name') === 'Pengguna')
                 <li class="{{set_active(['list/history-order'])}}">
                     <a href="{{ route('list/history-order') }}" class="{{set_active(['list/history-order'])}}"><i class="fas fa-history"></i>
                         <span>Riwayat Pemesanan</span>
                     </a>
                 </li>
+                @endif
+                @if (Session::get('role_name') === 'Admin Wisata')
+                <li class="{{set_active(['list/order'])}}">
+                    <a href="{{ route('list/order') }}" class="{{set_active(['list/order'])}}"><i class="fas fa-history"></i>
+                        <span>Riwayat Pemesanan</span>
+                    </a>
+                </li>
+                @endif
                 <!-- HISTORY ORDER -->
+
                 <!-- Profile -->
                 <li class="{{set_active(['profile/user'])}}">
                     <a href="{{ route('profile/user') }}" class="{{set_active(['profile/user'])}}"><i class="fas fa-user"></i>

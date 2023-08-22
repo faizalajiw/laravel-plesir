@@ -24,6 +24,11 @@
                                 <div class="col">
                                     <h3 class="form-title">Riwayat Pemesanan</h3>
                                 </div>
+                                <!-- <div class="col-auto text-end float-end ms-auto download-grp">
+                                    <a href="{{ route('order/create') }}" class="btn btn-primary">
+                                        <i class="fas fa-plus me-2"></i>Tambah Pemesanan
+                                    </a>
+                                </div> -->
                             </div>
                         </div>
 

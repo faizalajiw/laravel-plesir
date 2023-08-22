@@ -151,10 +151,6 @@ Route::controller(ReviewController::class)->group(function () {
     Route::post('review/delete/{id}', 'delete')->middleware(['auth'])->name('review/delete');
 });
 
-// ----------------------------- history order controller -------------------------//
-Route::controller(HistoryOrderController::class)->group(function () {
-    Route::get('list/history-order', 'index')->middleware(['auth', 'role:Pengguna'])->name('list/history-order');
-});
 
 // ----------------------------- slider banner controller -------------------------//
 Route::middleware(['auth', 'role:Super Admin'])->group(function () {
@@ -166,6 +162,13 @@ Route::middleware(['auth', 'role:Super Admin'])->group(function () {
     Route::post('sliders/delete', [SliderController::class, 'delete'])->name('sliders/delete');
 });
 
+// ----------------------------- history order controller -------------------------//
+Route::controller(HistoryOrderController::class)->group(function () {
+    Route::get('list/history-order', 'index')->middleware(['auth', 'role:Pengguna'])->name('list/history-order');
+    Route::get('list/order', 'order')->middleware(['auth', 'role:Admin Wisata'])->name('list/order');
+    Route::get('order/create', 'create')->middleware(['auth', 'role:Admin Wisata'])->name('order/create');
+});
+
 // ------------------------ LANDING PAGE -------------------------------//
 Route::prefix('web')->group(function () {
     Route::get('jelajah-wisata/{slug?}', [FrontendController::class, 'allPlace'])->name('jelajah-wisata');    
@@ -175,6 +178,8 @@ Route::prefix('web')->group(function () {
     Route::get('cari-wisata/{slug?}', [FrontendController::class, 'searchPlace'])->name('cari-wisata'); 
     Route::get('kerjasama', [FrontendController::class, 'partnership'])->name('kerjasama'); 
     Route::get('pesan-tiket', [OrderController::class, 'index'])->name('pesan-tiket'); 
+    Route::get('checkout-tiket', [OrderController::class, 'orderByAdmin'])->name('checkout-tiket'); 
+    Route::post('order/store', [OrderController::class, 'store'])->name('order/store'); 
     Route::post('checkout/{id}', [OrderController::class, 'checkout'])->name('checkout'); 
     Route::get('checkout/invoice/{id}', [OrderController::class, 'invoice'])->name('invoice');
 });

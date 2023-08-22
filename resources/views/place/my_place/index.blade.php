@@ -52,11 +52,14 @@
                                 <div class="col">
                                     <h3 class="form-title">Kelola Tempat</h3>
                                 </div>
+                                
+                                @if (count ($places) < 1)
                                 <div class="col-auto text-end float-end ms-auto download-grp">
                                     <a href="{{ route('places/create') }}" class="btn btn-primary">
                                         <i class="fas fa-plus me-2"></i>Tambah
                                     </a>
                                 </div>
+                                @endif
                             </div>
                         </div>
 

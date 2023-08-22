@@ -14,4 +14,9 @@ class Order extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function place()
+    {
+        return $this->belongsTo(Place::class);
+    }
 }
