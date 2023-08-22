@@ -14,7 +14,7 @@
                 <div class="card shadow h-100" style="border-top: .25rem solid #4e73df">
                     <div class="card-body">
                         <div class="row no-gutters align-items-center justify-content-center">
-                            <div class="col h5 font-weight-bold" style="margin-bottom: 0">Detail Tiket</div>
+                            <div class="col h5 font-weight-bold" style="margin-bottom: 0">Detail Pembelian Tiket</div>
                             <div class="col-auto">
                                 <span class="title">
                                     <div class="title-icon rotate-n-15">
@@ -56,7 +56,7 @@
                                 <td class="text-right badge rounded-pill bg-warning text-white my-2">{{ $order->status }}</td>
                             </tr>
                         </table>
-                        <button id="pay-button" class="btn btn-primary">Bayar Sekarang</button>
+                        <button id="pay-button" class="btn btn-primary py-2 px-3">Lanjutkan Pembayaran</button>
                     </div>
                 </div>
             </div>

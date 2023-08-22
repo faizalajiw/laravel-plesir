@@ -42,11 +42,13 @@
                             <label for="total">Total Harga</label>
                             <input readonly type="number" class="form-control" id="total" name="total" required />
                         </div>
+                        <p class="mt-3">Jika ingin pesan tiket, harap pembayaran diselesaikan sampai akhir</p>
                         <div class="form-group">
-                            <button type="submit" class="btn btn-primary btn-block mt-4" style="font-size: 16px">
+                            <button type="submit" class="btn btn-primary btn-block mt-2" style="font-size: 16px">
                                 Pesan Tiket
                             </button>
                         </div>
+
                     </form>
                     @endif
                     @else

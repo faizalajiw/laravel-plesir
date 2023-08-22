@@ -149,7 +149,7 @@
 
                 <!-- HISTORY ORDER -->
                 <li class="{{set_active(['list/history-order'])}}">
-                    <a href="{{ route('list/history-order') }}" class="{{set_active(['list/history-order'])}}"><i class="fas fa-user"></i>
+                    <a href="{{ route('list/history-order') }}" class="{{set_active(['list/history-order'])}}"><i class="fas fa-history"></i>
                         <span>Riwayat Pemesanan</span>
                     </a>
                 </li>
