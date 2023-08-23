@@ -110,11 +110,12 @@
         <!-- Statistik -->
         @if (Session::get('role_name') === 'Admin Wisata')
         <div class="row mb-3">
-            <div class="col-md-12 col-lg-8">
+            <!-- 7 HARI TERAKHIR -->
+            <div class="col-md-12 col-lg-12">
                 <div class="card card-chart">
                     <div class="card-body">
-                        <canvas id="myChart"></canvas>
-                        <div id="chart-data" data-labels="{{ json_encode($labels) }}" data-quantities="{{ json_encode($quantities) }}"></div>
+                        <canvas id="chartLast7Days"></canvas>
+                        <div id="chart-data" data-labels-last7="{{ json_encode($labelsLast7Days) }}" data-quantities-last7="{{ json_encode($quantitiesLast7Days) }}" data-labels-monthly="{{ json_encode($labelsMonthly) }}" data-quantities-monthly="{{ json_encode($quantitiesMonthly) }}"></div>
                         @if ($order->isEmpty())
                         <tr>
                             <td colspan="11">
@@ -127,11 +128,33 @@
                     </div>
                 </div>
             </div>
+            <!-- 7 HARI TERAKHIR -->
 
-            <div hidden class="col-md-12 col-lg-8 d-flex">
+
+            <!-- BULANAN -->
+            <!-- <div class="col-md-12 col-lg-12">
+                <div class="card card-chart">
+                    <div class="card-body">
+                        <canvas id="chartMonthly"></canvas>
+                        @if ($order->isEmpty())
+                        <tr>
+                            <td colspan="11">
+                                <div class="text-center">
+                                    <p class="text-muted mt-3">Tidak ada data pengunjung yang tersedia.</p>
+                                </div>
+                            </td>
+                        </tr>
+                        @endif
+                    </div>
+                </div>
+            </div> -->
+            <!-- BULANAN -->
+
+            <!-- Riwayat Pemesanan -->
+            <div hidden class="col-md-12 col-lg-12 d-flex">
                 <div hidden class="card flex-fill student-space comman-shadow">
                     <div hidden class="card-header d-flex align-items-center">
-                        <h5 hidden class="card-title">Data Pengunjung</h5>
+                        <h5 hidden class="card-title">Riwayat Pemesanan</h5>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -172,50 +195,6 @@
         </div>
 
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-        <script>
-            const chartDataElement = document.getElementById('chart-data');
-            const labels = JSON.parse(chartDataElement.getAttribute('data-labels'));
-            const quantities = JSON.parse(chartDataElement.getAttribute('data-quantities'));
-
-            const ctx = document.getElementById('myChart').getContext('2d');
-            new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: labels, //Tanggal
-                    datasets: [{
-                        label: 'Jumlah Pengunjung',
-                        data: quantities, //Total Penjualan Tiket
-                        backgroundColor: 'rgba(3, 4, 94, 1)',
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    scales: {
-                        x: {
-                            title: {
-                                display: true,
-                                text: 'Tanggal',
-                                color: 'black',
-                                font: {
-                                    size: 16
-                                }
-                            }
-                        },
-                        y: {
-                            beginAtZero: true,
-                            title: {
-                                display: true,
-                                text: 'Jumlah Pengunjung',
-                                color: 'black',
-                                font: {
-                                    size: 16
-                                }
-                            }
-                        }
-                    }
-                }
-            });
-        </script>
         @endif
         <!-- Statistik -->
 
@@ -230,7 +209,7 @@
     @section('script')
     <!-- CHART JS -->
     <!-- <script src="{{ URL::to('assets/plugins/chartjs/chart.js') }}"></script> -->
-    <!-- <script src="{{ URL::to('assets/plugins/chartjs/bar-chart-data.js') }}"></script> -->
+    <script src="{{ URL::to('assets/plugins/chartjs/bar-chart-data.js') }}"></script>
     <!-- <script src="{{ URL::to('assets/plugins/chartjs/pie-chart-data.js') }}"></script> -->
 
     <script src="{{ URL::to('assets/plugins/datatables/datatables.min.js') }}"></script>

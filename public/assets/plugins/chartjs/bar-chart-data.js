@@ -1,33 +1,24 @@
-var places = document.querySelector('#place_title').innerText;
-var senin = parseInt(document.getElementById('senin').innerText);
-var selasa = parseInt(document.getElementById('selasa').innerText);
-var rabu = parseInt(document.getElementById('rabu').innerText);
-var kamis = parseInt(document.getElementById('kamis').innerText);
-var jumat = parseInt(document.getElementById('jumat').innerText);
-var sabtu = parseInt(document.getElementById('sabtu').innerText);
-var minggu = parseInt(document.getElementById('minggu').innerText);
-// Data jumlah pengunjung harian
-var data = {
-    labels: ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu'],
-    datasets: [{
-        label: 'Jumlah Pengunjung',
-        data: [senin, selasa, rabu, kamis, jumat, sabtu, minggu],
-        backgroundColor: [
-            'rgba(0, 52, 89)',
-            'rgba(0, 126, 167)',
-            'rgba(0, 168, 232)',
-            'rgba(0, 52, 89)',
-            'rgba(0, 126, 167)',
-            'rgba(0, 168, 232)',
-            'rgba(0, 52, 89)'
-        ],
-    }]
-};
+const chartDataElement = document.getElementById('chart-data');
+const labelsLast7Days = JSON.parse(chartDataElement.getAttribute('data-labels-last7'));
+const quantitiesLast7Days = JSON.parse(chartDataElement.getAttribute('data-quantities-last7'));
+const labelsMonthly = JSON.parse(chartDataElement.getAttribute('data-labels-monthly'));
+const quantitiesMonthly = JSON.parse(chartDataElement.getAttribute('data-quantities-monthly'));
 
-// Konfigurasi bar chart
-var config = {
+// Batasi data hanya untuk 7 hari terakhir
+const last7DaysLabels = labelsLast7Days.slice(-7);
+const last7DaysQuantities = quantitiesLast7Days.slice(-7);
+
+const ctxLast7Days = document.getElementById('chartLast7Days').getContext('2d');
+new Chart(ctxLast7Days, {
     type: 'bar',
-    data: data,
+    data: {
+        labels: last7DaysLabels, //Tanggal
+        datasets: [{
+            label: 'Tiket Terjual',
+            data: last7DaysQuantities, //Total Penjualan Tiket
+            backgroundColor: 'rgba(3, 4, 94, 1)',
+        }]
+    },
     options: {
         responsive: true,
         plugins: {
@@ -36,7 +27,7 @@ var config = {
             },
             title: {
                 display: true,
-                text: 'Jumlah Pengunjung ' + places,
+                text: 'Tiket Terjual',
                 color: 'black',
                 font: {
                     size: 16
@@ -44,26 +35,80 @@ var config = {
             },
         },
         scales: {
-            y: {
-                beginAtZero: true,
-                max: 160,
-                title: {
-                    display: true,
-                    text: 'Jumlah Pengunjung'
-                }
-            },
             x: {
                 title: {
+                    display: false,
+                    text: 'Tanggal',
+                    color: 'black',
+                    font: {
+                        size: 16
+                    }
+                }
+            },
+            y: {
+                beginAtZero: true,
+                title: {
                     display: true,
-                    text: 'Hari'
+                    text: 'Jumlah Tiket',
+                    color: 'black',
+                    font: {
+                        size: 16
+                    }
                 }
             }
         }
     }
-};
+});
 
-// Membuat bar chart
-var myChart = new Chart(
-    document.getElementById('myBarChart'),
-    config
-);
+const ctxMonthly = document.getElementById('chartMonthly').getContext('2d');
+new Chart(ctxMonthly, {
+    type: 'bar',
+    data: {
+        labels: labelsMonthly,
+        datasets: [{
+            label: 'Jumlah Pengunjung (Bulanan)',
+            data: quantitiesMonthly,
+            backgroundColor: 'rgba(3, 4, 94, 1)',
+        }]
+    },
+    options: {
+        responsive: true,
+        plugins: {
+            legend: {
+                display: false
+            },
+            title: {
+                display: true,
+                text: 'Jumlah Pengunjung (Bulanan)',
+                color: 'black',
+                font: {
+                    size: 16
+                }
+            },
+        },
+        scales: {
+            x: {
+                type: 'category', // Menggunakan skala kategori
+                title: {
+                    display: false,
+                    text: 'Bulan',
+                    color: 'black',
+                    font: {
+                        size: 16
+                    }
+                }
+            },
+            y: {
+                beginAtZero: true,
+                title: {
+                    display: true,
+                    text: 'Jumlah Pengunjung',
+                    color: 'black',
+                    font: {
+                        size: 16
+                    }
+                }
+            }
+        }
+    }
+});

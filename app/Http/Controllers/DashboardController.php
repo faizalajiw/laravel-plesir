@@ -8,6 +8,8 @@ use App\Models\Place;
 use App\Models\User;
 use App\Models\Visitor;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Date;
+use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller
 {
@@ -50,30 +52,43 @@ class DashboardController extends Controller
         $userId = auth()->id(); // Mengambil ID pengguna yang sedang masuk
         $order = Order::all();
 
-        $orderData = Order::where('status', 'Berhasil')
+        // Data untuk 7 hari terakhir
+        $orderDataLast7Days = Order::where('status', 'Berhasil')
             ->groupBy('tanggal')
             ->orderBy('tanggal')
             ->selectRaw('tanggal, SUM(quantity) as total_quantity')
             ->get();
 
-        $labels = $orderData->pluck('tanggal')->map(function ($date) {
-            return \Carbon\Carbon::parse($date)->format('l, d F Y');
+        $labelsLast7Days = $orderDataLast7Days->pluck('tanggal')->map(function ($date) {
+            return \Carbon\Carbon::parse($date)->locale('id')->format('l, d F Y');
         });
+        $quantitiesLast7Days = $orderDataLast7Days->pluck('total_quantity');
 
-        $quantities = $orderData->pluck('total_quantity');
+        // Data bulanan
+        $orderDataMonthly = Order::where('status', 'Berhasil')
+            ->groupBy(DB::raw('MONTH(tanggal)'))
+            ->orderBy(DB::raw('MONTH(tanggal)'))
+            ->selectRaw('MONTH(tanggal) as month, SUM(quantity) as total_quantity')
+            ->get();
 
-        return view('dashboard.index', compact('labels', 'quantities', 'orderData', 'order', 'user'));
+        $labelsMonthly = [];
+        $quantitiesMonthly = [];
+
+        foreach ($orderDataMonthly as $data) {
+            $monthName = date("F", mktime(0, 0, 0, $data->month, 1));
+            $labelsMonthly[] = $monthName;
+            $quantitiesMonthly[] = $data->total_quantity;
+        }
+
+        return view('dashboard.index', compact(
+            'labelsLast7Days',
+            'quantitiesLast7Days',
+            'labelsMonthly',
+            'quantitiesMonthly',
+            'user',
+            'order'
+        ));
     }
-
-    // public function indexAdminWisata()
-    // {
-    //     $user = User::find(auth()->user()->id);
-
-    //     $userId = auth()->id(); // Mengambil ID pengguna yang sedang masuk
-    //     $visitor = Visitor::with('user', 'place')->where('user_id', $userId)->get();
-    //     // return response()->json($visitor);
-    //     return view('dashboard.index', compact('user', 'visitor'));
-    // }
 
     public function indexUser()
     {

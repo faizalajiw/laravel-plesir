@@ -9,12 +9,14 @@
         "brian2694/laravel-toastr": "^5.57",
         "guzzlehttp/guzzle": "^7.4",
         "intervention/image": "^2.7",
+        "jenssegers/date": "4.0",
         "laravel/breeze": "^1.11",
         "laravel/framework": "^9.19",
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
         "laravel/ui": "^4.0",
-        "midtrans/midtrans-php": "^2.5"
+        "midtrans/midtrans-php": "^2.5",
+        "nesbot/carbon": "^2.69"
     },
     "require-dev": {
         "andyabih/laravel-to-uml": "^1.0",
