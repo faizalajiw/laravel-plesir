@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Order;
 use App\Models\Place;
 use App\Models\User;
 use App\Models\Visitor;
@@ -44,13 +45,35 @@ class DashboardController extends Controller
     /** home dashboard */
     public function indexAdminWisata()
     {
+        // Mengambil data order sesuai dengan kriteria yang Anda butuhkan
         $user = User::find(auth()->user()->id);
-
         $userId = auth()->id(); // Mengambil ID pengguna yang sedang masuk
-        $visitor = Visitor::with('user', 'place')->where('user_id', $userId)->get();
-        // return response()->json($visitor);
-        return view('dashboard.index', compact('user', 'visitor'));
+        $order = Order::all();
+
+        $orderData = Order::where('status', 'Berhasil')
+            ->groupBy('tanggal')
+            ->orderBy('tanggal')
+            ->selectRaw('tanggal, SUM(quantity) as total_quantity')
+            ->get();
+
+        $labels = $orderData->pluck('tanggal')->map(function ($date) {
+            return \Carbon\Carbon::parse($date)->format('l, d F Y');
+        });
+
+        $quantities = $orderData->pluck('total_quantity');
+
+        return view('dashboard.index', compact('labels', 'quantities', 'orderData', 'order', 'user'));
     }
+
+    // public function indexAdminWisata()
+    // {
+    //     $user = User::find(auth()->user()->id);
+
+    //     $userId = auth()->id(); // Mengambil ID pengguna yang sedang masuk
+    //     $visitor = Visitor::with('user', 'place')->where('user_id', $userId)->get();
+    //     // return response()->json($visitor);
+    //     return view('dashboard.index', compact('user', 'visitor'));
+    // }
 
     public function indexUser()
     {
@@ -64,7 +87,7 @@ class DashboardController extends Controller
     {
         $user = User::find(auth()->user()->id);
 
-        $userId = auth()->id(); 
+        $userId = auth()->id();
         // Ambil nilai dari input form
         $place = $request->input('place_id');
 

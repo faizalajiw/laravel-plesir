@@ -110,28 +110,12 @@
         <!-- Statistik -->
         @if (Session::get('role_name') === 'Admin Wisata')
         <div class="row mb-3">
-            <!-- <div class="col-md-12 col-lg-4">
-                <div class="card card-chart">
-                    <div class="card-body">
-                        <canvas id="myPieChart"></canvas>
-                        @if ($visitor->isEmpty())
-                        <tr>
-                            <td colspan="11">
-                                <div class="text-center">
-                                    <p class="text-muted mt-3">Tidak ada data pengunjung yang tersedia.</p>
-                                </div>
-                            </td>
-                        </tr>
-                        @endif
-                    </div>
-                </div>
-            </div>
-
             <div class="col-md-12 col-lg-8">
                 <div class="card card-chart">
                     <div class="card-body">
-                        <canvas id="myBarChart"></canvas>
-                        @if ($visitor->isEmpty())
+                        <canvas id="myChart"></canvas>
+                        <div id="chart-data" data-labels="{{ json_encode($labels) }}" data-quantities="{{ json_encode($quantities) }}"></div>
+                        @if ($order->isEmpty())
                         <tr>
                             <td colspan="11">
                                 <div class="text-center">
@@ -151,122 +135,89 @@
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table hidden class="table star-student table-hover table-center table-borderless table-striped">
-                                <thead class="thead-light">
+                            <table class="table border-0 star-table table-hover table-center mb-0 datatable table-striped">
+                                <thead class="table-thread">
                                     <tr>
                                         <th>No</th>
-                                        <th>Nama Tempat</th>
-                                        <th>Nama Pengelola</th>
-                                        <th>Senin</th>
-                                        <th>Selasa</th>
-                                        <th>Rabu</th>
-                                        <th>Kamis</th>
-                                        <th>Jumat</th>
-                                        <th>Sabtu</th>
-                                        <th>Minggu</th>
-                                        <th>Total</th>
+                                        <th>Nama</th>
+                                        <th>Wisata</th>
+                                        <th class="text-center">Jumlah Tiket</th>
+                                        <th class="text-center">Total Harga</th>
+                                        <th>Tanggal</th>
+                                        <th>Status</th>
                                         <th style="color: transparent; background-color: #F8F9FA;"></th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($visitor as $list)
+                                    @foreach ($order as $list)
+                                    @if ($list->status === 'Berhasil')
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td id="place_title">{{ $list->place->title }}</td>
-                                        <td>{{ $list->user->name }}</td>
-                                        <td id="senin">{{ $list->senin }}</td>
-                                        <td id="selasa">{{ $list->selasa }}</td>
-                                        <td id="rabu">{{ $list->rabu }}</td>
-                                        <td id="kamis">{{ $list->kamis }}</td>
-                                        <td id="jumat">{{ $list->jumat }}</td>
-                                        <td id="sabtu">{{ $list->sabtu }}</td>
-                                        <td id="minggu">{{ $list->minggu }}</td>
-                                        <td>{{ $list->total_hari }}</td>
+                                        <td>{{ $list->name }}</td>
+                                        <td>{{ $list->place_title }}</td>
+                                        <td class="text-center">{{ $list->quantity }}</td>
+                                        <td class="text-center">{{ $list->total }}</td>
+                                        <td>{{ date('d-m-Y', strtotime($list->tanggal)) }}</td>
+                                        <td class="badge rounded-pill bg-success text-white my-2">{{ $list->status }}</td>
                                         <td class="id" style="color: transparent; background-color: transparent;">{{ $list->id }}</td>
                                     </tr>
-                                    @endforeach
-                                    @if ($visitor->isEmpty())
-                                    <tr>
-                                        <td colspan="11">
-                                            <div class="text-center">
-                                                <p class="text-muted mt-3">Tidak ada data pengunjung yang tersedia.</p>
-                                            </div>
-                                        </td>
-                                    </tr>
                                     @endif
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
-        </div>
-        @endif
-        <!-- Statistik -->
-
-        <!-- Tabel Data Pengunjung -->
-        @if (Session::get('role_name') === 'Super Admin')
-        <!-- <div class="row mb-3">
-            <div class="col-xl-12 col-sm-12 col-12 d-flex">
-
-                <div class="card flex-fill student-space comman-shadow">
-                    <div class="card-header d-flex align-items-center">
-                        <h5 class="card-title">Data Pengunjung</h5>
-                    </div>
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <table class="table star-student table-hover table-center table-borderless table-striped">
-                                <thead class="thead-light">
-                                    <tr>
-                                        <th>No</th>
-                                        <th>Nama Tempat</th>
-                                        <th>Nama Pengelola</th>
-                                        <th>Senin</th>
-                                        <th>Selasa</th>
-                                        <th>Rabu</th>
-                                        <th>Kamis</th>
-                                        <th>Jumat</th>
-                                        <th>Sabtu</th>
-                                        <th>Minggu</th>
-                                        <th>Total</th>
-                                        <th style="color: transparent; background-color: #F8F9FA;"></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($visitor as $list)
-                                    <tr>
-                                        <td>{{ $loop->iteration }}</td>
-                                        <td id="place_title">{{ $list->place->title }}</td>
-                                        <td>{{ $list->user->name }}</td>
-                                        <td id="senin">{{ $list->senin }}</td>
-                                        <td id="selasa">{{ $list->selasa }}</td>
-                                        <td id="rabu">{{ $list->rabu }}</td>
-                                        <td id="kamis">{{ $list->kamis }}</td>
-                                        <td id="jumat">{{ $list->jumat }}</td>
-                                        <td id="sabtu">{{ $list->sabtu }}</td>
-                                        <td id="minggu">{{ $list->minggu }}</td>
-                                        <td>{{ $list->total_hari }}</td>
-                                        <td class="id" style="color: transparent; background-color: transparent;">{{ $list->id }}</td>
-                                    </tr>
                                     @endforeach
-                                    @if ($visitor->isEmpty())
-                                    <tr>
-                                        <td colspan="11">
-                                            <div class="text-center">
-                                                <p class="text-muted mt-3">Tidak ada data pengunjung yang tersedia.</p>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    @endif
                                 </tbody>
                             </table>
                         </div>
                     </div>
                 </div>
             </div>
-        </div> -->
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script>
+            const chartDataElement = document.getElementById('chart-data');
+            const labels = JSON.parse(chartDataElement.getAttribute('data-labels'));
+            const quantities = JSON.parse(chartDataElement.getAttribute('data-quantities'));
+
+            const ctx = document.getElementById('myChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labels, //Tanggal
+                    datasets: [{
+                        label: 'Jumlah Pengunjung',
+                        data: quantities, //Total Penjualan Tiket
+                        backgroundColor: 'rgba(3, 4, 94, 1)',
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Tanggal',
+                                color: 'black',
+                                font: {
+                                    size: 16
+                                }
+                            }
+                        },
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Jumlah Pengunjung',
+                                color: 'black',
+                                font: {
+                                    size: 16
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        </script>
         @endif
-        <!-- Tabel Data Pengunjung -->
+        <!-- Statistik -->
 
         @if (Session::get('role_name') === 'Pengguna')
         <div class="text-center">
@@ -275,11 +226,12 @@
         @endif
     </div>
 
+
     @section('script')
     <!-- CHART JS -->
-    <script src="{{ URL::to('assets/plugins/chartjs/charts.js') }}"></script>
-    <script src="{{ URL::to('assets/plugins/chartjs/pie-chart-data.js') }}"></script>
-    <script src="{{ URL::to('assets/plugins/chartjs/bar-chart-data.js') }}"></script>
+    <!-- <script src="{{ URL::to('assets/plugins/chartjs/chart.js') }}"></script> -->
+    <!-- <script src="{{ URL::to('assets/plugins/chartjs/bar-chart-data.js') }}"></script> -->
+    <!-- <script src="{{ URL::to('assets/plugins/chartjs/pie-chart-data.js') }}"></script> -->
 
     <script src="{{ URL::to('assets/plugins/datatables/datatables.min.js') }}"></script>
     <link rel="stylesheet" href="{{ URL::to('assets/plugins/datatables/datatables.min.css') }}">
