@@ -88,16 +88,13 @@
 
                 <!-- TEMPAT -->
                 <!-- SUPER ADMIN & ADMIN WISATA -->
-                @if (Session::get('role_name') === 'Super Admin' || Session::get('role_name') === 'Admin Wisata')
+                @if (Session::get('role_name') === 'Admin Wisata')
                 <li class="submenu {{set_active(['list/places','places/create','places/edit'])}}">
                     <a href="#"><i class="fas fa-map-marked-alt"></i>
                         <span>Tempat</span>
                         <span class="menu-arrow"></span>
                     </a>
                     <ul>
-                        @if (Session::get('role_name') === 'Super Admin')
-                        <li><a href="{{ route('list/places') }}" class="{{set_active(['list/places'])}}">Lihat Tempat</a></li>
-                        @endif
                         @if (Session::get('role_name') === 'Admin Wisata')
                         <li><a href="{{ route('list/my_places') }}" class="{{set_active(['list/my_places'])}}">Kelola Tempat</a></li>
                         @endif
