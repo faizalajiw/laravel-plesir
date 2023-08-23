@@ -55,7 +55,7 @@
                         <li class="nav-item px-3">
                             <a class="nav-link fw-bold px-3 {{ set_active('web/jelajah-wisata') }}" href="{{ route('jelajah-wisata') }}">Jelajah Wisata</a>
                         </li>
-                        @if (Session::get('role_name') === 'Pengguna' || Session::get('role_name') === 'Admin Wisata')
+                        @if (Session::get('role_name') !== 'Super Admin')
                         <li class="nav-item px-3">
                             <a class="nav-link fw-bold px-3 {{ set_active('web/kerjasama') }}" href="{{ route('kerjasama') }}">Kerja Sama</a>
                         </li>
